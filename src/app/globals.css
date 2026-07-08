@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  /* Font Families */
+  --font-serif: var(--font-instrument-serif), serif;
+  --font-sans: var(--font-plus-jakarta-sans), sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+
+  /* Cold Luxury Light Theme - Charcoal + Stone + Deep Forest Accent */
+  --color-canvas: #F8F7F5;
+  --color-surface: #EFEDE9;
+  --color-text-primary: #1C1B18;
+  --color-text-secondary: #6A6762;
+  --color-accent: #C29F78;
+  --color-hairline: rgba(0, 0, 0, 0.07);
+
+  /* Animation Easings */
+  --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-premium-in-out: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Base Styles */
+html {
+  background-color: #F8F7F5;
+  color: #1C1B18;
+  font-family: var(--font-sans);
+  scroll-behavior: auto;
+  min-height: 100dvh;
+}
+
+body {
+  background-color: #F8F7F5;
+  color: #1C1B18;
+  min-height: 100dvh;
+}
+
+/* Film Grain Noise Overlay */
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Double Bezel Card styles - Light Theme */
+.double-bezel-outer {
+  padding: 0.5rem;
+  border-radius: 2rem;
+  background-color: rgba(0, 0, 0, 0.025);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: background-color 0.4s cubic-bezier(0.32, 0.72, 0, 1), border-color 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.double-bezel-outer:hover {
+  background-color: rgba(61, 107, 79, 0.04);
+  border-color: rgba(61, 107, 79, 0.15);
+}
+
+.double-bezel-inner {
+  border-radius: calc(2rem - 0.5rem);
+  background-color: #F8F7F5;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.7);
+  overflow: hidden;
+}
+
+/* Marquee keyframe */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee-left 28s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Split mask text reveal */
+.split-mask-wrapper {
+  overflow: hidden;
+  display: inline-block;
+}
+
+/* Horizontal image strip accordion */
+.strip-item {
+  transition: width 500ms cubic-bezier(0.32, 0.72, 0, 1);
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.strip-item.expanded {
+  width: 340px;
+}
+
+/* Hide scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  scrollbar-width: none;
+}

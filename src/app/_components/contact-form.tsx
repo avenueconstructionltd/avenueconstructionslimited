@@ -1,0 +1,246 @@
+"use client";
+
+import React, { useState } from "react";
+import { motion } from "motion/react";
+import { MagneticButton } from "@/components/shared/magnetic-button";
+import { Check } from "lucide-react";
+
+interface FormFields {
+  fullName: string;
+  email: string;
+  residence: string;
+  message: string;
+}
+
+interface FormErrors {
+  fullName?: string;
+  email?: string;
+  message?: string;
+}
+
+export function ContactForm() {
+  const [fields, setFields] = useState<FormFields>({
+    fullName: "",
+    email: "",
+    residence: "The Luminary Oasis",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFields((prev) => ({ ...prev, [name]: value }));
+    // Clear error on change
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  const validate = (): boolean => {
+    const tempErrors: FormErrors = {};
+    if (!fields.fullName.trim()) tempErrors.fullName = "Full name is required";
+    if (!fields.email.trim()) {
+      tempErrors.email = "Email address is required";
+    } else if (!/\S+@\S+\.\S+/.test(fields.email)) {
+      tempErrors.email = "Email address is invalid";
+    }
+    if (!fields.message.trim()) tempErrors.message = "Message cannot be empty";
+
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    setStatus("submitting");
+
+    // Simulate Server Action / Submission
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      setStatus("success");
+      setFields({
+        fullName: "",
+        email: "",
+        residence: "The Luminary Oasis",
+        message: "",
+      });
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  return (
+    <section 
+      id="contact" 
+      className="relative w-full min-h-[90dvh] flex flex-col justify-center py-24 md:py-32 px-6 md:px-12 bg-canvas z-10 overflow-hidden"
+    >
+      {/* Decorative vertical grid line */}
+      <div className="absolute right-[10%] top-0 bottom-0 w-px bg-black/5 pointer-events-none hidden lg:block" />
+
+      <div className="max-w-4xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start relative z-10">
+        
+        {/* Left Side: Call to Action Details (col-span-5) */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
+          className="lg:col-span-5 flex flex-col gap-6"
+        >
+          <span className="text-[10px] uppercase tracking-[0.2em] font-mono text-accent">
+            Inquiries
+          </span>
+          <h2 className="font-serif text-3xl md:text-5xl tracking-tight leading-[1.05] text-text-primary uppercase">
+            Begin Your <br />
+            <span className="italic font-light text-accent">Journey</span>
+          </h2>
+          <p className="text-xs md:text-sm leading-relaxed text-text-secondary max-w-[30ch] font-light">
+            Contact our private advisory atelier to coordinate a viewing or private consultation.
+          </p>
+          <div className="text-xs text-text-secondary tracking-wide mt-8 space-y-2">
+            <div>Direct Line: +971 4 555 0199</div>
+            <div>Atelier Email: inquire@js-estate.com</div>
+          </div>
+        </motion.div>
+
+        {/* Right Side: Contact Form (col-span-7) */}
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.32, 0.72, 0, 1] }}
+          className="lg:col-span-7 w-full bg-surface border border-black/5 p-8 md:p-12 rounded-3xl shadow-2xl"
+        >
+          {status === "success" ? (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="flex flex-col items-center justify-center text-center py-16"
+            >
+              <div className="w-12 h-12 rounded-full border border-accent flex items-center justify-center text-accent text-xl mb-6">
+                <Check className="w-5 h-5" />
+              </div>
+              <h3 className="font-serif text-2xl uppercase tracking-wider text-text-primary">
+                Inquiry Received
+              </h3>
+              <p className="text-xs text-text-secondary max-w-[30ch] leading-relaxed mt-3">
+                A private advisor from J&S Estate will contact you shortly to discuss your request.
+              </p>
+              <button
+                onClick={() => setStatus("idle")}
+                className="text-[10px] uppercase tracking-[0.2em] font-medium text-accent mt-8 hover:underline"
+              >
+                Submit another inquiry
+              </button>
+            </motion.div>
+          ) : (
+            <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+              
+              {/* Full Name Block */}
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] uppercase tracking-[0.2em] font-medium text-text-secondary">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  name="fullName"
+                  value={fields.fullName}
+                  onChange={handleChange}
+                  placeholder="e.g. Christopher Harrison"
+                  className="w-full pb-3 bg-transparent border-b border-black/15 text-sm text-text-primary placeholder:text-text-secondary/70 focus:outline-none focus:border-accent transition-colors"
+                />
+                {errors.fullName && (
+                  <span className="text-[10px] text-red-500 tracking-wide mt-1">
+                    {errors.fullName}
+                  </span>
+                )}
+              </div>
+
+              {/* Email Block */}
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] uppercase tracking-[0.2em] font-medium text-text-secondary">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={fields.email}
+                  onChange={handleChange}
+                  placeholder="e.g. christopher@harrison.com"
+                  className="w-full pb-3 bg-transparent border-b border-black/15 text-sm text-text-primary placeholder:text-text-secondary/70 focus:outline-none focus:border-accent transition-colors"
+                />
+                {errors.email && (
+                  <span className="text-[10px] text-red-500 tracking-wide mt-1">
+                    {errors.email}
+                  </span>
+                )}
+              </div>
+
+              {/* Inquired Residence Block */}
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] uppercase tracking-[0.2em] font-medium text-text-secondary">
+                  Residence of Interest
+                </label>
+                <select
+                  name="residence"
+                  value={fields.residence}
+                  onChange={handleChange}
+                  className="w-full pb-3 bg-transparent border-b border-black/15 text-sm text-text-primary focus:outline-none focus:border-accent transition-colors cursor-pointer appearance-none rounded-none"
+                >
+                  <option value="The Luminary Oasis" className="bg-surface text-text-primary">The Luminary Oasis</option>
+                  <option value="The Obsidian Crest" className="bg-surface text-text-primary">The Obsidian Crest</option>
+                  <option value="The Aria Penthouse" className="bg-surface text-text-primary">The Aria Penthouse</option>
+                  <option value="The Terraces at Serene" className="bg-surface text-text-primary">The Terraces at Serene</option>
+                </select>
+              </div>
+
+              {/* Message Block */}
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] uppercase tracking-[0.2em] font-medium text-text-secondary">
+                  Inquiry Message
+                </label>
+                <textarea
+                  name="message"
+                  value={fields.message}
+                  onChange={handleChange}
+                  rows={4}
+                  placeholder="Tell us about your acquisition timeline or preferences..."
+                  className="w-full pb-3 bg-transparent border-b border-black/15 text-sm text-text-primary placeholder:text-text-secondary/70 focus:outline-none focus:border-accent transition-colors resize-none"
+                />
+                {errors.message && (
+                  <span className="text-[10px] text-red-500 tracking-wide mt-1">
+                    {errors.message}
+                  </span>
+                )}
+              </div>
+
+              {/* Submit CTA Button (1 primary, max 3 words, one line) */}
+              <div className="mt-4">
+                <MagneticButton
+                  strength={15}
+                  type="submit"
+                  disabled={status === "submitting"}
+                  className="w-full rounded-full bg-accent hover:bg-text-primary text-canvas py-3 text-xs uppercase tracking-[0.2em] font-medium transition-all duration-300 active:scale-[0.98] disabled:opacity-50"
+                >
+                  {status === "submitting" ? "Submitting Inquiry" : "Submit Inquiry"}
+                </MagneticButton>
+              </div>
+
+              {status === "error" && (
+                <div className="text-[10px] text-red-500 tracking-wide text-center mt-2">
+                  An error occurred. Please try again.
+                </div>
+              )}
+
+            </form>
+          )}
+        </motion.div>
+
+      </div>
+    </section>
+  );
+}
