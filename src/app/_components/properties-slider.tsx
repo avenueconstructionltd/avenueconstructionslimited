@@ -6,6 +6,8 @@ import Link from "next/link";
 import { motion, useScroll, useTransform, useSpring, useReducedMotion, type MotionValue } from "motion/react";
 import { PROPERTIES } from "@/lib/constants";
 
+const MotionLink = motion(Link);
+
 export function PropertiesSlider() {
   const targetRef = useRef<HTMLDivElement>(null);
   
@@ -17,8 +19,8 @@ export function PropertiesSlider() {
   // Spring-smoothed scroll progress for buttery slider motion
   const smoothProgress = useSpring(scrollYProgress, { stiffness: 400, damping: 40 });
   
-  // Translate the slider horizontally
-  const x = useTransform(smoothProgress, [0, 1], ["0%", "-55%"]);
+  // Translate the slider horizontally after the entry morph completes
+  const x = useTransform(smoothProgress, [0, 0.12, 1], ["0%", "0%", "-55%"]);
 
   // Unified safe vertical parallax limits for all slider cards
   const CARD_PARALLAX_RANGE: [string, string][] = [
@@ -62,6 +64,7 @@ export function PropertiesSlider() {
                 <PropertyCard 
                   key={property.slug} 
                   property={property} 
+                  isFirst={index === 0}
                   scrollYProgress={smoothProgress}
                   parallaxRange={CARD_PARALLAX_RANGE[index % CARD_PARALLAX_RANGE.length]}
                 />
@@ -76,16 +79,31 @@ export function PropertiesSlider() {
 
 function PropertyCard({ 
   property, 
+  isFirst = false,
   scrollYProgress,
   parallaxRange,
 }: { 
   property: (typeof PROPERTIES)[0],
+  isFirst?: boolean,
   scrollYProgress: MotionValue<number>,
   parallaxRange: [string, string],
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const prefersReducedMotion = useReducedMotion();
+  
+  // Standard card parallax
   const cardImgY = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? ["0%", "0%"] : parallaxRange);
+
+  // First card viewport morph
+  const entryScale = useTransform(scrollYProgress, [0, 0.12], prefersReducedMotion ? [1, 1] : [1.6, 1]);
+  const entryY = useTransform(scrollYProgress, [0, 0.12], prefersReducedMotion ? ["0%", "0%"] : ["-25%", "0%"]);
+  const entryRadius = useTransform(scrollYProgress, [0, 0.12], prefersReducedMotion ? ["24px", "24px"] : ["0px", "24px"]);
+
+  const cardStyle = isFirst && !prefersReducedMotion ? {
+    scale: entryScale,
+    y: entryY,
+    borderRadius: entryRadius,
+  } : {};
 
   return (
     <div
@@ -95,11 +113,12 @@ function PropertyCard({
     >
       {/* Double Bezel (Doppelrand) Enclosure - Dark Mode style surface */}
       <div className="double-bezel-outer transition-colors duration-500 hover:bg-accent/5 hover:border-accent/20">
-        <div className="double-bezel-inner relative overflow-hidden bg-surface">
-          {/* Card Link to Detail Page */}
-          <Link
+        <div className={`double-bezel-inner relative bg-surface ${isFirst ? "" : "overflow-hidden"}`}>
+          {/* Card Link to Detail Page - Wrapped in MotionLink for morph transition */}
+          <MotionLink
             href={`/projects/${property.slug}`}
-            className="block relative aspect-4/3 overflow-hidden"
+            style={isFirst ? cardStyle : {}}
+            className="block relative aspect-4/3 overflow-hidden rounded-t-[calc(2rem-0.375rem)] z-20 bg-zinc-950 origin-center"
           >
             {/* Parallax inner image with safe container dimensions to prevent gaps */}
             <motion.div
@@ -137,10 +156,10 @@ function PropertyCard({
                 <div className="text-accent text-lg font-light">&rarr;</div>
               </motion.div>
             </motion.div>
-          </Link>
+          </MotionLink>
 
           {/* Card Info Section */}
-          <div className="p-6 flex flex-col gap-5 bg-canvas">
+          <div className="p-6 flex flex-col gap-5 bg-canvas relative z-10">
             {/* Location & Title */}
             <div className="flex flex-col gap-1.5">
               <span className="text-[10px] uppercase tracking-[0.2em] text-text-secondary">
