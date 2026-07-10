@@ -86,6 +86,15 @@ function PropertyCard({
   const [isHovered, setIsHovered] = useState(false);
   const linkRef = useRef<HTMLAnchorElement>(null);
 
+  // Entry morph progress (as the slider scrolls into view)
+  const { scrollYProgress: enterProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "start start"], 
+  });
+
+  // Spring-smoothed progress to sync with Section 3's scroll-linked animations
+  const smoothEnterProgress = useSpring(enterProgress, { stiffness: 80, damping: 25 });
+
   // MotionValues for real-time visual coordinate bridging
   const entryDeltaX = useMotionValue(0);
   const entryDeltaY = useMotionValue(-600);
@@ -96,6 +105,14 @@ function PropertyCard({
     if (!isFirst) return;
 
     function measure() {
+      // Lock measurements during transition to prevent scroll jitter and race conditions
+      const v = enterProgress.get();
+      if (v >= 0.4 && v < 1.0) {
+        if (entryDeltaX.get() !== 0 || entryDeltaY.get() !== -600) {
+          return;
+        }
+      }
+
       const linkEl = linkRef.current;
       if (!linkEl) return;
       const targetRect = linkEl.getBoundingClientRect();
@@ -138,52 +155,57 @@ function PropertyCard({
   });
   const imgX = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
-  // Entry morph progress (as the slider scrolls into view)
-  const { scrollYProgress: enterProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "start start"], 
-  });
-
   // Delay the morph start to 40% of the entry scroll so the source image is fully shown first
   const startProgress = 0.4;
 
-  const morphX = useTransform(enterProgress, (v) => {
+  const morphX = useTransform(smoothEnterProgress, (v) => {
     if (v < startProgress) return entryDeltaX.get();
     const p = (v - startProgress) / (1 - startProgress);
     return (1 - p) * entryDeltaX.get();
   });
 
-  const morphY = useTransform(enterProgress, (v) => {
+  const morphY = useTransform(smoothEnterProgress, (v) => {
     if (v < startProgress) return entryDeltaY.get();
     const p = (v - startProgress) / (1 - startProgress);
     return (1 - p) * entryDeltaY.get();
   });
 
-  const morphScaleX = useTransform(enterProgress, (v) => {
+  const morphScaleX = useTransform(smoothEnterProgress, (v) => {
     if (v < startProgress) return entryScaleX.get();
     const p = (v - startProgress) / (1 - startProgress);
     return p + (1 - p) * entryScaleX.get();
   });
 
-  const morphScaleY = useTransform(enterProgress, (v) => {
+  const morphScaleY = useTransform(smoothEnterProgress, (v) => {
     if (v < startProgress) return entryScaleY.get();
     const p = (v - startProgress) / (1 - startProgress);
     return p + (1 - p) * entryScaleY.get();
   });
 
   // Fade in the morphing copy just as the morph starts moving (between 0.35 and 0.45)
-  const morphOpacity = useTransform(enterProgress, [0, 0.35, 0.45, 1], [0, 0, 1, 1]);
+  const morphOpacity = useTransform(smoothEnterProgress, [0, 0.35, 0.45, 1], [0, 0, 1, 1]);
   
-  // Calculate border radius dynamically for all four corners:
-  // - Top corners remain visually rounded at 24px
-  // - Bottom corners start rounded at 24px and flatten to 0px as the card lands
   // Calculate border radius dynamically to keep all four corners visually rounded at 24px
-  const cardRadius = useTransform(enterProgress, (v) => {
+  const cardRadius = useTransform(smoothEnterProgress, (v) => {
     const clamped = Math.max(0, Math.min(1.0, v));
     const p = clamped < startProgress ? 0 : (clamped - startProgress) / (1 - startProgress);
     const currentScale = p + (1 - p) * entryScaleX.get();
     const r = 24 / (currentScale || 1);
     return `${r}px`;
+  });
+
+  // Uniform child image scaling to prevent aspect ratio distortion during non-uniform morph scale
+  const imgScaleX = useTransform(smoothEnterProgress, (v) => {
+    const sx = morphScaleX.get();
+    const sy = morphScaleY.get();
+    return sx === 0 ? 1 : sy / sx;
+  });
+
+  // Dynamically offset the image vertically to match Section 3's ending parallax shift (10%), landing at 0%
+  const imgYOffset = useTransform(smoothEnterProgress, (v) => {
+    if (v < startProgress) return "10%";
+    const p = (v - startProgress) / (1 - startProgress);
+    return `${(1 - p) * 10}%`;
   });
 
   const styleObj = isFirst 
@@ -219,13 +241,18 @@ function PropertyCard({
               transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
               className={`w-full h-full absolute inset-0 origin-center ${isFirst ? 'z-50 overflow-hidden' : 'z-0 overflow-hidden rounded-t-[calc(2rem-0.375rem)]'}`}
             >
-              <Image
-                src={property.image}
-                alt={property.name}
-                fill
-                sizes="(max-width: 768px) 300px, 440px"
-                className={`object-cover brightness-95 saturate-[0.8] transition-transform duration-700 ${isHovered ? 'scale-105' : ''}`}
-              />
+              <motion.div
+                style={isFirst ? { scaleX: imgScaleX, y: imgYOffset, originX: 0.5, originY: 0.5 } : {}}
+                className="w-full h-full relative"
+              >
+                <Image
+                  src={property.image}
+                  alt={property.name}
+                  fill
+                  sizes="(max-width: 768px) 300px, 440px"
+                  className={`object-cover brightness-95 saturate-[0.8] transition-transform duration-700 ${isHovered ? 'scale-105' : ''}`}
+                />
+              </motion.div>
             </motion.div>
 
             {/* Hover overlay (Reveal Curtain card) */}
