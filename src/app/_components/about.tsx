@@ -89,17 +89,41 @@ export function About() {
             >
               Manifesto
             </motion.span>
-            <motion.h2
-              initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.9, ease: [0.32, 0.72, 0, 1] }}
-              className="font-serif text-[clamp(2rem,5vw,3.8rem)] tracking-tight leading-[1.02] text-text-primary uppercase max-w-[16ch]"
-            >
-              A legacy written <br />
-              in concrete{" "}
-              <span className="italic font-light text-accent">and light</span>
-            </motion.h2>
+            <h2 className="font-serif text-[clamp(2rem,5vw,3.8rem)] tracking-tight leading-[1.02] text-text-primary uppercase max-w-[16ch]">
+              <span className="block overflow-hidden py-1">
+                <motion.span
+                  initial={{ y: "100%" }}
+                  whileInView={{ y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
+                  className="block"
+                >
+                  A legacy written
+                </motion.span>
+              </span>
+              <span className="block overflow-hidden py-1">
+                <motion.span
+                  initial={{ y: "100%" }}
+                  whileInView={{ y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.8, delay: 0.08, ease: [0.32, 0.72, 0, 1] }}
+                  className="block"
+                >
+                  in concrete
+                </motion.span>
+              </span>
+              <span className="block overflow-hidden py-1">
+                <motion.span
+                  initial={{ y: "100%" }}
+                  whileInView={{ y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.8, delay: 0.16, ease: [0.32, 0.72, 0, 1] }}
+                  className="block italic font-light text-accent"
+                >
+                  and light
+                </motion.span>
+              </span>
+            </h2>
           </div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
