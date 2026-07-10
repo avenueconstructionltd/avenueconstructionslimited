@@ -2,7 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+} from "motion/react";
 import { useRef } from "react";
 import { MagneticButton } from "@/components/shared/magnetic-button";
 import { HERO_STATS } from "@/lib/constants";
@@ -11,7 +16,11 @@ export function Hero() {
   const containerRef = useRef<HTMLElement>(null);
   const { scrollY } = useScroll();
   const prefersReducedMotion = useReducedMotion();
-  const yBg = useTransform(scrollY, [0, 700], prefersReducedMotion ? ["0%", "0%"] : ["0%", "-14%"]);
+  const yBg = useTransform(
+    scrollY,
+    [0, 700],
+    prefersReducedMotion ? ["0%", "0%"] : ["0%", "-14%"],
+  );
 
   return (
     <section

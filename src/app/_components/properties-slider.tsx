@@ -3,20 +3,31 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useSpring, useReducedMotion, useMotionValue, type MotionValue } from "motion/react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  useReducedMotion,
+  useMotionValue,
+  type MotionValue,
+} from "motion/react";
 import { PROPERTIES } from "@/lib/constants";
 
 export function PropertiesSlider() {
   const targetRef = useRef<HTMLDivElement>(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start start", "end end"],
   });
-  
+
   // Spring-smoothed scroll progress for buttery slider motion
-  const smoothProgress = useSpring(scrollYProgress, { stiffness: 400, damping: 40 });
-  
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 400,
+    damping: 40,
+  });
+
   // Translate the slider horizontally
   const x = useTransform(smoothProgress, [0, 1], ["0%", "-55%"]);
 
@@ -44,7 +55,9 @@ export function PropertiesSlider() {
             <div className="flex justify-between items-end">
               <h2 className="font-serif text-3xl md:text-5xl tracking-tight leading-[1.05] text-text-primary uppercase">
                 Signature <br />
-                <span className="italic font-light text-accent">Residences</span>
+                <span className="italic font-light text-accent">
+                  Residences
+                </span>
               </h2>
               <div className="text-[10px] uppercase tracking-[0.2em] text-text-secondary hidden md:block">
                 Scroll to explore portfolio
@@ -59,9 +72,9 @@ export function PropertiesSlider() {
               className="flex gap-8 w-max pr-12 md:pr-32"
             >
               {PROPERTIES.map((property, index) => (
-                <PropertyCard 
-                  key={property.slug} 
-                  property={property} 
+                <PropertyCard
+                  key={property.slug}
+                  property={property}
                   isFirst={index === 0}
                   containerRef={targetRef}
                 />
@@ -74,14 +87,14 @@ export function PropertiesSlider() {
   );
 }
 
-function PropertyCard({ 
-  property, 
+function PropertyCard({
+  property,
   isFirst = false,
-  containerRef 
-}: { 
-  property: (typeof PROPERTIES)[0],
-  isFirst?: boolean,
-  containerRef: React.RefObject<HTMLDivElement | null>
+  containerRef,
+}: {
+  property: (typeof PROPERTIES)[0];
+  isFirst?: boolean;
+  containerRef: React.RefObject<HTMLDivElement | null>;
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const linkRef = useRef<HTMLAnchorElement>(null);
@@ -89,11 +102,14 @@ function PropertyCard({
   // Entry morph progress (as the slider scrolls into view)
   const { scrollYProgress: enterProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "start start"], 
+    offset: ["start end", "start start"],
   });
 
   // Spring-smoothed progress to sync with Section 3's scroll-linked animations
-  const smoothEnterProgress = useSpring(enterProgress, { stiffness: 80, damping: 25 });
+  const smoothEnterProgress = useSpring(enterProgress, {
+    stiffness: 80,
+    damping: 25,
+  });
 
   // MotionValues for real-time visual coordinate bridging
   const entryDeltaX = useMotionValue(0);
@@ -121,8 +137,12 @@ function PropertyCard({
       const source = document.getElementById("residences-transition-source");
       if (source) {
         const s = source.getBoundingClientRect();
-        entryDeltaX.set(s.left + s.width / 2 - (targetRect.left + targetRect.width / 2));
-        entryDeltaY.set(s.top + s.height / 2 - (targetRect.top + targetRect.height / 2));
+        entryDeltaX.set(
+          s.left + s.width / 2 - (targetRect.left + targetRect.width / 2),
+        );
+        entryDeltaY.set(
+          s.top + s.height / 2 - (targetRect.top + targetRect.height / 2),
+        );
         entryScaleX.set(s.width / targetRect.width);
         entryScaleY.set(s.height / targetRect.height);
       }
@@ -183,12 +203,19 @@ function PropertyCard({
   });
 
   // Fade in the morphing copy just as the morph starts moving (between 0.35 and 0.45)
-  const morphOpacity = useTransform(smoothEnterProgress, [0, 0.35, 0.45, 1], [0, 0, 1, 1]);
-  
+  const morphOpacity = useTransform(
+    smoothEnterProgress,
+    [0, 0.35, 0.45, 1],
+    [0, 0, 1, 1],
+  );
+
   // Calculate border radius dynamically to keep all four corners visually rounded at 24px
   const cardRadius = useTransform(smoothEnterProgress, (v) => {
     const clamped = Math.max(0, Math.min(1.0, v));
-    const p = clamped < startProgress ? 0 : (clamped - startProgress) / (1 - startProgress);
+    const p =
+      clamped < startProgress
+        ? 0
+        : (clamped - startProgress) / (1 - startProgress);
     const currentScale = p + (1 - p) * entryScaleX.get();
     const r = 24 / (currentScale || 1);
     return `${r}px`;
@@ -208,15 +235,15 @@ function PropertyCard({
     return `${(1 - p) * 10}%`;
   });
 
-  const styleObj = isFirst 
-    ? { 
-        x: morphX, 
-        y: morphY, 
-        scaleX: morphScaleX, 
-        scaleY: morphScaleY, 
+  const styleObj = isFirst
+    ? {
+        x: morphX,
+        y: morphY,
+        scaleX: morphScaleX,
+        scaleY: morphScaleY,
         opacity: morphOpacity,
-        borderRadius: cardRadius
-      } 
+        borderRadius: cardRadius,
+      }
     : { x: imgX };
 
   return (
@@ -227,22 +254,33 @@ function PropertyCard({
     >
       {/* Double Bezel (Doppelrand) Enclosure - Dark Mode style surface */}
       <div className="double-bezel-outer transition-colors duration-500 hover:bg-accent/5 hover:border-accent/20">
-        <div className={`double-bezel-inner relative bg-surface ${isFirst ? 'overflow-visible!' : 'overflow-hidden'}`}>
+        <div
+          className={`double-bezel-inner relative bg-surface ${isFirst ? "overflow-visible!" : "overflow-hidden"}`}
+        >
           {/* Card Link to Detail Page */}
           <Link
             ref={linkRef}
             href={`/projects/${property.slug}`}
-            className={`block relative aspect-4/3 ${isFirst ? 'overflow-visible' : 'overflow-hidden'}`}
+            className={`block relative aspect-4/3 ${isFirst ? "overflow-visible" : "overflow-hidden"}`}
           >
             {/* Image with morph/parallax effect */}
             <motion.div
               style={isFirst ? styleObj : { x: imgX }}
               animate={!isFirst ? { scale: isHovered ? 1.05 : 1 } : {}}
               transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-              className={`w-full h-full absolute inset-0 origin-center ${isFirst ? 'z-50 overflow-hidden' : 'z-0 overflow-hidden rounded-t-[1.625rem]'}`}
+              className={`w-full h-full absolute inset-0 origin-center ${isFirst ? "z-50 overflow-hidden" : "z-0 overflow-hidden rounded-t-[1.625rem]"}`}
             >
               <motion.div
-                style={isFirst ? { scaleX: imgScaleX, y: imgYOffset, originX: 0.5, originY: 0.5 } : {}}
+                style={
+                  isFirst
+                    ? {
+                        scaleX: imgScaleX,
+                        y: imgYOffset,
+                        originX: 0.5,
+                        originY: 0.5,
+                      }
+                    : {}
+                }
                 className="w-full h-full relative"
               >
                 <Image
@@ -250,7 +288,7 @@ function PropertyCard({
                   alt={property.name}
                   fill
                   sizes="(max-width: 768px) 300px, 440px"
-                  className={`object-cover brightness-95 saturate-[0.8] transition-transform duration-700 ${isHovered ? 'scale-105' : ''}`}
+                  className={`object-cover brightness-95 saturate-[0.8] transition-transform duration-700 ${isHovered ? "scale-105" : ""}`}
                 />
               </motion.div>
             </motion.div>

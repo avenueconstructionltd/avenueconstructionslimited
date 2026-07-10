@@ -2,13 +2,18 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+} from "motion/react";
 import { TEAM_MEMBERS } from "@/lib/constants";
 
 export function Team() {
   const containerRef = useRef<HTMLElement>(null);
   const [alexander, elena, marcus] = TEAM_MEMBERS;
-  
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
@@ -16,9 +21,21 @@ export function Team() {
 
   const prefersReducedMotion = useReducedMotion();
 
-  const y1 = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? ["0%", "0%"] : ["-5%", "5%"]);
-  const y2 = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? ["0%", "0%"] : ["-8%", "8%"]);
-  const y3 = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? ["0%", "0%"] : ["-5%", "5%"]);
+  const y1 = useTransform(
+    scrollYProgress,
+    [0, 1],
+    prefersReducedMotion ? ["0%", "0%"] : ["-5%", "5%"],
+  );
+  const y2 = useTransform(
+    scrollYProgress,
+    [0, 1],
+    prefersReducedMotion ? ["0%", "0%"] : ["-8%", "8%"],
+  );
+  const y3 = useTransform(
+    scrollYProgress,
+    [0, 1],
+    prefersReducedMotion ? ["0%", "0%"] : ["-5%", "5%"],
+  );
 
   return (
     <section
@@ -53,7 +70,10 @@ export function Team() {
             <div className="double-bezel-inner h-full grid grid-cols-1 sm:grid-cols-2">
               {/* Image side */}
               <div className="relative aspect-4/3 sm:aspect-auto h-64 sm:h-full overflow-hidden">
-                <motion.div style={{ y: y1 }} className="absolute w-full h-[125%] -top-[12.5%]">
+                <motion.div
+                  style={{ y: y1 }}
+                  className="absolute w-full h-[125%] -top-[12.5%]"
+                >
                   <Image
                     src={alexander.imageUrl}
                     alt={alexander.name}
@@ -92,7 +112,10 @@ export function Team() {
           >
             <div className="double-bezel-inner h-full flex flex-col justify-between bg-surface">
               <div className="relative aspect-4/3 w-full overflow-hidden">
-                <motion.div style={{ y: y2 }} className="absolute w-full h-[125%] -top-[12.5%]">
+                <motion.div
+                  style={{ y: y2 }}
+                  className="absolute w-full h-[125%] -top-[12.5%]"
+                >
                   <Image
                     src={elena.imageUrl}
                     alt={elena.name}
@@ -148,7 +171,10 @@ export function Team() {
               </div>
               {/* Image side (takes 1/3 of space on desktop) */}
               <div className="relative aspect-4/3 sm:aspect-auto h-64 sm:h-full overflow-hidden order-1 sm:order-2">
-                <motion.div style={{ y: y3 }} className="absolute w-full h-[125%] -top-[12.5%]">
+                <motion.div
+                  style={{ y: y3 }}
+                  className="absolute w-full h-[125%] -top-[12.5%]"
+                >
                   <Image
                     src={marcus.imageUrl}
                     alt={marcus.name}

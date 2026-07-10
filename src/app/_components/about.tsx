@@ -2,7 +2,13 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useReducedMotion, type MotionValue } from "motion/react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+  type MotionValue,
+} from "motion/react";
 
 // Depth-scaled parallax per pillar — matches the z-axis cascade (mt-10, mt-20):
 // the visually "further back" pillar travels further, so motion reinforces layout.
@@ -24,10 +30,17 @@ function PillarImage({
   label: string;
 }) {
   const prefersReducedMotion = useReducedMotion();
-  const imgY = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? ["0%", "0%"] : PILLAR_PARALLAX_RANGE[index]);
+  const imgY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    prefersReducedMotion ? ["0%", "0%"] : PILLAR_PARALLAX_RANGE[index],
+  );
 
   return (
-    <motion.div style={{ y: imgY }} className="absolute inset-0 w-full h-[130%] top-[-15%]">
+    <motion.div
+      style={{ y: imgY }}
+      className="absolute inset-0 w-full h-[130%] top-[-15%]"
+    >
       <Image
         src={image}
         alt={label}
@@ -64,7 +77,7 @@ const PILLARS = [
 
 export function About() {
   const containerRef = useRef<HTMLElement>(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
@@ -106,7 +119,11 @@ export function About() {
                   initial={{ y: "100%" }}
                   whileInView={{ y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.8, delay: 0.08, ease: [0.32, 0.72, 0, 1] }}
+                  transition={{
+                    duration: 0.8,
+                    delay: 0.08,
+                    ease: [0.32, 0.72, 0, 1],
+                  }}
                   className="block"
                 >
                   in concrete
@@ -117,7 +134,11 @@ export function About() {
                   initial={{ y: "100%" }}
                   whileInView={{ y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.8, delay: 0.16, ease: [0.32, 0.72, 0, 1] }}
+                  transition={{
+                    duration: 0.8,
+                    delay: 0.16,
+                    ease: [0.32, 0.72, 0, 1],
+                  }}
                   className="block italic font-light text-accent"
                 >
                   and light
