@@ -32,7 +32,7 @@ function PillarImage({
         src={image}
         alt={label}
         fill
-        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 hover:scale-105"
+        className="object-cover transition-transform duration-700 group-hover:scale-105"
       />
     </motion.div>
   );

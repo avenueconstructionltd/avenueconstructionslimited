@@ -217,7 +217,7 @@ function PropertyCard({
               style={isFirst ? styleObj : { x: imgX }}
               animate={!isFirst ? { scale: isHovered ? 1.05 : 1 } : {}}
               transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-              className={`w-full h-full absolute inset-0 origin-center ${isFirst ? 'z-50 overflow-visible' : 'z-0 overflow-hidden rounded-t-[calc(2rem-0.375rem)]'}`}
+              className={`w-full h-full absolute inset-0 origin-center ${isFirst ? 'z-50 overflow-hidden' : 'z-0 overflow-hidden rounded-t-[calc(2rem-0.375rem)]'}`}
             >
               <Image
                 src={property.image}

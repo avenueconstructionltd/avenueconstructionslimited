@@ -39,7 +39,10 @@ export function ResidencesTransition() {
           className="relative h-[85vh] w-[90vw] md:w-[85vw] lg:w-[80vw] overflow-hidden rounded-[2rem] ring-1 ring-black/5 bg-black/[0.03] p-2"
         >
           {/* Inner Core container with absolute cover */}
-          <div className="w-full h-full relative overflow-hidden rounded-[calc(2rem-0.5rem)] bg-zinc-950">
+          <div 
+            id="residences-transition-source"
+            className="w-full h-full relative overflow-hidden rounded-[calc(2rem-0.5rem)] bg-zinc-950"
+          >
             {/* Parallax inner image with safe dimensions */}
             <motion.div 
               style={{ y: imgY }} 
