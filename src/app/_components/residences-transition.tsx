@@ -61,7 +61,7 @@ export function ResidencesTransition() {
       <div className="sticky top-0 h-dvh flex items-center justify-center overflow-hidden">
         <motion.div
           style={{ scale }}
-          className="relative h-[85vh] w-[90vw] md:w-[85vw] lg:w-[80vw] overflow-hidden rounded-4xl ring-1 ring-black/5 bg-black/3 p-2"
+          className="relative h-[75vh] md:h-[85vh] w-[90vw] md:w-[85vw] lg:w-[80vw] overflow-hidden rounded-4xl ring-1 ring-black/5 bg-black/3 p-2"
         >
           {/* Inner Core container with absolute cover */}
           <div

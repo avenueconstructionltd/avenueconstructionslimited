@@ -72,7 +72,7 @@ export function Team() {
               <div className="relative aspect-4/3 sm:aspect-auto h-64 sm:h-full overflow-hidden">
                 <motion.div
                   style={{ y: y1 }}
-                  className="absolute w-full h-[125%] -top-[12.5%]"
+                  className="absolute w-full h-[125%] top-[-12.5%]"
                 >
                   <Image
                     src={alexander.imageUrl}
@@ -114,7 +114,7 @@ export function Team() {
               <div className="relative aspect-4/3 w-full overflow-hidden">
                 <motion.div
                   style={{ y: y2 }}
-                  className="absolute w-full h-[125%] -top-[12.5%]"
+                  className="absolute w-full h-[125%] top-[-12.5%]"
                 >
                   <Image
                     src={elena.imageUrl}
@@ -173,7 +173,7 @@ export function Team() {
               <div className="relative aspect-4/3 sm:aspect-auto h-64 sm:h-full overflow-hidden order-1 sm:order-2">
                 <motion.div
                   style={{ y: y3 }}
-                  className="absolute w-full h-[125%] -top-[12.5%]"
+                  className="absolute w-full h-[125%] top-[-12.5%]"
                 >
                   <Image
                     src={marcus.imageUrl}

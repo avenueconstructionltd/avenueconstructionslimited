@@ -51,7 +51,7 @@ export function ImageGallery({ images, label }: ImageGalleryProps) {
     >
       {/* Main stage */}
       <div className="double-bezel-outer">
-        <div className="double-bezel-inner relative aspect-[16/10] w-full overflow-hidden">
+        <div className="double-bezel-inner relative aspect-16/10 w-full overflow-hidden">
           <AnimatePresence custom={direction} mode="wait" initial={false}>
             <motion.div
               key={activeIndex}
@@ -71,8 +71,7 @@ export function ImageGallery({ images, label }: ImageGalleryProps) {
                 sizes="(max-width: 768px) 100vw, 1200px"
                 className="object-cover"
               />
-              {/* Bottom scrim for caption contrast */}
-              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-text-primary/70 to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-text-primary/70 to-transparent pointer-events-none" />
               <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between p-6 md:p-8">
                 <span className="text-[10px] uppercase tracking-[0.22em] text-white/90 font-light max-w-[60ch]">
                   {images[activeIndex].caption}

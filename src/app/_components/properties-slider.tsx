@@ -16,20 +16,39 @@ import { PROPERTIES } from "@/lib/constants";
 
 export function PropertiesSlider() {
   const targetRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [xRange, setXRange] = useState(0);
 
+  useEffect(() => {
+    function calculateRange() {
+      if (!sliderRef.current) return;
+      const sliderWidth = sliderRef.current.scrollWidth;
+      const viewportWidth = window.innerWidth;
+      const padding = viewportWidth < 768 ? 48 : 128;
+      const range = Math.max(0, sliderWidth - viewportWidth + padding);
+      setXRange(range);
+    }
+
+    calculateRange();
+    window.addEventListener("resize", calculateRange);
+    const timer = setTimeout(calculateRange, 100);
+
+    return () => {
+      window.removeEventListener("resize", calculateRange);
+      clearTimeout(timer);
+    };
+  }, []);
+  
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start start", "end end"],
   });
-
+  
   // Spring-smoothed scroll progress for buttery slider motion
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 400,
-    damping: 40,
-  });
-
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 400, damping: 40 });
+  
   // Translate the slider horizontally
-  const x = useTransform(smoothProgress, [0, 1], ["0%", "-55%"]);
+  const x = useTransform(smoothProgress, [0, 1], [0, -xRange]);
 
   // Unified safe vertical parallax limits for all slider cards
   const CARD_PARALLAX_RANGE: [string, string][] = [
@@ -68,6 +87,7 @@ export function PropertiesSlider() {
           {/* Scroll-Linked Slider Container */}
           <div className="overflow-visible">
             <motion.div
+              ref={sliderRef}
               style={{ x }}
               className="flex gap-8 w-max pr-12 md:pr-32"
             >
