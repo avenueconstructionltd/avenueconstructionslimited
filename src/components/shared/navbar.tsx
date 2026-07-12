@@ -29,16 +29,20 @@ export function Navbar() {
 
   return (
     <>
-      {/* Desktop Floating Pill Nav */}
-      <nav className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-40 flex w-[calc(100%-1.5rem)] max-w-5xl items-center justify-between rounded-full border border-text-primary/10 bg-canvas/92 px-4 py-3 shadow-[0_8px_32px_rgba(28,27,24,0.12),inset_0_1px_0_rgba(255,255,255,0.72)] backdrop-blur-xl md:px-6">
+      {/* Floating Nav Container */}
+      <nav className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-40 flex w-[calc(100%-1.5rem)] max-w-5xl items-center justify-between md:rounded-full md:border md:border-text-primary/10 md:bg-canvas/92 md:px-6 md:py-3 md:shadow-[0_8px_32px_rgba(28,27,24,0.12),inset_0_1px_0_rgba(255,255,255,0.72)] md:backdrop-blur-xl pointer-events-none md:pointer-events-auto">
+        
+        {/* Logo (Far left on both mobile and desktop) */}
         <motion.div
           initial={{ opacity: 0, x: -12 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
+          className="pointer-events-auto flex h-11 items-center justify-center rounded-full border border-text-primary/10 bg-canvas/92 px-5 shadow-[0_8px_32px_rgba(28,27,24,0.12),inset_0_1px_0_rgba(255,255,255,0.72)] backdrop-blur-xl md:h-auto md:border-none md:bg-transparent md:px-0 md:shadow-none md:backdrop-blur-none"
         >
           <Logo />
         </motion.div>
 
+        {/* Desktop Links (Hidden on mobile) */}
         <div className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link, index) => {
             const isActive =
@@ -68,7 +72,9 @@ export function Navbar() {
           })}
         </div>
 
-        <div className="flex items-center gap-4">
+        {/* Right Side Items (Inquire on Desktop, Hamburger on Mobile) */}
+        <div className="flex items-center gap-4 pointer-events-auto">
+          {/* Desktop Inquire Button (Hidden on mobile) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -89,15 +95,21 @@ export function Navbar() {
             </Link>
           </motion.div>
 
+          {/* Mobile Hamburger Menu (Far right on mobile, hidden on desktop) */}
           <button
             onClick={toggleMenu}
-            className="relative flex h-8 w-8 items-center justify-end text-text-primary transition-colors hover:text-accent md:hidden pr-1"
+            className="relative flex size-11 shrink-0 items-center justify-center rounded-full border border-text-primary/10 bg-canvas/92 shadow-[0_8px_32px_rgba(28,27,24,0.12),inset_0_1px_0_rgba(255,255,255,0.72)] backdrop-blur-xl transition-colors hover:bg-accent/5 md:hidden"
             aria-label="Toggle navigation menu"
             aria-expanded={isOpen}
           >
             <span
-              className={`block size-1.5 rounded-full bg-current transition-transform duration-300 ease-premium-in-out ${
-                isOpen ? "scale-150 bg-accent" : "scale-100"
+              className={`absolute h-0.5 w-4 rounded-full bg-accent transition-transform duration-300 ease-premium-in-out ${
+                isOpen ? "translate-y-0 rotate-45" : "-translate-y-1.5"
+              }`}
+            />
+            <span
+              className={`absolute h-0.5 w-4 rounded-full bg-accent transition-transform duration-300 ease-premium-in-out ${
+                isOpen ? "translate-y-0 -rotate-45" : "translate-y-1.5"
               }`}
             />
           </button>
