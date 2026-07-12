@@ -430,14 +430,14 @@ export default function AboutPage() {
                     href={`/projects/${property.slug}`}
                     className="group block"
                   >
-                    <div className="double-bezel-outer transition-colors duration-400 group-hover:bg-accent/5 group-hover:border-accent/20">
+                    <div className="double-bezel-outer transition-colors duration-400 group-hover:bg-accent/5 group-hover:border-accent/20 group-focus:bg-accent/5 group-focus:border-accent/20">
                       <div className="double-bezel-inner relative aspect-3/4 overflow-hidden">
                         <Image
                           src={property.image}
                           alt={property.name}
                           fill
                           sizes="(max-width: 768px) 50vw, 25vw"
-                          className="object-cover brightness-90 group-hover:scale-105 group-hover:brightness-100 transition-all duration-700 ease-premium-in-out"
+                          className="object-cover brightness-90 group-hover:scale-105 group-hover:brightness-100 group-focus:scale-105 group-focus:brightness-100 transition-all duration-700 ease-premium-in-out"
                         />
                         <div className="absolute inset-0 bg-linear-to-t from-text-primary/80 via-transparent to-transparent" />
                         <div className="absolute bottom-0 left-0 right-0 p-5 flex flex-col gap-1">

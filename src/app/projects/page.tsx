@@ -10,6 +10,7 @@ import { PROPERTIES } from "@/lib/constants";
 
 export default function ProjectsPage() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
 
   return (
     <>
@@ -39,7 +40,7 @@ export default function ProjectsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
             {PROPERTIES.map((property, index) => {
               const isEven = index % 2 === 0;
-              const isHovered = hoveredIndex === index;
+              const isActive = hoveredIndex === index || focusedIndex === index;
 
               return (
                 <motion.div
@@ -59,16 +60,18 @@ export default function ProjectsPage() {
                   }`}
                 >
                   {/* Double Bezel Enclosure */}
-                  <div className="double-bezel-outer transition-colors duration-500 hover:bg-accent/5 hover:border-accent/20">
+                  <div className={`double-bezel-outer transition-colors duration-500 ${isActive ? "bg-accent/5 border-accent/20" : ""}`}>
                     <div className="double-bezel-inner relative">
                       {/* Image Frame */}
                       <Link
                         href={`/projects/${property.slug}`}
+                        onFocus={() => setFocusedIndex(index)}
+                        onBlur={() => setFocusedIndex(null)}
                         className="block relative aspect-4/3 overflow-hidden"
                       >
                         <motion.div
                           animate={{
-                            scale: isHovered ? 1.05 : 1,
+                            scale: isActive ? 1.05 : 1,
                           }}
                           transition={{
                             duration: 0.7,
@@ -88,7 +91,7 @@ export default function ProjectsPage() {
                         {/* Reveal Curtain Card */}
                         <motion.div
                           initial={{ opacity: 0 }}
-                          animate={{ opacity: isHovered ? 1 : 0 }}
+                          animate={{ opacity: isActive ? 1 : 0 }}
                           transition={{ duration: 0.3 }}
                           className="absolute inset-0 bg-linear-to-t from-text-primary/85 via-text-primary/25 to-transparent flex flex-col justify-between p-6"
                         >

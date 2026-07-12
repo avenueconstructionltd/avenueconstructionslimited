@@ -150,10 +150,11 @@ export function ContactForm() {
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-8">
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] uppercase tracking-[0.2em] font-medium text-text-secondary">
+                <label htmlFor="fullName" className="text-[10px] uppercase tracking-[0.2em] font-medium text-text-secondary">
                   Full Name
                 </label>
                 <input
+                  id="fullName"
                   type="text"
                   name="fullName"
                   value={fields.fullName}
@@ -169,10 +170,11 @@ export function ContactForm() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] uppercase tracking-[0.2em] font-medium text-text-secondary">
+                <label htmlFor="email" className="text-[10px] uppercase tracking-[0.2em] font-medium text-text-secondary">
                   Email Address
                 </label>
                 <input
+                  id="email"
                   type="email"
                   name="email"
                   value={fields.email}
@@ -188,10 +190,11 @@ export function ContactForm() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] uppercase tracking-[0.2em] font-medium text-text-secondary">
+                <label htmlFor="residence" className="text-[10px] uppercase tracking-[0.2em] font-medium text-text-secondary">
                   Residence of Interest
                 </label>
                 <select
+                  id="residence"
                   name="residence"
                   value={fields.residence}
                   onChange={handleChange}
@@ -225,10 +228,11 @@ export function ContactForm() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] uppercase tracking-[0.2em] font-medium text-text-secondary">
+                <label htmlFor="message" className="text-[10px] uppercase tracking-[0.2em] font-medium text-text-secondary">
                   Inquiry Message
                 </label>
                 <textarea
+                  id="message"
                   name="message"
                   value={fields.message}
                   onChange={handleChange}

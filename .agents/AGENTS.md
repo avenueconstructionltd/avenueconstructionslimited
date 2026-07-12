@@ -71,34 +71,6 @@ Lazy code without its check is unfinished: non-trivial logic leaves ONE runnable
 - Server Actions: verb + noun (createOrder, deleteFile, updateStatus)
 - Zod schemas: camelCaseSchema (createOrderSchema)
 
-## Project Structure (Official Next.js App Router conventions)
-
-```text
-src/
-  app/                        # App Router — pages and layouts only
-    (group)/                  # Route group — no URL segment, use for shared layouts or team separation
-    [slug]/                   # Dynamic segment — single param
-    [...slug]/                # Catch-all segment
-    [[...slug]]/              # Optional catch-all segment
-    @slot/                    # Parallel route named slot
-    dashboard/
-      page.tsx                # Exposes the route publicly — default export required
-      layout.tsx              # Wraps this segment and all children
-      loading.tsx             # Skeleton/suspense UI for this segment
-      error.tsx               # Error boundary for this segment
-      not-found.tsx           # 404 UI for this segment
-      route.ts                # API endpoint — use only for webhooks/OAuth/external proxies
-      _components/            # Private folder — not routable, page-local components only
-      _lib/                   # Private folder — not routable, page-local utils only
-  components/                 # Shared UI components — named exports only
-  lib/                        # DB client, auth helpers, pure utilities, env validation
-  hooks/                      # Custom React hooks
-  types/                      # Global TS types — only if used in 2+ files
-  actions/                    # Server Actions — all mutations live here
-  schemas/                    # Zod schemas
-public/                       # Static assets served as-is
-```
-
 File convention rules:
 
 - page.tsx, layout.tsx, loading.tsx, error.tsx, not-found.tsx — default exports (Next.js requirement).
@@ -132,49 +104,7 @@ File convention rules:
 - No arbitrary values unless truly unavoidable.
 - Use cn() (clsx + tailwind-merge) for conditional classes.
 
-## Real Estate Visual & Motion Design (Taste Rules)
-
-CRITICAL: Mandatory Skill Usage
-When generating or modifying frontend UI, layout, or animations, you MUST first read and apply the following skill from the .agents/skills/ directory:
-
-- ui-skill — The single combined premium UI skill for this project. It contains anti-slop brief reading (design-taste-frontend) fused with Awwwards-tier visual architecture (high-end-visual-design). Read it fully before writing any frontend code.
-
-- Vibe: Expensive, calm, and polished (Sobha Realty / High-End Agency feel). No generic "AI slop" or cramped dashboard UIs.
-- Typography: Use premium editorial fonts (PP Editorial New, Newsreader, Instrument Serif for headings; Geist, Plus Jakarta Sans for UI). Never use Inter, Roboto, or Open Sans.
-- Layouts: Use wide, breathable layouts. Let images take center stage. Empty space is a design feature. Minimum py-24 between sections.
-- Motion (Framer Motion): Animations must be subtle, spring-based, and smooth. All scroll reveals use whileInView — never window.addEventListener('scroll').
-- Scroll (Lenis): The entire app must be wrapped in a smooth scroll context. See scroll animation rules below.
-- Colors: Minimalist palette — warm creams, muted stone, or deep espresso tones. Never raw primary colors.
-
 ## Scroll Animation Rules (Lenis + Framer Motion)
-
-```tsx
-// components/smooth-scroll-provider.tsx — "use client"
-// Init Lenis in useEffect, call lenis.raf(time) inside requestAnimationFrame loop.
-// Expose via context if child components need scroll position.
-// Destroy on cleanup: lenis.destroy()
-```
-
-Framer Motion — scroll-triggered reveals (standard pattern):
-
-```tsx
-// Every section-level component gets this wrapper:
-<motion.div
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true, margin: "-80px" }}
-  transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
-/>
-// Property card grids: stagger children with variants + staggerChildren: 0.08
-```
-
-Parallax (hero images and property banners):
-
-```tsx
-// Use useScroll() + useTransform() inside a "use client" wrapper component.
-// Parallax only on large decorative images — never on text or interactive elements.
-// Keep y range tight: translateY from "0%" to "-15%" max. More feels cheap.
-```
 
 Rules:
 
@@ -186,7 +116,6 @@ Rules:
 
 ## Forbidden
 
-- import React from "react" — not needed in Next.js 13+
 - Default export on shared components — use named exports
 - any, as SomeType, type predicates to force types — fix the type properly
 - useEffect for data fetching — use Server Components

@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "skills": {
+    "motion-design": {
+      "source": "LottieFiles/motion-design-skill",
+      "sourceType": "github",
+      "skillPath": "skills/motion-design/SKILL.md",
+      "computedHash": "4f16f46c81f25a2a25b7a4720b7ea001e65f384b31b5b7f4b455fef87fbc9016"
+    },
+    "frontend-seo": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/frontend-seo/SKILL.md"
+    },
+    "frontend-ui-engineering": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/frontend-ui-engineering/SKILL.md"
+    },
+    "motion-lenis-scroll": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/motion-lenis-scroll/SKILL.md"
+    },
+    "performance-optimization": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/performance-optimization/SKILL.md"
+    }
+  }
+}
