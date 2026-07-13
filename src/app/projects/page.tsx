@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
-import { PROPERTIES } from "@/lib/constants";
+import { PROPERTIES } from "@/lib/properties-constant";
 
 export default function ProjectsPage() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);

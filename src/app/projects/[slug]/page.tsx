@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { ImageGallery } from "@/components/shared/image-gallery";
-import { PROPERTIES } from "@/lib/constants";
+import { PROPERTIES } from "@/lib/properties-constant";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -61,26 +61,16 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           </div>
 
           {/* Title block */}
-          <header className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
-            <div className="lg:col-span-8 flex flex-col gap-5">
-              <span className="text-[10px] uppercase tracking-[0.25em] font-mono text-accent">
-                {property.location} · {property.region}
-              </span>
-              <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl tracking-tight leading-[1.02] text-text-primary uppercase">
-                {property.name}
-              </h1>
-              <p className="font-serif italic text-lg md:text-xl text-text-secondary max-w-[40ch]">
-                {property.tagline}
-              </p>
-            </div>
-            <div className="lg:col-span-4 flex flex-col gap-2 lg:items-end lg:text-right">
-              <span className="text-[9px] uppercase tracking-[0.25em] text-text-secondary">
-                Acquisition Value
-              </span>
-              <span className="font-mono text-2xl md:text-3xl font-medium text-accent">
-                {property.price}
-              </span>
-            </div>
+          <header className="flex flex-col gap-5">
+            <span className="text-[10px] uppercase tracking-[0.25em] font-mono text-accent">
+              {property.location} · {property.region}
+            </span>
+            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl tracking-tight leading-[1.02] text-text-primary uppercase">
+              {property.name}
+            </h1>
+            <p className="font-serif italic text-lg md:text-xl text-text-secondary max-w-[40ch]">
+              {property.tagline}
+            </p>
           </header>
 
           {/* Image gallery */}
@@ -282,6 +272,100 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                   &rarr;
                 </span>
               </Link>
+            </div>
+          </section>
+
+          {/* Photo Grid Section */}
+          <section className="flex flex-col gap-12 border-t border-black/5 pt-16">
+            <div className="flex flex-col items-center justify-center text-center">
+              <h2 className="font-serif text-4xl md:text-5xl tracking-tight leading-[1.05] text-text-primary">
+                Visual Theater
+              </h2>
+            </div>
+
+            {/* 8-Image Staggered Grid - Exact Grid Style */}
+            <div className="flex justify-center max-w-6xl mx-auto pb-24 w-full px-4">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 items-start w-full">
+                {/* Column 1 */}
+                <div className="flex flex-col gap-3 md:gap-5 md:mt-24">
+                  <div className="relative w-full aspect-3/4 overflow-hidden group">
+                    <Image
+                      src={property.gallery[0]?.src ?? property.image}
+                      alt="Gallery image"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                  </div>
+                  <div className="relative w-full aspect-4/5 overflow-hidden group">
+                    <Image
+                      src={property.gallery[1]?.src ?? property.image}
+                      alt="Gallery image"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                  </div>
+                </div>
+
+                {/* Column 2 */}
+                <div className="flex flex-col gap-3 md:gap-5">
+                  <div className="relative w-full aspect-4/5 overflow-hidden group">
+                    <Image
+                      src={property.gallery[2]?.src ?? property.image}
+                      alt="Gallery image"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                  </div>
+                  <div className="relative w-full aspect-3/4 overflow-hidden group">
+                    <Image
+                      src={property.gallery[3]?.src ?? property.image}
+                      alt="Gallery image"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                  </div>
+                </div>
+
+                {/* Column 3 */}
+                <div className="flex flex-col gap-3 md:gap-5 md:mt-16">
+                  <div className="relative w-full aspect-4/5 overflow-hidden group">
+                    <Image
+                      src={property.gallery[0]?.src ?? property.image}
+                      alt="Gallery image"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                  </div>
+                  <div className="relative w-full aspect-3/4 overflow-hidden group">
+                    <Image
+                      src={property.gallery[1]?.src ?? property.image}
+                      alt="Gallery image"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                  </div>
+                </div>
+
+                {/* Column 4 */}
+                <div className="flex flex-col gap-3 md:gap-5 md:mt-32">
+                  <div className="relative w-full aspect-3/4 overflow-hidden group">
+                    <Image
+                      src={property.gallery[2]?.src ?? property.image}
+                      alt="Gallery image"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                  </div>
+                  <div className="relative w-full aspect-4/5 overflow-hidden group">
+                    <Image
+                      src={property.gallery[3]?.src ?? property.image}
+                      alt="Gallery image"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
 

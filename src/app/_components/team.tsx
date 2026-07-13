@@ -8,7 +8,7 @@ import {
   useTransform,
   useReducedMotion,
 } from "motion/react";
-import { TEAM_MEMBERS } from "@/lib/constants";
+import { TEAM_MEMBERS } from "@/lib/team-constant";
 
 export function Team() {
   const containerRef = useRef<HTMLElement>(null);

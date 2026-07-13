@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
-import { SERVICES } from "@/lib/constants";
+import { SERVICES } from "@/lib/services-constant";
 
 const SERVICE_DELIVERABLES: string[][] = [
   ["Massing Models", "Solar Studies", "Site Orientation", "Material Schedules"],

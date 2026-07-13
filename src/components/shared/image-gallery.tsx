@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
-import type { GalleryImage } from "@/lib/constants";
+import type { GalleryImage } from "@/lib/properties-constant";
 
 interface ImageGalleryProps {
   images: GalleryImage[];

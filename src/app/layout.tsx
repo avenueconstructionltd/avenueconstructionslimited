@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   title:
     "Avenue Construction Limited | Premium Architecture & Structural Design",
   description:
-    "Experience museum-grade architectural design and bespoke residential portfolios in Dubai. Crafted by ACL Atelier.",
+    "Experience museum-grade architectural design and bespoke residential portfolios in Dhaka, Bangladesh. Crafted by Avenue Construction Limited.",
 };
 
 export default function RootLayout({

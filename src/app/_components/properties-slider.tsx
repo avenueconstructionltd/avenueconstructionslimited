@@ -10,7 +10,7 @@ import {
   useSpring,
   useMotionValue,
 } from "motion/react";
-import { PROPERTIES } from "@/lib/constants";
+import { PROPERTIES } from "@/lib/properties-constant";
 
 export function PropertiesSlider() {
   const targetRef = useRef<HTMLDivElement>(null);

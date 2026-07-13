@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
-import { SERVICES } from "@/lib/constants";
+import { SERVICES } from "@/lib/services-constant";
 
 const PROCESS_STEPS = [
   {

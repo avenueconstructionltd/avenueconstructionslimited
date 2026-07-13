@@ -30,7 +30,7 @@ export function Navbar() {
   return (
     <>
       {/* Floating Nav Container */}
-      <nav className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-40 flex w-[calc(100%-1.5rem)] max-w-5xl items-center justify-between rounded-full border border-text-primary/10 bg-canvas/70 px-2 py-2 md:px-6 md:py-3 shadow-[0_8px_32px_rgba(28,27,24,0.12)] backdrop-blur-xl">
+      <nav className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-40 flex w-[calc(100%-1.5rem)] max-w-5xl items-center justify-between rounded-full border border-text-primary/10 bg-canvas px-2 py-2 md:px-6 md:py-3 shadow-[0_8px_32px_rgba(28,27,24,0.12)]">
         {/* Logo (Far left on both mobile and desktop) */}
         <motion.div
           initial={{ opacity: 0, x: -12 }}

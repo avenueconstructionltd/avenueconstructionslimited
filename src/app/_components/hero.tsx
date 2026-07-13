@@ -9,7 +9,7 @@ import {
   useTransform,
 } from "motion/react";
 import { MagneticButton } from "@/components/shared/magnetic-button";
-import { HERO_STATS } from "@/lib/constants";
+import { HERO_STATS } from "@/lib/stats-constant";
 
 export function Hero() {
   const { scrollY } = useScroll();
@@ -59,7 +59,7 @@ export function Hero() {
           transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
           className="mb-5 rounded-full border border-canvas/25 bg-canvas/12 px-3 py-1 text-[9px] font-medium uppercase tracking-[0.22em] text-canvas/82 backdrop-blur-sm"
         >
-          Signature Portfolio, Dubai
+          Signature Portfolio, Dhaka
         </motion.div>
 
         <motion.h1

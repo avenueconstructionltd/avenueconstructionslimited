@@ -5,7 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
-import { TEAM_MEMBERS, PROPERTIES } from "@/lib/constants";
+import { TEAM_MEMBERS } from "@/lib/team-constant";
+import { PROPERTIES } from "@/lib/properties-constant";
+import { TESTIMONIALS } from "@/lib/testimonials-constant";
+import { TestimonialsSlider } from "./_components/testimonials-slider";
 
 export default function AboutPage() {
   const [alexander, elena, marcus] = TEAM_MEMBERS;
@@ -48,7 +51,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.8, delay: 0.15 }}
                 className="text-xs md:text-sm leading-relaxed text-text-secondary max-w-[50ch] font-light"
               >
-                Founded in Dubai in 2018, Avenue Construction Limited was born
+                Founded in Dhaka in 2018, Avenue Construction Limited was born
                 from a desire to escape the generic patterns of commercial real
                 estate. We do not construct buildings; we orchestrate light,
                 aggregate raw materials, and draft silence.
@@ -183,98 +186,150 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Core Philosophy Section (Soft Structuralism - 3 pillars) */}
-          <div className="border-t border-black/5 pt-20 flex flex-col gap-12">
-            <div className="max-w-2xl">
-              <span className="text-[10px] uppercase tracking-[0.25em] font-mono text-accent">
-                Design Philosophy
-              </span>
-              <h2 className="font-serif text-4xl uppercase tracking-tight leading-[1.05] mt-4">
-                Three Rules of{" "}
-                <span className="italic font-light text-accent">
-                  Atelier Craft
-                </span>
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Pillar 1 */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-                className="double-bezel-outer"
-              >
-                <div className="double-bezel-inner p-8 flex flex-col gap-4 min-h-[250px] justify-between">
-                  <span className="font-mono text-xs text-accent">[01]</span>
-                  <div className="flex flex-col gap-2">
-                    <h3 className="font-serif text-lg uppercase tracking-wider">
-                      Material Honesty
-                    </h3>
-                    <p className="text-xs text-text-secondary leading-relaxed font-light">
-                      We select raw, natural materials that age gracefully.
-                      Travertine, raw basalt, exposed aggregate concrete, and
-                      brushed bronze are our lexicon.
-                    </p>
-                  </div>
+          {/* Core Philosophy Section (Editorial Split layout) */}
+          <div className="border-t border-black/5 pt-20 flex flex-col gap-24">
+            {/* Split 1: Text Left, Image Right */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+            >
+              <div className="flex flex-col gap-8">
+                <div className="flex flex-col gap-2">
+                  <h3 className="font-serif text-3xl uppercase tracking-wide">
+                    Design Philosophy
+                  </h3>
+                  <p className="text-xs md:text-sm text-text-secondary leading-relaxed font-light">
+                    To construct architectural monuments that elevate the human
+                    experience through raw materials and silent geometry.
+                  </p>
                 </div>
-              </motion.div>
 
-              {/* Pillar 2 */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.7,
-                  delay: 0.08,
-                  ease: [0.32, 0.72, 0, 1],
-                }}
-                className="double-bezel-outer"
-              >
-                <div className="double-bezel-inner p-8 flex flex-col gap-4 min-h-[250px] justify-between">
-                  <span className="font-mono text-xs text-accent">[02]</span>
-                  <div className="flex flex-col gap-2">
-                    <h3 className="font-serif text-lg uppercase tracking-wider">
-                      Geometric Integrity
-                    </h3>
-                    <p className="text-xs text-text-secondary leading-relaxed font-light">
-                      Our structures are derived from strict geometric grids,
-                      balancing mass, cantilever projections, and negative void
-                      space to achieve visual silence.
-                    </p>
-                  </div>
+                <div className="flex flex-col gap-2">
+                  <h3 className="font-serif text-3xl uppercase tracking-wide">
+                    Our Vision
+                  </h3>
+                  <p className="text-xs md:text-sm text-text-secondary leading-relaxed font-light">
+                    To shape the skyline with uncompromising structural
+                    minimalism and timeless, monolithic design.
+                  </p>
                 </div>
-              </motion.div>
 
-              {/* Pillar 3 */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.7,
-                  delay: 0.16,
-                  ease: [0.32, 0.72, 0, 1],
-                }}
-                className="double-bezel-outer"
-              >
-                <div className="double-bezel-inner p-8 flex flex-col gap-4 min-h-[250px] justify-between">
-                  <span className="font-mono text-xs text-accent">[03]</span>
-                  <div className="flex flex-col gap-2">
-                    <h3 className="font-serif text-lg uppercase tracking-wider">
-                      Atmospheric Light
-                    </h3>
-                    <p className="text-xs text-text-secondary leading-relaxed font-light">
-                      We orchestrate the movement of solar paths throughout the
-                      day, constructing deep overhangs and skylights that carve
-                      volume with light and shadow.
-                    </p>
-                  </div>
+                <div className="flex flex-col gap-4">
+                  <h3 className="font-serif text-3xl uppercase tracking-wide">
+                    Core Principles
+                  </h3>
+                  <ul className="flex flex-col gap-3">
+                    {[
+                      "Material Honesty & Raw Finishes",
+                      "Strict Geometric Integrity",
+                      "Orchestrated Atmospheric Light",
+                      "Balancing Mass and Negative Void Space",
+                      "Uncompromising Architectural Detailing",
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-center gap-3">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-5 h-5 text-accent shrink-0"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                          />
+                        </svg>
+                        <span className="text-xs md:text-sm text-text-primary font-light">
+                          {item}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </motion.div>
-            </div>
+              </div>
+
+              <div className="w-full double-bezel-outer rounded-[2.5rem] overflow-hidden">
+                <div className="double-bezel-inner relative aspect-4/3 lg:aspect-square w-full h-full group">
+                  <Image
+                    src="/images/properties/prop_aria.png"
+                    alt="Atelier Design Philosophy"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover brightness-95 group-hover:scale-105 transition-all duration-700 ease-premium-in-out"
+                  />
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Split 2: Image Left, Text Right */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+            >
+              <div className="w-full double-bezel-outer rounded-[2.5rem] overflow-hidden order-2 lg:order-1">
+                <div className="double-bezel-inner relative aspect-4/3 lg:aspect-square w-full h-full group">
+                  <Image
+                    src="/images/properties/prop_luminary.png"
+                    alt="Why Choose The Atelier"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover brightness-95 group-hover:scale-105 transition-all duration-700 ease-premium-in-out"
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-6 order-1 lg:order-2">
+                <div className="flex flex-col gap-2">
+                  <h2 className="font-serif text-4xl uppercase tracking-tight leading-[1.05]">
+                    Why Choose <br />
+                    <span className="italic font-light text-accent">
+                      The Atelier?
+                    </span>
+                  </h2>
+                  <p className="text-xs md:text-sm text-text-secondary leading-relaxed font-light mt-2">
+                    There are certain advantages to choosing our studio as your
+                    architectural partner:
+                  </p>
+                </div>
+
+                <ul className="flex flex-col gap-4 mt-2">
+                  {[
+                    "Bespoke monolithic designs tailored to your vision",
+                    "Masterful use of natural light and volume",
+                    "Hand-selected raw materials that age gracefully",
+                    "Complete creative and structural control",
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-5 h-5 text-accent shrink-0"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                        />
+                      </svg>
+                      <span className="text-xs md:text-sm text-text-primary font-light">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
           </div>
 
           {/* Partners / Leadership Profile Splits (Detailed profiles) */}
@@ -397,6 +452,23 @@ export default function AboutPage() {
                 </div>
               </motion.div>
             </div>
+          </div>
+
+          {/* Testimonials Section */}
+          <div className="border-t border-black/5 pt-20 flex flex-col gap-12 overflow-hidden">
+            <div className="flex flex-col gap-3 max-w-2xl mx-auto text-center items-center">
+              <span className="text-[10px] uppercase tracking-[0.25em] font-mono text-accent">
+                Client Reflections
+              </span>
+              <h2 className="font-serif text-4xl uppercase tracking-tight leading-[1.05]">
+                What our{" "}
+                <span className="italic font-light text-accent">
+                  customers say
+                </span>
+              </h2>
+            </div>
+
+            <TestimonialsSlider testimonials={TESTIMONIALS} />
           </div>
 
           {/* Featured Estates Teaser */}
