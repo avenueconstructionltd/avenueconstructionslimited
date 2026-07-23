@@ -3,73 +3,61 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useSpring,
-  useMotionValue,
-} from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { PROPERTIES } from "@/lib/properties-constant";
 
 export function PropertiesSlider() {
   const targetRef = useRef<HTMLDivElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
-  const xRange = useMotionValue(0);
-  const [containerHeight, setContainerHeight] = useState("200vh");
+  const [range, setRange] = useState(0);
 
   useEffect(() => {
     function calculateRange() {
       if (!sliderRef.current || !sliderRef.current.parentElement) return;
 
-      const containerWidth = sliderRef.current.parentElement.offsetWidth;
-      const lastChild = sliderRef.current.lastElementChild as HTMLElement;
+      const slider = sliderRef.current;
+      const parent = slider.parentElement;
+      if (!parent) return;
 
+      const lastChild = slider.lastElementChild as HTMLElement | null;
       if (!lastChild) return;
 
-      let range = 0;
-      const isMobile = window.innerWidth < 768;
+      // Container visible width
+      const containerWidth = parent.offsetWidth;
 
-      if (isMobile) {
-        // Mobile: Center the last card on the screen
-        const centerOfLastCard =
-          lastChild.offsetLeft + lastChild.offsetWidth / 2;
-        const centerOfContainer = containerWidth / 2;
-        range = Math.max(0, centerOfLastCard - centerOfContainer);
-      } else {
-        // Desktop: Align the right edge of the last card with the right edge of the container
-        const rightEdgeOfLastCard =
-          lastChild.offsetLeft + lastChild.offsetWidth;
-        range = Math.max(0, rightEdgeOfLastCard - containerWidth);
-      }
+      // Right edge of the last card relative to slider start
+      const rightEdgeOfLastCard = lastChild.offsetLeft + lastChild.offsetWidth;
 
-      xRange.set(range);
-      setContainerHeight(`calc(100vh + ${range}px)`);
+      // Exact scroll range so last card's right edge aligns perfectly with container's right edge
+      const scrollRange = Math.max(0, rightEdgeOfLastCard - containerWidth);
+      setRange(scrollRange);
     }
 
     calculateRange();
+
+    const resizeObserver = new ResizeObserver(calculateRange);
+    if (sliderRef.current) {
+      resizeObserver.observe(sliderRef.current);
+    }
+
     window.addEventListener("resize", calculateRange);
-    const timer = setTimeout(calculateRange, 100);
 
     return () => {
+      resizeObserver.disconnect();
       window.removeEventListener("resize", calculateRange);
-      clearTimeout(timer);
     };
-  }, [xRange]);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start start", "end end"],
   });
 
-  // Spring-smoothed scroll progress for buttery slider motion
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 400,
-    damping: 40,
-  });
+  // Direct transform linked 1:1 to scroll progress (Lenis handles smooth window scrolling)
+  // Eliminates diagonal lag / downright drift when the sticky container unpins
+  const x = useTransform(scrollYProgress, [0, 1], [0, -range]);
 
-  // Translate the slider horizontally
-  const x = useTransform(smoothProgress, (v) => v * -xRange.get());
+  const containerHeight = `calc(100vh + ${range}px)`;
 
   return (
     <section
@@ -78,8 +66,8 @@ export function PropertiesSlider() {
       className="relative w-full bg-canvas z-30"
       style={{ height: containerHeight }}
     >
-      <div className="sticky top-0 h-dvh w-full overflow-x-clip flex flex-col pt-16 md:pt-20 pb-24 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto w-full flex flex-col gap-12">
+      <div className="sticky top-0 h-dvh w-full overflow-x-clip flex flex-col pt-16 md:pt-20 pb-24">
+        <div className="max-w-7xl mx-auto w-full px-6 md:px-12 flex flex-col gap-12">
           {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -115,7 +103,7 @@ export function PropertiesSlider() {
             <motion.div
               ref={sliderRef}
               style={{ x }}
-              className="flex gap-8 w-max pr-12 md:pr-32"
+              className="flex gap-8 w-max"
             >
               {PROPERTIES.map((property) => (
                 <PropertyCard
