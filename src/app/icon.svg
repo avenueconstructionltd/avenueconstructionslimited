@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Dark Luxury Background Container -->
+  <rect width="100" height="100" rx="22" fill="#1C1B18" />
+  
+  <!-- Centered 3D 'A' Emblem of Avenue Constructions -->
+  <g transform="translate(0, 5)">
+    <!-- Main Left Outer Facet (Cream White) -->
+    <path d="M 50 14 L 16 76 L 33 69 L 50 42 Z" fill="#F9F6F0"/>
+    
+    <!-- Main Right Outer Facet (Champagne Gold) -->
+    <path d="M 50 14 L 84 64 H 65 L 50 42 Z" fill="#C29F78"/>
+    
+    <!-- 3D Inner Step Bar (Gold Accent with Bevel) -->
+    <path d="M 33 69 L 52 58 V 62 L 33 73 Z" fill="#C29F78"/>
+    <path d="M 33 73 L 52 62 V 64.5 L 33 75 Z" fill="#9E7E56"/>
+    
+    <!-- Inner Apex Triangle Left Facet (Cream White) -->
+    <path d="M 50 48 L 43 57 H 50 Z" fill="#F9F6F0"/>
+    
+    <!-- Inner Apex Triangle Right Facet (Champagne Gold) -->
+    <path d="M 50 48 L 57 57 H 50 Z" fill="#C29F78"/>
+  </g>
+</svg>

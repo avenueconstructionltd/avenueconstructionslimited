@@ -32,6 +32,14 @@ export const metadata: Metadata = {
     "Avenue Constructions | Luxury Apartments & Real Estate Developer in Dhaka",
   description:
     "Avenue Constructions Limited is a premier real estate developer in Bangladesh. Explore luxury residential apartments and joint ventures in Gulshan, Banani, Baridhara, and Bashundhara R/A, Dhaka.",
+  icons: {
+    icon: [
+      { url: "/images/site_logo.svg", type: "image/svg+xml" },
+      { url: "/images/site_logo.png", type: "image/png" },
+    ],
+    shortcut: "/images/site_logo.png",
+    apple: "/images/site_logo.png",
+  },
 };
 
 export default function RootLayout({
