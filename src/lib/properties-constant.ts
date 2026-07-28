@@ -156,12 +156,17 @@ export const PROPERTIES: Property[] = [
       "The project features spacious 1,850 Sft apartments overlooking community parklands. Every detail, from the textured exterior plaster to the polished lobby stonemasonry, has been curated to set a new benchmark for Aftabnagar.",
       "Engineered for high structural resilience, the building incorporates 500W TMT steel and advanced seismic structural joints, ensuring lasting safety and luxury."
     ],
-    image: "/images/properties/project_image_5.jpeg",
+    image: "/images/properties/project_image_8.jpeg",
     gallery: [
       {
-        src: "/images/properties/project_image_5.jpeg",
+        src: "/images/properties/project_image_8.jpeg",
         alt: "Avenue MD. Heights elevation view",
         caption: "Elevation View",
+      },
+      {
+        src: "/images/properties/project_image_5.jpeg",
+        alt: "Alternative elevation view",
+        caption: "Alternative View",
       },
       {
         src: "/images/properties/project_image_6.jpeg",
@@ -172,11 +177,6 @@ export const PROPERTIES: Property[] = [
         src: "/images/properties/project_image_7.jpeg",
         alt: "Rooftop terrace design",
         caption: "Rooftop Terrace",
-      },
-      {
-        src: "/images/properties/project_image_4.jpeg",
-        alt: "Living suite layout",
-        caption: "Living Suite",
       },
     ],
     floorPlans: [
@@ -247,25 +247,25 @@ export const PROPERTIES: Property[] = [
     tagline: "Choreographed urban light and functional luxury",
     location: "Rampura, Dhaka",
     region: "Ulon Road",
-    statusTag: "Upcoming",
+    statusTag: "Completed",
     description:
-      "An upcoming high-rise residential tower designed for maximum urban space efficiency and cross-ventilation.",
+      "A premium high-rise residential tower designed for maximum urban space efficiency and cross-ventilation.",
     narrative: [
-      "Avenue Dream represents our upcoming commitment to developing modern luxury within Dhaka's key transit networks. Situated on Ulon Road in Rampura, this upcoming landmark will introduce refined urban family living.",
+      "Avenue Dream represents our commitment to developing modern luxury within Dhaka's key transit networks. Situated on Ulon Road in Rampura, this completed landmark introduces refined urban family living.",
       "The building features cross-ventilated units that maintain comfortable indoor temperatures even during peak summer. Generous ceiling heights and open-plan kitchen-living layouts make each unit feel exceptionally spacious.",
-      "Using our signature material selections—including robust sanitary ware, high-grade security doors, and low-maintenance facades—Avenue Dream will stand as an icon of Rampura."
+      "Using our signature material selections—including robust sanitary ware, high-grade security doors, and low-maintenance facades—Avenue Dream stands as an icon of Rampura."
     ],
     image: "/images/properties/upcoming_avenue_dream.png",
     gallery: [
       {
         src: "/images/properties/upcoming_avenue_dream.png",
         alt: "Avenue Dream Architectural Render",
-        caption: "Upcoming Architectural Render",
+        caption: "Perspective View",
       },
       {
-        src: "/images/properties/project_image_8.jpeg",
-        alt: "Living Room Concept",
-        caption: "Living Lounge Concept",
+        src: "/images/properties/project_image_11.jpeg",
+        alt: "Brochure Elevation View",
+        caption: "Elevation View",
       },
       {
         src: "/images/properties/project_image_9.jpeg",
@@ -273,14 +273,14 @@ export const PROPERTIES: Property[] = [
         caption: "Rooftop Community Deck",
       },
       {
-        src: "/images/properties/project_image_2.jpeg",
-        alt: "Balcony Details",
-        caption: "Balcony Detailing",
+        src: "/images/properties/prop_aria.png",
+        alt: "Lobby and Atrium Detailing",
+        caption: "Lobby and Atrium Detailing",
       },
     ],
     floorPlans: [
       {
-        title: "Upcoming Typical Floor Plan",
+        title: "Typical Floor Plan",
         image: "/images/properties/upcoming_avenue_dream.png",
         details: [
           "Unit Area: 1350 Sft",
@@ -291,7 +291,7 @@ export const PROPERTIES: Property[] = [
       },
       {
         title: "Ground Floor Plan & Parking",
-        image: "/images/properties/project_image_8.jpeg",
+        image: "/images/properties/project_image_11.jpeg",
         details: [
           "Car Parking: 6 Parking slots",
           "Lobby: Reception Desk & Security Post",
@@ -304,11 +304,11 @@ export const PROPERTIES: Property[] = [
       { label: "Bathrooms", value: "3" },
       { label: "Verandas", value: "2" },
       { label: "Unit Size", value: "1,350 Sft" },
-      { label: "Handover", value: "Dec 2027" },
-      { label: "Status", value: "Upcoming" },
+      { label: "Land Area", value: "3 Katha" },
+      { label: "Status", value: "Completed" },
     ],
     highlights: [
-      "Upcoming architectural landmark on Ulon Road",
+      "Architectural landmark on Ulon Road",
       "Excellent connectivity near Hatirjheel and Rampura Bridge",
       "Spacious multi-purpose community hall for residents",
       "Secure entry gate with smart access controls",
@@ -331,10 +331,10 @@ export const PROPERTIES: Property[] = [
     locationInsight:
       "Positioned on Ulon Road, Rampura, the project offers excellent transport routes, connecting directly with Hatirjheel to the west and Badda-Gulshan routes to the north.",
     architecturalDetails: {
-      year: "2026-2027",
-      type: "Upcoming Residential Complex",
+      year: "2024-2026",
+      type: "Completed Residential Complex",
       architect: "Avenue Design Atelier",
-      status: "Upcoming Landmark",
+      status: "Completed",
       plotOrientation: "South-east facing layout",
     },
   },
@@ -344,40 +344,35 @@ export const PROPERTIES: Property[] = [
     tagline: "Monolithic geometry holding the neighborhood skyline",
     location: "Uttar Badda, Dhaka",
     region: "Shadhinota Shoroni",
-    statusTag: "Upcoming",
+    statusTag: "Completed",
     description:
-      "An upcoming luxury G+8 residential tower showcasing architectural symmetry and bold structural framing.",
+      "A luxury G+8 residential tower showcasing architectural symmetry and bold structural framing.",
     narrative: [
-      "Avenue Castle will rise on Shadhinota Shoroni as an upcoming landmark of residential grandeur. Its bold concrete structure features dramatic cantilevered overhangs and recessed windows that shield the interior from direct afternoon solar radiation.",
-      "The building holds G+8 floors, providing premium units designed for modern families. The entrance lobby is planned to be fully air-conditioned and finished with polished marble, offering a hotel-grade welcome.",
-      "Engineered using top-grade local reinforcement and high-performance concrete mixes, this upcoming project ensures premium structural safety alongside its striking visual presence."
+      "Avenue Castle stands on Shadhinota Shoroni as a landmark of residential grandeur. Its bold concrete structure features dramatic cantilevered overhangs and recessed windows that shield the interior from direct afternoon solar radiation.",
+      "The building holds G+8 floors, providing premium units designed for modern families. The entrance lobby is finished with polished marble, offering a hotel-grade welcome.",
+      "Engineered using top-grade local reinforcement and high-performance concrete mixes, this completed project ensures premium structural safety alongside its striking visual presence."
     ],
     image: "/images/properties/upcoming_avenue_castle.png",
     gallery: [
       {
         src: "/images/properties/upcoming_avenue_castle.png",
         alt: "Avenue Castle Architectural Render",
-        caption: "Upcoming Architectural Render",
+        caption: "Perspective View",
       },
       {
         src: "/images/properties/project_image_10.jpeg",
-        alt: "Facade Concept",
+        alt: "Brochure Facade Elevation",
         caption: "Facade Elevation",
       },
       {
-        src: "/images/properties/project_image_11.jpeg",
-        alt: "Lobby Concept",
-        caption: "Lobby Concept",
-      },
-      {
-        src: "/images/properties/project_image_1.jpeg",
-        alt: "Rooftop Garden",
-        caption: "Rooftop Garden View",
+        src: "/images/properties/prop_terraces.png",
+        alt: "Cascading Terrace Design",
+        caption: "Cascading Terrace Design",
       },
     ],
     floorPlans: [
       {
-        title: "Upcoming Typical Floor Plan",
+        title: "Typical Floor Plan",
         image: "/images/properties/upcoming_avenue_castle.png",
         details: [
           "Unit Area: 1450 Sft",
@@ -401,8 +396,8 @@ export const PROPERTIES: Property[] = [
       { label: "Bathrooms", value: "3" },
       { label: "Verandas", value: "3" },
       { label: "Unit Size", value: "1,450 Sft" },
-      { label: "Building", value: "G+8 floors" },
-      { label: "Status", value: "Upcoming" },
+      { label: "Land Area", value: "3 Katha" },
+      { label: "Status", value: "Completed" },
     ],
     highlights: [
       "Striking geometric exterior with concrete planters",
@@ -428,10 +423,10 @@ export const PROPERTIES: Property[] = [
     locationInsight:
       "Located on Shadhinota Shoroni, Uttar Badda, the property enjoys prime urban connectivity, sitting just minutes away from the diplomatic zone of Baridhara and the Gulshan-1 commercial hub.",
     architecturalDetails: {
-      year: "2026-2028",
-      type: "Upcoming G+8 Residential Tower",
+      year: "2024-2026",
+      type: "Completed G+8 Residential Tower",
       architect: "Avenue Design Associates",
-      status: "Upcoming Landmark",
+      status: "Completed",
       plotOrientation: "North-east facing facade",
     },
   },
@@ -457,17 +452,17 @@ export const PROPERTIES: Property[] = [
         caption: "Upcoming Facade Render",
       },
       {
+        src: "/images/properties/prop_luminary.png",
+        alt: "Luxury Residence Concept",
+        caption: "Luxury Residence Concept",
+      },
+      {
         src: "/images/properties/project_image_5.jpeg",
-        alt: "Terrace Balcony View",
+        alt: "Terrace View Concept",
         caption: "Terrace View Concept",
       },
       {
-        src: "/images/properties/project_image_2.jpeg",
-        alt: "Exterior Facade Glass",
-        caption: "Curtain Wall Concept",
-      },
-      {
-        src: "/images/properties/project_image_4.jpeg",
+        src: "/images/properties/project_image_10.jpeg",
         alt: "Grand Living Suite",
         caption: "Grand Living Suite",
       },
@@ -554,6 +549,11 @@ export const PROPERTIES: Property[] = [
         caption: "Upcoming Architectural Render",
       },
       {
+        src: "/images/properties/prop_obsidian.png",
+        alt: "Modernist Building Detailing",
+        caption: "Modernist Building Detailing",
+      },
+      {
         src: "/images/properties/project_image_6.jpeg",
         alt: "Vertical Garden Concept",
         caption: "Vertical Garden Facade",
@@ -562,11 +562,6 @@ export const PROPERTIES: Property[] = [
         src: "/images/properties/project_image_7.jpeg",
         alt: "Rooftop Garden Lounge",
         caption: "Rooftop Garden Lounge",
-      },
-      {
-        src: "/images/properties/project_image_3.jpeg",
-        alt: "Car Entrance Driveway",
-        caption: "Private Arrival Driveway",
       },
     ],
     floorPlans: [
