@@ -30,9 +30,9 @@ export default function ProjectsPage() {
               </span>
             </h1>
             <p className="text-xs md:text-sm leading-relaxed text-text-secondary mt-2 font-light">
-              Explore our collection of signature residential landmarks in Dhaka,
-              Bangladesh. Each structure is an individual study in light, space,
-              and materials.
+              Explore our collection of signature residential landmarks in
+              Dhaka, Bangladesh. Each structure is an individual study in light,
+              space, and materials.
             </p>
           </div>
 
@@ -165,6 +165,35 @@ export default function ProjectsPage() {
                               </span>
                             </div>
                           ))}
+                        </div>
+
+                        {/* 3D Architectural Render Grid Collage Preview */}
+                        <div className="flex flex-col gap-2 pt-2 border-t border-black/5">
+                          <div className="flex justify-between items-center">
+                            <span className="text-[9px] uppercase tracking-[0.2em] font-mono text-accent">
+                              3D Renders & Gallery ({property.gallery.length})
+                            </span>
+                            <span className="text-[9px] font-mono text-text-secondary">
+                              [⊞ Grid Collage]
+                            </span>
+                          </div>
+                          <div className="grid grid-cols-4 gap-2">
+                            {property.gallery.map((img, imgIdx) => (
+                              <div
+                                key={img.src + imgIdx}
+                                className="relative aspect-4/3 rounded-lg overflow-hidden border border-black/10 group/thumb shadow-2xs"
+                              >
+                                <Image
+                                  src={img.src}
+                                  alt={img.alt}
+                                  fill
+                                  sizes="120px"
+                                  className="object-cover transition-transform duration-500 group-hover/thumb:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover/thumb:opacity-100 transition-opacity" />
+                              </div>
+                            ))}
+                          </div>
                         </div>
 
                         {/* Footing */}

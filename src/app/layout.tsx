@@ -58,7 +58,10 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <SmoothScrollProvider>
-          <div className="flex flex-col flex-1 relative min-h-dvh">
+          <div
+            className="flex flex-col flex-1 relative min-h-dvh"
+            suppressHydrationWarning
+          >
             {children}
           </div>
         </SmoothScrollProvider>

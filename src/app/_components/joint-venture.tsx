@@ -7,20 +7,24 @@ import { MagneticButton } from "@/components/shared/magnetic-button";
 const JV_POINTS = [
   {
     title: "100% Legal & RAJUK Compliance",
-    description: "Every joint venture is secured with complete RAJUK approval letters and strict municipal clearance before any excavation begins."
+    description:
+      "Every joint venture is secured with complete RAJUK approval letters and strict municipal clearance before any excavation begins.",
   },
   {
     title: "IEB Certified Engineering",
-    description: "Our structural drafts are verified and stamped by registered structural engineers from the Institution of Engineers, Bangladesh (IEB)."
+    description:
+      "Our structural drafts are verified and stamped by registered structural engineers from the Institution of Engineers, Bangladesh (IEB).",
   },
   {
     title: "Financial Strength & Handover Guarantee",
-    description: "We back our schedules with strict bank-guaranteed cash flows to eliminate delivery delays and assure project handover on schedule."
+    description:
+      "We back our schedules with strict bank-guaranteed cash flows to eliminate delivery delays and assure project handover on schedule.",
   },
   {
     title: "Bespoke Architectural Splendor",
-    description: "We offer single-unit configurations with tropical landscaping, high ceilings, and vertical timber louvers to maximize your land value."
-  }
+    description:
+      "We offer single-unit configurations with tropical landscaping, high ceilings, and vertical timber louvers to maximize your land value.",
+  },
 ];
 
 export function JointVenture() {
@@ -40,8 +44,9 @@ export function JointVenture() {
             <span className="italic font-light text-accent">Land Share</span>
           </h2>
           <p className="text-xs md:text-sm leading-relaxed text-canvas/78 font-light max-w-md">
-            Do you own a prime plot in Gulshan, Banani, Baridhara, or Bashundhara? 
-            Partner with Avenue Constructions to convert your land into an iconic residential landmark that commands premium valuation.
+            Do you own a prime plot in Gulshan, Banani, Baridhara, or
+            Bashundhara? Partner with Avenue Constructions to convert your land
+            into an iconic residential landmark that commands premium valuation.
           </p>
           <div className="pt-4">
             <Link href="/contact">
@@ -69,7 +74,7 @@ export function JointVenture() {
               transition={{
                 duration: 0.8,
                 delay: index * 0.15,
-                ease: [0.32, 0.72, 0, 1]
+                ease: [0.32, 0.72, 0, 1],
               }}
               className="flex flex-col gap-3"
             >

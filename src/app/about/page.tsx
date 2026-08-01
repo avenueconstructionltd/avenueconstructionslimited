@@ -112,7 +112,9 @@ export default function AboutPage() {
                   Early Foundations & Land Acquisition
                 </h3>
                 <p className="text-xs text-text-secondary leading-relaxed font-light">
-                  Acquired the initial land holdings in Dhaka, establishing key private partnerships committed to bespoke and resilient residential developments.
+                  Acquired the initial land holdings in Dhaka, establishing key
+                  private partnerships committed to bespoke and resilient
+                  residential developments.
                 </p>
               </motion.div>
 
@@ -132,7 +134,10 @@ export default function AboutPage() {
                   Emerging Urban Footprint
                 </h3>
                 <p className="text-xs text-text-secondary leading-relaxed font-light">
-                  Designed Avenue Dream in Rampura and Avenue Castle in Uttar Badda, bringing our signature spatial geometry and cross-ventilation principles to Dhaka&apos;s dense urban locations.
+                  Designed Avenue Dream in Rampura and Avenue Castle in Uttar
+                  Badda, bringing our signature spatial geometry and
+                  cross-ventilation principles to Dhaka&apos;s dense urban
+                  locations.
                 </p>
               </motion.div>
 
@@ -152,7 +157,9 @@ export default function AboutPage() {
                   Official Corporate Incorporation
                 </h3>
                 <p className="text-xs text-text-secondary leading-relaxed font-light">
-                  Formally incorporated as Avenue Constructions Limited under the Companies Act 1994, with our registered headquarters at Resourceful Paltan City, Dhaka.
+                  Formally incorporated as Avenue Constructions Limited under
+                  the Companies Act 1994, with our registered headquarters at
+                  Resourceful Paltan City, Dhaka.
                 </p>
               </motion.div>
 
@@ -172,7 +179,9 @@ export default function AboutPage() {
                   Bashundhara Landmark & RAJUK Approvals
                 </h3>
                 <p className="text-xs text-text-secondary leading-relaxed font-light">
-                  Secured construction approvals (Permit No: D-0006453-10-25) for Avenue Ahsan Palace, our flagship G+7 single-unit luxury development in Block E, Bashundhara R/A.
+                  Secured construction approvals (Permit No: D-0006453-10-25)
+                  for Avenue Ahsan Palace, our flagship G+7 single-unit luxury
+                  development in Block E, Bashundhara R/A.
                 </p>
               </motion.div>
             </div>
@@ -457,10 +466,14 @@ export default function AboutPage() {
               </span>
               <h2 className="font-serif text-4xl uppercase tracking-tight leading-[1.05]">
                 Corporate <br />
-                <span className="italic font-light text-accent">Conglomerate Capabilities</span>
+                <span className="italic font-light text-accent">
+                  Conglomerate Capabilities
+                </span>
               </h2>
               <p className="text-xs text-text-secondary leading-relaxed font-light">
-                Avenue Constructions Limited is supported by a robust conglomerate ecosystem that manages every phase of structural design, premium material sourcing, and long-term asset care.
+                Avenue Constructions Limited is supported by a robust
+                conglomerate ecosystem that manages every phase of structural
+                design, premium material sourcing, and long-term asset care.
               </p>
             </div>
 
@@ -469,30 +482,34 @@ export default function AboutPage() {
                 {
                   title: "Avenue Structural Crafts",
                   role: "Seismic Engineering & Build",
-                  desc: "Specializes in high-tolerance structural builds, executing concrete pours and masonry works that satisfy strict national safety codes."
+                  desc: "Specializes in high-tolerance structural builds, executing concrete pours and masonry works that satisfy strict national safety codes.",
                 },
                 {
                   title: "Avenue Design Atelier",
                   role: "Architectural & Solar Drafting",
-                  desc: "Choreographs building geometry to optimize natural cross-ventilation, microclimates, and daylight ingress paths."
+                  desc: "Choreographs building geometry to optimize natural cross-ventilation, microclimates, and daylight ingress paths.",
                 },
                 {
                   title: "Avenue Materials & Ceramics",
                   role: "Premium Supply Chain",
-                  desc: "Sources local high-grade homogeneous tiles, RAK sanitary fittings, and premium structural steel directly from trusted manufacturers."
+                  desc: "Sources local high-grade homogeneous tiles, RAK sanitary fittings, and premium structural steel directly from trusted manufacturers.",
                 },
                 {
                   title: "Avenue Property Management",
                   role: "Asset Care & Tenancy",
-                  desc: "Secures long-term appreciation for delivered assets through custom maintenance operations, structural restorations, and corporate rentals."
-                }
+                  desc: "Secures long-term appreciation for delivered assets through custom maintenance operations, structural restorations, and corporate rentals.",
+                },
               ].map((concern, idx) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: idx * 0.12, ease: [0.32, 0.72, 0, 1] }}
+                  transition={{
+                    duration: 0.8,
+                    delay: idx * 0.12,
+                    ease: [0.32, 0.72, 0, 1],
+                  }}
                   className="double-bezel-outer h-full"
                 >
                   <div className="double-bezel-inner p-6 flex flex-col justify-between h-full bg-surface/30 min-h-[220px]">

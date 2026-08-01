@@ -54,7 +54,7 @@ export const PROPERTIES: Property[] = [
     narrative: [
       "Avenue Ahsan Palace was conceived as an architectural response to the urban landscape of Bashundhara. Structured as a G+7 residential villa, it offers single-unit privacy with an abundance of natural light and cross-ventilation, situated very close to Evercare Hospital.",
       "The building's orientation leverages southern wind paths and daylight, filtering them through deep terraces. Inside, every floor is finished with high-quality mirror-polished homogeneous tiles and premium sanitary fittings.",
-      "Constructed using top-grade materials such as Crown/Holcim cement, BSRM steel, and a European passenger elevator, this completed project represents museum-grade residential engineering."
+      "Constructed using top-grade materials such as Crown/Holcim cement, BSRM steel, and a European passenger elevator, this completed project represents museum-grade residential engineering.",
     ],
     image: "/images/properties/project_image_1.jpeg",
     gallery: [
@@ -88,8 +88,8 @@ export const PROPERTIES: Property[] = [
           "Accommodates: 3 Bedrooms & 3 Bathrooms",
           "Includes: 3 Private Verandas & 1 Family Living",
           "Layout: 1 Drawing Room & 1 Dining Room",
-          "Features: 1 Kitchen & 1 Maid's Toilet"
-        ]
+          "Features: 1 Kitchen & 1 Maid's Toilet",
+        ],
       },
       {
         title: "Ground Floor Plan & Driveway",
@@ -99,9 +99,9 @@ export const PROPERTIES: Property[] = [
           "Lobby: Reception Desk & Guest Waiting Area",
           "Staff Area: Guard quarters & driver toilets",
           "Utilities: Standby generator & water pump station",
-          "Access: European high-speed passenger lift"
-        ]
-      }
+          "Access: European high-speed passenger lift",
+        ],
+      },
     ],
     specs: [
       { label: "Bedrooms", value: "3" },
@@ -119,7 +119,7 @@ export const PROPERTIES: Property[] = [
       "Full-load standby generator for continuous power",
     ],
     materials: [
-      "Mirror polish homogeneous tiles (24\"x24\")",
+      'Mirror polish homogeneous tiles (24"x24")',
       "RAK Karla/Equivalent sanitary ware",
       "Sattar/Haibali premium CP fittings",
       "BSRM/AKS 60-grade structural steel",
@@ -154,7 +154,7 @@ export const PROPERTIES: Property[] = [
     narrative: [
       "Avenue MD. Heights rises from Aftabnagar as a landmark of modern architectural geometry. Combining deep terrace setbacks with a structural framework that optimizes natural thermal barriers, it stands as a completed jewel of urban design.",
       "The project features spacious 1,850 Sft apartments overlooking community parklands. Every detail, from the textured exterior plaster to the polished lobby stonemasonry, has been curated to set a new benchmark for Aftabnagar.",
-      "Engineered for high structural resilience, the building incorporates 500W TMT steel and advanced seismic structural joints, ensuring lasting safety and luxury."
+      "Engineered for high structural resilience, the building incorporates 500W TMT steel and advanced seismic structural joints, ensuring lasting safety and luxury.",
     ],
     image: "/images/properties/project_image_8.jpeg",
     gallery: [
@@ -188,8 +188,8 @@ export const PROPERTIES: Property[] = [
           "Accommodates: 3 Bedrooms & 4 Bathrooms",
           "Includes: 3 Private balconies & spacious family lounge",
           "Layout: Monolithic open-plan kitchen & dining",
-          "Features: High-performance structural glazing"
-        ]
+          "Features: High-performance structural glazing",
+        ],
       },
       {
         title: "Ground Floor Plan",
@@ -198,9 +198,9 @@ export const PROPERTIES: Property[] = [
           "Car Parking: 8 Slots with automated security access",
           "Lobby: Double-height grand entrance lobby",
           "Staff Area: Guard room & driver waiting lounge",
-          "Utilities: Substation & generator rooms"
-        ]
-      }
+          "Utilities: Substation & generator rooms",
+        ],
+      },
     ],
     specs: [
       { label: "Bedrooms", value: "3" },
@@ -253,29 +253,29 @@ export const PROPERTIES: Property[] = [
     narrative: [
       "Avenue Dream represents our commitment to developing modern luxury within Dhaka's key transit networks. Situated on Ulon Road in Rampura, this completed landmark introduces refined urban family living.",
       "The building features cross-ventilated units that maintain comfortable indoor temperatures even during peak summer. Generous ceiling heights and open-plan kitchen-living layouts make each unit feel exceptionally spacious.",
-      "Using our signature material selections—including robust sanitary ware, high-grade security doors, and low-maintenance facades—Avenue Dream stands as an icon of Rampura."
+      "Using our signature material selections—including robust sanitary ware, high-grade security doors, and low-maintenance facades—Avenue Dream stands as an icon of Rampura.",
     ],
     image: "/images/properties/upcoming_avenue_dream.png",
     gallery: [
       {
         src: "/images/properties/upcoming_avenue_dream.png",
         alt: "Avenue Dream Architectural Render",
-        caption: "Perspective View",
-      },
-      {
-        src: "/images/properties/project_image_11.jpeg",
-        alt: "Brochure Elevation View",
-        caption: "Elevation View",
+        caption: "3D Perspective Render",
       },
       {
         src: "/images/properties/project_image_9.jpeg",
         alt: "Rooftop Community Deck",
-        caption: "Rooftop Community Deck",
+        caption: "Rooftop Community Lounge",
       },
       {
         src: "/images/properties/prop_aria.png",
         alt: "Lobby and Atrium Detailing",
-        caption: "Lobby and Atrium Detailing",
+        caption: "Lobby & Atrium Detailing",
+      },
+      {
+        src: "/images/properties/prop_luminary.png",
+        alt: "Luxury Residence Suite",
+        caption: "Interior Family Suite",
       },
     ],
     floorPlans: [
@@ -286,18 +286,18 @@ export const PROPERTIES: Property[] = [
           "Unit Area: 1350 Sft",
           "Accommodates: 3 Bedrooms & 3 Bathrooms",
           "Includes: 2 Verandas & spacious living hall",
-          "Layout: Closed kitchen design & dining room"
-        ]
+          "Layout: Closed kitchen design & dining room",
+        ],
       },
       {
         title: "Ground Floor Plan & Parking",
-        image: "/images/properties/project_image_11.jpeg",
+        image: "/images/properties/project_image_9.jpeg",
         details: [
           "Car Parking: 6 Parking slots",
           "Lobby: Reception Desk & Security Post",
-          "Utilities: Standby generator & water pump"
-        ]
-      }
+          "Utilities: Standby generator & water pump",
+        ],
+      },
     ],
     specs: [
       { label: "Bedrooms", value: "3" },
@@ -350,24 +350,29 @@ export const PROPERTIES: Property[] = [
     narrative: [
       "Avenue Castle stands on Shadhinota Shoroni as a landmark of residential grandeur. Its bold concrete structure features dramatic cantilevered overhangs and recessed windows that shield the interior from direct afternoon solar radiation.",
       "The building holds G+8 floors, providing premium units designed for modern families. The entrance lobby is finished with polished marble, offering a hotel-grade welcome.",
-      "Engineered using top-grade local reinforcement and high-performance concrete mixes, this completed project ensures premium structural safety alongside its striking visual presence."
+      "Engineered using top-grade local reinforcement and high-performance concrete mixes, this completed project ensures premium structural safety alongside its striking visual presence.",
     ],
     image: "/images/properties/upcoming_avenue_castle.png",
     gallery: [
       {
         src: "/images/properties/upcoming_avenue_castle.png",
         alt: "Avenue Castle Architectural Render",
-        caption: "Perspective View",
-      },
-      {
-        src: "/images/properties/project_image_10.jpeg",
-        alt: "Brochure Facade Elevation",
-        caption: "Facade Elevation",
+        caption: "3D Perspective Render",
       },
       {
         src: "/images/properties/prop_terraces.png",
         alt: "Cascading Terrace Design",
-        caption: "Cascading Terrace Design",
+        caption: "Cascading Terrace Facade",
+      },
+      {
+        src: "/images/properties/prop_obsidian.png",
+        alt: "Architectural Detailing",
+        caption: "Monolithic Exterior Geometry",
+      },
+      {
+        src: "/images/properties/project_image_10.jpeg",
+        alt: "Elevation Detailing",
+        caption: "Structural Framing Detail",
       },
     ],
     floorPlans: [
@@ -378,18 +383,18 @@ export const PROPERTIES: Property[] = [
           "Unit Area: 1450 Sft",
           "Accommodates: 3 Bedrooms & 3 Bathrooms",
           "Includes: 3 Verandas & air-conditioned lounge",
-          "Layout: L-shaped living-dining configuration"
-        ]
+          "Layout: L-shaped living-dining configuration",
+        ],
       },
       {
         title: "Ground Floor Parking & Driveway",
-        image: "/images/properties/project_image_10.jpeg",
+        image: "/images/properties/prop_terraces.png",
         details: [
           "Car Parking: 6 Parking slots",
           "Lobby: Reception Desk & Security Lounge",
-          "Utilities: Standby generator & water reserve"
-        ]
-      }
+          "Utilities: Standby generator & water reserve",
+        ],
+      },
     ],
     specs: [
       { label: "Bedrooms", value: "3" },
@@ -442,7 +447,7 @@ export const PROPERTIES: Property[] = [
     narrative: [
       "Avenue Crest is designed as an ultra-exclusive residential landmark in Gulshan 2. Featuring private elevator foyers, double-height living areas, and expansive glass curtain walls, it sets a new standard for luxury real estate.",
       "The building integrates energy-efficient solar glass, sound-proof acoustic double glazing, and automated smart home infrastructure.",
-      "Residents enjoy a heated rooftop infinity pool, wellness spa, and round-the-clock concierge services."
+      "Residents enjoy a heated rooftop infinity pool, wellness spa, and round-the-clock concierge services.",
     ],
     image: "/images/properties/upcoming_avenue_crest.png",
     gallery: [
@@ -475,8 +480,8 @@ export const PROPERTIES: Property[] = [
           "Unit Area: 2850 Sft",
           "Accommodates: 4 Bedrooms & 5 Bathrooms",
           "Includes: Private pool balcony & maid quarters",
-          "Layout: Open-plan grand salon & formal dining"
-        ]
+          "Layout: Open-plan grand salon & formal dining",
+        ],
       },
       {
         title: "Ground Floor Grand Lobby & Parking",
@@ -484,9 +489,9 @@ export const PROPERTIES: Property[] = [
         details: [
           "Car Parking: 10 Slots with automated security gate",
           "Lobby: Marble-clad double-height reception",
-          "Concierge: 24/7 Private Security & Valet Desk"
-        ]
-      }
+          "Concierge: 24/7 Private Security & Valet Desk",
+        ],
+      },
     ],
     specs: [
       { label: "Bedrooms", value: "4" },
@@ -539,7 +544,7 @@ export const PROPERTIES: Property[] = [
     narrative: [
       "Avenue Serenade harmonizes modern tropical architectural design with the tranquil environment of Banani DOHS. Lush vertical gardens and timber louvers wrap the building to provide natural privacy and shading.",
       "Each residence features cross-ventilated living suites, private planter balconies, and premium wood-paneled interior finishes.",
-      "Designed for eco-conscious luxury, the building incorporates rooftop solar energy generation and rainwater harvesting."
+      "Designed for eco-conscious luxury, the building incorporates rooftop solar energy generation and rainwater harvesting.",
     ],
     image: "/images/properties/upcoming_avenue_serenade.png",
     gallery: [
@@ -572,8 +577,8 @@ export const PROPERTIES: Property[] = [
           "Unit Area: 2100 Sft",
           "Accommodates: 3 Bedrooms & 4 Bathrooms",
           "Includes: 3 Garden balconies & family lounge",
-          "Layout: Closed gourmet kitchen & breakfast bar"
-        ]
+          "Layout: Closed gourmet kitchen & breakfast bar",
+        ],
       },
       {
         title: "Ground Floor Plan & Landscaped Driveway",
@@ -581,9 +586,9 @@ export const PROPERTIES: Property[] = [
         details: [
           "Car Parking: 8 Slots with garden driveway",
           "Lobby: Open-air reception court",
-          "Staff Lounge: Driver quarters & security room"
-        ]
-      }
+          "Staff Lounge: Driver quarters & security room",
+        ],
+      },
     ],
     specs: [
       { label: "Bedrooms", value: "3" },

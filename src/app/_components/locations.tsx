@@ -58,8 +58,9 @@ export function Locations() {
             <span className="italic font-light text-accent">Footprint</span>
           </h2>
           <p className="text-xs md:text-sm leading-relaxed text-text-secondary font-light">
-            We focus exclusively on Dhaka&apos;s most prestigious and secure residential areas, 
-            carefully selecting plots that offer natural cross-ventilation, scenic views, and structural durability.
+            We focus exclusively on Dhaka&apos;s most prestigious and secure
+            residential areas, carefully selecting plots that offer natural
+            cross-ventilation, scenic views, and structural durability.
           </p>
         </div>
 

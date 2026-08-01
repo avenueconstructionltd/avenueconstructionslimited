@@ -88,11 +88,23 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             </p>
           </header>
 
-          {/* Image gallery */}
-          <ImageGallery
-            images={property.gallery}
-            label={`${property.name} gallery`}
-          />
+          {/* 3D Architectural Gallery & Grid Collage Section */}
+          <section className="flex flex-col gap-6">
+            <div className="flex flex-col gap-2">
+              <span className="text-[10px] uppercase tracking-[0.25em] font-mono text-accent">
+                3D Architectural Renders & Visual Record
+              </span>
+              <h2 className="font-serif text-3xl md:text-5xl uppercase tracking-tight text-text-primary">
+                Project{" "}
+                <span className="italic font-light text-accent">Gallery</span> &
+                Renders
+              </h2>
+            </div>
+            <ImageGallery
+              images={property.gallery}
+              label={`${property.name} 3D architectural render gallery`}
+            />
+          </section>
 
           {/* Intro narrative + quick specs */}
           <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
@@ -300,21 +312,29 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                   Blueprint & Layouts
                 </span>
                 <h2 className="font-serif text-3xl md:text-4xl tracking-tight leading-[1.05] text-text-primary uppercase">
-                  Architectural <span className="italic font-light text-accent">Structure</span>
+                  Architectural{" "}
+                  <span className="italic font-light text-accent">
+                    Structure
+                  </span>
                 </h2>
                 <p className="text-xs md:text-sm text-text-secondary leading-relaxed font-light max-w-xl">
-                  Inspect the physical layouts and structural blueprint details designed for maximum cross-ventilation, open-plan flow, and solar-tracking light.
+                  Inspect the physical layouts and structural blueprint details
+                  designed for maximum cross-ventilation, open-plan flow, and
+                  solar-tracking light.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                 {property.floorPlans.map((plan, idx) => (
-                  <div key={idx} className="double-bezel-outer flex flex-col gap-6">
+                  <div
+                    key={idx}
+                    className="double-bezel-outer flex flex-col gap-6"
+                  >
                     <div className="double-bezel-inner bg-surface/50 p-6 md:p-8 flex flex-col gap-6">
                       <h3 className="font-serif text-xl uppercase tracking-wider text-text-primary border-b border-black/5 pb-4">
                         {plan.title}
                       </h3>
-                      
+
                       {/* Image container */}
                       <div className="relative aspect-4/3 w-full overflow-hidden rounded-xl border border-black/5 bg-white shadow-xs">
                         <Image
@@ -329,8 +349,13 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                       {/* Detail points */}
                       <ul className="flex flex-col gap-2 mt-2">
                         {plan.details.map((detail, dIdx) => (
-                          <li key={dIdx} className="flex items-center gap-3 text-xs md:text-sm text-text-secondary font-light">
-                            <span className="text-accent font-semibold font-mono">&middot;</span>
+                          <li
+                            key={dIdx}
+                            className="flex items-center gap-3 text-xs md:text-sm text-text-secondary font-light"
+                          >
+                            <span className="text-accent font-semibold font-mono">
+                              &middot;
+                            </span>
                             <span>{detail}</span>
                           </li>
                         ))}
@@ -388,7 +413,8 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                   Visual Portfolio
                 </span>
                 <h2 className="font-serif text-4xl md:text-5xl tracking-tight leading-[1.05] text-text-primary uppercase mt-2">
-                  Visual <span className="italic font-light text-accent">Theater</span>
+                  Visual{" "}
+                  <span className="italic font-light text-accent">Theater</span>
                 </h2>
               </div>
 

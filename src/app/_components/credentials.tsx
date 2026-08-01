@@ -70,8 +70,9 @@ export function Credentials() {
             <span className="italic font-light text-accent">& Compliance</span>
           </h2>
           <p className="text-xs md:text-sm leading-relaxed text-text-secondary font-light">
-            Avenue Constructions Limited operates under complete regulatory transparency. 
-            All structural builds satisfy the rigorous standards of Dhaka Metropolitan building guidelines.
+            Avenue Constructions Limited operates under complete regulatory
+            transparency. All structural builds satisfy the rigorous standards
+            of Dhaka Metropolitan building guidelines.
           </p>
         </div>
 

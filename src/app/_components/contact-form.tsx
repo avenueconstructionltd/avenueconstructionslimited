@@ -181,22 +181,40 @@ export function ContactForm({ embedded = false }: ContactFormProps) {
               onChange={handleChange}
               className="w-full pb-2 bg-transparent border-b border-black/15 text-sm text-text-primary focus:outline-none focus:border-accent transition-colors cursor-pointer appearance-none rounded-none"
             >
-              <option value="Avenue Ahsan Palace" className="bg-surface text-text-primary">
+              <option
+                value="Avenue Ahsan Palace"
+                className="bg-surface text-text-primary"
+              >
                 Avenue Ahsan Palace
               </option>
-              <option value="Avenue MD Heights" className="bg-surface text-text-primary">
+              <option
+                value="Avenue MD Heights"
+                className="bg-surface text-text-primary"
+              >
                 Avenue MD. Heights
               </option>
-              <option value="Avenue Dream" className="bg-surface text-text-primary">
+              <option
+                value="Avenue Dream"
+                className="bg-surface text-text-primary"
+              >
                 Avenue Dream
               </option>
-              <option value="Avenue Castle" className="bg-surface text-text-primary">
+              <option
+                value="Avenue Castle"
+                className="bg-surface text-text-primary"
+              >
                 Avenue Castle
               </option>
-              <option value="Avenue Crest" className="bg-surface text-text-primary">
+              <option
+                value="Avenue Crest"
+                className="bg-surface text-text-primary"
+              >
                 Avenue Crest
               </option>
-              <option value="Avenue Serenade" className="bg-surface text-text-primary">
+              <option
+                value="Avenue Serenade"
+                className="bg-surface text-text-primary"
+              >
                 Avenue Serenade
               </option>
             </select>
@@ -232,7 +250,9 @@ export function ContactForm({ embedded = false }: ContactFormProps) {
               disabled={status === "submitting"}
               className="w-full rounded-full bg-accent hover:bg-text-primary text-canvas py-3 text-xs uppercase tracking-[0.2em] font-medium transition-all duration-300 active:scale-[0.98] disabled:opacity-50"
             >
-              {status === "submitting" ? "Submitting Inquiry" : "Submit Inquiry"}
+              {status === "submitting"
+                ? "Submitting Inquiry"
+                : "Submit Inquiry"}
             </MagneticButton>
           </div>
 

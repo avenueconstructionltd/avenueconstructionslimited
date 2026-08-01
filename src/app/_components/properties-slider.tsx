@@ -106,10 +106,7 @@ export function PropertiesSlider() {
               className="flex gap-8 w-max"
             >
               {PROPERTIES.map((property) => (
-                <PropertyCard
-                  key={property.slug}
-                  property={property}
-                />
+                <PropertyCard key={property.slug} property={property} />
               ))}
             </motion.div>
           </motion.div>
@@ -119,11 +116,7 @@ export function PropertiesSlider() {
   );
 }
 
-function PropertyCard({
-  property,
-}: {
-  property: (typeof PROPERTIES)[0];
-}) {
+function PropertyCard({ property }: { property: (typeof PROPERTIES)[0] }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
 

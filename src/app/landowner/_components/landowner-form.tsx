@@ -13,7 +13,7 @@ const DHAKA_LOCATIONS = [
   "Uttara",
   "Aftabnagar",
   "Lalmatia & Wari",
-  "Other / Outside Dhaka"
+  "Other / Outside Dhaka",
 ];
 
 export function LandownerForm() {
@@ -31,7 +31,12 @@ export function LandownerForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.phone || !formData.location || !formData.size) {
+    if (
+      !formData.name ||
+      !formData.phone ||
+      !formData.location ||
+      !formData.size
+    ) {
       alert("Please fill in all required fields.");
       return;
     }
@@ -49,7 +54,9 @@ export function LandownerForm() {
           Inquiry Received
         </h3>
         <p className="text-sm text-text-secondary leading-relaxed font-light max-w-sm mx-auto">
-          Thank you for sharing your property details. Our Joint Venture Acquisitions Team will review your plot parameters and contact you within 24 hours.
+          Thank you for sharing your property details. Our Joint Venture
+          Acquisitions Team will review your plot parameters and contact you
+          within 24 hours.
         </p>
         <button
           onClick={() => {
@@ -97,7 +104,9 @@ export function LandownerForm() {
             type="tel"
             required
             value={formData.phone}
-            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, phone: e.target.value })
+            }
             placeholder="e.g. +880 17--"
             className="w-full bg-surface border border-black/5 rounded-lg px-4 py-3 text-xs text-text-primary placeholder:text-text-secondary/40 focus:outline-hidden focus:border-accent/40"
           />
@@ -109,7 +118,9 @@ export function LandownerForm() {
           <input
             type="email"
             value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
             placeholder="e.g. latifur@example.com"
             className="w-full bg-surface border border-black/5 rounded-lg px-4 py-3 text-xs text-text-primary placeholder:text-text-secondary/40 focus:outline-hidden focus:border-accent/40"
           />
@@ -124,7 +135,9 @@ export function LandownerForm() {
           <select
             required
             value={formData.location}
-            onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, location: e.target.value })
+            }
             className="w-full bg-surface border border-black/5 rounded-lg px-3 py-3 text-xs text-text-primary focus:outline-hidden focus:border-accent/40"
           >
             <option value="">Select Enclave</option>
@@ -158,7 +171,9 @@ export function LandownerForm() {
           </label>
           <select
             value={formData.facing}
-            onChange={(e) => setFormData({ ...formData, facing: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, facing: e.target.value })
+            }
             className="w-full bg-surface border border-black/5 rounded-lg px-3 py-3 text-xs text-text-primary focus:outline-hidden focus:border-accent/40"
           >
             <option value="">Select Direction</option>
@@ -176,7 +191,9 @@ export function LandownerForm() {
           <input
             type="number"
             value={formData.roadWidth}
-            onChange={(e) => setFormData({ ...formData, roadWidth: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, roadWidth: e.target.value })
+            }
             placeholder="e.g. 30"
             className="w-full bg-surface border border-black/5 rounded-lg px-4 py-3 text-xs text-text-primary placeholder:text-text-secondary/40 focus:outline-hidden focus:border-accent/40"
           />

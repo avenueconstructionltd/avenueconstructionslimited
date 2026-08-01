@@ -16,8 +16,8 @@ const CO_DEV_STAGES = [
     details: [
       "Digital topographic surveys and structural soil testing.",
       "Seismic zone assessments and microclimate studies.",
-      "Optimized land ratio calculations according to current building codes."
-    ]
+      "Optimized land ratio calculations according to current building codes.",
+    ],
   },
   {
     step: "02",
@@ -25,8 +25,8 @@ const CO_DEV_STAGES = [
     details: [
       "Custom layouts oriented around southern wind directions.",
       "Cantilevered balconies and deep wooden louvers for cooling.",
-      "Green lobby gardens and extensive rooftop community landscaping."
-    ]
+      "Green lobby gardens and extensive rooftop community landscaping.",
+    ],
   },
   {
     step: "03",
@@ -34,8 +34,8 @@ const CO_DEV_STAGES = [
     details: [
       "Hassle-free management of all RAJUK permits and zoning clearances.",
       "Local municipality approvals and NBR tax code alignment.",
-      "Strict compliance validation to guarantee zero legal hurdles."
-    ]
+      "Strict compliance validation to guarantee zero legal hurdles.",
+    ],
   },
   {
     step: "04",
@@ -43,9 +43,9 @@ const CO_DEV_STAGES = [
     details: [
       "Execution using 60-grade steel (BSRM/AKS) and Crown cement.",
       "Constant material inspection and structural monitoring.",
-      "Bank-backed funding to guarantee completion and handover on schedule."
-    ]
-  }
+      "Bank-backed funding to guarantee completion and handover on schedule.",
+    ],
+  },
 ];
 
 export default function LandownerPage() {
@@ -55,7 +55,6 @@ export default function LandownerPage() {
 
       <main className="min-h-screen bg-canvas pt-32 pb-24 z-10 relative">
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col gap-20">
-          
           {/* Header block */}
           <header className="flex flex-col gap-5 max-w-3xl">
             <span className="text-[10px] uppercase tracking-[0.25em] font-mono text-accent">
@@ -63,17 +62,20 @@ export default function LandownerPage() {
             </span>
             <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl tracking-tight leading-[1.02] text-text-primary uppercase">
               Transform Your Land <br />
-              <span className="italic font-light text-accent">Into a Landmark</span>
+              <span className="italic font-light text-accent">
+                Into a Landmark
+              </span>
             </h1>
             <p className="text-sm md:text-base leading-relaxed text-text-secondary font-light max-w-xl">
-              At Avenue Constructions Limited, we respect the emotional value of your ancestral land. 
-              We partner with Dhaka's landowners to craft architectural sanctuaries that honor family heritage, assure structural durability, and maximize investment returns.
+              At Avenue Constructions Limited, we respect the emotional value of
+              your ancestral land. We partner with Dhaka's landowners to craft
+              architectural sanctuaries that honor family heritage, assure
+              structural durability, and maximize investment returns.
             </p>
           </header>
 
           {/* Form + Explainer Grid */}
           <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            
             {/* Explainer Block */}
             <div className="lg:col-span-6 flex flex-col gap-12">
               <div className="flex flex-col gap-3">
@@ -87,7 +89,10 @@ export default function LandownerPage() {
 
               <div className="flex flex-col gap-10">
                 {CO_DEV_STAGES.map((stage) => (
-                  <div key={stage.step} className="flex gap-6 items-start border-b border-black/5 pb-6 last:border-b-0">
+                  <div
+                    key={stage.step}
+                    className="flex gap-6 items-start border-b border-black/5 pb-6 last:border-b-0"
+                  >
                     <span className="font-serif text-2xl text-accent font-light mt-0.5">
                       {stage.step}
                     </span>
@@ -97,7 +102,10 @@ export default function LandownerPage() {
                       </h3>
                       <ul className="flex flex-col gap-1.5">
                         {stage.details.map((detail, idx) => (
-                          <li key={idx} className="text-xs md:text-sm text-text-secondary font-light flex items-start gap-2">
+                          <li
+                            key={idx}
+                            className="text-xs md:text-sm text-text-secondary font-light flex items-start gap-2"
+                          >
                             <span className="text-accent mt-1">&middot;</span>
                             <span>{detail}</span>
                           </li>
@@ -125,9 +133,7 @@ export default function LandownerPage() {
                 </div>
               </div>
             </div>
-
           </section>
-
         </div>
       </main>
 
