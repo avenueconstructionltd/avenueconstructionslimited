@@ -6,6 +6,7 @@ import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { ImageGallery } from "@/components/shared/image-gallery";
 import { PROPERTIES } from "@/lib/properties-constant";
+import { VisualTheaterGrid } from "./_components/visual-theater-grid";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -405,7 +406,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             </div>
           </section>
 
-          {/* Photo Grid Section — Unique Images Only */}
+          {/* Photo Grid Section — Visual Theater */}
           {property.gallery && property.gallery.length > 0 && (
             <section className="flex flex-col gap-12 border-t border-black/5 pt-16">
               <div className="flex flex-col items-center justify-center text-center">
@@ -418,31 +419,11 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                 </h2>
               </div>
 
-              {/* Unique Image Grid */}
-              <div className="flex justify-center max-w-6xl mx-auto pb-16 w-full px-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-                  {property.gallery.map((img, idx) => (
-                    <div
-                      key={idx}
-                      className="double-bezel-outer aspect-4/3 rounded-2xl overflow-hidden group"
-                    >
-                      <div className="double-bezel-inner relative w-full h-full">
-                        <Image
-                          src={img.src}
-                          alt={img.alt || property.name}
-                          fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out brightness-95 group-hover:brightness-100"
-                        />
-                        <div className="absolute bottom-0 inset-x-0 p-4 bg-linear-to-t from-black/70 to-transparent text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <span className="text-[10px] uppercase tracking-[0.2em] font-mono">
-                            {img.caption || property.name}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+              <div className="max-w-7xl mx-auto pb-16 w-full px-4">
+                <VisualTheaterGrid
+                  images={property.gallery}
+                  projectName={property.name}
+                />
               </div>
             </section>
           )}

@@ -11,8 +11,6 @@ import { TESTIMONIALS } from "@/lib/testimonials-constant";
 import { TestimonialsSlider } from "./_components/testimonials-slider";
 
 export default function AboutPage() {
-  const [alexander, elena, marcus] = TEAM_MEMBERS;
-
   return (
     <>
       <Navbar />
@@ -337,124 +335,61 @@ export default function AboutPage() {
           <div className="border-t border-black/5 pt-20 flex flex-col gap-16">
             <div className="max-w-xl">
               <span className="text-[10px] uppercase tracking-[0.25em] font-mono text-accent">
-                Founders
+                Leadership & Team
               </span>
               <h2 className="font-serif text-4xl uppercase tracking-tight leading-[1.05] mt-4">
                 Atelier{" "}
-                <span className="italic font-light text-accent">Partners</span>
+                <span className="italic font-light text-accent">Partners & Team</span>
               </h2>
             </div>
 
             <div className="flex flex-col gap-24">
-              {/* Partner 1: Alexander Mercer */}
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center"
-              >
-                <div className="lg:col-span-5 double-bezel-outer aspect-square rounded-4xl overflow-hidden">
-                  <div className="double-bezel-inner relative w-full h-full">
-                    <Image
-                      src={alexander.imageUrl}
-                      alt={alexander.name}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 33vw"
-                      className="object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-premium-in-out hover:scale-105"
-                    />
-                  </div>
-                </div>
-                <div className="lg:col-span-7 flex flex-col gap-4">
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-mono text-accent">
-                    {alexander.role}
-                  </span>
-                  <h3 className="font-serif text-3xl uppercase tracking-wide">
-                    {alexander.name}
-                  </h3>
-                  <p className="text-xs md:text-sm text-text-secondary leading-relaxed font-light max-w-[55ch]">
-                    {alexander.bio}
-                  </p>
-                  <blockquote className="border-l border-accent pl-4 italic text-xs text-text-secondary font-serif mt-2">
-                    &ldquo;Architecture is the art of drafting light and
-                    aggregate concrete so they become a single silent
-                    monument.&rdquo;
-                  </blockquote>
-                </div>
-              </motion.div>
-
-              {/* Partner 2: Elena Rostova */}
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center lg:flex-row-reverse"
-              >
-                <div className="lg:col-span-5 lg:order-2 double-bezel-outer aspect-square rounded-4xl overflow-hidden">
-                  <div className="double-bezel-inner relative w-full h-full">
-                    <Image
-                      src={elena.imageUrl}
-                      alt={elena.name}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 33vw"
-                      className="object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-premium-in-out hover:scale-105"
-                    />
-                  </div>
-                </div>
-                <div className="lg:col-span-7 lg:order-1 flex flex-col gap-4">
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-mono text-accent">
-                    {elena.role}
-                  </span>
-                  <h3 className="font-serif text-3xl uppercase tracking-wide">
-                    {elena.name}
-                  </h3>
-                  <p className="text-xs md:text-sm text-text-secondary leading-relaxed font-light max-w-[55ch]">
-                    {elena.bio}
-                  </p>
-                  <blockquote className="border-l border-accent pl-4 italic text-xs text-text-secondary font-serif mt-2">
-                    &ldquo;Space is not an empty volume; it is a weightless
-                    texture waiting to be bounded by proportion and
-                    stone.&rdquo;
-                  </blockquote>
-                </div>
-              </motion.div>
-
-              {/* Partner 3: Marcus Thorne */}
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center"
-              >
-                <div className="lg:col-span-5 double-bezel-outer aspect-square rounded-4xl overflow-hidden">
-                  <div className="double-bezel-inner relative w-full h-full">
-                    <Image
-                      src={marcus.imageUrl}
-                      alt={marcus.name}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 33vw"
-                      className="object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-premium-in-out hover:scale-105"
-                    />
-                  </div>
-                </div>
-                <div className="lg:col-span-7 flex flex-col gap-4">
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-mono text-accent">
-                    {marcus.role}
-                  </span>
-                  <h3 className="font-serif text-3xl uppercase tracking-wide">
-                    {marcus.name}
-                  </h3>
-                  <p className="text-xs md:text-sm text-text-secondary leading-relaxed font-light max-w-[55ch]">
-                    {marcus.bio}
-                  </p>
-                  <blockquote className="border-l border-accent pl-4 italic text-xs text-text-secondary font-serif mt-2">
-                    &ldquo;Luxury does not exist in ornament. It exists in the
-                    perfect convergence of void, aggregate, and time.&rdquo;
-                  </blockquote>
-                </div>
-              </motion.div>
+              {TEAM_MEMBERS.map((member, idx) => {
+                const isReverse = idx % 2 !== 0;
+                return (
+                  <motion.div
+                    key={member.name}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center ${
+                      isReverse ? "lg:flex-row-reverse" : ""
+                    }`}
+                  >
+                    <div
+                      className={`lg:col-span-5 ${
+                        isReverse ? "lg:order-2" : ""
+                      } double-bezel-outer aspect-square rounded-4xl overflow-hidden`}
+                    >
+                      <div className="double-bezel-inner relative w-full h-full">
+                        <Image
+                          src={member.imageUrl}
+                          alt=""
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 33vw"
+                          className="object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-premium-in-out hover:scale-105"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className={`lg:col-span-7 ${
+                        isReverse ? "lg:order-1" : ""
+                      } flex flex-col gap-4`}
+                    >
+                      <span className="text-[10px] uppercase tracking-[0.2em] font-mono text-accent">
+                        {member.role}
+                      </span>
+                      <h3 className="font-serif text-3xl uppercase tracking-wide">
+                        {member.name}
+                      </h3>
+                      <p className="text-xs md:text-sm text-text-secondary leading-relaxed font-light max-w-[55ch]">
+                        {member.bio}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
 
