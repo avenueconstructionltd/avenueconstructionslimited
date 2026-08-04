@@ -9,10 +9,28 @@ import { Credentials } from "./_components/credentials";
 import { JointVenture } from "./_components/joint-venture";
 import { ContactForm } from "./_components/contact-form";
 import { Footer } from "@/components/shared/footer";
+import {
+  realEstateAgentJsonLd,
+  websiteJsonLd,
+} from "@/services/seo/structured-data";
 
 export default function Home() {
+  const agentLd = realEstateAgentJsonLd();
+  const siteLd = websiteJsonLd();
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(agentLd) }}
+        suppressHydrationWarning
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(siteLd) }}
+        suppressHydrationWarning
+      />
+
       <Navbar />
 
       <main

@@ -7,6 +7,11 @@ import { Footer } from "@/components/shared/footer";
 import { ImageGallery } from "@/components/shared/image-gallery";
 import { PROPERTIES } from "@/lib/properties-constant";
 import { VisualTheaterGrid } from "./_components/visual-theater-grid";
+import { buildMetadata, canonicalUrl } from "@/services/seo";
+import {
+  realEstateListingJsonLd,
+  breadcrumbListJsonLd,
+} from "@/services/seo/structured-data";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -21,12 +26,14 @@ export async function generateMetadata({
 }: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
   const property = PROPERTIES.find((p) => p.slug === slug);
-  if (!property)
-    return { title: "Project not found | Avenue Construction Limited" };
-  return {
-    title: `${property.name} | Avenue Construction Limited`,
-    description: property.description,
-  };
+  if (!property) return { title: "Project Not Found" };
+
+  return buildMetadata({
+    path: `/projects/${property.slug}`,
+    title: `${property.name} - ${property.location}`,
+    description: `${property.description} Located at ${property.region}, ${property.location}. Features ${property.specs.map((s) => `${s.label}: ${s.value}`).join(", ")}.`,
+    ogImage: property.image,
+  });
 }
 
 export default async function ProjectDetailPage({ params }: ProjectPageProps) {
@@ -42,8 +49,26 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   const prevProperty =
     PROPERTIES[(currentIndex - 1 + PROPERTIES.length) % PROPERTIES.length];
 
+  const pageCanonicalUrl = canonicalUrl(`/projects/${property.slug}`);
+  const listingLd = realEstateListingJsonLd(property, pageCanonicalUrl);
+  const breadcrumbLd = breadcrumbListJsonLd([
+    { name: "Home", url: canonicalUrl("/") },
+    { name: "Portfolio", url: canonicalUrl("/projects") },
+    { name: property.name, url: pageCanonicalUrl },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(listingLd) }}
+        suppressHydrationWarning
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+        suppressHydrationWarning
+      />
       <Navbar />
 
       <main className="min-h-screen bg-canvas pt-32 pb-24 z-10 relative">

@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { LandownerForm } from "./_components/landowner-form";
+import { buildMetadata, canonicalUrl } from "@/services/seo";
+import { breadcrumbListJsonLd } from "@/services/seo/structured-data";
 
-export const metadata: Metadata = {
-  title: "Landowner Partnerships & Joint Ventures | Avenue Constructions",
+export const metadata: Metadata = buildMetadata({
+  path: "/landowner",
+  title: "Landowner Partnerships & Joint Ventures",
   description:
-    "Partner with Avenue Constructions Limited. Enter a joint venture development to transform your premium land in Gulshan, Banani, or Bashundhara into a landmark residential asset.",
-};
+    "Partner with Avenue Constructions Limited. Enter a joint venture development to transform your premium land in Gulshan, Banani, Baridhara, or Bashundhara into a landmark residential asset.",
+});
 
 const CO_DEV_STAGES = [
   {
@@ -49,8 +52,18 @@ const CO_DEV_STAGES = [
 ];
 
 export default function LandownerPage() {
+  const breadcrumbLd = breadcrumbListJsonLd([
+    { name: "Home", url: canonicalUrl("/") },
+    { name: "Joint Venture Landowners", url: canonicalUrl("/landowner") },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+        suppressHydrationWarning
+      />
       <Navbar />
 
       <main className="min-h-screen bg-canvas pt-32 pb-24 z-10 relative">
@@ -68,8 +81,8 @@ export default function LandownerPage() {
             </h1>
             <p className="text-sm md:text-base leading-relaxed text-text-secondary font-light max-w-xl">
               At Avenue Constructions Limited, we respect the emotional value of
-              your ancestral land. We partner with Dhaka's landowners to craft
-              architectural sanctuaries that honor family heritage, assure
+              your ancestral land. We partner with Dhaka&apos;s landowners to
+              craft architectural sanctuaries that honor family heritage, assure
               structural durability, and maximize investment returns.
             </p>
           </header>

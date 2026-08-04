@@ -186,7 +186,7 @@ export function About() {
                 index === 1 ? "md:mt-10" : ""
               } ${index === 2 ? "md:mt-20" : ""}`}
             >
-              <div className="double-bezel-inner flex flex-col min-h-[380px] overflow-hidden group">
+              <div className="double-bezel-inner flex flex-col min-h-95 overflow-hidden group">
                 <div
                   id={index === 2 ? "about-morph-source" : undefined}
                   className="relative aspect-4/3 w-full overflow-hidden"
