@@ -101,9 +101,10 @@ export function Footer() {
           {/* Brand Column */}
           <div className="md:col-span-4 flex flex-col gap-6">
             <Logo />
-            <p className="text-text-secondary text-xs uppercase tracking-[0.2em] max-w-[32ch] leading-relaxed font-light">
-              Constructing signature landmarks in Dhaka. Every commission is a
-              study in light, material, and precision.
+            <p className="text-text-secondary text-xs uppercase tracking-[0.2em] max-w-[34ch] leading-relaxed font-light">
+              Avenue Construction Ltd &middot; Premier Real Estate Developer in
+              Dhaka, Bangladesh. Crafting luxury residential landmarks in
+              Gulshan, Banani, Baridhara & Bashundhara R/A.
             </p>
             {/* Social links */}
             <div className="flex flex-col gap-3 pt-2">
@@ -175,7 +176,7 @@ export function Footer() {
             </h3>
             <div className="flex flex-col gap-2 text-xs text-text-secondary tracking-wide font-light">
               <p className="font-medium text-text-primary">
-                Avenue Constructions Limited
+                Avenue Construction Ltd
               </p>
               <p>Resourceful Paltan City</p>
               <p>51, 51/A (7th Floor), Purana Paltan, Dhaka-1000</p>
@@ -242,8 +243,7 @@ export function Footer() {
         {/* Bottom: copyright */}
         <div className="border-t border-black/5 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <span className="text-[10px] text-text-secondary tracking-widest uppercase">
-            &copy; {currentYear} Avenue Construction Limited. All rights
-            reserved.
+            &copy; {currentYear} Avenue Construction Ltd. All rights reserved.
           </span>
           <span className="text-[10px] text-text-secondary/50 tracking-widest uppercase font-light">
             Dhaka, Bangladesh

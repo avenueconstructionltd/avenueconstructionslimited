@@ -24,6 +24,12 @@ export function realEstateAgentJsonLd(): JsonLd {
   return structuredData(["RealEstateAgent", "Organization"], {
     "@id": `${SITE_URL}/#organization`,
     name: SITE_NAME,
+    alternateName: [
+      "Avenue Construction Ltd",
+      "Avenue Construction Ltd.",
+      "Avenue Construction Limited",
+      "Avenue Construction",
+    ],
     url: SITE_URL,
     logo: `${SITE_URL}/images/site_logo.png`,
     image: `${SITE_URL}/images/properties/project_image_1.jpeg`,
@@ -57,12 +63,14 @@ export function realEstateAgentJsonLd(): JsonLd {
       closes: "18:00",
     },
     areaServed: [
+      "Bangladesh",
       "Dhaka",
       "Gulshan",
       "Banani",
       "Baridhara",
       "Bashundhara R/A",
       "Aftabnagar",
+      "Purana Paltan",
     ],
   });
 }
@@ -84,7 +92,7 @@ export function realEstateListingJsonLd(
 ): JsonLd {
   return structuredData("RealEstateListing", {
     "@id": canonicalUrl,
-    name: property.name,
+    name: `${property.name} by ${SITE_NAME}`,
     description: property.description,
     url: canonicalUrl,
     datePosted: "2026-01-01",
@@ -123,7 +131,7 @@ export function breadcrumbListJsonLd(
 
 export function serviceJsonLd(): JsonLd {
   return structuredData("Service", {
-    name: "Architectural & Real Estate Development Services",
+    name: "Architectural & Real Estate Development Services by Avenue Construction Ltd",
     provider: {
       "@id": `${SITE_URL}/#organization`,
     },
@@ -131,6 +139,6 @@ export function serviceJsonLd(): JsonLd {
     serviceType:
       "Real Estate Development, Architectural Drafting, Joint Ventures, Asset Advisory",
     description:
-      "Full-lifecycle luxury residential development, architectural drafting, joint venture land development, and real estate asset management.",
+      "Avenue Construction Ltd provides full-lifecycle luxury residential development, architectural drafting, joint venture land development, and real estate asset management in Dhaka, Bangladesh.",
   });
 }

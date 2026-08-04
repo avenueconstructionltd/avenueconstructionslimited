@@ -62,7 +62,7 @@ export function Hero() {
           transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
           className="mb-5 rounded-full border border-canvas/25 bg-canvas/12 px-3 py-1 text-[9px] font-medium uppercase tracking-[0.22em] text-canvas/82 backdrop-blur-sm"
         >
-          Signature Portfolio, Dhaka
+          Avenue Construction Ltd &middot; Dhaka, Bangladesh
         </motion.div>
 
         <motion.h1
@@ -81,10 +81,10 @@ export function Hero() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.8 }}
-          className="mt-5 max-w-[42ch] text-sm font-light leading-relaxed tracking-wide text-canvas/88 md:text-base"
+          className="mt-5 max-w-[46ch] text-sm font-light leading-relaxed tracking-wide text-canvas/88 md:text-base"
         >
-          Bespoke residential estates crafted for those who view architecture as
-          living art.
+          Avenue Construction Ltd crafts premier luxury residential towers and
+          joint venture developments in Dhaka, Bangladesh.
         </motion.p>
 
         <motion.div
