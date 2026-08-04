@@ -10,13 +10,18 @@ interface VisualTheaterGridProps {
   projectName: string;
 }
 
-export function VisualTheaterGrid({ images, projectName }: VisualTheaterGridProps) {
+export function VisualTheaterGrid({
+  images,
+  projectName,
+}: VisualTheaterGridProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const total = images.length;
 
   const handlePrev = useCallback(() => {
-    setSelectedIndex((prev) => (prev !== null ? (prev - 1 + total) % total : null));
+    setSelectedIndex((prev) =>
+      prev !== null ? (prev - 1 + total) % total : null,
+    );
   }, [total]);
 
   const handleNext = useCallback(() => {
@@ -109,7 +114,8 @@ export function VisualTheaterGrid({ images, projectName }: VisualTheaterGridProp
 
               <div className="flex items-center gap-4">
                 <span className="font-mono text-xs text-white/60">
-                  {String(selectedIndex + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+                  {String(selectedIndex + 1).padStart(2, "0")} /{" "}
+                  {String(total).padStart(2, "0")}
                 </span>
                 <button
                   type="button"
@@ -134,7 +140,9 @@ export function VisualTheaterGrid({ images, projectName }: VisualTheaterGridProp
               >
                 <Image
                   src={images[selectedIndex].src}
-                  alt={images[selectedIndex].alt || `${projectName} full render`}
+                  alt={
+                    images[selectedIndex].alt || `${projectName} full render`
+                  }
                   fill
                   sizes="100vw"
                   className="object-contain"
@@ -168,7 +176,8 @@ export function VisualTheaterGrid({ images, projectName }: VisualTheaterGridProp
             {/* Modal Bottom Caption */}
             <div className="border-t border-white/10 pt-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 text-white">
               <p className="font-serif text-sm md:text-lg font-light text-white/90">
-                {images[selectedIndex].caption || `${projectName} Architectural Detail`}
+                {images[selectedIndex].caption ||
+                  `${projectName} Architectural Detail`}
               </p>
               <span className="font-mono text-[10px] uppercase tracking-widest text-text-secondary/60">
                 Use &larr; &rarr; keys or ESC to exit

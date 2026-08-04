@@ -1,45 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useReducedMotion,
-} from "motion/react";
+import { motion } from "motion/react";
 import { TEAM_MEMBERS } from "@/lib/team-constant";
 
 export function Team() {
-  const containerRef = useRef<HTMLElement>(null);
-  const [alexander, elena, marcus] = TEAM_MEMBERS;
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const prefersReducedMotion = useReducedMotion();
-
-  const y1 = useTransform(
-    scrollYProgress,
-    [0, 1],
-    prefersReducedMotion ? ["0%", "0%"] : ["-5%", "5%"],
-  );
-  const y2 = useTransform(
-    scrollYProgress,
-    [0, 1],
-    prefersReducedMotion ? ["0%", "0%"] : ["-8%", "8%"],
-  );
-  const y3 = useTransform(
-    scrollYProgress,
-    [0, 1],
-    prefersReducedMotion ? ["0%", "0%"] : ["-5%", "5%"],
-  );
-
   return (
     <section
-      ref={containerRef}
       id="team"
       suppressHydrationWarning
       className="relative w-full py-24 md:py-32 px-6 md:px-12 bg-surface z-10 overflow-hidden"
@@ -58,137 +25,75 @@ export function Team() {
           </h2>
         </div>
 
-        {/* Asymmetric Bento Grid (3 items, 3 cells - no empty tiles, no three-in-a-row) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {/* Card 1: Alexander Mercer (col-span-2) - Horizontal Split */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
-            className="md:col-span-2 double-bezel-outer"
-          >
-            <div className="double-bezel-inner h-full grid grid-cols-1 sm:grid-cols-2">
-              {/* Image side */}
-              <div className="relative aspect-4/3 sm:aspect-auto h-64 sm:h-full overflow-hidden">
-                <motion.div
-                  style={{ y: y1 }}
-                  className="absolute w-full h-[125%] top-[-12.5%]"
-                >
-                  <Image
-                    src={alexander.imageUrl}
-                    alt={alexander.name}
-                    fill
-                    sizes="(max-width: 640px) 100vw, 33vw"
-                    className="object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-premium-in-out hover:scale-105"
-                  />
-                </motion.div>
-              </div>
-              {/* Text side */}
-              <div className="p-8 flex flex-col justify-between gap-6 bg-surface">
-                <div>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-accent">
-                    {alexander.role}
-                  </span>
-                  <h3 className="font-serif text-2xl uppercase tracking-wider text-text-primary mt-2">
-                    {alexander.name}
-                  </h3>
-                  <p className="text-xs md:text-sm text-text-secondary leading-relaxed font-light mt-4">
-                    {alexander.bio}
-                  </p>
-                </div>
-                <div className="text-[10px] uppercase tracking-[0.2em] text-text-secondary/40 font-mono">
-                  Partner / 01
-                </div>
-              </div>
-            </div>
-          </motion.div>
+        {/* Dynamic Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 items-stretch">
+          {TEAM_MEMBERS.map((member, index) => {
+            const isLeader = index === 0;
 
-          {/* Card 2: Elena Rostova (col-span-1) - Vertical Layout */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.32, 0.72, 0, 1] }}
-            className="md:col-span-1 double-bezel-outer"
-          >
-            <div className="double-bezel-inner h-full flex flex-col justify-between bg-surface">
-              <div className="relative aspect-4/3 w-full overflow-hidden">
-                <motion.div
-                  style={{ y: y2 }}
-                  className="absolute w-full h-[125%] top-[-12.5%]"
+            return (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.08,
+                  ease: [0.32, 0.72, 0, 1],
+                }}
+                className={`double-bezel-outer ${
+                  isLeader ? "md:col-span-2 lg:col-span-2" : "col-span-1"
+                }`}
+              >
+                <div
+                  className={`double-bezel-inner h-full bg-surface ${
+                    isLeader
+                      ? "grid grid-cols-1 sm:grid-cols-2"
+                      : "flex flex-col justify-between"
+                  }`}
                 >
-                  <Image
-                    src={elena.imageUrl}
-                    alt={elena.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-premium-in-out hover:scale-105"
-                  />
-                </motion.div>
-              </div>
-              <div className="p-8 flex flex-col gap-4">
-                <div>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-accent">
-                    {elena.role}
-                  </span>
-                  <h3 className="font-serif text-2xl uppercase tracking-wider text-text-primary mt-2">
-                    {elena.name}
-                  </h3>
-                  <p className="text-xs text-text-secondary leading-relaxed font-light mt-2">
-                    {elena.bio}
-                  </p>
-                </div>
-                <div className="text-[10px] uppercase tracking-[0.2em] text-text-secondary/40 font-mono pt-4 border-t border-black/5">
-                  Partner / 02
-                </div>
-              </div>
-            </div>
-          </motion.div>
+                  {/* Image side */}
+                  <div
+                    className={`relative overflow-hidden ${
+                      isLeader
+                        ? "h-64 sm:h-full w-full min-h-80"
+                        : "aspect-4/3 w-full"
+                    }`}
+                  >
+                    <Image
+                      src={member.imageUrl}
+                      alt={member.name}
+                      fill
+                      sizes={
+                        isLeader
+                          ? "(max-width: 640px) 100vw, 50vw"
+                          : "(max-width: 768px) 100vw, 33vw"
+                      }
+                      className="object-cover object-top transition-transform duration-700 ease-premium-in-out hover:scale-105"
+                    />
+                  </div>
 
-          {/* Card 3: Marcus Thorne (col-span-3) - Horizontal Reverse Split */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.32, 0.72, 0, 1] }}
-            className="md:col-span-3 double-bezel-outer"
-          >
-            <div className="double-bezel-inner h-full grid grid-cols-1 sm:grid-cols-3">
-              {/* Text side (takes 2/3 of space on desktop) */}
-              <div className="sm:col-span-2 p-8 flex flex-col justify-between gap-6 bg-surface order-2 sm:order-1">
-                <div>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-accent">
-                    {marcus.role}
-                  </span>
-                  <h3 className="font-serif text-2xl uppercase tracking-wider text-text-primary mt-2">
-                    {marcus.name}
-                  </h3>
-                  <p className="text-xs md:text-sm text-text-secondary leading-relaxed font-light mt-4">
-                    {marcus.bio}
-                  </p>
+                  {/* Text side */}
+                  <div className="p-8 flex flex-col justify-between gap-6 bg-surface">
+                    <div>
+                      <span className="text-[10px] uppercase tracking-[0.2em] text-accent font-mono font-semibold">
+                        {member.role}
+                      </span>
+                      <h3 className="font-serif text-2xl md:text-3xl uppercase tracking-wider text-text-primary mt-2">
+                        {member.name}
+                      </h3>
+                      <p className="text-xs md:text-sm text-text-secondary leading-relaxed font-light mt-4">
+                        {member.bio}
+                      </p>
+                    </div>
+                    <div className="text-[10px] uppercase tracking-[0.2em] text-text-secondary/40 font-mono pt-4 border-t border-black/5">
+                      Team / 0{index + 1}
+                    </div>
+                  </div>
                 </div>
-                <div className="text-[10px] uppercase tracking-[0.2em] text-text-secondary/40 font-mono">
-                  Partner / 03
-                </div>
-              </div>
-              {/* Image side (takes 1/3 of space on desktop) */}
-              <div className="relative aspect-4/3 sm:aspect-auto h-64 sm:h-full overflow-hidden order-1 sm:order-2">
-                <motion.div
-                  style={{ y: y3 }}
-                  className="absolute w-full h-[125%] top-[-12.5%]"
-                >
-                  <Image
-                    src={marcus.imageUrl}
-                    alt={marcus.name}
-                    fill
-                    sizes="(max-width: 640px) 100vw, 33vw"
-                    className="object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-premium-in-out hover:scale-105"
-                  />
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -102,7 +102,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.8 }}
                 className="flex flex-col gap-4 relative"
               >
-                <div className="absolute left-[-41px] md:left-[-57px] w-4 h-4 rounded-full bg-accent border-4 border-canvas top-1" />
+                <div className="absolute -left-10.25 md:-left-14.25 w-4 h-4 rounded-full bg-accent border-4 border-canvas top-1" />
                 <span className="font-mono text-lg font-semibold text-accent">
                   2016
                 </span>
@@ -124,7 +124,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.8, delay: 0.1 }}
                 className="flex flex-col gap-4 relative"
               >
-                <div className="absolute left-[-41px] md:left-[-57px] w-4 h-4 rounded-full bg-accent border-4 border-canvas top-1" />
+                <div className="absolute -left-10.25 md:-left-14.25 w-4 h-4 rounded-full bg-accent border-4 border-canvas top-1" />
                 <span className="font-mono text-lg font-semibold text-accent">
                   2020
                 </span>
@@ -147,7 +147,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="flex flex-col gap-4 relative"
               >
-                <div className="absolute left-[-41px] md:left-[-57px] w-4 h-4 rounded-full bg-accent border-4 border-canvas top-1" />
+                <div className="absolute -left-10.25 md:-left-14.25 w-4 h-4 rounded-full bg-accent border-4 border-canvas top-1" />
                 <span className="font-mono text-lg font-semibold text-accent">
                   2024
                 </span>
@@ -169,7 +169,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="flex flex-col gap-4 relative"
               >
-                <div className="absolute left-[-41px] md:left-[-57px] w-4 h-4 rounded-full bg-accent border-4 border-canvas top-1" />
+                <div className="absolute -left-10.25 md:-left-14.25 w-4 h-4 rounded-full bg-accent border-4 border-canvas top-1" />
                 <span className="font-mono text-lg font-semibold text-accent">
                   2026
                 </span>
@@ -339,7 +339,9 @@ export default function AboutPage() {
               </span>
               <h2 className="font-serif text-4xl uppercase tracking-tight leading-[1.05] mt-4">
                 Atelier{" "}
-                <span className="italic font-light text-accent">Partners & Team</span>
+                <span className="italic font-light text-accent">
+                  Partners & Team
+                </span>
               </h2>
             </div>
 
@@ -368,7 +370,7 @@ export default function AboutPage() {
                           alt=""
                           fill
                           sizes="(max-width: 1024px) 100vw, 33vw"
-                          className="object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-premium-in-out hover:scale-105"
+                          className="object-cover object-top transition-transform duration-700 ease-premium-in-out hover:scale-105"
                         />
                       </div>
                     </div>
@@ -447,7 +449,7 @@ export default function AboutPage() {
                   }}
                   className="double-bezel-outer h-full"
                 >
-                  <div className="double-bezel-inner p-6 flex flex-col justify-between h-full bg-surface/30 min-h-[220px]">
+                  <div className="double-bezel-inner p-6 flex flex-col justify-between h-full bg-surface/30 min-h-55">
                     <div className="flex flex-col gap-4">
                       <h3 className="font-serif text-lg uppercase tracking-wide text-text-primary">
                         {concern.title}

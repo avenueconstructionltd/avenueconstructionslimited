@@ -7,10 +7,10 @@ export interface TeamMember {
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    name: "Engr. Maruf Ahmed",
-    role: "Team Leader & Principal Structural Engineer",
-    imageUrl: "/images/team/maruf-ahmed.png",
-    bio: "Registered Structural Engineer (IEB Fellow) with over two decades of experience designing high-rise residential projects and premium landmarks across Dhaka.",
+    name: "Golam Rosul",
+    role: "Managing Director",
+    imageUrl: "/images/team/golam-rosul.png",
+    bio: "Managing Director leading Avenue Construction Limited with strategic vision, corporate governance, and commitment to architectural excellence across all real estate developments.",
   },
   {
     name: "Engr. Md. Matiur Rahman",
