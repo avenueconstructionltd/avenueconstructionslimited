@@ -58,21 +58,21 @@ const PILLARS = [
     label: "Material Honesty",
     detail:
       "Fair-faced concrete, teak wood louvers, and structural glazing age into monuments.",
-    image: "/images/properties/project_image_1.jpeg",
+    image: "/images/projects/avenue-ahsan-palace/project_image_1.jpeg",
   },
   {
     num: "02",
     label: "Geometric Silence",
     detail:
       "Strict structural grids balance mass, cantilever, and negative void.",
-    image: "/images/properties/project_image_5.jpeg",
+    image: "/images/projects/avenue-md-heights/project_image_5.jpeg",
   },
   {
     num: "03",
     label: "Atmospheric Light",
     detail:
       "Solar paths sculpted into deep overhangs, skylights, and shadow planes.",
-    image: "/images/properties/project_image_8.jpeg",
+    image: "/images/projects/avenue-md-heights/project_image_8.jpeg",
   },
 ];
 

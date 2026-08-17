@@ -13,10 +13,10 @@ export const TEAM_MEMBERS: TeamMember[] = [
     bio: "Managing Director leading Avenue Construction Limited with strategic vision, corporate governance, and commitment to architectural excellence across all real estate developments.",
   },
   {
-    name: "Engr. Md. Matiur Rahman",
-    role: "Director of Structural Engineering & Compliance",
-    imageUrl: "/images/team/matiur-rahman.png",
-    bio: "Specializes in earthquake-resistant structural designs and RAJUK regulatory compliance, ensuring every construction satisfies local building codes.",
+    name: "Shahrier Sajib",
+    role: "Project Engineer",
+    imageUrl: "/images/team/Shahrier Sajib.png",
+    bio: "Project Engineer responsible for on-site structural execution, engineering design coordination, project management, and quality compliance across developments.",
   },
   {
     name: "Md. Shakil Ahamed",

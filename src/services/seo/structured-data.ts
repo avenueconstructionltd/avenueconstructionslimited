@@ -32,7 +32,7 @@ export function realEstateAgentJsonLd(): JsonLd {
     ],
     url: SITE_URL,
     logo: `${SITE_URL}/images/site_logo.png`,
-    image: `${SITE_URL}/images/properties/project_image_1.jpeg`,
+    image: `${SITE_URL}/images/projects/avenue-ahsan-palace/project_image_1.jpeg`,
     description: SITE_DESCRIPTION,
     email: AUTHOR_EMAIL,
     telephone: AUTHOR_PHONES[0],

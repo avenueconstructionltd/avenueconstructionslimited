@@ -46,7 +46,7 @@ export const HEADQUARTERS_ADDRESS = {
   addressCountry: "BD",
 };
 
-export const OG_IMAGE_PATH = "/images/properties/project_image_1.jpeg";
+export const OG_IMAGE_PATH = "/images/projects/avenue-ahsan-palace/project_image_1.jpeg";
 export const OG_IMAGE_WIDTH = 1200;
 export const OG_IMAGE_HEIGHT = 630;
 

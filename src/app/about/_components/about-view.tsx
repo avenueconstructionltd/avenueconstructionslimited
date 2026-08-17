@@ -255,7 +255,7 @@ export function AboutView() {
               <div className="w-full double-bezel-outer rounded-[2.5rem] overflow-hidden">
                 <div className="double-bezel-inner relative aspect-4/3 lg:aspect-square w-full h-full group">
                   <Image
-                    src="/images/properties/project_image_5.jpeg"
+                    src="/images/projects/avenue-md-heights/project_image_5.jpeg"
                     alt="Atelier Design Philosophy"
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -276,7 +276,7 @@ export function AboutView() {
               <div className="w-full double-bezel-outer rounded-[2.5rem] overflow-hidden order-2 lg:order-1">
                 <div className="double-bezel-inner relative aspect-4/3 lg:aspect-square w-full h-full group">
                   <Image
-                    src="/images/properties/project_image_1.jpeg"
+                    src="/images/projects/avenue-ahsan-palace/project_image_1.jpeg"
                     alt="Why Choose The Atelier"
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
