@@ -62,12 +62,9 @@ export function Credentials() {
       <div className="max-w-7xl mx-auto flex flex-col gap-16">
         {/* Title Block */}
         <div className="max-w-2xl flex flex-col gap-4">
-          <span className="text-[10px] uppercase tracking-[0.25em] font-mono text-accent">
-            Regulatory Compliance
-          </span>
           <h2 className="font-serif text-3xl md:text-5xl uppercase tracking-tight leading-[1.05] text-text-primary">
             Corporate Credentials <br />
-            <span className="italic font-light text-accent">& Compliance</span>
+            <span className="italic font-light text-accent pb-1 inline-block">& Compliance</span>
           </h2>
           <p className="text-xs md:text-sm leading-relaxed text-text-secondary font-light">
             Avenue Constructions Limited operates under complete regulatory

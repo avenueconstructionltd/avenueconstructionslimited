@@ -73,7 +73,7 @@ export function FloatingContact() {
           >
             {/*
               Label lives in normal flex flow (not absolute) so it physically
-              pushes space for itself — it can never overlap the icon.
+              pushes space for itself - it can never overlap the icon.
               Mounts/unmounts cleanly since flexbox reflows the sibling icon.
             */}
             <AnimatePresence>
@@ -101,7 +101,7 @@ export function FloatingContact() {
               )}
             </AnimatePresence>
 
-            {/* Icon button — hover scale only, no idle motion */}
+            {/* Icon button - hover scale only, no idle motion */}
             <motion.a
               suppressHydrationWarning
               href={item.href}

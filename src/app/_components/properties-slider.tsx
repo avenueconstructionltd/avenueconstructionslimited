@@ -82,13 +82,10 @@ export function PropertiesSlider() {
             <div className="flex justify-between items-end">
               <h2 className="font-serif text-3xl md:text-5xl tracking-tight leading-[1.05] text-text-primary uppercase">
                 Signature <br />
-                <span className="italic font-light text-accent">
+                <span className="italic font-light text-accent pb-1 inline-block">
                   Residences
                 </span>
               </h2>
-              <div className="text-[10px] uppercase tracking-[0.2em] text-text-secondary hidden md:block">
-                Scroll to explore portfolio
-              </div>
             </div>
           </motion.div>
 

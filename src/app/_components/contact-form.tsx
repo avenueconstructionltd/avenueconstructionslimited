@@ -289,7 +289,7 @@ export function ContactForm({ embedded = false }: ContactFormProps) {
           </span>
           <h2 className="font-serif text-3xl md:text-5xl tracking-tight leading-[1.05] text-text-primary uppercase">
             Begin Your <br />
-            <span className="italic font-light text-accent">Journey</span>
+            <span className="italic font-light text-accent pb-1 inline-block">Journey</span>
           </h2>
           <p className="text-xs md:text-sm leading-relaxed text-text-secondary max-w-[30ch] font-light">
             Contact our private advisory team to coordinate a viewing or

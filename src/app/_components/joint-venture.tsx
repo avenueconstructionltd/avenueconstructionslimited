@@ -36,12 +36,9 @@ export function JointVenture() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
         {/* Left Column: Call to Action */}
         <div className="lg:col-span-5 flex flex-col gap-8">
-          <span className="text-[10px] uppercase tracking-[0.25em] font-mono text-accent">
-            Landowner Partnerships
-          </span>
           <h2 className="font-serif text-3xl md:text-5xl uppercase tracking-tight leading-[1.05] text-canvas">
             Joint Venture <br />
-            <span className="italic font-light text-accent">Land Share</span>
+            <span className="italic font-light text-accent pb-1 inline-block">Land Share</span>
           </h2>
           <p className="text-xs md:text-sm leading-relaxed text-canvas/78 font-light max-w-md">
             Do you own a prime plot in Gulshan, Banani, Baridhara, or

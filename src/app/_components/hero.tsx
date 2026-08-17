@@ -72,7 +72,7 @@ export function Hero() {
           className="font-serif text-[clamp(2.7rem,8vw,6rem)] uppercase tracking-tight leading-[0.95] text-canvas"
         >
           Setting Standards <br />
-          <span className="italic font-light leading-[1.1] text-accent">
+          <span className="italic font-light leading-[1.1] text-accent pb-1 inline-block">
             in Luxury Living
           </span>
         </motion.h1>

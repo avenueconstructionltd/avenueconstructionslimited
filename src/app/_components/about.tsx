@@ -10,7 +10,7 @@ import {
   type MotionValue,
 } from "motion/react";
 
-// Depth-scaled parallax per pillar — matches the z-axis cascade (mt-10, mt-20):
+// Depth-scaled parallax per pillar - matches the z-axis cascade (mt-10, mt-20):
 // the visually "further back" pillar travels further, so motion reinforces layout.
 const PILLAR_PARALLAX_RANGE: [string, string][] = [
   ["-5%", "5%"],
@@ -91,18 +91,9 @@ export function About() {
       className="relative w-full pt-28 md:pt-40 pb-4 md:pb-6 px-4 sm:px-6 md:px-12 bg-canvas z-10 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
-        {/* Section Header — asymmetric left alignment */}
+        {/* Section Header - asymmetric left alignment */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end mb-20 md:mb-28">
           <div className="lg:col-span-7 flex flex-col gap-6">
-            <motion.span
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6 }}
-              className="text-[9px] uppercase tracking-[0.25em] font-mono text-accent"
-            >
-              Manifesto
-            </motion.span>
             <h2 className="font-serif text-[clamp(2rem,5vw,3.8rem)] tracking-tight leading-[1.02] text-text-primary uppercase max-w-[16ch]">
               <span className="block overflow-hidden py-1">
                 <motion.span
@@ -140,7 +131,7 @@ export function About() {
                     delay: 0.16,
                     ease: [0.32, 0.72, 0, 1],
                   }}
-                  className="block italic font-light text-accent"
+                  className="block italic font-light text-accent pb-1"
                 >
                   and light
                 </motion.span>
@@ -169,7 +160,7 @@ export function About() {
           </motion.div>
         </div>
 
-        {/* Three Pillars — Z-Axis Cascade on desktop, stack on mobile */}
+        {/* Three Pillars - Z-Axis Cascade on desktop, stack on mobile */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-10 md:relative">
           {PILLARS.map((pillar, index) => (
             <motion.div

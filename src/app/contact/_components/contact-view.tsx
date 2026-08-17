@@ -92,7 +92,7 @@ export function ContactView() {
             </div>
           </div>
 
-          {/* Discretion band — contrasting dark block for premium close */}
+          {/* Discretion band - contrasting dark block for premium close */}
           <div className="relative overflow-hidden rounded-[2.5rem] bg-text-primary text-canvas px-8 md:px-16 py-16 md:py-20 grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
             <div className="md:col-span-2 flex flex-col gap-5">
               <span className="text-[10px] uppercase tracking-[0.25em] font-mono text-accent">

@@ -14,12 +14,9 @@ export function Team() {
       <div className="max-w-7xl mx-auto flex flex-col gap-12">
         {/* Section Header */}
         <div className="flex flex-col gap-4">
-          <span className="text-[10px] uppercase tracking-[0.2em] font-mono text-accent">
-            Our Leadership
-          </span>
           <h2 className="font-serif text-3xl md:text-5xl tracking-tight leading-[1.05] text-text-primary uppercase">
             The Minds Behind <br />
-            <span className="italic font-light text-accent">
+            <span className="italic font-light text-accent pb-1 inline-block">
               the Structures
             </span>
           </h2>

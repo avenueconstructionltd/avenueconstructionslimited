@@ -431,7 +431,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             </div>
           </section>
 
-          {/* Photo Grid Section — Visual Theater */}
+          {/* Photo Grid Section - Visual Theater */}
           {property.gallery && property.gallery.length > 0 && (
             <section className="flex flex-col gap-12 border-t border-black/5 pt-16">
               <div className="flex flex-col items-center justify-center text-center">

@@ -36,14 +36,11 @@ export function Services() {
             transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
             className="flex flex-col gap-6"
           >
-            <span className="text-[10px] uppercase tracking-[0.2em] font-mono text-accent">
-              Capabilities
-            </span>
             <h2 className="font-serif text-3xl md:text-5xl tracking-tight leading-[1.05] text-text-primary uppercase">
               <span className="block overflow-hidden pb-1">
                 Bespoke Solutions
               </span>
-              <span className="block italic font-light text-accent leading-[1.1]">
+              <span className="block italic font-light text-accent leading-[1.1] pb-1">
                 for Collectors
               </span>
             </h2>

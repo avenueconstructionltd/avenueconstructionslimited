@@ -253,7 +253,7 @@ export const PROPERTIES: Property[] = [
     narrative: [
       "Avenue Dream represents our commitment to developing modern luxury within Dhaka's key transit networks. Situated on Ulon Road in Rampura, this completed landmark introduces refined urban family living.",
       "The building features cross-ventilated units that maintain comfortable indoor temperatures even during peak summer. Generous ceiling heights and open-plan kitchen-living layouts make each unit feel exceptionally spacious.",
-      "Using our signature material selections—including robust sanitary ware, high-grade security doors, and low-maintenance facades—Avenue Dream stands as an icon of Rampura.",
+      "Using our signature material selections, including robust sanitary ware, high-grade security doors, and low-maintenance facades, Avenue Dream stands as an icon of Rampura.",
     ],
     image: "/images/projects/avenue-dream/upcoming_avenue_dream.png",
     gallery: [

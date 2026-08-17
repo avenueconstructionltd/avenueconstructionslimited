@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "motion/react";
 import { MagneticButton } from "@/components/shared/magnetic-button";
 
 const DHAKA_LOCATIONS = [
