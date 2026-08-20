@@ -1,220 +1,205 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useReducedMotion,
-  type MotionValue,
-} from "motion/react";
+import Link from "next/link";
+import { useRef, useEffect, useState } from "react";
+import { motion, useInView } from "motion/react";
 
-// Depth-scaled parallax per pillar - matches the z-axis cascade (mt-10, mt-20):
-// the visually "further back" pillar travels further, so motion reinforces layout.
-const PILLAR_PARALLAX_RANGE: [string, string][] = [
-  ["-5%", "5%"],
-  ["-8%", "8%"],
-  ["-10%", "10%"],
+const STATS = [
+  { value: 6, suffix: "+", label: "Projects Delivered" },
+  { value: 100, suffix: "%", label: "RAJUK Sanctioned" },
+  { value: 12, suffix: "+", label: "Years Experience" },
+  { value: 9, suffix: "", label: "Max G+ Floors" },
 ];
-
-function PillarImage({
-  scrollYProgress,
-  index,
-  image,
-  label,
-}: {
-  scrollYProgress: MotionValue<number>;
-  index: number;
-  image: string;
-  label: string;
-}) {
-  const prefersReducedMotion = useReducedMotion();
-  const imgY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    prefersReducedMotion ? ["0%", "0%"] : PILLAR_PARALLAX_RANGE[index],
-  );
-
-  return (
-    <motion.div
-      style={{ y: imgY }}
-      className="absolute inset-0 w-full h-[130%] top-[-15%]"
-    >
-      <Image
-        src={image}
-        alt={label}
-        fill
-        sizes="(max-width: 768px) 100vw, 33vw"
-        className="object-cover transition-transform duration-700 group-hover:scale-105"
-      />
-    </motion.div>
-  );
-}
 
 const PILLARS = [
   {
-    num: "01",
-    label: "Material Honesty",
+    label: "Single-Unit Floor Privacy",
     detail:
-      "Fair-faced concrete, teak wood louvers, and structural glazing age into monuments.",
+      "One exclusive residence per floor with dedicated private lift access, full acoustic isolation, and 360-degree daylight across living zones.",
     image: "/images/projects/avenue-ahsan-palace/project_image_1.jpeg",
   },
   {
-    num: "02",
-    label: "Geometric Silence",
+    label: "Certified Structural Longevity",
     detail:
-      "Strict structural grids balance mass, cantilever, and negative void.",
+      "Engineered with BSRM 500W rebar, Holcim cement, stone chips casting, and complete IEB-stamped structural load calculations.",
     image: "/images/projects/avenue-md-heights/project_image_5.jpeg",
   },
   {
-    num: "03",
-    label: "Atmospheric Light",
+    label: "Prime Dhaka Enclaves",
     detail:
-      "Solar paths sculpted into deep overhangs, skylights, and shadow planes.",
+      "Freehold plots hand-selected in Bashundhara R/A (Block E, near Evercare), Aftabnagar Hatirjheel Link, Gulshan, and Banani.",
     image: "/images/projects/avenue-md-heights/project_image_8.jpeg",
   },
 ];
 
-export function About() {
-  const containerRef = useRef<HTMLElement>(null);
+function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
+  useEffect(() => {
+    if (!isInView) return;
+
+    let current = 0;
+    const step = Math.max(1, Math.floor(value / 40));
+    const interval = setInterval(() => {
+      current += step;
+      if (current >= value) {
+        setCount(value);
+        clearInterval(interval);
+      } else {
+        setCount(current);
+      }
+    }, 30);
+
+    return () => clearInterval(interval);
+  }, [isInView, value]);
 
   return (
+    <span ref={ref} className="tabular-nums">
+      {count}{suffix}
+    </span>
+  );
+}
+
+export function About() {
+  return (
     <section
-      ref={containerRef}
       id="about"
-      className="relative w-full pt-28 md:pt-40 pb-4 md:pb-6 px-4 sm:px-6 md:px-12 bg-canvas z-10 overflow-hidden"
+      className="relative z-10 w-full py-24 md:py-32 px-6 sm:px-8 md:px-12 bg-paper-white text-graphite-ink"
     >
-      <div className="max-w-7xl mx-auto">
-        {/* Section Header - asymmetric left alignment */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end mb-20 md:mb-28">
-          <div className="lg:col-span-7 flex flex-col gap-6">
-            <h2 className="font-serif text-[clamp(2rem,5vw,3.8rem)] tracking-tight leading-[1.02] text-text-primary uppercase max-w-[16ch]">
-              <span className="block overflow-hidden py-1">
-                <motion.span
-                  initial={{ y: "100%" }}
-                  whileInView={{ y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
-                  className="block"
-                >
-                  A legacy written
-                </motion.span>
+      <div className="max-w-7xl mx-auto flex flex-col gap-16 md:gap-24">
+        {/* Section Header: 2-Column Split */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          {/* Left Column: Brand Story with vertical accent */}
+          <div className="lg:col-span-6 flex flex-col gap-5 relative">
+            <div className="absolute left-0 top-0 bottom-0 w-px bg-linear-to-b from-champagne via-champagne/30 to-transparent hidden lg:block" />
+            <div className="lg:pl-6">
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-champagne font-semibold">
+                About Avenue Constructions
               </span>
-              <span className="block overflow-hidden py-1">
-                <motion.span
-                  initial={{ y: "100%" }}
-                  whileInView={{ y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{
-                    duration: 0.8,
-                    delay: 0.08,
-                    ease: [0.32, 0.72, 0, 1],
-                  }}
-                  className="block"
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
+                className="font-serif text-[clamp(2.2rem,4vw,3.2rem)] leading-[1.12] tracking-[-0.015em] text-graphite-ink font-medium mt-3"
+              >
+                Crafting private single-unit residences with structural permanence in Dhaka.
+              </motion.h2>
+
+              <p className="text-body leading-[1.7] text-pebble font-normal pt-4">
+                Headquartered in Purana Paltan, Dhaka, Avenue Constructions Limited is an institutional-grade developer of private single-unit residences. We build homes for discerning families who value total privacy, generous spatial volume, and permanent structural integrity.
+              </p>
+
+              <div className="pt-5">
+                <Link
+                  href="/about"
+                  className="group pill-btn inline-flex items-center gap-3 pl-6 pr-2.5 py-3 text-xs uppercase font-mono tracking-wider bg-obsidian text-paper-white hover:bg-black active:scale-[0.98] transition-all shadow-sm"
                 >
-                  in concrete
-                </motion.span>
-              </span>
-              <span className="block overflow-hidden py-1">
-                <motion.span
-                  initial={{ y: "100%" }}
-                  whileInView={{ y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{
-                    duration: 0.8,
-                    delay: 0.16,
-                    ease: [0.32, 0.72, 0, 1],
-                  }}
-                  className="block italic font-light text-accent pb-1"
-                >
-                  and light
-                </motion.span>
-              </span>
-            </h2>
+                  <span>Our Story &amp; Philosophy</span>
+                  <span className="flex size-6 items-center justify-center rounded-full bg-paper-white/15 text-[11px] transition-transform duration-300 group-hover:translate-x-0.5">
+                    &rarr;
+                  </span>
+                </Link>
+              </div>
+            </div>
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="lg:col-span-5 flex flex-col gap-4"
-          >
-            <p className="text-sm md:text-base leading-relaxed text-text-secondary font-light">
-              Founded in Dhaka, Bangladesh, Avenue Construction Limited was born
-              from a desire to escape the patterns of commercial real estate. We
-              do not construct buildings; we orchestrate light, aggregate raw
-              materials, and draft silence into form.
-            </p>
-            <p className="text-xs leading-relaxed text-text-secondary/70 font-light">
-              Every commission begins with a site analysis and solar orientation
-              study. We believe that natural light is the true building
-              material, and that architecture at its highest is an act of
-              spatial poetry.
-            </p>
-          </motion.div>
+
+          {/* Right Column: Animated Counter Stats */}
+          <div className="lg:col-span-6 grid grid-cols-2 gap-6">
+            {STATS.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.1,
+                  ease: [0.32, 0.72, 0, 1],
+                }}
+                className="p-6 rounded-2xl border border-stone bg-linen-cream flex flex-col gap-2 shadow-2xs"
+              >
+                <span className="font-serif text-[clamp(2.4rem,5vw,3.6rem)] font-medium text-graphite-ink leading-none">
+                  <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                </span>
+                <span className="font-mono text-xs uppercase tracking-wider text-pebble">
+                  {stat.label}
+                </span>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
-        {/* Three Pillars - Z-Axis Cascade on desktop, stack on mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-10 md:relative">
+        {/* Divider */}
+        <div className="section-divider mx-auto" />
+
+        {/* Architectural Masterwork Video Feature */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
+          className="relative w-full aspect-video rounded-3xl sm:rounded-[36px] overflow-hidden shadow-2xl border border-stone bg-black group"
+        >
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/IIz5zEPHBHk?autoplay=1&mute=1&start=6&controls=0&loop=1&playlist=IIz5zEPHBHk&playsinline=1&rel=0&showinfo=0&iv_load_policy=3&modestbranding=1&disablekb=1"
+            title="Avenue Ahsan Palace at Bashundhara, Dhaka"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            className="absolute top-[-15%] left-[-15%] w-[130%] h-[130%] object-cover border-0 pointer-events-none"
+          />
+          <div className="absolute inset-0 z-10 bg-linear-to-t from-black/80 via-transparent to-black/20 pointer-events-auto" />
+          <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 z-20 text-paper-white pointer-events-none drop-shadow-md">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-champagne block mb-1">
+              Architectural Handover Showcase
+            </span>
+            <p className="font-serif text-xl sm:text-2xl md:text-3xl font-medium leading-snug">
+              Avenue Ahsan Palace &middot; Bashundhara R/A
+            </p>
+          </div>
+        </motion.div>
+
+        {/* The 3 Core Architectural Pillars */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-start pt-4">
           {PILLARS.map((pillar, index) => (
             <motion.div
-              key={pillar.num}
-              initial={{ opacity: 0, y: 40 }}
+              key={pillar.label}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
+              viewport={{ once: true, margin: "-40px" }}
               transition={{
-                duration: 0.8,
+                duration: 0.7,
                 delay: index * 0.12,
                 ease: [0.32, 0.72, 0, 1],
               }}
-              className={`double-bezel-outer md:relative ${
-                index === 1 ? "md:mt-10" : ""
-              } ${index === 2 ? "md:mt-20" : ""}`}
+              className="double-bezel-outer group"
             >
-              <div className="double-bezel-inner flex flex-col min-h-95 overflow-hidden group">
-                <div
-                  id={index === 2 ? "about-morph-source" : undefined}
-                  className="relative aspect-4/3 w-full overflow-hidden"
-                >
-                  <PillarImage
-                    scrollYProgress={scrollYProgress}
-                    index={index}
-                    image={pillar.image}
-                    label={pillar.label}
+              <div className="double-bezel-inner flex flex-col min-h-95 justify-between p-2 bg-linen-cream">
+                <div className="relative aspect-4/3 w-full rounded-2xl overflow-hidden bg-stone">
+                  <Image
+                    src={pillar.image}
+                    alt={pillar.label}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-700 ease-premium-in-out group-hover:scale-105"
                   />
                 </div>
-                <div className="p-7 md:p-8 flex flex-col justify-between grow bg-canvas">
-                  <span className="font-mono text-[10px] text-accent">
-                    [{pillar.num}]
-                  </span>
-                  <div className="flex flex-col gap-2 mt-4">
-                    <h3 className="font-serif text-xl md:text-2xl uppercase tracking-wider text-text-primary">
-                      {pillar.label}
-                    </h3>
-                    <p className="text-[11px] md:text-xs text-text-secondary leading-relaxed font-light">
-                      {pillar.detail}
-                    </p>
-                  </div>
+                <div className="p-5 sm:p-6 flex flex-col gap-3">
+                  <h3 className="font-serif text-2xl text-graphite-ink font-medium">
+                    {pillar.label}
+                  </h3>
+                  <p className="text-[14px] leading-[1.6] text-pebble font-normal">
+                    {pillar.detail}
+                  </p>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Hairline divider */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 1.4, ease: [0.32, 0.72, 0, 1] }}
-          className="w-16 h-px bg-accent/30 mt-8 origin-left"
-        />
       </div>
     </section>
   );

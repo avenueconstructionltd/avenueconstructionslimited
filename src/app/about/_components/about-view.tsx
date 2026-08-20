@@ -49,7 +49,7 @@ export function AboutView() {
                 transition={{ duration: 0.8, delay: 0.15 }}
                 className="text-xs md:text-sm leading-relaxed text-text-secondary max-w-[50ch] font-light"
               >
-                Founded in Dhaka in 2018, Avenue Construction Limited was born
+                Founded in Dhaka in 2018, Avenue Constructions Limited was born
                 from a desire to escape the generic patterns of commercial real
                 estate. We do not construct buildings; we orchestrate light,
                 aggregate raw materials, and draft silence.

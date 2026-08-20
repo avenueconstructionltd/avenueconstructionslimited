@@ -10,7 +10,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: "Golam Rosul",
     role: "Managing Director",
     imageUrl: "/images/team/golam-rosul.png",
-    bio: "Managing Director leading Avenue Construction Limited with strategic vision, corporate governance, and commitment to architectural excellence across all real estate developments.",
+    bio: "Managing Director leading Avenue Constructions Limited with strategic vision, corporate governance, and commitment to architectural excellence across all real estate developments.",
   },
   {
     name: "Shahrier Sajib",

@@ -1,226 +1,261 @@
-# Apple — Style Reference
-> white room with a single blue switch.
+# Wealthsimple — Style Reference
 
-**Theme:** light
+> Cashmere-lined vault with gallery lighting
 
-Apple's design language is a study in restraint: near-white canvas, generous breathing room, and one vivid blue accent that makes every action feel deliberate. Typography is the primary voice — SF Pro set with negative tracking that tightens as size grows, giving headlines architectural clarity without weight. The product IS the design: large product photography and lifestyle imagery dominate, while chrome recedes into thin borders, ghost navigation, and hairline rules. Sections alternate on a light gray canvas with full-bleed color washes for promotional blocks, creating rhythm through scale shifts rather than decoration.
+**Theme:** mixed
+
+Wealthsimple operates as an editorial boutique masquerading as a fintech: a warm, near-monochrome canvas of paper-cream and graphite, where large Tiempos serif display type shares the page with a quiet geometric sans for body and UI. The signature is the juxtaposition — a fashion-magazine serif headline sitting beside pill-shaped dark buttons, a hero that swaps to a warm bronze-dark field to stage a sculptural 3D form, and illustrations that read as gallery objects rather than product screenshots. Color is almost entirely suppressed in chrome; warmth comes from the off-white stack (#fcfcfc → #faf8f5 → #e4e2e1) rather than from accents. Components stay low and weightless: hairline dividers, 100px-soft-rounded cards, pill buttons, no drop shadows, no gradients. Density is comfortable with long reading lines and generous 48px section gaps — the design trusts typography and whitespace to do the persuading.
 
 ## Tokens — Colors
 
-| Name | Value | Token | Role |
-|------|-------|-------|------|
-| Apple Blue | `#0071e3` | `--color-apple-blue` | Filled action buttons, selected states — the only chromatic interactive color, used sparingly so each appearance carries weight |
-| Link Blue | `#0066cc` | `--color-link-blue` | Outlined action borders, inline links — deeper saturation than Apple Blue, used where a filled pill would be too loud |
-| Signal Blue | `#2997ff` | `--color-signal-blue` | Decorative borders, image outlines, icon strokes — the lightest blue in the system, used for atmospheric emphasis rather than interaction |
-| Carbon | `#1d1d1f` | `--color-carbon` | Primary text, heading borders, nav rules, card borders — the dominant ink color, near-black with a whisper of warmth |
-| Frost | `#f5f5f7` | `--color-frost` | Page canvas, body backgrounds, footer surface — the signature Apple light gray, slightly cooler than pure white |
-| Ice | `#f4f8fb` | `--color-ice` | Elevated surface washes, subtle fills, button text on dark backgrounds — barely-blue tint that lifts a section without declaring it |
-| Smoke | `#333333` | `--color-smoke` | Secondary text, nav fills, button borders — the workhorse neutral for borders and icons that need more presence than mid-gray |
-| Graphite | `#474747` | `--color-graphite` | Nav text, nav borders, link borders — sits between Carbon and Smoke for tertiary hierarchy |
-| Ash | `#707070` | `--color-ash` | Footer text, list borders, nav borders, muted body text — the mid-gray for content that should be present but quiet |
-| Mist | `#858585` | `--color-mist` | Body borders, icon strokes, button borders — the lightest functional gray, for hairline rules on light surfaces |
-| Onyx | `#000000` | `--color-onyx` | Heading borders, nav borders, dark image backgrounds — true black for maximum contrast in promotional and heading contexts |
-| Pebble | `#e2e2e5` | `--color-pebble` | Button background fills, disabled surfaces — the only near-white surface that is deliberately grayer than the canvas |
+| Name         | Value     | Token                  | Role                                                                                                                                                                                    |
+| ------------ | --------- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Graphite Ink | `#32302f` | `--color-graphite-ink` | Supporting neutral for secondary UI, dividers, and muted labels. Do not promote it to the primary CTA color                                                                             |
+| Paper White  | `#fcfcfc` | `--color-paper-white`  | Default page canvas, card surfaces, button text on dark fills — the brightest neutral, used for main reading surfaces                                                                   |
+| Linen Cream  | `#faf8f5` | `--color-linen-cream`  | Warm alternate section background, hero warm-tones, subtle washes — gives the page its boutique warmth and distinguishes sections from flat white                                       |
+| Fog Veil     | `#f1f0f0` | `--color-fog-veil`     | Quiet elevated surfaces, subtle hover washes, soft surface tints for inset regions                                                                                                      |
+| Stone        | `#e4e2e1` | `--color-stone`        | Hairline borders, input outlines, section dividers, nav-rule lines — the workhorse neutral for structural separation                                                                    |
+| Pebble       | `#686664` | `--color-pebble`       | Secondary/captive text, link body, helper copy — keeps muted text inside the warm-grey family instead of dipping into cool slate                                                        |
+| Onyx         | `#000000` | `--color-onyx`         | Reserved for SVG icon fills and a few crisp borders where true black is needed for contrast on warm-cream surfaces                                                                      |
+| Charcoal     | `#09090a` | `--color-charcoal`     | Dark supporting neutral for text, icons, and strong contrast. Do not promote it to the primary CTA color                                                                                |
+| Bronze Field | `#3a3525` | `--color-bronze-field` | Hero/feature-block full-bleed background — a warm dark khaki that stages sculptural 3D illustrations without going full-black, maintaining the boutique-warm axis even in dark sections |
 
 ## Tokens — Typography
 
-### SF Pro Display — Display headlines and large feature text — sizes 40px+ use the display cut for tighter aperture and stronger negative tracking; 700 reserved for promotional lockups, 400 for editorial product names · `--font-sf-pro-display`
-- **Substitute:** Inter, system-ui
-- **Weights:** 400, 600, 700
-- **Sizes:** 21px, 28px, 40px, 56px
-- **Line height:** 1.07, 1.10, 1.14, 1.19
-- **Letter spacing:** -0.005em at 21px, 0.007em at 28px, 0.011em at 40px+
-- **OpenType features:** `"numr"`
-- **Role:** Display headlines and large feature text — sizes 40px+ use the display cut for tighter aperture and stronger negative tracking; 700 reserved for promotional lockups, 400 for editorial product names
+### Tiempos — Display and editorial heading serif — used at 56–84px for hero and section titles, 36px for sub-section heads, and 14–18px for emphasis lead-ins. Tiempos is the soul of the brand: a contemporary text serif with strong terminals that brings a Kinfolk-magazine / art-book quality to a fintech. The 500 weight is reserved for the largest display sizes where extra weight balances the tight tracking. · `--font-tiempos`
 
-### SF Pro Text — Body, navigation, buttons, subheads — the working typeface; 400 for body copy, 300 for subheads and refined labels, 600 for nav items and button text; negative tracking tightens proportionally with size (-0.022em at 12px down to -0.01em at 44px) · `--font-sf-pro-text`
-- **Substitute:** Inter, system-ui
-- **Weights:** 300, 400, 600
-- **Sizes:** 12px, 14px, 17px, 18px, 24px, 26px, 34px, 44px
-- **Line height:** 1.18, 1.24, 1.29, 1.33, 1.47, 1.50, 2.12, 2.41
-- **Letter spacing:** -0.022em at 12px, -0.016em at 17px, -0.011em at 24px, -0.01em at 44px
-- **Role:** Body, navigation, buttons, subheads — the working typeface; 400 for body copy, 300 for subheads and refined labels, 600 for nav items and button text; negative tracking tightens proportionally with size (-0.022em at 12px down to -0.01em at 44px)
+- **Substitute:** Source Serif 4, Lora, or PT Serif
+- **Weights:** 400, 500
+- **Sizes:** 14, 16, 18, 36, 56, 64, 72, 84
+- **Line height:** 1.08, 1.16, 1.24
+- **Letter spacing:** -0.01em (slightly negative on display; reads as composed and editorial, not loose)
+- **Role:** Display and editorial heading serif — used at 56–84px for hero and section titles, 36px for sub-section heads, and 14–18px for emphasis lead-ins. Tiempos is the soul of the brand: a contemporary text serif with strong terminals that brings a Kinfolk-magazine / art-book quality to a fintech. The 500 weight is reserved for the largest display sizes where extra weight balances the tight tracking.
+
+### The Future — Primary UI and body sans — a clean geometric workhorse used for paragraph copy, nav links, card titles, input fields, and small UI labels at 14–20px. The 500 weight appears in nav and a few mid-size emphasis lines. The near-zero letter-spacing (0.005em) keeps running text tight and un-fussy. It is the calm counterpart to Tiempos's editorial display. · `--font-the-future`
+
+- **Substitute:** Inter, Söhne, or GT America
+- **Weights:** 400, 500
+- **Sizes:** 14, 16, 18, 20, 56, 58
+- **Line height:** 1.00, 1.16, 1.40
+- **Letter spacing:** 0.0050em
+- **Role:** Primary UI and body sans — a clean geometric workhorse used for paragraph copy, nav links, card titles, input fields, and small UI labels at 14–20px. The 500 weight appears in nav and a few mid-size emphasis lines. The near-zero letter-spacing (0.005em) keeps running text tight and un-fussy. It is the calm counterpart to Tiempos's editorial display.
+
+### Wealthsimple Sans — Tracked-out utility face for buttons, nav controls, and selected UI labels — used at 16px with 0.025em letter-spacing so that interactive elements read as distinct, almost stamp-like marks. The wide tracking pushes these elements forward visually without needing weight, reinforcing the pill-button rhythm across the system. · `--font-wealthsimple-sans`
+
+- **Substitute:** Inter with letter-spacing 0.025em, or Söhne Buch
+- **Weights:** 400
+- **Sizes:** 16
+- **Line height:** 1.20
+- **Letter spacing:** 0.025em (wide-tracked, the brand's interactive-element signature)
+- **Role:** Tracked-out utility face for buttons, nav controls, and selected UI labels — used at 16px with 0.025em letter-spacing so that interactive elements read as distinct, almost stamp-like marks. The wide tracking pushes these elements forward visually without needing weight, reinforcing the pill-button rhythm across the system.
 
 ### Type Scale
 
-| Role | Size | Line Height | Letter Spacing | Token |
-|------|------|-------------|----------------|-------|
-| caption | 12px | 1.33 | -0.264px | `--text-caption` |
-| body-sm | 14px | 1.29 | -0.224px | `--text-body-sm` |
-| body | 17px | 1.47 | -0.272px | `--text-body` |
-| subheading | 21px | 1.24 | -0.105px | `--text-subheading` |
-| heading-sm | 28px | 1.18 | 0.196px | `--text-heading-sm` |
-| heading | 40px | 1.14 | 0.44px | `--text-heading` |
-| heading-lg | 44px | 1.18 | -0.44px | `--text-heading-lg` |
-| display | 56px | 1.07 | 0.616px | `--text-display` |
+| Role       | Size | Line Height | Letter Spacing | Token               |
+| ---------- | ---- | ----------- | -------------- | ------------------- |
+| caption    | 14px | 1.4         | 0.07px         | `--text-caption`    |
+| body       | 16px | 1.5         | —              | `--text-body`       |
+| subheading | 18px | 1.4         | —              | `--text-subheading` |
+| heading-sm | 20px | 1.3         | —              | `--text-heading-sm` |
+| heading    | 36px | 1.2         | -0.36px        | `--text-heading`    |
+| heading-lg | 56px | 1.1         | -0.56px        | `--text-heading-lg` |
+| display    | 84px | 1.08        | -0.84px        | `--text-display`    |
 
 ## Tokens — Spacing & Shapes
-
-**Base unit:** 4px
 
 **Density:** comfortable
 
 ### Spacing Scale
 
-| Name | Value | Token |
-|------|-------|-------|
-| 4 | 4px | `--spacing-4` |
-| 8 | 8px | `--spacing-8` |
-| 12 | 12px | `--spacing-12` |
-| 16 | 16px | `--spacing-16` |
-| 20 | 20px | `--spacing-20` |
-| 24 | 24px | `--spacing-24` |
-| 40 | 40px | `--spacing-40` |
-| 48 | 48px | `--spacing-48` |
-| 56 | 56px | `--spacing-56` |
+| Name | Value | Token           |
+| ---- | ----- | --------------- |
+| 4    | 4px   | `--spacing-4`   |
+| 6    | 6px   | `--spacing-6`   |
+| 8    | 8px   | `--spacing-8`   |
+| 12   | 12px  | `--spacing-12`  |
+| 15   | 15px  | `--spacing-15`  |
+| 16   | 16px  | `--spacing-16`  |
+| 20   | 20px  | `--spacing-20`  |
+| 24   | 24px  | `--spacing-24`  |
+| 32   | 32px  | `--spacing-32`  |
+| 40   | 40px  | `--spacing-40`  |
+| 48   | 48px  | `--spacing-48`  |
+| 64   | 64px  | `--spacing-64`  |
+| 73   | 73px  | `--spacing-73`  |
+| 80   | 80px  | `--spacing-80`  |
+| 128  | 128px | `--spacing-128` |
+| 160  | 160px | `--spacing-160` |
 
 ### Border Radius
 
-| Element | Value |
-|---------|-------|
-| tags | 980px |
-| cards | 8px |
-| images | 8px |
-| inputs | 8px |
-| buttons | 980px |
-
-### Shadows
-
-| Name | Value | Token |
-|------|-------|-------|
-| xl | `rgba(0, 0, 0, 0.22) 3px 5px 30px 0px` | `--shadow-xl` |
+| Element       | Value  |
+| ------------- | ------ |
+| cards         | 100px  |
+| badges        | 1600px |
+| inputs        | 100px  |
+| buttons       | 1600px |
+| smallElements | 12px   |
 
 ### Layout
 
-- **Page max-width:** 1440px
-- **Section gap:** 64px
-- **Card padding:** 24px
-- **Element gap:** 12px
+- **Page max-width:** 1200px
+- **Section gap:** 80px
+- **Card padding:** 32px
+- **Element gap:** 16px
 
 ## Components
 
-### Filled Pill Button
-**Role:** Primary action — Buy, Learn more, Shop
+### Top Navigation Bar
 
-980px border-radius, #0071e3 background, white (#f4f8fb) text at 17px weight 400, padding 11px 15px, no border, no shadow. The single filled interactive element in the system.
+**Role:** Site header with segmented product switcher, primary nav, and auth CTAs
 
-### Outlined Pill Button
-**Role:** Secondary action — pair with filled primary
+Sits on Paper White (#fcfcfc). A thin 12px-tall row at the very top carries small 12–14px The Future text reading 'Personal | Business' (segmented, left-aligned). Below it the main bar holds the Wealthsimple wordmark (Graphite Ink #32302f, The Future 500), a horizontal nav of links (What we offer, Benefits, Learn, Support — each in The Future 400, 16px), and on the right two pill buttons: 'Log in' as an outlined pill (Graphite border, transparent fill) and 'Get started' as a filled pill (Charcoal #09090a fill, Paper White text, 1600px radius). No drop shadow; a hairline Stone (#e4e2e1) rule may sit at the bottom of the bar.
 
-980px border-radius, 1px solid #0066cc border, #0066cc text at 17px weight 400, transparent fill, padding 11px 15px. Used as the second action next to a filled blue button.
+### Filled Dark Pill Button (Primary)
 
-### Ghost Link
-**Role:** Tertiary action or inline text link
+**Role:** Primary CTA — 'Get started', 'Start my return', 'Start trading'
 
-No background, no border, #0066cc text at inherit size, underline on hover only. Weight 400, same family as body.
+Pill-shaped (1600px radius), Charcoal #09090a or Graphite #32302f fill, Paper White #fcfcfc text. Label set in Wealthsimple Sans 400, 16px, 0.025em letter-spacing. Vertical padding ~12px, horizontal padding 24–32px. No shadow. The dark pill is the dominant interactive mark across the system; it should always be the loudest button on its surface.
 
-### Global Nav Bar
-**Role:** Top-level site navigation
+### Outlined Pill Button (Secondary)
 
-Full-width, #1d1d1f or white background, 8px vertical padding, horizontal links at 12px weight 400 in #1d1d1f or #f5f5f7. Apple logo on left, product categories centered, search and bag icons on right. 1px hairline bottom border in #1d1d1f or #333.
+**Role:** Secondary CTA — 'Learn more', 'Log in'
 
-### Sticky Mini-Nav
-**Role:** Product page sub-navigation that pins below global nav
+Pill-shaped (1600px radius), transparent fill, 1px Graphite Ink #32302f border, Graphite text. Same Wealthsimple Sans 16px label and padding as the filled variant. Lives next to the filled button on dark heroes and in the nav bar; never the sole CTA on a section.
 
-White background, product name in 21px weight 600 + colored wordmark, action links at 14px weight 400. 1px bottom border in #d2d2d7.
+### Ghost Pill Button
 
-### Product Hero Section
-**Role:** Full-bleed product showcase
+**Role:** Low-emphasis CTA used on light surfaces, e.g. 'Start trading' in the trading section
 
-#f5f5f7 background, centered product name at 56px weight 600 in #1d1d1f, tagline at 26px weight 300, two action buttons centered below. Large product render fills the section with generous bottom padding.
+Pill-shaped (1600px radius), no visible border, Linen Cream #faf8f5 fill, Graphite Ink #32302f text. Same label sizing. Used when the design wants a single quiet CTA on a light field without competing with the headline serif.
 
-### Feature Banner
-**Role:** Full-bleed promotional or service content
+### Editorial Section Heading (Tiempos Display)
 
-Full-width photographic or color-washed background, overlay text and CTA. Can be dark with white text, or a pastel wash with dark text. No card surface — the image IS the surface.
+**Role:** Hero and section titles
 
-### Service Card Grid
-**Role:** Multi-service promotional row (Apple TV+, Fitness+, Music, Arcade)
+Set in Tiempos 500 at 56–84px, line-height 1.08–1.16, letter-spacing -0.01em, color Graphite Ink #32302f on light surfaces or Paper White on the Bronze Field hero. Often paired with a small The Future eyebrow above (e.g. 'Self-directed Investing', 'Trusted by more than 2M Canadians') in 14–16px, 0.005em tracking, Pebble #686664.
 
-Horizontal scroll or grid of cards, each full-bleed photographic background, 8px radius, white text overlay. Card title 24-28px weight 600, genre label in 12-14px, pill action button (Listen now, Play now, Watch now) at bottom.
+### Bronze Hero Panel
 
-### Typography-Only CTA Block
-**Role:** Compact product call-out within a section
+**Role:** Full-bleed dark feature block hosting 3D sculptural artwork
 
-Centered stack: product name at 40-56px weight 600, one-line descriptor at 21px weight 300, optional italic product variant (e.g. 'iPad air') at 28px in #2997ff. Two pill buttons below, generous vertical breathing room.
+Full-viewport-width section, Bronze Field #3a3525 background, with the editorial heading and supporting paragraph aligned to the left at ~40% width, and a sculptural 3D illustration (twisted paper, draped forms, card stack) floating on the right with soft ambient shadow into a warm-cream floor. The transition from the dark field to a lighter warm wash is handled by a radial fade — no hard edge. Two CTAs sit beneath the headline: filled dark pill primary + outlined pill secondary.
 
-### Footer
-**Role:** Site-wide legal and link directory
+### Light Editorial Section
 
-#f5f5f7 or #1d1d1f background, multi-column link grid at 12px weight 400 in #707070 or #f5f5f7, 1px hairline dividers in #333 or #d2d2d7, fine print at 12px. No card surfaces — flat, typographic, structural.
+**Role:** Standard content section below the hero
 
-### Form Input
-**Role:** Search, email capture, configuration inputs
+Paper White #fcfcfc or Linen Cream #faf8f5 background, max-width 1200px centered. Two-column layout: Tiempos heading + The Future paragraph + single dark-pill CTA on the left (~45% width), 3D illustration or isometric scene on the right. Section vertical padding ~80px. No background, no card chrome — the whitespace and serif type do the work.
 
-8px radius, 1px border in #d2d2d7 or #707070, 14-17px text, #f5f5f7 fill. Focus ring in #0071e3 at 2px.
+### Feature Column with Top Divider
+
+**Role:** Three-column under-section describing product pillars
+
+Three equal columns separated by ~48px gaps. Each column starts with a 1px Stone #e4e2e1 hairline rule at the top, followed by a The Future 500 18–20px headline, then a 14–16px The Future 400 paragraph in Graphite Ink. No background fill, no card — the hairline at the top is the only chrome.
+
+### Eyebrow Tag
+
+**Role:** Small label above display headings, e.g. 'Self-directed Investing'
+
+The Future 400, 14–16px, 0.005em letter-spacing, Pebble #686664 color. Sits 12–16px above the Tiempos heading. Never bold, never uppercase — the muted warmth of the color and tight tracking are the styling.
+
+### Sculptural 3D Illustration
+
+**Role:** Decorative hero and section imagery
+
+Abstract sculptural renders: twisted paper ribbons, draped fabric forms, geometric block compositions in sage green, cream, terracotta, and off-white. Always sit on a warm cream floor with a soft ambient shadow. Rounded, no hard cropping; the illustration reads as a single art object centered in the right half of the layout. Not product UI screenshots.
+
+### Soft Card Surface
+
+**Role:** Optional container for grouped content (e.g. pricing cards, dashboard panels)
+
+Linen Cream #faf8f5 or Paper White #fcfcfc fill, 100px corner radius, 32px padding on all sides, no border, no shadow. The extreme roundness (100px on a small card) is the design's signature softness — it makes even dense product UI feel boutique.
+
+### Text Input
+
+**Role:** Form fields for email, amount, etc.
+
+Transparent or Paper White fill, 1px Stone #e4e2e1 border, 100px radius, The Future 400 16px. Focus state: 1px Graphite Ink #32302f border, no glow. Placeholder text in Pebble #686664. 16px vertical padding.
+
+### Chat Bubble (Bottom-Round)
+
+**Role:** Floating support chat launcher in lower-right corner
+
+A 48px circular Charcoal #09090a button with a Paper White chat-icon glyph inside. No label. Floats 24px from the bottom-right of the viewport. Sits outside the main content flow.
 
 ## Do's and Don'ts
 
 ### Do
-- Use #0071e3 only for filled action buttons and selected/active states — one color, one job.
-- Pair every filled blue button with an outlined blue secondary action, never stack two filled buttons.
-- Set body text at 17px with -0.016em letter-spacing — the negative tracking is what makes Apple type feel precise, not the size alone.
-- Let product photography fill the full viewport width — never constrain hero images to a max-width container.
-- Use 980px border-radius for every interactive button, tag, and pill — the fully rounded shape is non-negotiable.
-- Set section backgrounds to full-bleed #f5f5f7 or a single product color wash — never use card containers inside a section.
-- Weight 300 for subheads and editorial descriptors creates the signature Apple whisper-voice — 400 is for body, 600 is for nav.
+
+- Use Tiempos at 56–84px for all display and section titles with letter-spacing -0.01em — the serif is the brand's editorial signature
+- Use 1600px border-radius on every button, tag, and pill-shaped control — the pill is non-negotiable
+- Use warm neutrals (#fcfcfc, #faf8f5, #e4e2e1, #32302f) and reserve Bronze Field #3a3525 for full-bleed dark feature blocks
+- Pair Tiempos serif headlines with The Future sans body — never set body copy in Tiempos, never set display in The Future
+- Apply 0.025em letter-spacing to every Wealthsimple Sans label inside buttons and nav controls
+- Maintain ~80px section gaps and 32px card padding; let whitespace carry hierarchy instead of borders or shadows
+- Use sculptural 3D illustrations as the only imagery — never stock photography, never product UI screenshots, never flat icons as heroes
 
 ### Don't
-- Never use #0071e3 for text, borders, or decoration — it is exclusively a button fill color.
-- Never add drop shadows to cards, buttons, or nav — the system uses hairline borders and surface shifts, not elevation.
-- Never set headlines at 700 weight for product names — 600 is the maximum; 700 only appears in editorial lockups or promotional art.
-- Never use a card or panel inside a #f5f5f7 section — the canvas itself is the surface; containers break the spatial logic.
-- Never constrain the main content to a narrow column — Apple pages breathe at 100% width with internal max-widths only for text-heavy blocks.
-- Never use radius below 980px for buttons or above 8px for cards/images — these are the only two radius values in the system.
-- Never mix the three blues in one interactive element — #0071e3 is fill, #0066cc is outlined action, #2997ff is decorative.
+
+- Don't use pure #000000 as primary text — use Graphite Ink #32302f so the dark tones stay warm
+- Don't introduce accent colors, gradients, or brand hues — the system is monochrome by design; color only appears inside 3D illustrations
+- Don't use square or moderately rounded buttons — every interactive element must be a 1600px pill
+- Don't apply CSS drop shadows to cards, modals, or buttons — rely on the warm surface stack and hairlines instead
+- Don't set display type in The Future or body in Tiempos — the serif/sans split is the system's core rhythm
+- Don't use bright or cool grays, blues, or cool whites — the palette is warm and stays within the cream-graphite axis
+- Don't crowd the page with cards, borders, or grid lines — the editorial feel depends on generous, un-divided whitespace
 
 ## Surfaces
 
-| Level | Name | Value | Purpose |
-|-------|------|-------|---------|
-| 0 | Canvas | `#f5f5f7` | Page background, section default |
-| 1 | Elevated Wash | `#f4f8fb` | Light blue-tinted section background for featured products |
-| 2 | Pebble | `#e2e2e5` | Button fills, disabled states, surface differentiation |
+| Level | Name         | Value     | Purpose                                                                             |
+| ----- | ------------ | --------- | ----------------------------------------------------------------------------------- |
+| 1     | Page Canvas  | `#fcfcfc` | Default body background for all editorial content sections                          |
+| 2     | Warm Section | `#faf8f5` | Alternate cream sections, hero right-side wash, and card backgrounds needing warmth |
+| 3     | Soft Surface | `#f1f0f0` | Subtle elevated regions, hover states, divider fills                                |
+| 4     | Hero Bronze  | `#3a3525` | Full-bleed dark feature blocks for the taxes, investing, and 3D-led hero panels     |
+
+## Elevation
+
+- **Sculptural 3D illustrations:** `Soft ambient occlusion shadow on a warm-cream floor — no hard drop shadow, just a low-spread warm-grey falloff simulating gallery lighting`
 
 ## Imagery
 
-Photography is the dominant visual language. Product shots are rendered on pure white or soft gray backgrounds with no environmental context — the device IS the hero, isolated and lit. Lifestyle photography appears in feature banners at full-bleed width, often with subjects cropped tightly. Color washes (pastel blue, pink, green) serve as section backgrounds for product highlights, not as decoration. Iconography is minimal and line-based, weight 1-2px, in the same gray scale as text. No illustrations, no abstract graphics, no 3D renders beyond the product photography itself.
+Wealthsimple uses sculptural 3D renders as its only imagery language: twisted paper ribbons, draped fabric forms, geometric block compositions, and isometric card stacks in muted sage, cream, terracotta, and off-white. The renders are treated as gallery objects — placed on the right half of a section on a warm cream floor with soft ambient-occlusion shadow, never cropped, never overlapped with text. There is no photography, no flat illustration, no product UI screenshots, no chart art. Icons are minimal outlined glyphs in Graphite Ink. The overall feel is closer to a Kinfolk spread or a Bottega Veneta product page than a typical fintech — imagery carries atmosphere, not information.
 
 ## Layout
 
-Full-bleed page model with no fixed max-width container — sections stretch edge-to-edge while text blocks center internally at roughly 980px. Navigation is a single sticky global bar with a secondary product-specific sub-nav that appears on scroll. Hero pattern is always centered: large product name, one-line tagline, two pill buttons, then the product render filling the remaining viewport. Sections stack vertically with generous vertical rhythm (64px+ between sections), alternating between #f5f5f7 and color-wash backgrounds. The lower page is a single horizontal row of full-bleed service cards (Apple TV+, Fitness+, Music, Arcade), each a photographic tile with overlaid text and a pill action. No sidebars, no multi-column content layouts, no asymmetric compositions — everything is centered, stacked, and symmetrical.
+The page model is max-width 1200px centered with full-bleed dark feature bands breaking the rhythm. The header is a thin two-row top bar (segmented 'Personal | Business' switcher over a main bar with logo, horizontal nav, and two pill CTAs) that sits directly on the page background with no shadow. The first screen is a full-bleed Bronze Field hero with left-aligned Tiempos display headline (~40% width), supporting paragraph, two pill CTAs, and a large sculptural 3D form floating on the right. Below the hero, sections alternate Paper White and Linen Cream with 80px vertical padding, each in a 2-column 'text-left, illustration-right' composition. Feature lists use a 3-column grid where each column starts with a hairline Stone rule at the top, no card backgrounds. Section transitions are seamless — no dividers between sections, just whitespace and a possible background swap. The chat launcher is the only fixed-position element, floating 24px from the bottom-right.
 
 ## Agent Prompt Guide
 
 **Quick Color Reference**
-- text: #1d1d1f
-- background: #f5f5f7
-- border: #d2d2d7 / #333333
-- accent: #2997ff (decorative only)
-- primary action: #0071e3 (filled action)
-- outlined action border: #0066cc
 
-**3-5 Example Component Prompts**
-1. Create a product hero section: #f5f5f7 full-bleed background. Headline 'iPhone' at 56px SF Pro Display weight 600, #1d1d1f, letter-spacing 0.616px. Tagline 'Meet the latest iPhone lineup.' at 26px SF Pro Text weight 300, #1d1d1f. Two pill buttons centered below: filled #0071e3 with white text 'Learn more' (980px radius, 11px 15px padding), and outlined #0066cc with 1px border and #0066cc text 'Shop iPhone' (same radius and padding). Product render fills the lower portion.
+- text: #32302f (Graphite Ink)
+- background: #fcfcfc (Paper White)
+- secondary background: #faf8f5 (Linen Cream)
+- border: #e4e2e1 (Stone)
+- muted text: #686664 (Pebble)
+- filled button background: #09090a (Charcoal)
+- dark hero field: #3a3525 (Bronze Field)
+- primary action: no distinct CTA color
 
-2. Create a service card tile: full-bleed photographic background, 8px radius. Title 'Fitness+' at 28px weight 600 white, genre label at 12px weight 400 white with 70% opacity. Pill button at bottom: 980px radius, #0071e3 background, white text 'Watch now' at 14px weight 400, 8px 15px padding.
+**3 Example Component Prompts**
 
-3. Create a global nav bar: full-width, #1d1d1f background, 8px vertical padding. Apple logo SVG on left at 14px height. Nav links centered: Store, Mac, iPad, iPhone, Watch, Vision, AirPods, TV & Home, Entertainment, Accessories, Support — all 12px weight 400, #f5f5f7 color, 1px #333333 bottom border on the bar. Search icon and bag icon on right.
+No distinct primary action color was observed; use the extracted neutral button treatments instead of inventing a filled CTA color.
 
-4. Create a typographic CTA block: centered, 64px vertical padding. Product name 'iPad' at 40px SF Pro Display weight 600 #1d1d1f, followed by 'air' inline at 28px weight 400 italic #2997ff. Subtitle 'Now supercharged by M4.' at 21px weight 300 #1d1d1f. Two pill buttons below: filled #0071e3 'Learn more' and outlined #0066cc 'Buy' (both 980px radius, 11px 15px padding).
+2. _Build a light editorial section:_ Paper White #fcfcfc background, max-width 1200px centered, 80px vertical padding. Left column (~45% width): a 14px The Future eyebrow in Pebble #686664, then a Tiempos 500 56px heading in Graphite Ink #32302f with -0.56px letter-spacing, then a 18px The Future 400 paragraph in Graphite, then a single Charcoal filled pill button. Right column: a sculptural 3D render of draped paper or geometric blocks on a warm cream floor with soft ambient shadow.
 
-5. Create a footer block: #f5f5f7 background, four-column link grid. Each link 12px weight 400 #707070, 10px vertical gap. Column headers at 12px weight 600 #1d1d1f. 1px #d2d2d7 hairline divider above fine print. Fine print at 12px weight 400 #707070.
+3. _Build a three-column feature row with hairline dividers:_ three equal columns at max-width 1200px with 48px column gaps. Each column begins with a 1px Stone #e4e2e1 horizontal rule at the top, then a The Future 500 20px headline in Graphite Ink, then a 16px The Future 400 paragraph. No card backgrounds, no shadows — the hairline rule is the only chrome.
 
-## Elevation Philosophy
-
-This system intentionally avoids elevation as a visual tool. Instead of shadows, hierarchy is built through surface color shifts (#f5f5f7 canvas, #f4f8fb elevated wash, #e2e2e5 filled surfaces) and 1px hairline borders in #d2d2d7 or #333333. The only shadow present is a subtle rgba(0,0,0,0.22) 3px 5px 30px on product images to ground them against the white canvas — never on cards, buttons, or panels. Flatness is the signature; depth comes from scale and photography, not from CSS shadows.
+4. _Build a Bronze Field hero:_ full-bleed background in Bronze Field #3a3525, 80–120px vertical padding. Left-aligned at ~40% width: a 14px The Future eyebrow in Paper White at 70% opacity, a Tiempos 500 84px headline in Paper White with -0.84px letter-spacing, a 18px The Future 400 paragraph in Paper White at 80% opacity, and two pill CTAs — a Charcoal filled pill primary next to an outlined pill secondary (1px Paper White border, transparent fill). Right side: a large sculptural 3D form (twisted paper or draped fabric) floating on the right with soft warm ambient shadow.
 
 ## Similar Brands
 
-- **Bang & Olufsen** — Same product-as-hero isolation photography on white canvas, same generous whitespace, same whisper-thin typography for product names
-- **Teenage Engineering** — Same near-monochrome product pages with generous spacing, though TE adds more personality through type and color accents
-- **Nothing (tech)** — Similar minimal product showcase layout, though Nothing uses more dot-matrix texture and dark surfaces
-- **Dyson** — Same centered product hero with large render, minimal copy, and paired pill action buttons on a light gray canvas
+- **Apple (product pages)** — Same editorial display-serif-over-clean-sans hierarchy with full-bleed image-led hero bands and pill-shaped CTAs
+- **Bottega Veneta / Mr Porter** — Same warm-paper palette, sculptural 3D-led imagery, and serif display type that reads as fashion/luxury rather than tech
+- **Kinfolk Magazine online** — Same generous whitespace, Tiempos-style serif at large sizes, warm off-white canvas, and restrained monochrome palette
+- **Stripe (Press/brand sections)** — Same pill-button system and serif+sans type pairing used in editorial features, though Stripe uses cooler neutrals
+- **Notion** — Same soft-rounded card surfaces (100px radius) and warm off-white canvas with hairline dividers in place of heavy borders
 
 ## Quick Start
 
@@ -229,93 +264,93 @@ This system intentionally avoids elevation as a visual tool. Instead of shadows,
 ```css
 :root {
   /* Colors */
-  --color-apple-blue: #0071e3;
-  --color-link-blue: #0066cc;
-  --color-signal-blue: #2997ff;
-  --color-carbon: #1d1d1f;
-  --color-frost: #f5f5f7;
-  --color-ice: #f4f8fb;
-  --color-smoke: #333333;
-  --color-graphite: #474747;
-  --color-ash: #707070;
-  --color-mist: #858585;
+  --color-graphite-ink: #32302f;
+  --color-paper-white: #fcfcfc;
+  --color-linen-cream: #faf8f5;
+  --color-fog-veil: #f1f0f0;
+  --color-stone: #e4e2e1;
+  --color-pebble: #686664;
   --color-onyx: #000000;
-  --color-pebble: #e2e2e5;
+  --color-charcoal: #09090a;
+  --color-bronze-field: #3a3525;
 
   /* Typography — Font Families */
-  --font-sf-pro-display: 'SF Pro Display', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-sf-pro-text: 'SF Pro Text', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-tiempos:
+    "Tiempos", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
+  --font-the-future:
+    "The Future", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
+  --font-wealthsimple-sans:
+    "Wealthsimple Sans", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Typography — Scale */
-  --text-caption: 12px;
-  --leading-caption: 1.33;
-  --tracking-caption: -0.264px;
-  --text-body-sm: 14px;
-  --leading-body-sm: 1.29;
-  --tracking-body-sm: -0.224px;
-  --text-body: 17px;
-  --leading-body: 1.47;
-  --tracking-body: -0.272px;
-  --text-subheading: 21px;
-  --leading-subheading: 1.24;
-  --tracking-subheading: -0.105px;
-  --text-heading-sm: 28px;
-  --leading-heading-sm: 1.18;
-  --tracking-heading-sm: 0.196px;
-  --text-heading: 40px;
-  --leading-heading: 1.14;
-  --tracking-heading: 0.44px;
-  --text-heading-lg: 44px;
-  --leading-heading-lg: 1.18;
-  --tracking-heading-lg: -0.44px;
-  --text-display: 56px;
-  --leading-display: 1.07;
-  --tracking-display: 0.616px;
+  --text-caption: 14px;
+  --leading-caption: 1.4;
+  --tracking-caption: 0.07px;
+  --text-body: 16px;
+  --leading-body: 1.5;
+  --text-subheading: 18px;
+  --leading-subheading: 1.4;
+  --text-heading-sm: 20px;
+  --leading-heading-sm: 1.3;
+  --text-heading: 36px;
+  --leading-heading: 1.2;
+  --tracking-heading: -0.36px;
+  --text-heading-lg: 56px;
+  --leading-heading-lg: 1.1;
+  --tracking-heading-lg: -0.56px;
+  --text-display: 84px;
+  --leading-display: 1.08;
+  --tracking-display: -0.84px;
 
   /* Typography — Weights */
-  --font-weight-light: 300;
   --font-weight-regular: 400;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
+  --font-weight-medium: 500;
 
   /* Spacing */
-  --spacing-unit: 4px;
   --spacing-4: 4px;
+  --spacing-6: 6px;
   --spacing-8: 8px;
   --spacing-12: 12px;
+  --spacing-15: 15px;
   --spacing-16: 16px;
   --spacing-20: 20px;
   --spacing-24: 24px;
+  --spacing-32: 32px;
   --spacing-40: 40px;
   --spacing-48: 48px;
-  --spacing-56: 56px;
+  --spacing-64: 64px;
+  --spacing-73: 73px;
+  --spacing-80: 80px;
+  --spacing-128: 128px;
+  --spacing-160: 160px;
 
   /* Layout */
-  --page-max-width: 1440px;
-  --section-gap: 64px;
-  --card-padding: 24px;
-  --element-gap: 12px;
+  --page-max-width: 1200px;
+  --section-gap: 80px;
+  --card-padding: 32px;
+  --element-gap: 16px;
 
   /* Border Radius */
-  --radius-lg: 8px;
-  --radius-lg-2: 11px;
-  --radius-full: 980px;
-  --radius-full-2: 999px;
+  --radius-sm: 2px;
+  --radius-xl: 12px;
+  --radius-full: 100px;
+  --radius-full-2: 1600px;
 
   /* Named Radii */
-  --radius-tags: 980px;
-  --radius-cards: 8px;
-  --radius-images: 8px;
-  --radius-inputs: 8px;
-  --radius-buttons: 980px;
-
-  /* Shadows */
-  --shadow-xl: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+  --radius-cards: 100px;
+  --radius-badges: 1600px;
+  --radius-inputs: 100px;
+  --radius-buttons: 1600px;
+  --radius-smallelements: 12px;
 
   /* Surfaces */
-  --surface-canvas: #f5f5f7;
-  --surface-elevated-wash: #f4f8fb;
-  --surface-pebble: #e2e2e5;
+  --surface-page-canvas: #fcfcfc;
+  --surface-warm-section: #faf8f5;
+  --surface-soft-surface: #f1f0f0;
+  --surface-hero-bronze: #3a3525;
 }
 ```
 
@@ -324,67 +359,69 @@ This system intentionally avoids elevation as a visual tool. Instead of shadows,
 ```css
 @theme {
   /* Colors */
-  --color-apple-blue: #0071e3;
-  --color-link-blue: #0066cc;
-  --color-signal-blue: #2997ff;
-  --color-carbon: #1d1d1f;
-  --color-frost: #f5f5f7;
-  --color-ice: #f4f8fb;
-  --color-smoke: #333333;
-  --color-graphite: #474747;
-  --color-ash: #707070;
-  --color-mist: #858585;
+  --color-graphite-ink: #32302f;
+  --color-paper-white: #fcfcfc;
+  --color-linen-cream: #faf8f5;
+  --color-fog-veil: #f1f0f0;
+  --color-stone: #e4e2e1;
+  --color-pebble: #686664;
   --color-onyx: #000000;
-  --color-pebble: #e2e2e5;
+  --color-charcoal: #09090a;
+  --color-bronze-field: #3a3525;
 
   /* Typography */
-  --font-sf-pro-display: 'SF Pro Display', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-sf-pro-text: 'SF Pro Text', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-tiempos:
+    "Tiempos", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
+  --font-the-future:
+    "The Future", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
+  --font-wealthsimple-sans:
+    "Wealthsimple Sans", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Typography — Scale */
-  --text-caption: 12px;
-  --leading-caption: 1.33;
-  --tracking-caption: -0.264px;
-  --text-body-sm: 14px;
-  --leading-body-sm: 1.29;
-  --tracking-body-sm: -0.224px;
-  --text-body: 17px;
-  --leading-body: 1.47;
-  --tracking-body: -0.272px;
-  --text-subheading: 21px;
-  --leading-subheading: 1.24;
-  --tracking-subheading: -0.105px;
-  --text-heading-sm: 28px;
-  --leading-heading-sm: 1.18;
-  --tracking-heading-sm: 0.196px;
-  --text-heading: 40px;
-  --leading-heading: 1.14;
-  --tracking-heading: 0.44px;
-  --text-heading-lg: 44px;
-  --leading-heading-lg: 1.18;
-  --tracking-heading-lg: -0.44px;
-  --text-display: 56px;
-  --leading-display: 1.07;
-  --tracking-display: 0.616px;
+  --text-caption: 14px;
+  --leading-caption: 1.4;
+  --tracking-caption: 0.07px;
+  --text-body: 16px;
+  --leading-body: 1.5;
+  --text-subheading: 18px;
+  --leading-subheading: 1.4;
+  --text-heading-sm: 20px;
+  --leading-heading-sm: 1.3;
+  --text-heading: 36px;
+  --leading-heading: 1.2;
+  --tracking-heading: -0.36px;
+  --text-heading-lg: 56px;
+  --leading-heading-lg: 1.1;
+  --tracking-heading-lg: -0.56px;
+  --text-display: 84px;
+  --leading-display: 1.08;
+  --tracking-display: -0.84px;
 
   /* Spacing */
   --spacing-4: 4px;
+  --spacing-6: 6px;
   --spacing-8: 8px;
   --spacing-12: 12px;
+  --spacing-15: 15px;
   --spacing-16: 16px;
   --spacing-20: 20px;
   --spacing-24: 24px;
+  --spacing-32: 32px;
   --spacing-40: 40px;
   --spacing-48: 48px;
-  --spacing-56: 56px;
+  --spacing-64: 64px;
+  --spacing-73: 73px;
+  --spacing-80: 80px;
+  --spacing-128: 128px;
+  --spacing-160: 160px;
 
   /* Border Radius */
-  --radius-lg: 8px;
-  --radius-lg-2: 11px;
-  --radius-full: 980px;
-  --radius-full-2: 999px;
-
-  /* Shadows */
-  --shadow-xl: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+  --radius-sm: 2px;
+  --radius-xl: 12px;
+  --radius-full: 100px;
+  --radius-full-2: 1600px;
 }
 ```

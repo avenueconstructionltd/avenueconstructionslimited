@@ -5,99 +5,103 @@ import { motion } from "motion/react";
 const LOCATIONS = [
   {
     id: "gulshan-banani",
-    number: "01",
     name: "Gulshan & Banani",
-    theme: "Elite Urban Enclaves",
     description:
-      "Dhaka's premier diplomatic and lifestyle centers, characterized by tree-lined lake paths, high-security profiles, and high-end commercial headquarters.",
-    highlight: "Lakefront properties & Diplomatic proximity",
+      "Dhaka's preeminent diplomatic zone, defined by lakeside promenades, tree-lined avenues, and premier international conveniences.",
+    highlight: "Lakefront & Diplomatic Enclave",
+    icon: "🏛️",
   },
   {
     id: "bashundhara",
-    number: "02",
     name: "Bashundhara R/A",
-    theme: "Structured Gated Retreats",
     description:
-      "A meticulously planned gated residential area, hosting premium single-unit complexes like Avenue Ahsan Palace, close to Evercare Hospital and top academic hubs.",
-    highlight: "Gated security & Institutional proximity",
+      "Meticulously organized gated residential sanctuary, home to signature private estates, Evercare Hospital, and top academic hubs.",
+    highlight: "Gated Security & Single-Unit Sites",
+    icon: "🏠",
   },
   {
     id: "baridhara",
-    number: "03",
-    name: "Baridhara",
-    theme: "Diplomatic Sanctums",
+    name: "Baridhara Diplomatic",
     description:
-      "The most exclusive residential zone in Bangladesh, offering absolute privacy, low-density living, and serene tree-shaded avenues.",
-    highlight: "Diplomatic security & Elite neighborhood",
+      "The country's most exclusive residential address, offering low-density quiet, manicured parklands, and absolute privacy.",
+    highlight: "High-Security Quiet Living",
+    icon: "🌿",
   },
   {
     id: "aftabnagar-rampura",
-    number: "04",
-    name: "Aftabnagar & Rampura",
-    theme: "Urban Connectivity Hubs",
+    name: "Aftabnagar & Hatirjheel Link",
     description:
-      "Modern planned zones with green parkways, lakeside vistas, and rapid transit access via Hatirjheel Expressway to Gulshan and Motijheel.",
-    highlight: "Hatirjheel connectivity & Rapid growth",
+      "Modern planned zone with green parkways, lakeside vistas, and rapid transit access via Hatirjheel Expressway.",
+    highlight: "Hatirjheel Expressway Corridor",
+    icon: "🌊",
   },
 ];
 
 export function Locations() {
   return (
     <section
+      id="locations"
       suppressHydrationWarning
-      className="relative z-10 px-6 py-24 md:px-12 md:py-32 bg-surface/30 border-t border-b border-black/5"
+      className="relative z-10 px-6 sm:px-8 md:px-12 py-24 md:py-32 bg-paper-white text-graphite-ink overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto flex flex-col gap-16">
-        {/* Title Block */}
-        <div className="max-w-2xl flex flex-col gap-4">
-          <h2 className="font-serif text-3xl md:text-5xl uppercase tracking-tight leading-[1.05] text-text-primary">
-            Prime Geographic <br />
-            <span className="italic font-light text-accent pb-1 inline-block">Footprint</span>
-          </h2>
-          <p className="text-xs md:text-sm leading-relaxed text-text-secondary font-light">
-            We focus exclusively on Dhaka&apos;s most prestigious and secure
-            residential areas, carefully selecting plots that offer natural
-            cross-ventilation, scenic views, and structural durability.
+      {/* Subtle champagne glow accent */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 rounded-full bg-radial-[at_center] from-champagne/6 to-transparent pointer-events-none blur-3xl" />
+
+      <div className="max-w-7xl mx-auto flex flex-col gap-14 md:gap-18 relative z-10">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2">
+          <div className="flex flex-col gap-3 max-w-2xl">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-champagne font-semibold">
+              Prime Dhaka Corridors
+            </span>
+            <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.5rem)] leading-[1.08] tracking-[-0.015em] text-graphite-ink font-medium">
+              Distinguished enclaves across Dhaka.
+            </h2>
+          </div>
+          <p className="text-[15px] text-pebble leading-relaxed max-w-md">
+            We focus exclusively on Dhaka&apos;s most secure and prominent residential corridors, selecting plots that provide cross-ventilation, panoramic green views, and enduring prestige.
           </p>
         </div>
 
-        {/* Locations Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {LOCATIONS.map((loc, index) => (
-            <motion.div
-              key={loc.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.8,
-                delay: index * 0.12,
-                ease: [0.32, 0.72, 0, 1],
-              }}
-              className="group flex flex-col justify-between border-t border-black/10 pt-6 gap-6"
-            >
-              <div className="flex flex-col gap-4">
-                <div className="flex justify-between items-center">
-                  <span className="font-mono text-xs text-accent font-semibold">
-                    {loc.number}
-                  </span>
-                  <span className="text-[9px] uppercase tracking-[0.2em] font-mono text-text-secondary/70">
-                    {loc.theme}
-                  </span>
-                </div>
-                <h3 className="font-serif text-xl uppercase tracking-wider text-text-primary group-hover:text-accent transition-colors duration-300">
-                  {loc.name}
-                </h3>
-                <p className="text-xs text-text-secondary leading-relaxed font-light">
-                  {loc.description}
-                </p>
-              </div>
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 items-stretch">
+          {LOCATIONS.map((loc, index) => {
+            const isWide = index === 0 || index === 3;
+            return (
+              <motion.div
+                key={loc.id}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.08,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className={`flex flex-col ${
+                  isWide ? "lg:col-span-7" : "lg:col-span-5"
+                }`}
+              >
+                <div className="p-7 sm:p-8 rounded-3xl border border-stone bg-linen-cream/80 backdrop-blur-sm flex flex-col justify-between h-full gap-6 shadow-2xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                  <div className="flex flex-col gap-3">
+                    <span className="text-2xl">{loc.icon}</span>
+                    <h3 className="font-serif text-2xl sm:text-3xl text-graphite-ink font-medium group-hover:text-charcoal transition-colors">
+                      {loc.name}
+                    </h3>
+                    <p className="text-[15px] text-pebble leading-relaxed font-normal">
+                      {loc.description}
+                    </p>
+                  </div>
 
-              <div className="text-[9px] uppercase tracking-wider text-accent border border-accent/20 rounded-full px-3 py-1 bg-accent/5 self-start font-mono">
-                {loc.highlight}
-              </div>
-            </motion.div>
-          ))}
+                  <div>
+                    <span className="inline-flex items-center text-xs text-graphite-ink border border-stone bg-paper-white px-3.5 py-1.5 rounded-xl font-mono shadow-2xs">
+                      {loc.highlight}
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

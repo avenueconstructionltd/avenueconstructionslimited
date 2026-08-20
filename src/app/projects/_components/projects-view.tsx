@@ -7,210 +7,236 @@ import { motion } from "motion/react";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { PROPERTIES } from "@/lib/properties-constant";
+import { MapPin, ArrowRight, ShieldCheck } from "lucide-react";
 
 export function ProjectsView() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
+  const [filter, setFilter] = useState<"All" | "Completed" | "Upcoming">("All");
+
+  const filteredProperties = PROPERTIES.filter((p) => {
+    if (filter === "All") return true;
+    return p.statusTag === filter;
+  });
 
   return (
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-canvas pt-32 pb-24 px-6 md:px-12 z-10 relative">
-        <div className="max-w-7xl mx-auto flex flex-col gap-16">
-          {/* Page Heading */}
-          <div className="flex flex-col gap-4 max-w-2xl">
-            <span className="text-[10px] uppercase tracking-[0.2em] font-mono text-accent">
-              Portfolio Archive
-            </span>
-            <h1 className="font-serif text-4xl md:text-6xl tracking-tight leading-[1.05] text-text-primary uppercase">
-              Selected <br />
-              <span className="italic font-light text-accent">
-                Signature Estates
+      <main className="min-h-screen bg-canvas pt-32 pb-24 z-10 relative">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 flex flex-col gap-20">
+          {/* Header Block with Quick Portfolio Metrics */}
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-4 border-b border-stone">
+            <div className="flex flex-col gap-4 max-w-2xl">
+              <span className="text-xs uppercase tracking-[0.25em] font-mono text-champagne font-semibold flex items-center gap-2">
+                <span className="size-1.5 rounded-full bg-champagne animate-pulse" />
+                Dhaka Signature Portfolio
               </span>
-            </h1>
-            <p className="text-xs md:text-sm leading-relaxed text-text-secondary mt-2 font-light">
-              Explore our collection of signature residential landmarks in
-              Dhaka, Bangladesh. Each structure is an individual study in light,
-              space, and materials.
-            </p>
+              <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.02] text-graphite-ink font-medium">
+                Our Signature <br />
+                <span className="italic font-light text-champagne">
+                  Residences &amp; Towers.
+                </span>
+              </h1>
+              <p className="text-sm md:text-base leading-relaxed text-pebble font-normal">
+                Discover our hand-crafted single-unit luxury residential landmarks across Bashundhara R/A, Gulshan, Banani, and Aftabnagar Hatirjheel Link.
+              </p>
+            </div>
+
+            {/* Filter Pills */}
+            <div className="flex items-center gap-2 p-1.5 rounded-full border border-stone bg-linen-cream self-start lg:self-auto">
+              {(["All", "Completed", "Upcoming"] as const).map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setFilter(tab)}
+                  className={`pill-btn px-5 py-2 text-xs font-mono transition-all cursor-pointer ${
+                    filter === tab
+                      ? "bg-obsidian text-paper-white shadow-xs"
+                      : "text-pebble hover:text-graphite-ink"
+                  }`}
+                >
+                  {tab === "All" ? "All Projects (6)" : tab}
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* Asymmetric Staggered Grid (Masonry Vibe) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
-            {PROPERTIES.map((property, index) => {
-              const isEven = index % 2 === 0;
-              const isActive = hoveredIndex === index || focusedIndex === index;
+          {/* Staggered Portfolio Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 items-stretch">
+            {filteredProperties.map((property, index) => {
+              const beds = property.specs.find((s) => s.label.toLowerCase().includes("bed"))?.value || "4 Beds";
+              const baths = property.specs.find((s) => s.label.toLowerCase().includes("bath"))?.value || "4 Baths";
+              const sqft = property.specs.find((s) => s.label.toLowerCase().includes("size") || s.label.toLowerCase().includes("area") || s.label.toLowerCase().includes("unit"))?.value || "2,850 SQFT";
 
               return (
                 <motion.div
                   key={property.slug}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
+                  viewport={{ once: true }}
                   transition={{
-                    duration: 0.8,
-                    delay: index * 0.1,
+                    duration: 0.6,
+                    delay: index * 0.08,
                     ease: [0.32, 0.72, 0, 1],
                   }}
-                  className={`flex flex-col gap-6 w-full ${
-                    isEven ? "md:translate-y-0" : "md:translate-y-16"
-                  }`}
+                  className="group flex flex-col bg-paper-white rounded-3xl p-4 sm:p-5 border border-stone shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 justify-between"
                 >
-                  {/* Double Bezel Enclosure */}
-                  <div
-                    className={`double-bezel-outer transition-colors duration-500 ${isActive ? "bg-accent/5 border-accent/20" : ""}`}
+                  {/* Top Image Window */}
+                  <Link
+                    href={`/projects/${property.slug}`}
+                    className="block relative aspect-16/10 w-full overflow-hidden rounded-2xl bg-stone"
                   >
-                    <div className="double-bezel-inner relative">
-                      {/* Image Frame */}
-                      <Link
-                        href={`/projects/${property.slug}`}
-                        onFocus={() => setFocusedIndex(index)}
-                        onBlur={() => setFocusedIndex(null)}
-                        className="block relative aspect-4/3 overflow-hidden"
-                      >
-                        <motion.div
-                          animate={{
-                            scale: isActive ? 1.05 : 1,
-                          }}
-                          transition={{
-                            duration: 0.7,
-                            ease: [0.32, 0.72, 0, 1],
-                          }}
-                          className="w-full h-full relative"
-                        >
-                          <Image
-                            src={property.image}
-                            alt={property.name}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                            className="object-cover brightness-90 saturate-[0.8]"
-                          />
-                        </motion.div>
+                    <Image
+                      src={property.image}
+                      alt={property.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-700 ease-premium-in-out group-hover:scale-105"
+                    />
 
-                        {/* Prominent Status Badge */}
-                        <div className="absolute top-4 right-4 z-20">
-                          <span
-                            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full font-mono text-[9px] font-bold uppercase tracking-[0.2em] shadow-md backdrop-blur-md border ${
-                              property.statusTag === "Completed"
-                                ? "bg-text-primary/90 text-white border-white/20"
-                                : "bg-accent/90 text-text-primary border-black/10"
-                            }`}
-                          >
-                            <span
-                              className={`size-1.5 rounded-full ${
-                                property.statusTag === "Completed"
-                                  ? "bg-emerald-400 animate-pulse"
-                                  : "bg-text-primary animate-ping"
-                              }`}
-                            />
-                            {property.statusTag === "Completed"
-                              ? "Completed"
-                              : "Upcoming Landmark"}
-                          </span>
-                        </div>
+                    {/* Status Badge */}
+                    <div className="absolute top-4 left-4 z-20">
+                      <span className="pill-btn inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-mono tracking-wider uppercase bg-paper-white/95 text-graphite-ink font-semibold backdrop-blur-md shadow-xs border border-black/5">
+                        <span
+                          className={`size-1.5 rounded-full ${
+                            property.statusTag === "Completed"
+                              ? "bg-emerald-500"
+                              : "bg-champagne"
+                          }`}
+                        />
+                        {property.statusTag}
+                      </span>
+                    </div>
 
-                        {/* Reveal Curtain Card */}
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: isActive ? 1 : 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="absolute inset-0 bg-linear-to-t from-text-primary/85 via-text-primary/25 to-transparent flex flex-col justify-between p-6"
-                        >
-                          <span className="self-start text-[9px] uppercase tracking-[0.25em] font-medium text-white/90 bg-white/10 backdrop-blur-sm border border-white/20 px-3 py-1 rounded-full">
-                            {property.architecturalDetails.status}
-                          </span>
-                          <div className="flex justify-between items-end">
-                            <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-white">
-                              View Details
-                            </span>
-                            <span className="text-accent text-lg font-light">
-                              &rarr;
-                            </span>
-                          </div>
-                        </motion.div>
-                      </Link>
+                    {/* Year Tag */}
+                    <div className="absolute top-4 right-4 z-20">
+                      <span className="pill-btn px-3 py-1 text-[11px] font-mono text-paper-white bg-black/60 backdrop-blur-md border border-white/15">
+                        {property.architecturalDetails.year}
+                      </span>
+                    </div>
+                  </Link>
 
-                      {/* Card Content */}
-                      <div className="p-6 md:p-8 flex flex-col gap-6">
-                        <div className="flex flex-col gap-2">
-                          <span className="text-[10px] uppercase tracking-[0.2em] text-text-secondary font-mono">
-                            {property.location}
-                          </span>
-                          <h2 className="font-serif text-2xl md:text-3xl uppercase tracking-wider text-text-primary">
+                  {/* Body Content */}
+                  <div className="p-4 sm:p-6 flex flex-col gap-5 flex-1 justify-between">
+                    <div className="flex flex-col gap-2">
+                      <div className="flex items-start justify-between gap-3">
+                        <Link href={`/projects/${property.slug}`}>
+                          <h2 className="font-serif text-2xl sm:text-3xl text-graphite-ink font-medium group-hover:text-black transition-colors uppercase tracking-tight">
                             {property.name}
                           </h2>
-                          <p className="font-serif italic text-sm text-text-secondary/80 leading-snug">
-                            {property.tagline}
-                          </p>
-                          <p className="text-xs text-text-secondary leading-relaxed font-light mt-2">
-                            {property.description}
-                          </p>
-                        </div>
+                        </Link>
+                        <span className="font-mono text-xs font-semibold text-champagne shrink-0 pt-1 flex items-center gap-1">
+                          <ShieldCheck className="size-3.5" />
+                          100% RAJUK
+                        </span>
+                      </div>
 
-                        {/* Fine Lined Grid */}
-                        <div className="grid grid-cols-3 gap-px bg-black/5 border border-black/5 rounded-lg overflow-hidden">
-                          {property.specs.slice(0, 3).map((spec) => (
+                      <div className="flex items-center gap-1.5 text-xs text-pebble">
+                        <MapPin className="size-3.5 text-champagne shrink-0" />
+                        <span className="truncate">
+                          {property.region}, {property.location}
+                        </span>
+                      </div>
+
+                      <p className="font-serif italic text-sm text-pebble pt-1">
+                        &ldquo;{property.tagline}&rdquo;
+                      </p>
+
+                      <p className="text-xs text-pebble leading-relaxed line-clamp-2 pt-1">
+                        {property.description}
+                      </p>
+                    </div>
+
+                    {/* Spec Strip */}
+                    <div className="grid grid-cols-3 gap-2 border-t border-stone pt-4 text-xs font-mono text-graphite-ink">
+                      <div className="bg-linen-cream p-2.5 rounded-xl flex flex-col">
+                        <span className="text-[10px] text-pebble uppercase tracking-wider">Bedrooms</span>
+                        <span className="font-medium mt-0.5">{beds}</span>
+                      </div>
+                      <div className="bg-linen-cream p-2.5 rounded-xl flex flex-col">
+                        <span className="text-[10px] text-pebble uppercase tracking-wider">Bathrooms</span>
+                        <span className="font-medium mt-0.5">{baths}</span>
+                      </div>
+                      <div className="bg-linen-cream p-2.5 rounded-xl flex flex-col">
+                        <span className="text-[10px] text-pebble uppercase tracking-wider">Suite Area</span>
+                        <span className="font-medium mt-0.5">{sqft}</span>
+                      </div>
+                    </div>
+
+                    {/* Gallery Preview Thumbnails */}
+                    {property.gallery && property.gallery.length > 0 && (
+                      <div className="flex flex-col gap-2 pt-1">
+                        <div className="flex justify-between items-center text-[10px] font-mono text-pebble">
+                          <span className="uppercase tracking-wider">Architectural Gallery</span>
+                          <span>{property.gallery.length} Images</span>
+                        </div>
+                        <div className="grid grid-cols-4 gap-2">
+                          {property.gallery.slice(0, 4).map((img, imgIdx) => (
                             <div
-                              key={spec.label}
-                              className="bg-surface p-3 flex flex-col gap-1"
+                              key={imgIdx}
+                              className="relative aspect-4/3 rounded-lg overflow-hidden border border-stone bg-stone"
                             >
-                              <span className="text-[9px] uppercase tracking-[0.22em] text-text-secondary">
-                                {spec.label}
-                              </span>
-                              <span className="font-mono text-xs text-text-primary tracking-wide">
-                                {spec.value}
-                              </span>
+                              <Image
+                                src={img.src}
+                                alt={img.alt}
+                                fill
+                                sizes="120px"
+                                className="object-cover"
+                              />
                             </div>
                           ))}
                         </div>
-
-                        {/* 3D Architectural Render Grid Collage Preview */}
-                        <div className="flex flex-col gap-2 pt-2 border-t border-black/5">
-                          <div className="flex justify-between items-center">
-                            <span className="text-[9px] uppercase tracking-[0.2em] font-mono text-accent">
-                              3D Renders & Gallery ({property.gallery.length})
-                            </span>
-                            <span className="text-[9px] font-mono text-text-secondary">
-                              [⊞ Grid Collage]
-                            </span>
-                          </div>
-                          <div className="grid grid-cols-4 gap-2">
-                            {property.gallery.map((img, imgIdx) => (
-                              <div
-                                key={img.src + imgIdx}
-                                className="relative aspect-4/3 rounded-lg overflow-hidden border border-black/10 group/thumb shadow-2xs"
-                              >
-                                <Image
-                                  src={img.src}
-                                  alt={img.alt}
-                                  fill
-                                  sizes="120px"
-                                  className="object-cover transition-transform duration-500 group-hover/thumb:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover/thumb:opacity-100 transition-opacity" />
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Footing */}
-                        <div className="flex justify-between items-center pt-1">
-                          <span className="text-[10px] uppercase tracking-[0.2em] text-text-secondary font-mono">
-                            Project Status
-                          </span>
-                          <span className="font-mono text-xs font-semibold uppercase tracking-wider text-accent">
-                            {property.architecturalDetails.status}
-                          </span>
-                        </div>
                       </div>
+                    )}
+
+                    {/* Action Bar */}
+                    <div className="border-t border-stone pt-4 flex items-center justify-between">
+                      <span className="text-xs font-mono text-pebble">
+                        Typology: <strong className="text-graphite-ink">{property.architecturalDetails.type}</strong>
+                      </span>
+
+                      <Link
+                        href={`/projects/${property.slug}`}
+                        className="group/link inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-graphite-ink font-semibold hover:text-champagne transition-colors"
+                      >
+                        <span>View Details</span>
+                        <ArrowRight className="size-3.5 transition-transform duration-300 group-hover/link:translate-x-1" />
+                      </Link>
                     </div>
                   </div>
                 </motion.div>
               );
             })}
+          </div>
+
+          {/* Bottom Custom Consultation Banner */}
+          <div className="rounded-3xl sm:rounded-4xl bg-obsidian text-paper-white p-8 sm:p-12 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8 border border-white/10 shadow-xl relative overflow-hidden">
+            <div className="glow-accent -bottom-30 -left-30 opacity-30" />
+            <div className="flex flex-col gap-3 max-w-xl relative z-10">
+              <span className="text-xs uppercase tracking-[0.25em] font-mono text-champagne font-semibold">
+                Looking for Bespoke Residences?
+              </span>
+              <h3 className="font-serif text-2xl sm:text-3xl font-medium text-paper-white">
+                Schedule a Private On-Site Tour with an Engineering Director
+              </h3>
+              <p className="text-xs sm:text-sm text-paper-white/70">
+                Inspect raw materials, structural blueprints, and unit customizations directly with our team.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3 relative z-10 shrink-0">
+              <Link
+                href="/contact"
+                className="pill-btn inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-mono uppercase tracking-wider bg-champagne text-obsidian font-semibold hover:bg-champagne-light transition-all shadow-md"
+              >
+                <span>Book Site Tour</span>
+                <ArrowRight className="size-4" />
+              </Link>
+              <a
+                href="tel:+8801714767246"
+                className="pill-btn inline-flex items-center justify-center px-6 py-3.5 text-xs font-mono uppercase tracking-wider border border-white/20 text-paper-white hover:bg-white/10 transition-colors"
+              >
+                +880 1714 767 246
+              </a>
+            </div>
           </div>
         </div>
       </main>

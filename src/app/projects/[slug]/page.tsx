@@ -77,9 +77,9 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           <div className="flex items-center justify-between">
             <Link
               href="/projects"
-              className="text-[10px] uppercase tracking-[0.25em] font-mono text-text-secondary hover:text-accent transition-colors"
+              className="text-xs uppercase tracking-[0.2em] font-mono text-pebble hover:text-graphite-ink transition-colors font-medium"
             >
-              &larr; Back to Portfolio
+              &larr; Back to All Projects
             </Link>
             <span
               className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-mono text-[9px] font-bold uppercase tracking-[0.2em] shadow-xs backdrop-blur-md border ${
@@ -421,9 +421,9 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               </p>
               <Link
                 href="/contact"
-                className="inline-flex w-fit items-center gap-3 rounded-full bg-accent text-white px-7 py-3.5 text-[11px] uppercase tracking-[0.2em] font-medium transition-all duration-300 hover:bg-text-primary active:scale-[0.98]"
+                className="pill-btn inline-flex w-fit items-center gap-3 bg-champagne text-obsidian font-semibold px-7 py-3.5 text-xs font-mono uppercase tracking-wider transition-all duration-300 hover:bg-champagne-light active:scale-[0.98] shadow-md"
               >
-                Request a Private Viewing
+                <span>Request a Private Viewing</span>
                 <span aria-hidden className="text-sm">
                   &rarr;
                 </span>
@@ -435,12 +435,12 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           {property.gallery && property.gallery.length > 0 && (
             <section className="flex flex-col gap-12 border-t border-black/5 pt-16">
               <div className="flex flex-col items-center justify-center text-center">
-                <span className="text-[10px] uppercase tracking-[0.25em] font-mono text-accent">
-                  Visual Portfolio
+                <span className="text-xs uppercase tracking-[0.25em] font-mono text-champagne font-semibold">
+                  Visual Record
                 </span>
-                <h2 className="font-serif text-4xl md:text-5xl tracking-tight leading-[1.05] text-text-primary uppercase mt-2">
-                  Visual{" "}
-                  <span className="italic font-light text-accent">Theater</span>
+                <h2 className="font-serif text-3xl sm:text-4xl tracking-tight leading-[1.05] text-graphite-ink uppercase mt-2">
+                  Complete High-Resolution{" "}
+                  <span className="italic font-light text-champagne">Gallery</span>
                 </h2>
               </div>
 

@@ -2,139 +2,122 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "motion/react";
-import { MagneticButton } from "@/components/shared/magnetic-button";
-import { HERO_STATS } from "@/lib/stats-constant";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
+
+const HERO_STAGGER_EASE = [0.32, 0.72, 0, 1] as const;
 
 export function Hero() {
-  const { scrollY } = useScroll();
-  const prefersReducedMotion = useReducedMotion();
-  const backgroundY = useTransform(
-    scrollY,
-    [0, 700],
-    prefersReducedMotion ? ["0%", "0%"] : ["0%", "-14%"],
-  );
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <section className="relative z-10 flex min-h-dvh w-full flex-col justify-between overflow-hidden bg-text-primary px-4 pb-8 pt-24 sm:px-6 md:px-12">
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <motion.div
-          style={{ y: backgroundY }}
-          className="relative top-[-3.5%] h-[122%] w-full"
-        >
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 h-full w-full object-cover brightness-[0.52] saturate-[0.82]"
-            poster="/hero_villa.png"
-          >
-            <source
-              src="https://assets.mixkit.co/videos/preview/mixkit-modern-apartment-building-exterior-44165-large.mp4"
-              type="video/mp4"
-            />
-            <Image
-              src="/hero_villa.png"
-              alt="Luxury modern residential tower in Dhaka"
-              fill
-              priority
-              sizes="(max-width: 1920px) 100vw, 100vw"
-              className="object-cover"
-            />
-          </video>
-        </motion.div>
-        <div className="absolute inset-0 bg-linear-to-t from-[#1C1B18]/90 via-[#1C1B18]/20 to-[#1C1B18]/50" />
-        <div className="absolute inset-0 bg-linear-to-r from-[#1C1B18]/62 via-[#1C1B18]/12 to-[#1C1B18]/40" />
-      </div>
-
-      <div />
-
-      <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-2 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-          className="mb-5 rounded-full border border-canvas/25 bg-canvas/12 px-3 py-1 text-[9px] font-medium uppercase tracking-[0.22em] text-canvas/82 backdrop-blur-sm"
-        >
-          Avenue Construction Ltd &middot; Dhaka, Bangladesh
-        </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ delay: 0.15, duration: 1.1, ease: [0.32, 0.72, 0, 1] }}
-          className="font-serif text-[clamp(2.7rem,8vw,6rem)] uppercase tracking-tight leading-[0.95] text-canvas"
-        >
-          Setting Standards <br />
-          <span className="italic font-light leading-[1.1] text-accent pb-1 inline-block">
-            in Luxury Living
-          </span>
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.35, duration: 0.8 }}
-          className="mt-5 max-w-[46ch] text-sm font-light leading-relaxed tracking-wide text-canvas/88 md:text-base"
-        >
-          Avenue Construction Ltd crafts premier luxury residential towers and
-          joint venture developments in Dhaka, Bangladesh.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="mt-8 flex flex-col items-center gap-4 sm:flex-row"
-        >
-          <Link suppressHydrationWarning href="#residences">
-            <MagneticButton
-              strength={22}
-              className="group flex items-center gap-3 rounded-full bg-accent px-7 py-3.5 text-[11px] font-medium uppercase tracking-[0.18em] text-canvas transition-all duration-500 hover:bg-canvas hover:text-text-primary active:scale-[0.97]"
-            >
-              Explore Residences
-              <span className="flex size-5 items-center justify-center rounded-full bg-text-primary/10 text-xs transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
-                &rarr;
-              </span>
-            </MagneticButton>
-          </Link>
-          <Link
-            suppressHydrationWarning
-            href="/about"
-            className="text-[10px] uppercase tracking-[0.2em] text-canvas/86 transition-colors duration-300 hover:text-canvas"
-          >
-            Our Manifesto
-          </Link>
-        </motion.div>
-      </div>
-
+    <section
+      ref={sectionRef}
+      className="relative z-10 w-full min-h-dvh flex flex-col justify-end overflow-hidden text-paper-white pb-12 sm:pb-16 md:pb-20"
+    >
+      {/* Parallax Background Image */}
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.7, duration: 0.8 }}
-        className="relative z-10 mx-auto w-full max-w-5xl"
+        className="absolute inset-0 z-0 gpu-accelerated"
+        style={{ y: imageY, scale: imageScale }}
       >
-        <div className="grid grid-cols-2 gap-4 border-t border-canvas/24 pt-6 md:grid-cols-4 md:gap-0">
-          {HERO_STATS.map((stat, index) => (
-            <div
-              key={stat.label}
-              className={`flex flex-col gap-1 px-4 ${index > 0 ? "md:border-l md:border-canvas/24" : ""}`}
+        <Image
+          src="/images/hero-dhaka-luxury.jpg"
+          alt="Avenue Constructions Premier Single-Unit Architecture in Dhaka"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center brightness-100 contrast-[1.02]"
+        />
+      </motion.div>
+
+      {/* Deeper gradient for text contrast */}
+      <div className="absolute inset-x-0 bottom-0 h-3/4 bg-linear-to-t from-black/90 via-black/50 to-transparent pointer-events-none z-1" />
+      <div className="absolute inset-x-0 top-0 h-1/4 bg-linear-to-b from-black/30 to-transparent pointer-events-none z-1" />
+
+      {/* Hero Content with cascading reveal */}
+      <motion.div
+        className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 md:px-12 flex flex-col gap-6"
+        style={{ opacity: contentOpacity }}
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
+          {/* Left Column: Bold Headline */}
+          <div className="lg:col-span-7 flex flex-col gap-3">
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: HERO_STAGGER_EASE }}
+              className="font-mono text-xs uppercase tracking-[0.25em] text-champagne font-semibold drop-shadow-sm"
             >
-              <span className="font-mono text-lg tracking-tight text-canvas md:text-xl">
-                {stat.value}
-              </span>
-              <span className="text-[9px] uppercase tracking-[0.2em] text-canvas/78">
-                {stat.label}
-              </span>
-            </div>
-          ))}
+              Dhaka Luxury Real Estate &middot; Single-Unit Residences
+            </motion.span>
+            <motion.h1
+              initial={{ opacity: 0, y: 35 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.35, ease: HERO_STAGGER_EASE }}
+              className="font-serif text-[clamp(2.8rem,6vw,5.2rem)] leading-[0.98] tracking-[-0.02em] text-paper-white font-medium drop-shadow-md"
+            >
+              Setting Standards in Luxury Living.
+            </motion.h1>
+          </div>
+
+          {/* Right Column: Summary + CTAs */}
+          <div className="lg:col-span-5 flex flex-col gap-5 lg:pl-4">
+            <motion.p
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5, ease: HERO_STAGGER_EASE }}
+              className="text-[15px] sm:text-[16px] leading-[1.65] text-paper-white/95 font-normal drop-shadow-sm"
+            >
+              Avenue Constructions Ltd engineers single-unit luxury residential landmarks in Bashundhara R/A, Gulshan, and Aftabnagar &mdash; delivering 100% RAJUK-sanctioned architectural privacy.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.65, ease: HERO_STAGGER_EASE }}
+              className="flex flex-wrap items-center gap-3 pt-1"
+            >
+              <Link
+                href="/contact"
+                className="group pill-btn inline-flex items-center gap-3 pl-6 pr-2.5 py-3 text-xs uppercase font-mono tracking-wider bg-paper-white text-graphite-ink hover:bg-linen-cream transition-all shadow-xl active:scale-[0.98]"
+              >
+                <span>Make An Appointment</span>
+                <span className="flex size-6 items-center justify-center rounded-full bg-obsidian text-paper-white text-[11px] transition-transform duration-300 group-hover:translate-x-0.5">
+                  &rarr;
+                </span>
+              </Link>
+              <Link
+                href="#residences"
+                className="pill-btn inline-flex items-center justify-center px-6 py-3 text-xs uppercase font-mono tracking-wider border border-paper-white/60 bg-black/20 text-paper-white hover:bg-paper-white hover:text-graphite-ink active:scale-[0.98] transition-all backdrop-blur-md"
+              >
+                Explore Residences
+              </Link>
+            </motion.div>
+          </div>
         </div>
+
+        {/* Scroll Down Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+          className="hidden md:flex flex-col items-center gap-2 pt-8"
+        >
+          <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-paper-white/50">
+            Scroll
+          </span>
+          <div className="scroll-indicator flex flex-col items-center">
+            <div className="w-px h-8 bg-linear-to-b from-paper-white/60 to-transparent" />
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );

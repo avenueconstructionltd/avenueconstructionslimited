@@ -1,39 +1,47 @@
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://avenueconstructionsltd.com";
 
-export const SITE_NAME = "Avenue Construction Ltd";
-export const SITE_LEGAL_NAME = "Avenue Construction Ltd";
-export const SITE_SHORT_NAME = "Avenue Construction Ltd";
+export const SITE_NAME = "Avenue Constructions Ltd";
+export const SITE_LEGAL_NAME = "Avenue Constructions Ltd";
+export const SITE_SHORT_NAME = "Avenue Constructions Ltd";
+export const SITE_TAGLINE = "Setting Standards in Luxury Living";
+export const SITE_SLOGAN = "Single-Unit Luxury Residences in Dhaka";
 export const SITE_HANDLE = "@avenueconstructionltd";
 export const SITE_LOCALE = "en_US";
 
 export const SITE_TITLE_DEFAULT =
-  "Avenue Construction Ltd | Luxury Real Estate Developer in Dhaka, Bangladesh";
-export const SITE_TITLE_TEMPLATE = "%s | Avenue Construction Ltd";
+  "Avenue Constructions Ltd | Luxury Real Estate Developer in Dhaka, Bangladesh";
+export const SITE_TITLE_TEMPLATE = "%s | Avenue Constructions Ltd";
 
 export const SITE_DESCRIPTION =
-  "Avenue Construction Ltd is a premier real estate developer in Dhaka, Bangladesh. Specializing in luxury residential apartments, G+7/G+8 boutique towers, and joint venture land development in Gulshan, Banani, Baridhara, Bashundhara R/A, and Aftabnagar, Dhaka.";
+  "Avenue Constructions Ltd is a premier real estate developer in Dhaka, Bangladesh. Specializing in luxury residential apartments, G+7/G+8 boutique towers, and joint venture land development in Gulshan, Banani, Baridhara, Bashundhara R/A, and Aftabnagar, Dhaka.";
 
-export const SITE_KEYWORDS = [
-  "Avenue Construction Ltd",
-  "Avenue Construction Ltd Dhaka",
-  "Avenue Construction Ltd Bangladesh",
-  "Avenue Construction Limited",
-  "Real Estate Developer in Bangladesh",
-  "Luxury Apartments in Dhaka",
-  "Top Real Estate Developer Dhaka",
-  "Joint Venture Real Estate Dhaka",
-  "Gulshan Luxury Apartments",
-  "Bashundhara RA Real Estate",
-  "Banani DOHS Apartments",
-  "Aftabnagar Apartments",
+export const SITE_KEYWORDS: string[] = [
+  "Avenue Constructions Ltd",
+  "Avenue Constructions Ltd Dhaka",
+  "Avenue Constructions Ltd Bangladesh",
+  "Avenue Constructions Limited",
+  "Avenue Constructions",
+  "Avenue Construction",
+  "Luxury apartments in Dhaka",
+  "Single unit apartments Dhaka",
+  "Bashundhara RA luxury apartments",
+  "Gulshan apartments for sale",
+  "Banani luxury residences",
+  "Aftabnagar apartments",
+  "Real estate developer Dhaka",
+  "Landowner joint venture Dhaka",
+  "RAJUK approved projects Dhaka",
+  "IEB certified buildings Dhaka",
   "Avenue Ahsan Palace",
   "Avenue MD Heights",
-  "Residential Towers Dhaka",
-  "RAJUK Approved Developer Bangladesh",
+  "Avenue Dream",
+  "Avenue Castle",
+  "Avenue Crest",
+  "Avenue Serenade",
 ];
 
-export const AUTHOR_NAME = "Avenue Construction Ltd";
+export const AUTHOR_NAME = "Avenue Constructions Ltd";
 export const AUTHOR_EMAIL = "avenue902@gmail.com";
 export const AUTHOR_PHONES = ["+880 1714 767 246", "+880 1581 742 235"];
 
@@ -44,6 +52,11 @@ export const HEADQUARTERS_ADDRESS = {
   addressRegion: "Dhaka Division",
   postalCode: "1000",
   addressCountry: "BD",
+};
+
+export const HEADQUARTERS_GEO = {
+  latitude: "23.7315",
+  longitude: "90.4125",
 };
 
 export const OG_IMAGE_PATH = "/images/projects/avenue-ahsan-palace/project_image_1.jpeg";

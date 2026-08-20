@@ -2,122 +2,83 @@
 
 import { motion } from "motion/react";
 
-const CREDENTIALS = [
+const TRUST_PILLARS = [
   {
-    id: "rajuk",
-    category: "Building Permit",
-    title: "RAJUK Construction Approval",
-    subtitle: "Development Control Section",
-    details: [
-      { label: "Permit Number", value: "D-0006453-10-25" },
-      { label: "Occupancy Class", value: "A-3 (Flats or Apartments)" },
-      { label: "Jurisdiction", value: "Sub Zone-01 (Zone-04), Dhaka" },
-      { label: "Authorized Authority", value: "Rajdhani Unnayan Kartripakkha" },
-    ],
+    title: "100% RAJUK Sanctioned",
+    authority: "Rajdhani Unnayan Kartripakkha",
+    permit: "Permit: D-0006453-10-25",
+    detail: "Official municipal clearance and sub-zone zoning approval secured prior to any ground-breaking.",
   },
   {
-    id: "nbr",
-    category: "Tax Compliance",
-    title: "NBR Taxpayer Registration",
-    subtitle: "National Board of Revenue",
-    details: [
-      { label: "TIN Number", value: "162947654103" },
-      { label: "Registered Status", value: "Incorporated Company" },
-      { label: "Tax Jurisdiction", value: "Taxes Circle-021, Taxes Zone 01" },
-      { label: "Tax Office", value: "Segunbagicha, Dhaka" },
-    ],
+    title: "IEB Stamped Engineering",
+    authority: "Institution of Engineers Bangladesh",
+    permit: "Member Reg: IEB-M-34892",
+    detail: "Structural load calculations, soil test validation, and BSRM 500W rebar casting blueprints.",
   },
   {
-    id: "incorporation",
-    category: "Corporate Structure",
-    title: "Legal Incorporation",
-    subtitle: "Registrar of Joint Stock Companies",
-    details: [
-      { label: "Governing Act", value: "Companies Act, 1994" },
-      { label: "Memorandum Date", value: "05 September 2024" },
-      { label: "Registration Type", value: "Private Limited Company" },
-      { label: "Registered Address", value: "Purana Paltan, Dhaka" },
-    ],
+    title: "100% Freehold Title",
+    authority: "Land Title Governance",
+    permit: "Zero Third-Party Liability",
+    detail: "Direct, vetted freehold land ownership ensuring complete legal security and immediate mutation.",
   },
   {
-    id: "accreditation",
-    category: "Industry Badges",
-    title: "REHAB & ISO Accreditation",
-    subtitle: "Standards & Affiliations",
-    details: [
-      { label: "REHAB Member", value: "Member No. 1532" },
-      { label: "Quality Standard", value: "ISO 9001:2015" },
-      { label: "Affiliated Body", value: "Real Estate Association" },
-      { label: "Accredited Scope", value: "Premium Design & Build" },
-    ],
+    title: "BNBC 2020 Compliance",
+    authority: "National Building Code",
+    permit: "Seismic Resilient Standard",
+    detail: "High-grade concrete pour, stone chips casting, earthquake load tolerance, and fire safety systems.",
   },
 ];
 
 export function Credentials() {
   return (
     <section
+      id="credentials"
       suppressHydrationWarning
-      className="relative z-10 px-6 py-24 md:px-12 md:py-32 bg-canvas"
+      className="relative z-10 px-6 sm:px-8 md:px-12 py-24 md:py-32 bg-linen-cream text-graphite-ink"
     >
-      <div className="max-w-7xl mx-auto flex flex-col gap-16">
-        {/* Title Block */}
-        <div className="max-w-2xl flex flex-col gap-4">
-          <h2 className="font-serif text-3xl md:text-5xl uppercase tracking-tight leading-[1.05] text-text-primary">
-            Corporate Credentials <br />
-            <span className="italic font-light text-accent pb-1 inline-block">& Compliance</span>
+      <div className="max-w-7xl mx-auto flex flex-col gap-14 md:gap-18">
+        {/* Section Header */}
+        <div className="max-w-3xl flex flex-col gap-4">
+          <span className="font-mono text-xs uppercase tracking-[0.25em] text-champagne font-semibold">
+            Institutional Trust &amp; Governance
+          </span>
+          <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.5rem)] leading-[1.08] tracking-[-0.015em] text-graphite-ink font-medium">
+            Every residence is 100% RAJUK sanctioned &amp; IEB engineering certified.
           </h2>
-          <p className="text-xs md:text-sm leading-relaxed text-text-secondary font-light">
-            Avenue Constructions Limited operates under complete regulatory
-            transparency. All structural builds satisfy the rigorous standards
-            of Dhaka Metropolitan building guidelines.
+          <p className="text-[15px] sm:text-[16px] text-pebble leading-relaxed">
+            We ensure zero legal ambiguity, full statutory compliance, and rigorous structural safety standards for every single development in our portfolio.
           </p>
         </div>
 
-        {/* Credentials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {CREDENTIALS.map((item, index) => (
+        {/* 4 Clean Trust Pillar Blocks */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {TRUST_PILLARS.map((pillar, index) => (
             <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 30 }}
+              key={pillar.title}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{
-                duration: 0.8,
-                delay: index * 0.15,
-                ease: [0.32, 0.72, 0, 1],
+                duration: 0.5,
+                delay: index * 0.08,
+                ease: [0.16, 1, 0.3, 1],
               }}
-              className="double-bezel-outer h-full"
+              className="p-7 rounded-3xl border border-stone bg-paper-white flex flex-col justify-between gap-6 shadow-2xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             >
-              <div className="double-bezel-inner p-6 md:p-8 flex flex-col justify-between h-full bg-surface/30 min-h-85">
-                <div className="flex flex-col gap-5">
-                  <span className="text-[9px] uppercase tracking-[0.22em] font-mono text-accent">
-                    {item.category}
-                  </span>
-                  <div>
-                    <h3 className="font-serif text-xl uppercase tracking-wide text-text-primary">
-                      {item.title}
-                    </h3>
-                    <p className="text-[10px] text-text-secondary uppercase tracking-wider font-light mt-1">
-                      {item.subtitle}
-                    </p>
-                  </div>
-                </div>
+              <div className="flex flex-col gap-2.5">
+                <span className="text-[11px] font-mono text-champagne uppercase tracking-wider font-semibold">
+                  {pillar.authority}
+                </span>
+                <h3 className="font-serif text-xl font-medium text-graphite-ink leading-snug">
+                  {pillar.title}
+                </h3>
+                <p className="text-xs text-pebble leading-relaxed pt-1">
+                  {pillar.detail}
+                </p>
+              </div>
 
-                <div className="mt-8 flex flex-col gap-3 border-t border-black/5 pt-4">
-                  {item.details.map((detail) => (
-                    <div
-                      key={detail.label}
-                      className="flex justify-between items-center text-xs gap-2"
-                    >
-                      <span className="text-[10px] uppercase tracking-wider text-text-secondary/70">
-                        {detail.label}
-                      </span>
-                      <span className="font-mono text-[11px] text-text-primary font-medium text-right">
-                        {detail.value}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+              <div className="border-t border-stone pt-3 font-mono text-xs text-graphite-ink font-medium">
+                {pillar.permit}
               </div>
             </motion.div>
           ))}

@@ -5,6 +5,7 @@ import {
   AUTHOR_EMAIL,
   AUTHOR_PHONES,
   HEADQUARTERS_ADDRESS,
+  HEADQUARTERS_GEO,
 } from "@/constants/seo";
 import type { JsonLd } from "@/types/seo";
 import type { Property } from "@/lib/properties-constant";
@@ -25,10 +26,11 @@ export function realEstateAgentJsonLd(): JsonLd {
     "@id": `${SITE_URL}/#organization`,
     name: SITE_NAME,
     alternateName: [
+      "Avenue Constructions Ltd",
+      "Avenue Constructions Ltd.",
+      "Avenue Constructions Limited",
+      "Avenue Constructions",
       "Avenue Construction Ltd",
-      "Avenue Construction Ltd.",
-      "Avenue Construction Limited",
-      "Avenue Construction",
     ],
     url: SITE_URL,
     logo: `${SITE_URL}/images/site_logo.png`,
@@ -46,22 +48,32 @@ export function realEstateAgentJsonLd(): JsonLd {
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: "23.7315",
-      longitude: "90.4125",
+      latitude: HEADQUARTERS_GEO.latitude,
+      longitude: HEADQUARTERS_GEO.longitude,
     },
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Saturday",
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-      ],
-      opens: "09:00",
-      closes: "18:00",
-    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Saturday",
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+        ],
+        opens: "09:30",
+        closes: "18:30",
+      },
+    ],
+    sameAs: [
+      "https://facebook.com",
+      "https://linkedin.com",
+      "https://instagram.com",
+    ],
+    priceRange: "$$$$",
+    currenciesAccepted: "BDT",
+    paymentAccepted: "Bank Transfer, Cheque",
     areaServed: [
       "Bangladesh",
       "Dhaka",
@@ -131,7 +143,7 @@ export function breadcrumbListJsonLd(
 
 export function serviceJsonLd(): JsonLd {
   return structuredData("Service", {
-    name: "Architectural & Real Estate Development Services by Avenue Construction Ltd",
+    name: "Architectural & Real Estate Development Services by Avenue Constructions Ltd",
     provider: {
       "@id": `${SITE_URL}/#organization`,
     },
@@ -139,6 +151,6 @@ export function serviceJsonLd(): JsonLd {
     serviceType:
       "Real Estate Development, Architectural Drafting, Joint Ventures, Asset Advisory",
     description:
-      "Avenue Construction Ltd provides full-lifecycle luxury residential development, architectural drafting, joint venture land development, and real estate asset management in Dhaka, Bangladesh.",
+      "Avenue Constructions Ltd provides full-lifecycle luxury residential development, architectural drafting, joint venture land development, and real estate asset management in Dhaka, Bangladesh.",
   });
 }

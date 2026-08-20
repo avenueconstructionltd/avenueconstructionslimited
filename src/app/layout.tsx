@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import {
-  Instrument_Serif,
+  Outfit,
   Plus_Jakarta_Sans,
+  Cormorant_Garamond,
   Geist_Mono,
 } from "next/font/google";
 import "./globals.css";
@@ -23,17 +24,23 @@ import {
   GOOGLE_SITE_VERIFICATION,
 } from "@/constants/seo";
 
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
+const outfit = Outfit({
+  variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta-sans",
+  variable: "--font-sans-body",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
+});
+
+const cormorantGaramond = Cormorant_Garamond({
+  variable: "--font-serif-editorial",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
 });
 
 const geistMono = Geist_Mono({
@@ -115,11 +122,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${instrumentSerif.variable} ${plusJakartaSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${outfit.variable} ${plusJakartaSans.variable} ${cormorantGaramond.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body
-        className="min-h-full flex flex-col bg-canvas text-text-primary"
+        className="min-h-full flex flex-col bg-paper-white text-graphite-ink font-sans selection:bg-stone selection:text-graphite-ink"
         suppressHydrationWarning
       >
         <SmoothScrollProvider>

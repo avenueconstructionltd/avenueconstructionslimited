@@ -1,18 +1,47 @@
 @import "tailwindcss";
 
 @theme {
-  /* Font Families */
-  --font-serif: var(--font-instrument-serif), serif;
-  --font-sans: var(--font-plus-jakarta-sans), sans-serif;
+  /* Architectural Luxury Color System */
+  --color-obsidian: #0a0b0d;
+  --color-obsidian-card: #121418;
+  --color-obsidian-soft: #181a20;
+  
+  --color-graphite-ink: #141518;
+  --color-paper-white: #fcfcfc;
+  --color-linen-cream: #f6f5f1;
+  --color-alabaster: #f0eee9;
+  --color-stone: #e2dfda;
+  --color-pebble: #6e6b66;
+  --color-champagne: #c8aa82;
+  --color-champagne-light: #dfccb2;
+  --color-charcoal: #09090a;
+  --color-bronze-field: #1e1b15;
+  --color-fog-veil: rgba(252, 252, 252, 0.6);
+
+  /* Semantic Color Aliases */
+  --color-canvas: #fcfcfc;
+  --color-canvas-dark: #0a0b0d;
+  --color-surface: #f6f5f1;
+  --color-surface-dark: #121418;
+  --color-text-primary: #141518;
+  --color-text-secondary: #6e6b66;
+  --color-text-dark-primary: #fcfcfc;
+  --color-text-dark-secondary: #a3a09a;
+  --color-accent: #c8aa82;
+  --color-hairline: #e2dfda;
+  --color-hairline-dark: rgba(255, 255, 255, 0.1);
+
+  /* Typography Font Families (Luxury Real Estate Pairing: Outfit + Plus Jakarta Sans + Cormorant + Geist Mono) */
+  --font-serif: var(--font-display), var(--font-sans-body), system-ui, sans-serif;
+  --font-sans: var(--font-sans-body), system-ui, sans-serif;
+  --font-editorial: var(--font-serif-editorial), Georgia, serif;
   --font-mono: var(--font-geist-mono), monospace;
 
-  /* Cold Luxury Light Theme - Charcoal + Stone + Deep Forest Accent */
-  --color-canvas: #f8f7f5;
-  --color-surface: #efede9;
-  --color-text-primary: #1c1b18;
-  --color-text-secondary: #6a6762;
-  --color-accent: #c29f78;
-  --color-hairline: rgba(0, 0, 0, 0.07);
+  /* Border Radii */
+  --radius-cards: 1.5rem;
+  --radius-badges: 9999px;
+  --radius-buttons: 9999px;
+  --radius-small-elements: 0.5rem;
 
   /* Animation Easings */
   --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
@@ -23,80 +52,153 @@
 
 /* Base Styles */
 html {
-  background-color: #f8f7f5;
-  color: #1c1b18;
+  background-color: #fcfcfc;
+  color: #141518;
   font-family: var(--font-sans);
   scroll-behavior: auto;
   min-height: 100dvh;
 }
 
 body {
-  background-color: #f8f7f5;
-  color: #1c1b18;
+  background-color: #fcfcfc;
+  color: #141518;
   min-height: 100dvh;
 }
 
-/* Film Grain Noise Overlay */
-.noise-overlay {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+/* Editorial Monograph Hairline Tables */
+.monograph-table {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-/* Double Bezel Card styles - Light Theme */
+.monograph-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.875rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.monograph-row-light {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.875rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.monograph-table-dark {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.monograph-row-dark {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.875rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+/* Double-Bezel (Doppelrand) Architecture */
 .double-bezel-outer {
-  padding: 0.5rem;
-  border-radius: 2rem;
-  background-color: rgba(0, 0, 0, 0.025);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  transition:
-    background-color 0.4s cubic-bezier(0.32, 0.72, 0, 1),
-    border-color 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  padding: 0.375rem;
+  border-radius: 1.5rem;
+  background-color: rgba(20, 21, 24, 0.03);
+  box-shadow: inset 0 0 0 1px rgba(226, 223, 218, 0.8);
+  transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 .double-bezel-outer:hover {
-  background-color: rgba(61, 107, 79, 0.04);
-  border-color: rgba(61, 107, 79, 0.15);
+  background-color: rgba(20, 21, 24, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(110, 107, 102, 0.3);
+}
+
+.double-bezel-outer-dark {
+  padding: 0.375rem;
+  border-radius: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.double-bezel-outer-dark:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+  box-shadow: inset 0 0 0 1px rgba(200, 170, 130, 0.4);
 }
 
 .double-bezel-inner {
-  border-radius: calc(2rem - 0.5rem);
-  background-color: #f8f7f5;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.7);
+  border-radius: calc(1.5rem - 0.375rem);
+  background-color: #fcfcfc;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8);
   overflow: hidden;
 }
 
-/* Marquee keyframe */
-@keyframes marquee-left {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.marquee-track {
-  animation: marquee-left 28s linear infinite;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-/* Split mask text reveal */
-.split-mask-wrapper {
+.double-bezel-inner-dark {
+  border-radius: calc(1.5rem - 0.375rem);
+  background-color: #121418;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
   overflow: hidden;
-  display: inline-block;
 }
 
-/* Horizontal image strip accordion */
-.strip-item {
-  transition: width 500ms cubic-bezier(0.32, 0.72, 0, 1);
-  width: 80px;
-  flex-shrink: 0;
+/* Utility classes for buttons & cards */
+.pill-btn {
+  border-radius: 9999px;
+  letter-spacing: 0.025em;
+  transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
-.strip-item.expanded {
-  width: 340px;
+/* GPU-accelerated animation hint */
+.gpu-accelerated {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Animated glow accent for dark sections */
+.glow-accent {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 170, 130, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(80px);
+}
+
+/* Dark glass card */
+.dark-glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.dark-glass-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(200, 170, 130, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Scroll indicator animation */
+@keyframes scroll-breathe {
+  0%, 100% { opacity: 0.4; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(8px); }
+}
+
+.scroll-indicator {
+  animation: scroll-breathe 2.5s ease-in-out infinite;
+}
+
+/* Section divider line */
+.section-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-champagne), transparent);
 }
 
 /* Hide scrollbar */

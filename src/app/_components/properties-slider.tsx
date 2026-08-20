@@ -1,249 +1,240 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion } from "motion/react";
 import { PROPERTIES } from "@/lib/properties-constant";
 
 export function PropertiesSlider() {
-  const targetRef = useRef<HTMLDivElement>(null);
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const [range, setRange] = useState(0);
+  const [filter, setFilter] = useState<"All" | "Completed" | "Upcoming">("All");
 
-  useEffect(() => {
-    function calculateRange() {
-      if (!sliderRef.current || !sliderRef.current.parentElement) return;
-
-      const slider = sliderRef.current;
-      const parent = slider.parentElement;
-      if (!parent) return;
-
-      const lastChild = slider.lastElementChild as HTMLElement | null;
-      if (!lastChild) return;
-
-      // Container visible width
-      const containerWidth = parent.offsetWidth;
-
-      // Right edge of the last card relative to slider start
-      const rightEdgeOfLastCard = lastChild.offsetLeft + lastChild.offsetWidth;
-
-      // Exact scroll range so last card's right edge aligns perfectly with container's right edge
-      const scrollRange = Math.max(0, rightEdgeOfLastCard - containerWidth);
-      setRange(scrollRange);
-    }
-
-    calculateRange();
-
-    const resizeObserver = new ResizeObserver(calculateRange);
-    if (sliderRef.current) {
-      resizeObserver.observe(sliderRef.current);
-    }
-
-    window.addEventListener("resize", calculateRange);
-
-    return () => {
-      resizeObserver.disconnect();
-      window.removeEventListener("resize", calculateRange);
-    };
-  }, []);
-
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["start start", "end end"],
+  const filteredProperties = PROPERTIES.filter((p) => {
+    if (filter === "All") return true;
+    return p.statusTag === filter;
   });
-
-  // Direct transform linked 1:1 to scroll progress (Lenis handles smooth window scrolling)
-  // Eliminates diagonal lag / downright drift when the sticky container unpins
-  const x = useTransform(scrollYProgress, [0, 1], [0, -range]);
-
-  const containerHeight = `calc(100vh + ${range}px)`;
 
   return (
     <section
-      ref={targetRef}
       id="residences"
-      className="relative w-full bg-canvas z-30"
-      style={{ height: containerHeight }}
+      className="relative z-10 w-full py-24 md:py-32 px-6 sm:px-8 md:px-12 bg-obsidian text-paper-white overflow-hidden"
     >
-      <div className="sticky top-0 h-dvh w-full overflow-x-clip flex flex-col pt-16 md:pt-20 pb-24">
-        <div className="max-w-7xl mx-auto w-full px-6 md:px-12 flex flex-col gap-12">
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
-            className="flex flex-col gap-4"
-          >
-            <span className="text-[10px] uppercase tracking-[0.2em] font-mono text-accent">
-              Selected Estates
-            </span>
-            <div className="flex justify-between items-end">
-              <h2 className="font-serif text-3xl md:text-5xl tracking-tight leading-[1.05] text-text-primary uppercase">
-                Signature <br />
-                <span className="italic font-light text-accent pb-1 inline-block">
-                  Residences
-                </span>
-              </h2>
-            </div>
-          </motion.div>
+      {/* Decorative glow accents */}
+      <div className="glow-accent -top-50 -left-50" />
+      <div className="glow-accent -bottom-50 -right-50" />
 
-          {/* Scroll-Linked Slider Container */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.32, 0.72, 0, 1] }}
-            className="overflow-visible"
-          >
-            <motion.div
-              ref={sliderRef}
-              style={{ x }}
-              className="flex gap-8 w-max"
-            >
-              {PROPERTIES.map((property) => (
-                <PropertyCard key={property.slug} property={property} />
+      <div className="max-w-7xl mx-auto flex flex-col gap-12 md:gap-16 relative z-10">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2">
+          <div className="flex flex-col gap-3 max-w-2xl">
+            <span className="font-mono text-xs text-champagne uppercase tracking-[0.2em]">
+              Curated Portfolio
+            </span>
+            <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.6rem)] leading-[1.08] tracking-[-0.015em] text-paper-white">
+              Signature Residences &amp; Developments.
+            </h2>
+            <p className="text-[15px] sm:text-[16px] text-paper-white/60 leading-relaxed">
+              Every residence is engineered with fair-faced concrete, private elevator access, and bespoke spatial layouts across Dhaka&apos;s prime enclaves.
+            </p>
+          </div>
+
+          {/* Filter Pills and View All */}
+          <div className="flex flex-wrap items-center gap-3 self-start md:self-auto">
+            <div className="flex items-center gap-1.5 p-1 rounded-full border border-white/10 bg-white/5">
+              {(["All", "Completed", "Upcoming"] as const).map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setFilter(tab)}
+                  className={`pill-btn px-4 py-1.5 text-xs font-mono transition-all cursor-pointer ${
+                    filter === tab
+                      ? "bg-champagne text-obsidian"
+                      : "text-paper-white/50 hover:text-paper-white"
+                  }`}
+                >
+                  {tab}
+                </button>
               ))}
-            </motion.div>
-          </motion.div>
+            </div>
+
+            <Link
+              href="/projects"
+              className="group pill-btn inline-flex items-center gap-2.5 pl-4 pr-2 py-2 text-xs font-mono border border-white/15 bg-white/5 text-paper-white hover:border-champagne/40 transition-colors"
+            >
+              <span>All 6 Projects</span>
+              <span className="flex size-6 items-center justify-center rounded-full bg-white/10 text-[11px] transition-transform duration-300 group-hover:translate-x-0.5">
+                &rarr;
+              </span>
+            </Link>
+          </div>
+        </div>
+
+        {/* Property Grid — dark glass cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProperties.map((property, index) => (
+            <PropertyCard key={property.slug} property={property} index={index} />
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-function PropertyCard({ property }: { property: (typeof PROPERTIES)[0] }) {
-  const [isHovered, setIsHovered] = useState(false);
-  const [isFocused, setIsFocused] = useState(false);
-
-  const showOverlay = isHovered || isFocused;
+function PropertyCard({
+  property,
+  index,
+}: {
+  property: (typeof PROPERTIES)[0];
+  index: number;
+}) {
+  const beds = property.specs.find((s) => s.label.toLowerCase().includes("bed"))?.value || "4 Beds";
+  const baths = property.specs.find((s) => s.label.toLowerCase().includes("bath"))?.value || "4 Baths";
+  const sqft = property.specs.find((s) => s.label.toLowerCase().includes("size") || s.label.toLowerCase().includes("area") || s.label.toLowerCase().includes("unit"))?.value || "2,850 SQFT";
 
   return (
-    <div
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="w-75 md:w-110 select-none shrink-0 group"
+    <motion.div
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.08,
+        ease: [0.32, 0.72, 0, 1],
+      }}
+      className="group flex flex-col h-full dark-glass-card rounded-3xl p-3.5 sm:p-4"
     >
-      {/* Double Bezel (Doppelrand) Enclosure - Dark Mode style surface */}
-      <div
-        className={`double-bezel-outer transition-colors duration-500 ${showOverlay ? "bg-accent/5 border-accent/20" : ""}`}
+      {/* Image Frame */}
+      <Link
+        href={`/projects/${property.slug}`}
+        className="block relative aspect-4/3 w-full overflow-hidden rounded-2xl bg-obsidian-soft"
       >
-        <div className="double-bezel-inner relative bg-surface overflow-hidden">
-          {/* Card Link to Detail Page */}
-          <Link
-            suppressHydrationWarning
-            href={`/projects/${property.slug}`}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
-            className="block relative aspect-4/3 overflow-hidden"
-          >
-            {/* Image container */}
-            <div className="w-full h-full absolute inset-0 origin-center z-0 overflow-hidden rounded-t-[1.625rem]">
-              <div className="w-full h-full relative">
-                <Image
-                  src={property.image}
-                  alt={property.name}
-                  fill
-                  sizes="(max-width: 768px) 300px, 440px"
-                  className="object-cover brightness-95 saturate-[0.8] transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
+        <Image
+          src={property.image}
+          alt={property.name}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover transition-transform duration-700 ease-premium-in-out group-hover:scale-105"
+        />
 
-              {/* Prominent Status Badge */}
-              <div className="absolute top-4 right-4 z-20">
-                <span
-                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full font-mono text-[9px] font-bold uppercase tracking-[0.2em] shadow-md backdrop-blur-md border ${
-                    property.statusTag === "Completed"
-                      ? "bg-text-primary/90 text-white border-white/20"
-                      : "bg-accent/90 text-text-primary border-black/10"
-                  }`}
-                >
-                  <span
-                    className={`size-1.5 rounded-full ${
-                      property.statusTag === "Completed"
-                        ? "bg-emerald-400 animate-pulse"
-                        : "bg-text-primary animate-ping"
-                    }`}
-                  />
-                  {property.statusTag === "Completed"
-                    ? "Completed"
-                    : "Upcoming Landmark"}
-                </span>
-              </div>
-            </div>
+        {/* Status Badge */}
+        <div className="absolute top-3 left-3 z-20">
+          <span className="pill-btn inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-mono tracking-wider uppercase bg-black/70 text-paper-white font-semibold backdrop-blur-md border border-white/15">
+            <span
+              className={`size-1.5 rounded-full ${
+                property.statusTag === "Completed"
+                  ? "bg-emerald-400"
+                  : "bg-champagne"
+              }`}
+            />
+            {property.statusTag}
+          </span>
+        </div>
 
-            {/* Hover overlay (Reveal Curtain card) */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: showOverlay ? 1 : 0 }}
-              transition={{ duration: 0.3 }}
-              className="absolute inset-0 bg-linear-to-t from-text-primary/80 via-text-primary/20 to-transparent flex flex-col justify-end p-6 z-10"
-            >
-              <motion.div
-                animate={{
-                  y: showOverlay ? 0 : 15,
-                  opacity: showOverlay ? 1 : 0,
-                }}
-                transition={{
-                  delay: 0.05,
-                  duration: 0.5,
-                  ease: [0.32, 0.72, 0, 1],
-                }}
-                className="flex justify-between items-end"
-              >
-                <div className="text-[10px] uppercase tracking-[0.2em] font-medium text-white">
-                  View Residence Detail
-                </div>
-                <div className="text-accent text-lg font-light">&rarr;</div>
-              </motion.div>
-            </motion.div>
-          </Link>
+        {/* Year Tag */}
+        <div className="absolute top-3 right-3 z-20">
+          <span className="pill-btn px-2.5 py-0.5 text-[10px] font-mono text-paper-white bg-white/10 backdrop-blur-md border border-white/15">
+            {property.architecturalDetails.year}
+          </span>
+        </div>
+      </Link>
 
-          {/* Card Info Section */}
-          <div className="p-6 flex flex-col gap-5 bg-canvas">
-            {/* Location & Title */}
-            <div className="flex flex-col gap-1.5">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-text-secondary">
-                {property.location}
-              </span>
-              <h3 className="font-serif text-xl md:text-2xl uppercase tracking-wider text-text-primary">
+      {/* Card Body */}
+      <div className="p-4 sm:p-5 flex flex-col gap-4 flex-1 justify-between">
+        <div className="flex flex-col gap-1.5">
+          <div className="flex items-start justify-between gap-2">
+            <Link href={`/projects/${property.slug}`}>
+              <h3 className="font-serif text-xl sm:text-2xl text-paper-white font-medium group-hover:text-champagne transition-colors uppercase tracking-tight">
                 {property.name}
               </h3>
-              <p className="font-serif italic text-xs text-text-secondary/80 leading-snug">
-                {property.tagline}
-              </p>
-            </div>
+            </Link>
+            <span className="font-mono text-xs font-semibold text-champagne shrink-0 pt-0.5">
+              100% RAJUK
+            </span>
+          </div>
 
-            {/* Clean Data Grid (Sobha Style with thin lines & Geist Mono numbers) */}
-            <div className="grid grid-cols-2 gap-px bg-black/5 border border-black/5 rounded-lg overflow-hidden">
-              {property.specs.slice(0, 4).map((spec) => (
-                <div
-                  key={spec.label}
-                  className="bg-surface p-3 flex flex-col gap-1"
-                >
-                  <span className="text-[9px] uppercase tracking-[0.25em] text-text-secondary">
-                    {spec.label}
-                  </span>
-                  <span className="font-mono text-xs text-text-primary tracking-wide">
-                    {spec.value}
-                  </span>
-                </div>
-              ))}
-            </div>
+          {/* Location */}
+          <div className="flex items-center gap-1.5 text-xs text-paper-white/50">
+            <svg
+              className="size-3.5 shrink-0 text-champagne/60"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+            </svg>
+            <span className="truncate">
+              {property.region}, {property.location}
+            </span>
+          </div>
+        </div>
 
-            {/* Status tag */}
-            <div className="flex justify-between items-center pt-1">
-              <span className="text-[9px] uppercase tracking-[0.25em] text-text-secondary">
-                Project Status
-              </span>
-              <span className="font-mono text-xs font-semibold uppercase tracking-wider text-accent">
-                {property.architecturalDetails.status}
-              </span>
-            </div>
+        {/* Specs Row */}
+        <div className="flex items-center justify-between border-t border-white/10 pt-3.5 text-xs font-mono text-paper-white/70">
+          {/* Beds */}
+          <div className="flex items-center gap-1.5">
+            <svg
+              className="size-3.5 text-paper-white/40"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.8}
+                d="M3 7v11m0-4h18m0-7v11M7 11V7a2 2 0 012-2h6a2 2 0 012 2v4"
+              />
+            </svg>
+            <span className="uppercase text-[11px]">{beds}</span>
+          </div>
+
+          {/* Baths */}
+          <div className="flex items-center gap-1.5">
+            <svg
+              className="size-3.5 text-paper-white/40"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.8}
+                d="M4 12h16a1 1 0 011 1v3a4 4 0 01-4 4H7a4 4 0 01-4-4v-3a1 1 0 011-1zm2-5h3a2 2 0 012 2v3H4V9a2 2 0 012-2z"
+              />
+            </svg>
+            <span className="uppercase text-[11px]">{baths}</span>
+          </div>
+
+          {/* Sqft */}
+          <div className="flex items-center gap-1.5">
+            <svg
+              className="size-3.5 text-paper-white/40"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.8}
+                d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+              />
+            </svg>
+            <span className="uppercase text-[11px]">{sqft}</span>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

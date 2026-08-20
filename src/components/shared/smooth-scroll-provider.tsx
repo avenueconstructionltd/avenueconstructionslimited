@@ -18,25 +18,22 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const lenisInstance = new Lenis({
-      duration: 1.2,
+      duration: 1.0,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
+      wheelMultiplier: 0.8,
+      touchMultiplier: 1.5,
     });
 
-    const timeoutId = setTimeout(() => {
-      setLenis(lenisInstance);
-    }, 0);
-
-    let rafId: number;
     function raf(time: number) {
       lenisInstance.raf(time);
-      rafId = requestAnimationFrame(raf);
+      requestAnimationFrame(raf);
     }
-    rafId = requestAnimationFrame(raf);
+
+    requestAnimationFrame(raf);
+    setLenis(lenisInstance);
 
     return () => {
-      clearTimeout(timeoutId);
-      cancelAnimationFrame(rafId);
       lenisInstance.destroy();
       setLenis(null);
     };
