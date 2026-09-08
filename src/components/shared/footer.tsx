@@ -94,7 +94,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   aria-label={social.label}
                   title={social.label}
-                  className="size-9 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-paper-white/40 hover:text-champagne hover:border-champagne/30 transition-colors"
+                  className="size-9 border border-white/10 flex items-center justify-center text-paper-white/40 hover:text-champagne hover:border-champagne/30 transition-colors"
                 >
                   {social.icon}
                 </a>

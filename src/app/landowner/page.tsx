@@ -4,7 +4,6 @@ import { Footer } from "@/components/shared/footer";
 import { LandownerForm } from "./_components/landowner-form";
 import { buildMetadata, canonicalUrl } from "@/services/seo";
 import { breadcrumbListJsonLd } from "@/services/seo/structured-data";
-import { ShieldCheck, TrendingUp, Sparkles, Building2 } from "lucide-react";
 
 export const metadata: Metadata = buildMetadata({
   path: "/landowner",
@@ -41,10 +40,10 @@ const CO_DEV_STAGES = [
 ];
 
 const TRUST_METRICS = [
-  { icon: <TrendingUp className="size-5 text-champagne" />, title: "Maximized Equity Ratio", desc: "Transparent landowner ratio tailored to plot location and market potential." },
-  { icon: <ShieldCheck className="size-5 text-champagne" />, title: "100% Legal Protection", desc: "Registered tripartite agreement with dedicated escrow bank security." },
-  { icon: <Building2 className="size-5 text-champagne" />, title: "Bespoke Architecture", desc: "Exclusive single-unit towers that elevate family prestige in your neighborhood." },
-  { icon: <Sparkles className="size-5 text-champagne" />, title: "On-Time Delivery Guarantee", desc: "Strict penalty-backed completion milestones with IEB engineering oversight." },
+  { title: "Maximized Equity Ratio", desc: "Transparent landowner ratio tailored to plot location and market potential." },
+  { title: "100% Legal Protection", desc: "Registered tripartite agreement with dedicated escrow bank security." },
+  { title: "Bespoke Architecture", desc: "Exclusive single-unit towers that elevate family prestige in your neighborhood." },
+  { title: "On-Time Delivery Guarantee", desc: "Strict penalty-backed completion milestones with IEB engineering oversight." },
 ];
 
 export default function LandownerPage() {
@@ -67,7 +66,6 @@ export default function LandownerPage() {
           {/* Hero Header block */}
           <header className="flex flex-col gap-6 max-w-3xl">
             <span className="text-xs uppercase tracking-[0.25em] font-mono text-champagne font-semibold flex items-center gap-2">
-              <span className="size-1.5 rounded-full bg-champagne animate-pulse" />
               Landowner Joint Venture Advisory
             </span>
             <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.02] text-graphite-ink font-medium">
@@ -83,14 +81,12 @@ export default function LandownerPage() {
 
           {/* 4 Trust Metrics */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {TRUST_METRICS.map((metric) => (
+            {TRUST_METRICS.map((metric, index) => (
               <div
                 key={metric.title}
-                className="p-6 rounded-3xl border border-stone bg-linen-cream flex flex-col gap-4 shadow-2xs hover:shadow-md transition-shadow"
+                className="border-t border-graphite-ink pt-5 flex flex-col gap-5"
               >
-                <div className="size-10 rounded-2xl bg-paper-white border border-stone flex items-center justify-center">
-                  {metric.icon}
-                </div>
+                <span className="font-serif text-2xl italic text-champagne">0{index + 1}</span>
                 <div className="flex flex-col gap-1">
                   <h3 className="font-serif text-lg font-medium text-graphite-ink">
                     {metric.title}
@@ -123,7 +119,7 @@ export default function LandownerPage() {
                 {CO_DEV_STAGES.map((stage) => (
                   <div
                     key={stage.step}
-                    className="p-6 rounded-3xl border border-stone bg-paper-white flex flex-col gap-2 shadow-2xs"
+                    className="border-t border-stone pt-5 flex flex-col gap-2"
                   >
                     <div className="flex items-center justify-between">
                       <span className="font-mono text-sm text-champagne font-semibold">
@@ -141,7 +137,7 @@ export default function LandownerPage() {
               </div>
 
               {/* Direct Hotline Card */}
-              <div className="p-6 rounded-3xl bg-linen-cream border border-stone flex flex-col gap-3">
+              <div className="py-6 border-y border-stone flex flex-col gap-3">
                 <span className="text-xs font-mono uppercase tracking-wider text-champagne font-semibold">
                   Prefer a Confidential Discussion?
                 </span>

@@ -61,7 +61,7 @@ export function AboutView() {
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-5 double-bezel-outer w-full aspect-4/5 rounded-[2.5rem] overflow-hidden"
+              className="lg:col-span-5 double-bezel-outer w-full aspect-4/5 rounded-xl overflow-hidden"
             >
               <div className="double-bezel-inner w-full h-full relative">
                 <Image
@@ -102,7 +102,7 @@ export function AboutView() {
                 transition={{ duration: 0.8 }}
                 className="flex flex-col gap-4 relative"
               >
-                <div className="absolute -left-10.25 md:-left-14.25 w-4 h-4 rounded-full bg-accent border-4 border-canvas top-1" />
+                <div className="absolute -left-10.25 md:-left-14.25 w-4 h-4 rounded-xl bg-accent border-4 border-canvas top-1" />
                 <span className="font-mono text-lg font-semibold text-accent">
                   2016
                 </span>
@@ -124,7 +124,7 @@ export function AboutView() {
                 transition={{ duration: 0.8, delay: 0.1 }}
                 className="flex flex-col gap-4 relative"
               >
-                <div className="absolute -left-10.25 md:-left-14.25 w-4 h-4 rounded-full bg-accent border-4 border-canvas top-1" />
+                <div className="absolute -left-10.25 md:-left-14.25 w-4 h-4 rounded-xl bg-accent border-4 border-canvas top-1" />
                 <span className="font-mono text-lg font-semibold text-accent">
                   2020
                 </span>
@@ -147,7 +147,7 @@ export function AboutView() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="flex flex-col gap-4 relative"
               >
-                <div className="absolute -left-10.25 md:-left-14.25 w-4 h-4 rounded-full bg-accent border-4 border-canvas top-1" />
+                <div className="absolute -left-10.25 md:-left-14.25 w-4 h-4 rounded-xl bg-accent border-4 border-canvas top-1" />
                 <span className="font-mono text-lg font-semibold text-accent">
                   2024
                 </span>
@@ -169,7 +169,7 @@ export function AboutView() {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="flex flex-col gap-4 relative"
               >
-                <div className="absolute -left-10.25 md:-left-14.25 w-4 h-4 rounded-full bg-accent border-4 border-canvas top-1" />
+                <div className="absolute -left-10.25 md:-left-14.25 w-4 h-4 rounded-xl bg-accent border-4 border-canvas top-1" />
                 <span className="font-mono text-lg font-semibold text-accent">
                   2026
                 </span>
@@ -252,7 +252,7 @@ export function AboutView() {
                 </div>
               </div>
 
-              <div className="w-full double-bezel-outer rounded-[2.5rem] overflow-hidden">
+              <div className="w-full double-bezel-outer rounded-xl overflow-hidden">
                 <div className="double-bezel-inner relative aspect-4/3 lg:aspect-square w-full h-full group">
                   <Image
                     src="/images/projects/avenue-md-heights/project_image_5.jpeg"
@@ -273,7 +273,7 @@ export function AboutView() {
               transition={{ duration: 0.8 }}
               className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
             >
-              <div className="w-full double-bezel-outer rounded-[2.5rem] overflow-hidden order-2 lg:order-1">
+              <div className="w-full double-bezel-outer rounded-xl overflow-hidden order-2 lg:order-1">
                 <div className="double-bezel-inner relative aspect-4/3 lg:aspect-square w-full h-full group">
                   <Image
                     src="/images/projects/avenue-ahsan-palace/project_image_1.jpeg"
@@ -362,7 +362,7 @@ export function AboutView() {
                     <div
                       className={`lg:col-span-5 ${
                         isReverse ? "lg:order-2" : ""
-                      } double-bezel-outer aspect-square rounded-4xl overflow-hidden`}
+                      } double-bezel-outer aspect-square overflow-hidden`}
                     >
                       <div className="double-bezel-inner relative w-full h-full">
                         <Image

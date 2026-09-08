@@ -96,19 +96,17 @@ export function About() {
               <div className="pt-5">
                 <Link
                   href="/about"
-                  className="group pill-btn inline-flex items-center gap-3 pl-6 pr-2.5 py-3 text-xs uppercase font-mono tracking-wider bg-obsidian text-paper-white hover:bg-black active:scale-[0.98] transition-all shadow-sm"
+                  className="group inline-flex items-center gap-4 border-b border-graphite-ink pb-2 text-[10px] uppercase tracking-[0.14em] text-graphite-ink hover:text-champagne hover:border-champagne transition-colors"
                 >
                   <span>Our Story &amp; Philosophy</span>
-                  <span className="flex size-6 items-center justify-center rounded-full bg-paper-white/15 text-[11px] transition-transform duration-300 group-hover:translate-x-0.5">
-                    &rarr;
-                  </span>
+                  <span aria-hidden="true" className="transition-transform duration-500 group-hover:translate-x-1">↗</span>
                 </Link>
               </div>
             </div>
           </div>
 
           {/* Right Column: Animated Counter Stats */}
-          <div className="lg:col-span-6 grid grid-cols-2 gap-6">
+          <div className="lg:col-span-6 grid grid-cols-2 border-t border-stone">
             {STATS.map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -120,7 +118,7 @@ export function About() {
                   delay: index * 0.1,
                   ease: [0.32, 0.72, 0, 1],
                 }}
-                className="p-6 rounded-2xl border border-stone bg-linen-cream flex flex-col gap-2 shadow-2xs"
+                className="py-7 pr-5 border-b border-stone flex flex-col gap-3 odd:border-r odd:pr-7 even:pl-7"
               >
                 <span className="font-serif text-[clamp(2.4rem,5vw,3.6rem)] font-medium text-graphite-ink leading-none">
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} />
@@ -142,7 +140,7 @@ export function About() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
-          className="relative w-full aspect-video rounded-3xl sm:rounded-[36px] overflow-hidden shadow-2xl border border-stone bg-black group"
+          className="relative w-full aspect-video overflow-hidden border-y border-stone bg-black group"
         >
           <iframe
             src="https://www.youtube-nocookie.com/embed/IIz5zEPHBHk?autoplay=1&mute=1&start=6&controls=0&loop=1&playlist=IIz5zEPHBHk&playsinline=1&rel=0&showinfo=0&iv_load_policy=3&modestbranding=1&disablekb=1"
@@ -153,7 +151,7 @@ export function About() {
             className="absolute top-[-15%] left-[-15%] w-[130%] h-[130%] object-cover border-0 pointer-events-none"
           />
           <div className="absolute inset-0 z-10 bg-linear-to-t from-black/80 via-transparent to-black/20 pointer-events-auto" />
-          <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 z-20 text-paper-white pointer-events-none drop-shadow-md">
+          <div className="absolute bottom-6 left-6 sm:bottom-10 sm:left-10 z-20 text-paper-white pointer-events-none">
             <span className="font-mono text-xs uppercase tracking-[0.25em] text-champagne block mb-1">
               Architectural Handover Showcase
             </span>
@@ -164,7 +162,7 @@ export function About() {
         </motion.div>
 
         {/* The 3 Core Architectural Pillars */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-start pt-4">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 items-start pt-4">
           {PILLARS.map((pillar, index) => (
             <motion.div
               key={pillar.label}
@@ -176,10 +174,10 @@ export function About() {
                 delay: index * 0.12,
                 ease: [0.32, 0.72, 0, 1],
               }}
-              className="double-bezel-outer group"
+              className={`${index === 0 ? "md:col-span-5" : index === 1 ? "md:col-span-3 md:mt-20" : "md:col-span-4 md:mt-8"} group border-t border-stone pt-3`}
             >
-              <div className="double-bezel-inner flex flex-col min-h-95 justify-between p-2 bg-linen-cream">
-                <div className="relative aspect-4/3 w-full rounded-2xl overflow-hidden bg-stone">
+              <div className="flex flex-col justify-between bg-transparent">
+                <div className="relative aspect-4/3 w-full overflow-hidden bg-stone">
                   <Image
                     src={pillar.image}
                     alt={pillar.label}
@@ -188,7 +186,7 @@ export function About() {
                     className="object-cover transition-transform duration-700 ease-premium-in-out group-hover:scale-105"
                   />
                 </div>
-                <div className="p-5 sm:p-6 flex flex-col gap-3">
+                <div className="pt-5 flex flex-col gap-3">
                   <h3 className="font-serif text-2xl text-graphite-ink font-medium">
                     {pillar.label}
                   </h3>

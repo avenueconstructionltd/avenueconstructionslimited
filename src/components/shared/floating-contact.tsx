@@ -3,7 +3,6 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
-import { Phone, MessageCircle } from "lucide-react";
 
 export function FloatingContact() {
   const [hoveredButton, setHoveredButton] = useState<
@@ -25,7 +24,7 @@ export function FloatingContact() {
       external: true,
       label: "WhatsApp Advisor",
       delay: 0.2,
-      icon: <MessageCircle className="size-5" strokeWidth={1.75} />,
+      mark: "WA",
     },
     {
       key: "phone" as const,
@@ -33,7 +32,7 @@ export function FloatingContact() {
       external: false,
       label: "Call Concierge",
       delay: 0.3,
-      icon: <Phone className="size-5" strokeWidth={1.75} />,
+      mark: "TEL",
     },
   ];
 
@@ -61,7 +60,7 @@ export function FloatingContact() {
                   animate={{ opacity: 1, scale: 1, x: 0 }}
                   exit={{ opacity: 0, scale: 0.95, x: 10 }}
                   transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="mr-2 flex h-9 items-center whitespace-nowrap rounded-full border border-stone bg-paper-white px-3.5 text-xs text-graphite-ink shadow-xs"
+                  className="mr-2 flex h-9 items-center whitespace-nowrap border border-stone bg-paper-white px-3.5 text-xs text-graphite-ink"
                 >
                   <span className="font-normal tracking-wide">
                     {item.label}
@@ -78,10 +77,10 @@ export function FloatingContact() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.15 }}
-              className="flex size-12 shrink-0 items-center justify-center rounded-full bg-charcoal text-paper-white hover:bg-graphite-ink shadow-sm transition-colors"
+              className="flex h-11 min-w-11 shrink-0 items-center justify-center border border-paper-white/20 bg-charcoal px-2 text-[9px] tracking-[0.12em] text-paper-white hover:bg-graphite-ink transition-colors"
               aria-label={item.label}
             >
-              {item.icon}
+              {item.mark}
             </motion.a>
           </div>
         );

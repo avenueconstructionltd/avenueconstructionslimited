@@ -77,7 +77,7 @@ export function TestimonialsSlider({
                 </div>
 
                 <div className="flex items-center gap-4 mt-6">
-                  <div className="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-black/5 flex items-center justify-center shrink-0">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -112,7 +112,7 @@ export function TestimonialsSlider({
       <div className="flex items-center justify-center gap-4">
         <button
           onClick={scrollLeft}
-          className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-text-primary hover:bg-accent hover:text-canvas hover:border-accent transition-all duration-300"
+          className="w-12 h-12 border border-black/10 flex items-center justify-center text-text-primary hover:bg-accent hover:text-canvas hover:border-accent transition-colors duration-300"
           aria-label="Previous testimonial"
         >
           <svg
@@ -132,7 +132,7 @@ export function TestimonialsSlider({
         </button>
         <button
           onClick={scrollRight}
-          className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-text-primary hover:bg-accent hover:text-canvas hover:border-accent transition-all duration-300"
+          className="w-12 h-12 border border-black/10 flex items-center justify-center text-text-primary hover:bg-accent hover:text-canvas hover:border-accent transition-colors duration-300"
           aria-label="Next testimonial"
         >
           <svg

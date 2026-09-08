@@ -2,7 +2,6 @@
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { motion } from "motion/react";
-import { Check } from "lucide-react";
 
 interface FormFields {
   fullName: string;
@@ -102,9 +101,7 @@ export function ContactForm({ embedded = false }: ContactFormProps) {
             animate={{ opacity: 1, scale: 1 }}
             className="flex flex-col items-center justify-center text-center py-10"
           >
-            <div className="size-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-champagne mb-5">
-              <Check className="size-5" />
-            </div>
+            <span className="font-serif text-4xl italic text-champagne mb-5">Received</span>
             <h3 className="font-serif text-2xl text-paper-white font-medium">
               Inquiry Received
             </h3>
@@ -134,10 +131,10 @@ export function ContactForm({ embedded = false }: ContactFormProps) {
                 value={fields.fullName}
                 onChange={handleChange}
                 placeholder="e.g. Christopher Harrison"
-                className="w-full px-4 py-3 rounded-full bg-white/5 border border-white/10 text-sm text-paper-white placeholder:text-paper-white/25 focus:outline-none focus:border-champagne/50 transition-colors"
+                className="w-full px-0 py-3 bg-transparent border-0 border-b border-white/20 text-sm text-paper-white placeholder:text-paper-white/25 focus:outline-none focus:border-champagne/70 transition-colors"
               />
               {errors.fullName && (
-                <span className="text-xs text-red-400 tracking-wide mt-0.5">
+                <span className="text-xs text-error tracking-wide mt-0.5">
                   {errors.fullName}
                 </span>
               )}
@@ -157,10 +154,10 @@ export function ContactForm({ embedded = false }: ContactFormProps) {
                 value={fields.email}
                 onChange={handleChange}
                 placeholder="e.g. christopher@harrison.com"
-                className="w-full px-4 py-3 rounded-full bg-white/5 border border-white/10 text-sm text-paper-white placeholder:text-paper-white/25 focus:outline-none focus:border-champagne/50 transition-colors"
+                className="w-full px-0 py-3 bg-transparent border-0 border-b border-white/20 text-sm text-paper-white placeholder:text-paper-white/25 focus:outline-none focus:border-champagne/70 transition-colors"
               />
               {errors.email && (
-                <span className="text-xs text-red-400 tracking-wide mt-0.5">
+                <span className="text-xs text-error tracking-wide mt-0.5">
                   {errors.email}
                 </span>
               )}
@@ -178,7 +175,7 @@ export function ContactForm({ embedded = false }: ContactFormProps) {
                 name="residence"
                 value={fields.residence}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-full bg-white/5 border border-white/10 text-sm text-paper-white focus:outline-none focus:border-champagne/50 transition-colors cursor-pointer"
+                className="w-full px-0 py-3 bg-transparent border-0 border-b border-white/20 text-sm text-paper-white focus:outline-none focus:border-champagne/70 transition-colors cursor-pointer"
               >
                 <option value="Avenue Ahsan Palace">Avenue Ahsan Palace</option>
                 <option value="Avenue MD Heights">Avenue MD. Heights</option>
@@ -203,10 +200,10 @@ export function ContactForm({ embedded = false }: ContactFormProps) {
                 onChange={handleChange}
                 rows={4}
                 placeholder="Share your acquisition schedule, unit size requirements, or consultation goals..."
-                className="w-full p-4 rounded-2xl bg-white/5 border border-white/10 text-sm text-paper-white placeholder:text-paper-white/25 focus:outline-none focus:border-champagne/50 transition-colors resize-none"
+                className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-sm text-paper-white placeholder:text-paper-white/25 focus:outline-none focus:border-champagne/50 transition-colors resize-none"
               />
               {errors.message && (
-                <span className="text-xs text-red-400 tracking-wide mt-0.5">
+                <span className="text-xs text-error tracking-wide mt-0.5">
                   {errors.message}
                 </span>
               )}
@@ -223,14 +220,12 @@ export function ContactForm({ embedded = false }: ContactFormProps) {
                     ? "Submitting Inquiry..."
                     : "Submit Private Inquiry"}
                 </span>
-                <span className="flex size-6 items-center justify-center rounded-full bg-obsidian/20 text-obsidian text-xs transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
-                  &rarr;
-                </span>
+                <span aria-hidden="true" className="transition-transform duration-500 group-hover:translate-x-1">↗</span>
               </button>
             </div>
 
             {status === "error" && (
-              <div className="text-xs text-red-400 tracking-wide text-center mt-2">
+              <div className="text-xs text-error tracking-wide text-center mt-2">
                 An error occurred. Please try again or call +880 1714 767 246.
               </div>
             )}
@@ -250,9 +245,6 @@ export function ContactForm({ embedded = false }: ContactFormProps) {
       suppressHydrationWarning
       className="relative w-full py-24 md:py-32 px-4 sm:px-6 md:px-12 bg-obsidian text-paper-white overflow-hidden"
     >
-      {/* Decorative glow */}
-      <div className="glow-accent -top-25 -right-50" />
-
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

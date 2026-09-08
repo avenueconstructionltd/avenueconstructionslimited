@@ -52,21 +52,22 @@ export function ArchitecturalJournal() {
   return (
     <section className="relative z-10 w-full py-24 md:py-32 px-6 sm:px-8 md:px-12 bg-paper-white text-graphite-ink">
       <div className="max-w-7xl mx-auto flex flex-col gap-14 md:gap-18">
-        {/* Centered Fazora-Style Header */}
-        <div className="flex flex-col items-center text-center gap-3 max-w-2xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-5 md:gap-16 items-end border-b border-stone pb-8">
+          <div className="flex flex-col gap-3">
           <span className="font-mono text-xs uppercase tracking-[0.25em] text-champagne font-semibold">
             Architectural Insights &amp; Journal
           </span>
           <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.6rem)] leading-[1.08] tracking-[-0.015em] text-graphite-ink">
             Trends and inspiration in one place.
           </h2>
-          <p className="text-body text-pebble leading-relaxed">
+          </div>
+          <p className="text-body text-pebble leading-relaxed max-w-md">
             At Avenue, every home embodies spatial precision, structural honesty, and timeless elegance.
           </p>
         </div>
 
         {/* 4-Card Grid (Fazora 2x2 Layout) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           {ARTICLES.map((article, index) => (
             <motion.div
               key={article.title}
@@ -78,7 +79,7 @@ export function ArchitecturalJournal() {
                 delay: index * 0.1,
                 ease: [0.32, 0.72, 0, 1],
               }}
-              className="group relative aspect-16/10 sm:aspect-video rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-stone bg-linen-cream"
+              className={`${index === 0 || index === 3 ? "md:col-span-7" : "md:col-span-5"} group relative aspect-16/10 sm:aspect-video overflow-hidden bg-linen-cream`}
             >
               {/* Background Image */}
               <Image
@@ -94,7 +95,7 @@ export function ArchitecturalJournal() {
 
               {/* Top Category Badge */}
               <div className="absolute top-4 left-4 z-10">
-                <span className="pill-btn px-3 py-1 text-[10px] font-mono uppercase tracking-wider text-paper-white bg-black/60 backdrop-blur-md border border-white/15">
+                <span className="px-3 py-2 text-[9px] uppercase tracking-[0.14em] text-paper-white bg-obsidian border border-white/15">
                   {article.category}
                 </span>
               </div>
@@ -107,7 +108,7 @@ export function ArchitecturalJournal() {
                   </h3>
                 </Link>
 
-                <span className="pill-btn px-3 py-1 text-[11px] font-mono text-paper-white bg-white/15 backdrop-blur-md border border-white/20 shrink-0">
+                <span className="px-3 py-2 text-[9px] uppercase tracking-[0.12em] text-paper-white bg-obsidian border border-white/20 shrink-0">
                   {article.date}
                 </span>
               </div>

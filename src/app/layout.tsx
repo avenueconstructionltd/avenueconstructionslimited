@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import {
-  Outfit,
   Plus_Jakarta_Sans,
   Cormorant_Garamond,
   Geist_Mono,
@@ -23,12 +22,6 @@ import {
   OG_IMAGE_HEIGHT,
   GOOGLE_SITE_VERIFICATION,
 } from "@/constants/seo";
-
-const outfit = Outfit({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-sans-body",
@@ -122,7 +115,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${plusJakartaSans.variable} ${cormorantGaramond.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${plusJakartaSans.variable} ${cormorantGaramond.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body

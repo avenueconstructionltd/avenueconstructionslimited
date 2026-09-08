@@ -35,16 +35,12 @@ export function Navbar() {
 
   return (
     <>
-      {/* Floating Pill Nav — scroll-aware frosted glass */}
       <motion.nav
         animate={{
-          backgroundColor: scrolled ? "rgba(252, 252, 252, 0.92)" : "rgba(252, 252, 252, 0.75)",
-          boxShadow: scrolled
-            ? "0 8px 32px rgba(50,48,47,0.1), 0 1px 0 rgba(226,223,218,0.6)"
-            : "0 8px 32px rgba(50,48,47,0.04)",
+          backgroundColor: scrolled ? "rgba(252, 252, 252, 0.96)" : "rgba(252, 252, 252, 0.88)",
         }}
         transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
-        className="fixed top-5 md:top-6 left-1/2 -translate-x-1/2 z-50 flex w-[calc(100%-1.5rem)] max-w-5xl items-center justify-between rounded-full backdrop-blur-xl px-4 py-2.5 md:px-6 md:py-3 ring-1 ring-stone/60"
+        className="fixed top-0 left-1/2 -translate-x-1/2 z-50 flex w-[calc(100%-1rem)] max-w-7xl items-center justify-between rounded-b-xl border-x border-b border-stone px-6 py-4 md:px-10 lg:px-14"
       >
         {/* Brand Logo */}
         <Logo />
@@ -67,9 +63,9 @@ export function Navbar() {
                 {link.label}
                 {isActive && (
                   <motion.span
-                    layoutId="nav-active-dot"
-                    className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 size-1 rounded-full bg-champagne"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    layoutId="nav-active-line"
+                    className="absolute -bottom-2 left-0 h-px w-full bg-champagne"
+                    transition={{ duration: 0.45, ease: [0.32, 0.72, 0, 1] }}
                   />
                 )}
               </Link>
@@ -78,28 +74,20 @@ export function Navbar() {
         </div>
 
         {/* Right CTA Actions */}
-        <div className="hidden md:flex items-center gap-3">
-          <Link
-            href="/contact"
-            className="pill-btn inline-flex items-center justify-center px-4 py-2 text-xs font-normal border border-stone text-graphite-ink hover:border-graphite-ink hover:bg-fog-veil transition-colors"
-          >
-            Get in Touch
-          </Link>
+        <div className="hidden md:flex items-center">
           <Link
             href="/projects"
-            className="group pill-btn inline-flex items-center gap-2.5 pl-4 pr-2 py-1.5 text-xs font-normal bg-charcoal text-paper-white hover:bg-graphite-ink active:scale-[0.98] transition-all"
+            className="group inline-flex items-center gap-4 border-b border-graphite-ink pb-1.5 text-[10px] uppercase tracking-[0.14em] text-graphite-ink hover:text-champagne hover:border-champagne transition-colors"
           >
             <span>View Projects</span>
-            <span className="flex size-6 items-center justify-center rounded-full bg-paper-white/15 text-[11px] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
-              &rarr;
-            </span>
+            <span aria-hidden="true" className="transition-transform duration-500 group-hover:translate-x-1">↗</span>
           </Link>
         </div>
 
         {/* Mobile Hamburger */}
         <button
           onClick={toggleMenu}
-          className="flex size-10 items-center justify-center rounded-full border border-stone text-graphite-ink hover:bg-fog-veil md:hidden transition-colors"
+          className="flex size-10 items-center justify-center border border-stone text-graphite-ink hover:bg-fog-veil md:hidden transition-colors"
           aria-label="Toggle navigation menu"
           aria-expanded={isOpen}
         >

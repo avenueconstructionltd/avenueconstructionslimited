@@ -46,9 +46,7 @@ export function LandownerForm() {
   if (status === "success") {
     return (
       <div className="flex flex-col gap-6 text-center py-12 px-6">
-        <div className="size-16 bg-accent/10 text-accent rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
-          ✓
-        </div>
+        <span className="font-serif text-4xl italic text-accent">Received</span>
         <h3 className="font-serif text-2xl uppercase tracking-wide text-text-primary">
           Inquiry Received
         </h3>
@@ -90,7 +88,7 @@ export function LandownerForm() {
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           placeholder="e.g. Engr. Latifur Rahman"
-          className="w-full bg-surface border border-black/5 rounded-lg px-4 py-3 text-xs text-text-primary placeholder:text-text-secondary/40 focus:outline-hidden focus:border-accent/40"
+          className="w-full bg-surface border border-black/5 rounded-xl px-4 py-3 text-xs text-text-primary placeholder:text-text-secondary/40 focus:outline-hidden focus:border-accent/40"
         />
       </div>
 
@@ -107,7 +105,7 @@ export function LandownerForm() {
               setFormData({ ...formData, phone: e.target.value })
             }
             placeholder="e.g. +880 17--"
-            className="w-full bg-surface border border-black/5 rounded-lg px-4 py-3 text-xs text-text-primary placeholder:text-text-secondary/40 focus:outline-hidden focus:border-accent/40"
+            className="w-full bg-surface border border-black/5 rounded-xl px-4 py-3 text-xs text-text-primary placeholder:text-text-secondary/40 focus:outline-hidden focus:border-accent/40"
           />
         </div>
         <div className="flex flex-col gap-1.5">
@@ -121,7 +119,7 @@ export function LandownerForm() {
               setFormData({ ...formData, email: e.target.value })
             }
             placeholder="e.g. latifur@example.com"
-            className="w-full bg-surface border border-black/5 rounded-lg px-4 py-3 text-xs text-text-primary placeholder:text-text-secondary/40 focus:outline-hidden focus:border-accent/40"
+            className="w-full bg-surface border border-black/5 rounded-xl px-4 py-3 text-xs text-text-primary placeholder:text-text-secondary/40 focus:outline-hidden focus:border-accent/40"
           />
         </div>
       </div>
@@ -137,7 +135,7 @@ export function LandownerForm() {
             onChange={(e) =>
               setFormData({ ...formData, location: e.target.value })
             }
-            className="w-full bg-surface border border-black/5 rounded-lg px-3 py-3 text-xs text-text-primary focus:outline-hidden focus:border-accent/40"
+            className="w-full bg-surface border border-black/5 rounded-xl px-3 py-3 text-xs text-text-primary focus:outline-hidden focus:border-accent/40"
           >
             <option value="">Select Enclave</option>
             {DHAKA_LOCATIONS.map((loc) => (
@@ -158,7 +156,7 @@ export function LandownerForm() {
             value={formData.size}
             onChange={(e) => setFormData({ ...formData, size: e.target.value })}
             placeholder="e.g. 5"
-            className="w-full bg-surface border border-black/5 rounded-lg px-4 py-3 text-xs text-text-primary placeholder:text-text-secondary/40 focus:outline-hidden focus:border-accent/40"
+            className="w-full bg-surface border border-black/5 rounded-xl px-4 py-3 text-xs text-text-primary placeholder:text-text-secondary/40 focus:outline-hidden focus:border-accent/40"
           />
         </div>
       </div>
@@ -173,7 +171,7 @@ export function LandownerForm() {
             onChange={(e) =>
               setFormData({ ...formData, facing: e.target.value })
             }
-            className="w-full bg-surface border border-black/5 rounded-lg px-3 py-3 text-xs text-text-primary focus:outline-hidden focus:border-accent/40"
+            className="w-full bg-surface border border-black/5 rounded-xl px-3 py-3 text-xs text-text-primary focus:outline-hidden focus:border-accent/40"
           >
             <option value="">Select Direction</option>
             <option value="South">South Facing (Wind Path)</option>
@@ -194,7 +192,7 @@ export function LandownerForm() {
               setFormData({ ...formData, roadWidth: e.target.value })
             }
             placeholder="e.g. 30"
-            className="w-full bg-surface border border-black/5 rounded-lg px-4 py-3 text-xs text-text-primary placeholder:text-text-secondary/40 focus:outline-hidden focus:border-accent/40"
+            className="w-full bg-surface border border-black/5 rounded-xl px-4 py-3 text-xs text-text-primary placeholder:text-text-secondary/40 focus:outline-hidden focus:border-accent/40"
           />
         </div>
       </div>
@@ -202,7 +200,7 @@ export function LandownerForm() {
       <div className="pt-2">
         <MagneticButton
           strength={15}
-          className="w-full text-center py-4 bg-accent text-white uppercase text-[10px] tracking-widest font-mono rounded-lg hover:bg-text-primary transition-colors"
+          className="w-full text-center py-4 bg-accent text-white uppercase text-[10px] tracking-widest font-mono rounded-xl hover:bg-text-primary transition-colors"
         >
           Submit Inquiry Details
         </MagneticButton>

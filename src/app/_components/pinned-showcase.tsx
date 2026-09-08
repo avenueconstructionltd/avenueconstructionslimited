@@ -86,14 +86,14 @@ export function PinnedShowcase() {
           </div>
 
           {/* Interactive Landmark Switcher Tabs */}
-          <div className="flex items-center gap-2 p-1.5 rounded-full border border-stone bg-linen-cream self-start md:self-auto overflow-x-auto">
+          <div className="flex items-center border-y border-stone self-start md:self-auto overflow-x-auto">
             {SHOWCASE_ITEMS.map((item, idx) => (
               <button
                 key={item.slug}
                 onClick={() => setSelectedIndex(idx)}
-                className={`pill-btn px-4 py-2 text-xs font-mono transition-all cursor-pointer ${
+                className={`px-4 py-3 text-[10px] uppercase tracking-[0.12em] border-r border-stone transition-colors cursor-pointer ${
                   selectedIndex === idx
-                    ? "bg-obsidian text-paper-white shadow-xs"
+                    ? "bg-obsidian text-paper-white"
                     : "text-pebble hover:text-graphite-ink"
                 }`}
               >
@@ -104,7 +104,7 @@ export function PinnedShowcase() {
         </div>
 
         {/* Single Unified Spotlight Card */}
-        <div className="rounded-3xl sm:rounded-4xl border border-stone bg-linen-cream overflow-hidden shadow-sm p-5 sm:p-8 lg:p-10">
+        <div className="border-y border-stone overflow-hidden py-7 sm:py-10">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentItem.slug}
@@ -115,7 +115,7 @@ export function PinnedShowcase() {
               className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
             >
               {/* Left Column: Image Window */}
-              <div className="lg:col-span-7 relative aspect-16/10 sm:aspect-video rounded-2xl overflow-hidden shadow-md bg-stone group">
+              <div className="lg:col-span-7 relative aspect-16/10 sm:aspect-video overflow-hidden bg-stone group">
                 <Image
                   src={currentItem.image}
                   alt={currentItem.title}
@@ -124,7 +124,7 @@ export function PinnedShowcase() {
                   className="object-cover transition-transform duration-700 ease-premium-in-out group-hover:scale-105"
                 />
                 <div className="absolute top-4 left-4 z-10">
-                  <span className="pill-btn px-3 py-1 text-[11px] font-mono uppercase tracking-wider bg-black/70 text-paper-white backdrop-blur-md border border-white/20">
+                  <span className="px-3 py-2 text-[9px] uppercase tracking-[0.16em] bg-obsidian text-paper-white border border-white/20">
                     {currentItem.category}
                   </span>
                 </div>
@@ -164,12 +164,10 @@ export function PinnedShowcase() {
                 <div className="pt-2">
                   <Link
                     href={`/projects/${currentItem.slug}`}
-                    className="group pill-btn inline-flex items-center gap-3 pl-6 pr-2.5 py-3 text-xs font-mono uppercase tracking-wider bg-obsidian text-paper-white hover:bg-black transition-all shadow-sm"
+                    className="group inline-flex items-center gap-4 border-b border-graphite-ink pb-2 text-[10px] uppercase tracking-[0.14em] text-graphite-ink hover:text-champagne hover:border-champagne transition-colors"
                   >
                     <span>View Project Monograph</span>
-                    <span className="flex size-6 items-center justify-center rounded-full bg-paper-white/15 text-[11px] transition-transform duration-300 group-hover:translate-x-0.5">
-                      &rarr;
-                    </span>
+                    <span aria-hidden="true" className="transition-transform duration-500 group-hover:translate-x-1">↗</span>
                   </Link>
                 </div>
               </div>

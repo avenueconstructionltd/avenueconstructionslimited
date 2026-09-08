@@ -51,7 +51,7 @@ export function Credentials() {
         </div>
 
         {/* 4 Clean Trust Pillar Blocks */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-9 gap-y-12">
           {TRUST_PILLARS.map((pillar, index) => (
             <motion.div
               key={pillar.title}
@@ -63,9 +63,10 @@ export function Credentials() {
                 delay: index * 0.08,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="p-7 rounded-3xl border border-stone bg-paper-white flex flex-col justify-between gap-6 shadow-2xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+              className="border-t border-graphite-ink pt-5 flex flex-col justify-between gap-10"
             >
               <div className="flex flex-col gap-2.5">
+                <span className="font-serif text-2xl italic text-champagne">0{index + 1}</span>
                 <span className="text-[11px] font-mono text-champagne uppercase tracking-wider font-semibold">
                   {pillar.authority}
                 </span>

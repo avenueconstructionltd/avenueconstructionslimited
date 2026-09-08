@@ -4,25 +4,24 @@ import { motion } from "motion/react";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { ContactForm } from "@/app/_components/contact-form";
-import { Phone, Mail, MapPin, Clock, MessageSquare, ShieldCheck, ArrowRight } from "lucide-react";
 
 const QUICK_CONTACTS = [
   {
-    icon: <Phone className="size-5 text-champagne" />,
+    number: "01",
     title: "Direct Hotlines",
     details: ["+880 1714 767 246", "+880 1581 742 235"],
     action: "tel:+8801714767246",
     actionLabel: "Call Concierge",
   },
   {
-    icon: <MessageSquare className="size-5 text-champagne" />,
+    number: "02",
     title: "WhatsApp Advisory",
     details: ["Instant chat with senior real estate advisor", "Available 7 days a week"],
     action: "https://wa.me/8801714767246",
     actionLabel: "Chat on WhatsApp",
   },
   {
-    icon: <Mail className="size-5 text-champagne" />,
+    number: "03",
     title: "Official Email",
     details: ["avenue902@gmail.com", "Response within 4 business hours"],
     action: "mailto:avenue902@gmail.com",
@@ -66,7 +65,6 @@ export function ContactView() {
               transition={{ duration: 0.6 }}
               className="text-xs uppercase tracking-[0.25em] font-mono text-champagne font-semibold flex items-center gap-2"
             >
-              <span className="size-1.5 rounded-full bg-champagne animate-pulse" />
               Get in Touch with Avenue
             </motion.span>
 
@@ -93,7 +91,7 @@ export function ContactView() {
           </div>
 
           {/* Quick Direct Connect Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-12">
             {QUICK_CONTACTS.map((item, index) => (
               <motion.div
                 key={item.title}
@@ -101,12 +99,10 @@ export function ContactView() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-7 rounded-3xl border border-stone bg-linen-cream flex flex-col justify-between gap-6 shadow-2xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
+                className="border-t border-graphite-ink pt-5 flex flex-col justify-between gap-9"
               >
                 <div className="flex flex-col gap-4">
-                  <div className="size-12 rounded-2xl bg-paper-white border border-stone flex items-center justify-center group-hover:scale-105 transition-transform">
-                    {item.icon}
-                  </div>
+                  <span className="font-serif text-2xl italic text-champagne">{item.number}</span>
                   <div className="flex flex-col gap-1">
                     <h3 className="font-serif text-xl font-medium text-graphite-ink">
                       {item.title}
@@ -126,7 +122,7 @@ export function ContactView() {
                   className="pill-btn inline-flex items-center justify-between px-5 py-2.5 text-xs font-mono border border-stone bg-paper-white text-graphite-ink hover:bg-obsidian hover:text-paper-white hover:border-obsidian transition-colors"
                 >
                   <span>{item.actionLabel}</span>
-                  <ArrowRight className="size-3.5" />
+                  <span aria-hidden="true">↗</span>
                 </a>
               </motion.div>
             ))}
@@ -149,9 +145,8 @@ export function ContactView() {
               </div>
 
               {/* Consultation Hours */}
-              <div className="flex flex-col gap-4 p-6 rounded-3xl border border-stone bg-linen-cream">
+              <div className="flex flex-col gap-4 py-6 border-y border-stone">
                 <div className="flex items-center gap-2 text-xs font-mono text-champagne uppercase tracking-wider font-semibold">
-                  <Clock className="size-4" />
                   <span>Office &amp; Consultation Hours</span>
                 </div>
                 <div className="flex flex-col gap-3 text-xs">
@@ -171,7 +166,6 @@ export function ContactView() {
               <div className="flex flex-col gap-3">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono uppercase tracking-wider text-pebble flex items-center gap-1.5">
-                    <MapPin className="size-3.5 text-champagne" />
                     Interactive Map Location
                   </span>
                   <a
@@ -184,7 +178,7 @@ export function ContactView() {
                   </a>
                 </div>
 
-                <div className="relative aspect-16/10 w-full rounded-3xl overflow-hidden border border-stone shadow-sm">
+                <div className="relative aspect-16/10 w-full overflow-hidden border-y border-stone">
                   <iframe
                     title="Avenue Constructions Limited Head Office Map"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.417726588265!2d90.41031387602334!3d23.73248388947847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b85be2fbf9e3%3A0xe5414f4e7d4d4aa9!2sPurana%20Paltan%2C%20Dhaka%201000!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd"
@@ -225,12 +219,13 @@ export function ContactView() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {CONTACT_FAQS.map((faq) => (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-12">
+              {CONTACT_FAQS.map((faq, index) => (
                 <div
                   key={faq.question}
-                  className="p-6 rounded-3xl border border-stone bg-linen-cream flex flex-col gap-3"
+                  className="border-t border-stone pt-5 flex flex-col gap-3"
                 >
+                  <span className="font-serif text-xl italic text-champagne">0{index + 1}</span>
                   <h3 className="font-serif text-base text-graphite-ink font-medium leading-snug">
                     {faq.question}
                   </h3>
@@ -243,12 +238,10 @@ export function ContactView() {
           </div>
 
           {/* Absolute Discretion Band (Dark Luxury Real Estate Bookend) */}
-          <div className="relative overflow-hidden rounded-3xl sm:rounded-[36px] bg-obsidian text-paper-white p-8 sm:p-12 md:p-16 grid grid-cols-1 md:grid-cols-3 gap-10 items-center border border-white/10 shadow-2xl">
-            <div className="glow-accent -top-20 -left-20 opacity-30" />
+          <div className="relative overflow-hidden bg-obsidian text-paper-white p-8 sm:p-12 md:p-16 grid grid-cols-1 md:grid-cols-3 gap-10 items-center border-y border-white/10">
 
             <div className="md:col-span-2 flex flex-col gap-4 relative z-10">
-              <span className="text-xs uppercase tracking-[0.25em] font-mono text-champagne font-semibold flex items-center gap-2">
-                <ShieldCheck className="size-4 text-champagne" />
+              <span className="text-xs uppercase tracking-[0.25em] font-mono text-champagne font-semibold">
                 Absolute Discretion &amp; Trust
               </span>
               <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl leading-tight text-paper-white font-medium">

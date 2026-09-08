@@ -53,12 +53,10 @@ export function JointVenture() {
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <Link
                 href="/landowner"
-                className="group pill-btn inline-flex items-center gap-3 pl-6 pr-2.5 py-3 text-xs font-mono uppercase tracking-wider bg-obsidian text-paper-white hover:bg-black transition-all shadow-md active:scale-[0.98]"
+                className="group inline-flex items-center gap-4 border-b border-graphite-ink pb-2 text-[10px] uppercase tracking-[0.14em] text-graphite-ink hover:text-champagne hover:border-champagne transition-colors"
               >
                 <span>Schedule Land Assessment</span>
-                <span className="flex size-6 items-center justify-center rounded-full bg-paper-white/20 text-paper-white text-xs transition-transform duration-300 group-hover:translate-x-0.5">
-                  &rarr;
-                </span>
+                <span aria-hidden="true" className="transition-transform duration-500 group-hover:translate-x-1">↗</span>
               </Link>
               <Link
                 href="/contact"
@@ -70,7 +68,7 @@ export function JointVenture() {
           </div>
 
           {/* Right Column: Progressive 4-Stage Pathway Card */}
-          <div className="lg:col-span-7 rounded-3xl border border-stone bg-paper-white p-6 sm:p-8 lg:p-10 shadow-sm flex flex-col gap-6">
+          <div className="lg:col-span-7 border-t border-stone pt-7 flex flex-col gap-6">
             <div>
               <h3 className="font-serif text-xl font-medium text-graphite-ink">
                 The Joint Venture Partnership Framework

@@ -1,47 +1,28 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  type ReactNode,
-} from "react";
-import Lenis from "lenis";
-
-const SmoothScrollContext = createContext<Lenis | null>(null);
-
-export const useSmoothScroll = () => useContext(SmoothScrollContext);
+import { useEffect, useRef, type ReactNode } from "react";
+import { ReactLenis, type LenisRef } from "lenis/react";
+import { cancelFrame, frame } from "motion/react";
 
 export function SmoothScrollProvider({ children }: { children: ReactNode }) {
-  const [lenis, setLenis] = useState<Lenis | null>(null);
+  const lenisRef = useRef<LenisRef>(null);
 
   useEffect(() => {
-    const lenisInstance = new Lenis({
-      duration: 1.0,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      wheelMultiplier: 0.8,
-      touchMultiplier: 1.5,
-    });
-
-    function raf(time: number) {
-      lenisInstance.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-    setLenis(lenisInstance);
-
-    return () => {
-      lenisInstance.destroy();
-      setLenis(null);
+    const update = ({ timestamp }: { timestamp: number }) => {
+      lenisRef.current?.lenis?.raf(timestamp);
     };
+
+    frame.update(update, true);
+    return () => cancelFrame(update);
   }, []);
 
   return (
-    <SmoothScrollContext.Provider value={lenis}>
+    <ReactLenis
+      ref={lenisRef}
+      root
+      options={{ autoRaf: false, lerp: 0.1, syncTouch: false }}
+    >
       {children}
-    </SmoothScrollContext.Provider>
+    </ReactLenis>
   );
 }
