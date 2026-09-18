@@ -219,7 +219,7 @@ export function About() {
                     src={pillar.image}
                     alt={pillar.label}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 384px"
+                    sizes="(max-width: 640px) 360px, (max-width: 1200px) 50vw, 384px"
                     className="object-cover transition-transform duration-700 ease-premium-in-out group-hover:scale-105"
                   />
                 </div>

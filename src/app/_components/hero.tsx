@@ -5,8 +5,6 @@ import Link from "next/link";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 
-const HERO_STAGGER_EASE = [0.32, 0.72, 0, 1] as const;
-
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -33,7 +31,7 @@ export function Hero() {
           alt="Avenue Constructions Premier Single-Unit Architecture in Dhaka"
           fill
           priority
-          quality={85}
+          quality={70}
           sizes="100vw"
           className="object-cover object-center brightness-100 contrast-[1.02]"
         />
@@ -51,41 +49,21 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
           {/* Left Column: Bold Headline */}
           <div className="lg:col-span-7 flex flex-col gap-3">
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2, ease: HERO_STAGGER_EASE }}
-              className="font-mono text-xs uppercase tracking-[0.25em] text-champagne font-semibold drop-shadow-sm"
-            >
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-champagne font-semibold drop-shadow-sm">
               Dhaka Luxury Real Estate &middot; Single-Unit Residences
-            </motion.span>
-            <motion.h1
-              initial={{ opacity: 0, y: 35 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.35, ease: HERO_STAGGER_EASE }}
-              className="font-serif text-[clamp(2.8rem,6vw,5.2rem)] leading-[0.98] tracking-[-0.02em] text-paper-white font-medium drop-shadow-md"
-            >
+            </span>
+            <h1 className="font-serif text-[clamp(2.8rem,6vw,5.2rem)] leading-[0.98] tracking-[-0.02em] text-paper-white font-medium drop-shadow-md">
               Setting Standards in Luxury Living.
-            </motion.h1>
+            </h1>
           </div>
 
           {/* Right Column: Summary + CTAs */}
           <div className="lg:col-span-5 flex flex-col gap-5 lg:pl-4">
-            <motion.p
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5, ease: HERO_STAGGER_EASE }}
-              className="text-[15px] sm:text-[16px] leading-[1.65] text-paper-white/95 font-normal drop-shadow-sm"
-            >
+            <p className="text-[15px] sm:text-[16px] leading-[1.65] text-paper-white/95 font-normal drop-shadow-sm">
               Avenue Constructions Ltd engineers single-unit luxury residential landmarks in Bashundhara R/A, Gulshan, and Aftabnagar &mdash; delivering 100% RAJUK-sanctioned architectural privacy.
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.65, ease: HERO_STAGGER_EASE }}
-              className="flex flex-wrap items-center gap-3 pt-1"
-            >
+            <div className="flex flex-wrap items-center gap-3 pt-1">
               <Link
                 href="/contact"
                 className="group pill-btn inline-flex items-center gap-3 pl-6 pr-2.5 py-3 text-xs uppercase font-mono tracking-wider bg-paper-white text-graphite-ink hover:bg-linen-cream transition-all shadow-xl active:scale-[0.98]"
@@ -101,7 +79,7 @@ export function Hero() {
               >
                 Explore Residences
               </Link>
-            </motion.div>
+            </div>
           </div>
         </div>
 
