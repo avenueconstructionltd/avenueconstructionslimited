@@ -1,51 +1,18 @@
-"use client";
-
-import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { HeroBackground } from "./hero-background";
 
 export function Hero() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
   return (
-    <section
-      ref={sectionRef}
-      className="relative z-10 w-full min-h-dvh flex flex-col justify-end overflow-hidden text-paper-white pb-12 sm:pb-16 md:pb-20"
-    >
+    <section className="relative z-10 w-full min-h-dvh flex flex-col justify-end overflow-hidden text-paper-white pb-12 sm:pb-16 md:pb-20">
       {/* Parallax Background Image */}
-      <motion.div
-        className="absolute inset-0 z-0 gpu-accelerated"
-        style={{ y: imageY, scale: imageScale }}
-      >
-        <Image
-          src="/images/hero-dhaka-luxury.webp"
-          alt="Avenue Constructions Premier Single-Unit Architecture in Dhaka"
-          fill
-          priority
-          quality={70}
-          sizes="100vw"
-          className="object-cover object-center brightness-100 contrast-[1.02]"
-        />
-      </motion.div>
+      <HeroBackground />
 
       {/* Deeper gradient for text contrast */}
       <div className="absolute inset-x-0 bottom-0 h-3/4 bg-linear-to-t from-black/90 via-black/50 to-transparent pointer-events-none z-1" />
       <div className="absolute inset-x-0 top-0 h-1/4 bg-linear-to-b from-black/30 to-transparent pointer-events-none z-1" />
 
-      {/* Hero Content with cascading reveal */}
-      <motion.div
-        className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 md:px-12 flex flex-col gap-6"
-        style={{ opacity: contentOpacity }}
-      >
+      {/* Hero Content: Pure static HTML for instant LCP First Paint */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 md:px-12 flex flex-col gap-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
           {/* Left Column: Bold Headline */}
           <div className="lg:col-span-7 flex flex-col gap-3">
@@ -84,20 +51,15 @@ export function Hero() {
         </div>
 
         {/* Scroll Down Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          className="hidden md:flex flex-col items-center gap-2 pt-8"
-        >
+        <div className="hidden md:flex flex-col items-center gap-2 pt-8">
           <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-paper-white/50">
             Scroll
           </span>
           <div className="scroll-indicator flex flex-col items-center">
             <div className="w-px h-8 bg-linear-to-b from-paper-white/60 to-transparent" />
           </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

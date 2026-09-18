@@ -9,6 +9,10 @@
     "lint": "eslint",
     "format": "prettier --write ."
   },
+  "browserslist": [
+    "defaults and fully supports es6-module",
+    "not dead"
+  ],
   "dependencies": {
     "build": "^0.1.4",
     "clsx": "^2.1.1",
