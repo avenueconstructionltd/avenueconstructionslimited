@@ -1,11 +1,22 @@
+import Image from "next/image";
 import Link from "next/link";
-import { HeroBackground } from "./hero-background";
+import { HeroParallaxLayer } from "./hero-background";
 
 export function Hero() {
   return (
     <section className="relative z-10 w-full min-h-dvh flex flex-col justify-end overflow-hidden text-paper-white pb-12 sm:pb-16 md:pb-20">
-      {/* Parallax Background Image */}
-      <HeroBackground />
+      {/* Server-rendered Image wrapped in client parallax enhancer */}
+      <HeroParallaxLayer>
+        <Image
+          src="/images/hero-dhaka-luxury.webp"
+          alt="Avenue Constructions Premier Single-Unit Architecture in Dhaka"
+          fill
+          priority
+          quality={55}
+          sizes="100vw"
+          className="object-cover object-center brightness-100 contrast-[1.02]"
+        />
+      </HeroParallaxLayer>
 
       {/* Deeper gradient for text contrast */}
       <div className="absolute inset-x-0 bottom-0 h-3/4 bg-linear-to-t from-black/90 via-black/50 to-transparent pointer-events-none z-1" />

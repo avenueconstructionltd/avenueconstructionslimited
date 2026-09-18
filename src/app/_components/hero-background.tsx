@@ -1,10 +1,14 @@
 "use client";
 
-import Image from "next/image";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 
-export function HeroBackground() {
+/**
+ * Thin parallax overlay that wraps the hero image container.
+ * The <Image> itself is rendered server-side in hero.tsx for instant LCP.
+ * This component only adds scroll-driven transform after hydration.
+ */
+export function HeroParallaxLayer({ children }: { children: React.ReactNode }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -20,18 +24,10 @@ export function HeroBackground() {
       className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
     >
       <motion.div
-        className="absolute inset-0 gpu-accelerated"
-        style={{ y: imageY, scale: imageScale }}
+        className="absolute inset-0"
+        style={{ y: imageY, scale: imageScale, willChange: "transform" }}
       >
-        <Image
-          src="/images/hero-dhaka-luxury.webp"
-          alt="Avenue Constructions Premier Single-Unit Architecture in Dhaka"
-          fill
-          priority
-          quality={65}
-          sizes="100vw"
-          className="object-cover object-center brightness-100 contrast-[1.02]"
-        />
+        {children}
       </motion.div>
     </div>
   );

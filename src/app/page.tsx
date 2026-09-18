@@ -1,17 +1,7 @@
 import { Navbar } from "@/components/shared/navbar";
 import { Hero } from "./_components/hero";
 import { About } from "./_components/about";
-import { PropertiesSlider } from "./_components/properties-slider";
-import { PinnedShowcase } from "./_components/pinned-showcase";
-import { WhyChooseUs } from "./_components/why-choose-us";
-import { Locations } from "./_components/locations";
-import { Services } from "./_components/services";
-import { Team } from "./_components/team";
-import { JointVenture } from "./_components/joint-venture";
-import { ArchitecturalJournal } from "./_components/journal";
-import { CTABanner } from "./_components/cta-banner";
-import { FAQAccordion } from "./_components/faq-accordion";
-import { ContactForm } from "./_components/contact-form";
+import { BelowFoldSections } from "./_components/below-fold-sections";
 import { Footer } from "@/components/shared/footer";
 import {
   realEstateAgentJsonLd,
@@ -43,17 +33,7 @@ export default function Home() {
       >
         <Hero />
         <About />
-        <PropertiesSlider />
-        <PinnedShowcase />
-        <WhyChooseUs />
-        <Services />
-        <Locations />
-        <Team />
-        <JointVenture />
-        <ArchitecturalJournal />
-        <CTABanner />
-        <FAQAccordion />
-        <ContactForm />
+        <BelowFoldSections />
       </main>
 
       <Footer />
