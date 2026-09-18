@@ -18,11 +18,12 @@ export function Logo() {
         className="relative h-11 md:h-12 w-auto shrink-0 flex items-center"
       >
         <Image
-          src="/images/site_logo_v2.png"
+          src="/images/site_logo_v2.webp"
           alt="Avenue Constructions Limited"
           width={180}
           height={60}
           priority
+          sizes="(max-width: 768px) 140px, 180px"
           className="h-full w-auto object-contain transition-opacity duration-300 group-hover:opacity-90"
         />
       </motion.div>

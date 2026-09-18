@@ -82,12 +82,19 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               &larr; Back to All Projects
             </Link>
             <span
-              className={`inline-flex items-center px-3 py-2 font-mono text-[9px] font-bold uppercase tracking-[0.2em] border ${
+              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-mono text-[9px] font-bold uppercase tracking-[0.2em] shadow-xs backdrop-blur-md border ${
                 property.statusTag === "Completed"
                   ? "bg-text-primary text-white border-white/20"
                   : "bg-accent text-text-primary border-black/10"
               }`}
             >
+              <span
+                className={`size-1.5 rounded-full ${
+                  property.statusTag === "Completed"
+                    ? "bg-emerald-400 animate-pulse"
+                    : "bg-text-primary animate-ping"
+                }`}
+              />
               {property.statusTag === "Completed"
                 ? "Completed"
                 : "Upcoming Landmark"}
@@ -262,7 +269,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                 <span className="italic font-light text-accent">residence</span>
               </h2>
             </div>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-px bg-black/5 border border-black/5 rounded-xl overflow-hidden">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-px bg-black/5 border border-black/5 rounded-2xl overflow-hidden">
               {property.highlights.map((highlight) => (
                 <li
                   key={highlight}
@@ -285,7 +292,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               <h3 className="font-serif text-2xl uppercase tracking-wide text-text-primary">
                 Material Library
               </h3>
-              <ul className="flex flex-col gap-px bg-black/5 border border-black/5 rounded-xl overflow-hidden">
+              <ul className="flex flex-col gap-px bg-black/5 border border-black/5 rounded-2xl overflow-hidden">
                 {property.materials.map((material) => (
                   <li
                     key={material}
@@ -305,7 +312,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               <h3 className="font-serif text-2xl uppercase tracking-wide text-text-primary">
                 Amenities
               </h3>
-              <ul className="flex flex-col gap-px bg-black/5 border border-black/5 rounded-xl overflow-hidden">
+              <ul className="flex flex-col gap-px bg-black/5 border border-black/5 rounded-2xl overflow-hidden">
                 {property.amenities.map((amenity) => (
                   <li
                     key={amenity}
@@ -355,7 +362,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                       </h3>
 
                       {/* Image container */}
-                      <div className="relative aspect-4/3 w-full overflow-hidden border-y border-black/5 bg-white">
+                      <div className="relative aspect-4/3 w-full overflow-hidden rounded-xl border border-black/5 bg-white shadow-xs">
                         <Image
                           src={plan.image}
                           alt={plan.title}
@@ -388,7 +395,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
 
           {/* Location insight */}
           <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center border-t border-black/5 pt-16">
-            <div className="lg:col-span-5 double-bezel-outer aspect-4/5 overflow-hidden">
+            <div className="lg:col-span-5 double-bezel-outer aspect-4/5 rounded-4xl overflow-hidden">
               <div className="double-bezel-inner relative w-full h-full">
                 <Image
                   src={property.gallery[1]?.src ?? property.image}
@@ -414,7 +421,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               </p>
               <Link
                 href="/contact"
-                className="pill-btn inline-flex w-fit items-center gap-3 bg-champagne text-obsidian font-semibold px-7 py-3.5 text-xs font-mono uppercase tracking-wider transition-colors duration-300 hover:bg-champagne-light"
+                className="pill-btn inline-flex w-fit items-center gap-3 bg-champagne text-obsidian font-semibold px-7 py-3.5 text-xs font-mono uppercase tracking-wider transition-all duration-300 hover:bg-champagne-light active:scale-[0.98] shadow-md"
               >
                 <span>Request a Private Viewing</span>
                 <span aria-hidden className="text-sm">

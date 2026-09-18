@@ -59,7 +59,7 @@ export const HEADQUARTERS_GEO = {
   longitude: "90.4125",
 };
 
-export const OG_IMAGE_PATH = "/images/projects/avenue-ahsan-palace/project_image_1.jpeg";
+export const OG_IMAGE_PATH = "/images/projects/avenue-ahsan-palace/project_image_1.webp";
 export const OG_IMAGE_WIDTH = 1200;
 export const OG_IMAGE_HEIGHT = 630;
 

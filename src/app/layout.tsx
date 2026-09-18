@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import {
+  Outfit,
   Plus_Jakarta_Sans,
   Cormorant_Garamond,
   Geist_Mono,
@@ -23,10 +24,18 @@ import {
   GOOGLE_SITE_VERIFICATION,
 } from "@/constants/seo";
 
+const outfit = Outfit({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-sans-body",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
 });
 
 const cormorantGaramond = Cormorant_Garamond({
@@ -34,12 +43,14 @@ const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   style: ["normal", "italic"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -100,10 +111,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/images/site_logo.svg", type: "image/svg+xml" },
-      { url: "/images/site_logo.png", type: "image/png" },
+      { url: "/images/site_logo.webp", type: "image/png" },
     ],
-    shortcut: "/images/site_logo.png",
-    apple: "/images/site_logo.png",
+    shortcut: "/images/site_logo.webp",
+    apple: "/images/site_logo.webp",
   },
 };
 
@@ -115,7 +126,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakartaSans.variable} ${cormorantGaramond.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${outfit.variable} ${plusJakartaSans.variable} ${cormorantGaramond.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body

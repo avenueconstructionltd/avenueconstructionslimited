@@ -25,7 +25,7 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
     description:
       "A G+7 single-unit masterwork situated steps from Evercare Hospital. Designed to capture southern light currents, offering absolute residential privacy and museum-grade finishes.",
     slug: "avenue-ahsan-palace",
-    image: "/images/projects/avenue-ahsan-palace/project_image_1.jpeg",
+    image: "/images/projects/avenue-ahsan-palace/project_image_1.webp",
     specs: [
       { label: "STRUCTURE", value: "G+7 Single Unit Floors" },
       { label: "ORIENTATION", value: "South Facing Daylight Corridor" },
@@ -41,7 +41,7 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
     description:
       "Single-unit private residences engineered with cantilevered balconies, fair-faced architectural concrete, and panoramic cross-ventilation across Dhaka’s eastern skyline.",
     slug: "avenue-md-heights",
-    image: "/images/projects/avenue-md-heights/project_image_5.jpeg",
+    image: "/images/projects/avenue-md-heights/project_image_5.webp",
     specs: [
       { label: "STRUCTURE", value: "G+9 High Ceiling Suites" },
       { label: "AMENITIES", value: "Private Elevator & Terraces" },
@@ -57,7 +57,7 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
     description:
       "Sculpted with disciplined acoustic glazing and deep shadow overhangs, providing seamless connectivity to Hatirjheel Expressway while maintaining complete acoustic quiet.",
     slug: "avenue-dream",
-    image: "/images/projects/avenue-md-heights/project_image_8.jpeg",
+    image: "/images/projects/avenue-md-heights/project_image_8.webp",
     specs: [
       { label: "STRUCTURE", value: "G+7 Luxury Residences" },
       { label: "CONNECTIVITY", value: "Hatirjheel Expressway Corridor" },
@@ -77,7 +77,7 @@ export function PinnedShowcase() {
         {/* Section Header with Tabs */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2">
           <div className="flex flex-col gap-2">
-            <span className="font-mono text-xs text-champagne uppercase tracking-[0.2em]">
+            <span className="font-mono text-xs text-champagne-dark uppercase tracking-[0.2em] font-semibold">
               Signature Spotlight
             </span>
             <h2 className="font-serif text-[clamp(2rem,4vw,3.2rem)] leading-[1.1] tracking-[-0.015em] text-graphite-ink">
@@ -86,14 +86,14 @@ export function PinnedShowcase() {
           </div>
 
           {/* Interactive Landmark Switcher Tabs */}
-          <div className="flex items-center border-y border-stone self-start md:self-auto overflow-x-auto">
+          <div className="flex items-center gap-2 p-1.5 rounded-full border border-stone bg-linen-cream self-start md:self-auto overflow-x-auto">
             {SHOWCASE_ITEMS.map((item, idx) => (
               <button
                 key={item.slug}
                 onClick={() => setSelectedIndex(idx)}
-                className={`px-4 py-3 text-[10px] uppercase tracking-[0.12em] border-r border-stone transition-colors cursor-pointer ${
+                className={`pill-btn px-4 py-2 text-xs font-mono transition-all cursor-pointer ${
                   selectedIndex === idx
-                    ? "bg-obsidian text-paper-white"
+                    ? "bg-obsidian text-paper-white shadow-xs"
                     : "text-pebble hover:text-graphite-ink"
                 }`}
               >
@@ -104,7 +104,7 @@ export function PinnedShowcase() {
         </div>
 
         {/* Single Unified Spotlight Card */}
-        <div className="border-y border-stone overflow-hidden py-7 sm:py-10">
+        <div className="rounded-3xl sm:rounded-4xl border border-stone bg-linen-cream overflow-hidden shadow-sm p-5 sm:p-8 lg:p-10">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentItem.slug}
@@ -115,16 +115,16 @@ export function PinnedShowcase() {
               className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
             >
               {/* Left Column: Image Window */}
-              <div className="lg:col-span-7 relative aspect-16/10 sm:aspect-video overflow-hidden bg-stone group">
+              <div className="lg:col-span-7 relative aspect-16/10 sm:aspect-video rounded-2xl overflow-hidden shadow-md bg-stone group">
                 <Image
                   src={currentItem.image}
                   alt={currentItem.title}
                   fill
-                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 720px"
                   className="object-cover transition-transform duration-700 ease-premium-in-out group-hover:scale-105"
                 />
                 <div className="absolute top-4 left-4 z-10">
-                  <span className="px-3 py-2 text-[9px] uppercase tracking-[0.16em] bg-obsidian text-paper-white border border-white/20">
+                  <span className="pill-btn px-3 py-1 text-[11px] font-mono uppercase tracking-wider bg-black/70 text-paper-white backdrop-blur-md border border-white/20">
                     {currentItem.category}
                   </span>
                 </div>
@@ -133,7 +133,7 @@ export function PinnedShowcase() {
               {/* Right Column: Narrative & Technical Specs */}
               <div className="lg:col-span-5 flex flex-col gap-6">
                 <div className="flex flex-col gap-2">
-                  <span className="font-mono text-xs text-champagne uppercase tracking-widest font-semibold">
+                  <span className="font-mono text-xs text-champagne-dark uppercase tracking-widest font-semibold">
                     Signature Handover
                   </span>
                   <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-graphite-ink font-medium leading-tight">
@@ -164,10 +164,12 @@ export function PinnedShowcase() {
                 <div className="pt-2">
                   <Link
                     href={`/projects/${currentItem.slug}`}
-                    className="group inline-flex items-center gap-4 border-b border-graphite-ink pb-2 text-[10px] uppercase tracking-[0.14em] text-graphite-ink hover:text-champagne hover:border-champagne transition-colors"
+                    className="group pill-btn inline-flex items-center gap-3 pl-6 pr-2.5 py-3 text-xs font-mono uppercase tracking-wider bg-obsidian text-paper-white hover:bg-black transition-all shadow-sm"
                   >
                     <span>View Project Monograph</span>
-                    <span aria-hidden="true" className="transition-transform duration-500 group-hover:translate-x-1">↗</span>
+                    <span className="flex size-6 items-center justify-center rounded-full bg-paper-white/15 text-[11px] transition-transform duration-300 group-hover:translate-x-0.5">
+                      &rarr;
+                    </span>
                   </Link>
                 </div>
               </div>

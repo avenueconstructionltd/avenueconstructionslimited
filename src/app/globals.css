@@ -12,8 +12,9 @@
   --color-alabaster: #f0eee9;
   --color-stone: #e2dfda;
   --color-pebble: #6e6b66;
-  --color-champagne: #a78962;
-  --color-champagne-light: #c7b18f;
+  --color-champagne: #c8aa82;
+  --color-champagne-light: #dfccb2;
+  --color-champagne-dark: #8c6a38;
   --color-charcoal: #09090a;
   --color-bronze-field: #1e1b15;
   --color-fog-veil: rgba(252, 252, 252, 0.6);
@@ -28,21 +29,20 @@
   --color-text-dark-primary: #fcfcfc;
   --color-text-dark-secondary: #a3a09a;
   --color-accent: #c8aa82;
-  --color-error: #a35f52;
   --color-hairline: #e2dfda;
   --color-hairline-dark: rgba(255, 255, 255, 0.1);
 
-  /* Editorial display and restrained sans */
-  --font-serif: var(--font-serif-editorial), Georgia, serif;
+  /* Typography Font Families (Luxury Real Estate Pairing: Outfit + Plus Jakarta Sans + Cormorant + Geist Mono) */
+  --font-serif: var(--font-display), var(--font-sans-body), system-ui, sans-serif;
   --font-sans: var(--font-sans-body), system-ui, sans-serif;
   --font-editorial: var(--font-serif-editorial), Georgia, serif;
   --font-mono: var(--font-geist-mono), monospace;
 
   /* Border Radii */
-  --radius-cards: 1rem;
-  --radius-badges: 1rem;
-  --radius-buttons: 1rem;
-  --radius-small-elements: 1rem;
+  --radius-cards: 1.5rem;
+  --radius-badges: 9999px;
+  --radius-buttons: 9999px;
+  --radius-small-elements: 0.5rem;
 
   /* Animation Easings */
   --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
@@ -64,10 +64,6 @@ body {
   background-color: #fcfcfc;
   color: #141518;
   min-height: 100dvh;
-}
-
-:where(button, input, select, textarea, img, iframe) {
-  border-radius: var(--radius-cards);
 }
 
 /* Editorial Monograph Hairline Tables */
@@ -111,22 +107,21 @@ body {
 
 /* Double-Bezel (Doppelrand) Architecture */
 .double-bezel-outer {
-  padding: 0;
-  border-radius: var(--radius-cards);
-  background-color: transparent;
-  border-top: 1px solid var(--color-stone);
-  box-shadow: none;
+  padding: 0.375rem;
+  border-radius: 1.5rem;
+  background-color: rgba(20, 21, 24, 0.03);
+  box-shadow: inset 0 0 0 1px rgba(226, 223, 218, 0.8);
   transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 .double-bezel-outer:hover {
-  background-color: transparent;
-  box-shadow: none;
+  background-color: rgba(20, 21, 24, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(110, 107, 102, 0.3);
 }
 
 .double-bezel-outer-dark {
   padding: 0.375rem;
-  border-radius: var(--radius-cards);
+  border-radius: 1.5rem;
   background-color: rgba(255, 255, 255, 0.04);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
   transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1);
@@ -138,14 +133,14 @@ body {
 }
 
 .double-bezel-inner {
-  border-radius: var(--radius-cards);
-  background-color: transparent;
-  box-shadow: none;
+  border-radius: calc(1.5rem - 0.375rem);
+  background-color: #fcfcfc;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8);
   overflow: hidden;
 }
 
 .double-bezel-inner-dark {
-  border-radius: calc(var(--radius-cards) - 0.375rem);
+  border-radius: calc(1.5rem - 0.375rem);
   background-color: #121418;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
   overflow: hidden;
@@ -153,16 +148,41 @@ body {
 
 /* Utility classes for buttons & cards */
 .pill-btn {
-  border-radius: var(--radius-buttons);
-  letter-spacing: 0.08em;
-  box-shadow: none !important;
-  transition: color 0.4s cubic-bezier(0.32, 0.72, 0, 1), background-color 0.4s cubic-bezier(0.32, 0.72, 0, 1), border-color 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  border-radius: 9999px;
+  letter-spacing: 0.025em;
+  transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 /* GPU-accelerated animation hint */
 .gpu-accelerated {
   will-change: transform;
   transform: translateZ(0);
+}
+
+/* Animated glow accent for dark sections */
+.glow-accent {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 170, 130, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(80px);
+}
+
+/* Dark glass card */
+.dark-glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.dark-glass-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(200, 170, 130, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
 }
 
 /* Scroll indicator animation */
@@ -177,11 +197,10 @@ body {
 
 /* Section divider line */
 .section-divider {
-  width: 100%;
+  width: 60px;
   height: 1px;
-  background: var(--color-stone);
+  background: linear-gradient(90deg, var(--color-champagne), transparent);
 }
-
 
 /* Hide scrollbar */
 ::-webkit-scrollbar {

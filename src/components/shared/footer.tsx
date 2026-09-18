@@ -73,7 +73,7 @@ export function Footer() {
   return (
     <footer
       suppressHydrationWarning
-      className="w-full bg-obsidian text-paper-white py-16 md:py-24 px-6 md:px-12 z-10"
+      className="w-full bg-paper-white text-graphite-ink border-t border-stone py-16 md:py-24 px-6 md:px-12 z-10"
     >
       <div className="max-w-7xl mx-auto flex flex-col gap-14">
         {/* Main Grid */}
@@ -81,7 +81,7 @@ export function Footer() {
           {/* Brand Column */}
           <div className="md:col-span-4 flex flex-col gap-6">
             <Logo />
-            <p className="text-paper-white/50 text-sm leading-relaxed max-w-[36ch]">
+            <p className="text-pebble text-sm leading-relaxed max-w-[36ch]">
               Avenue Constructions Ltd crafts premier single-unit residential landmarks and joint venture developments across Dhaka&apos;s most distinguished enclaves.
             </p>
             {/* Social links */}
@@ -94,7 +94,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   aria-label={social.label}
                   title={social.label}
-                  className="size-9 border border-white/10 flex items-center justify-center text-paper-white/40 hover:text-champagne hover:border-champagne/30 transition-colors"
+                  className="size-9 rounded-full border border-stone bg-linen-cream/60 flex items-center justify-center text-pebble hover:text-champagne hover:border-champagne/70 transition-all duration-300 shadow-2xs"
                 >
                   {social.icon}
                 </a>
@@ -104,7 +104,7 @@ export function Footer() {
 
           {/* Navigation */}
           <div className="md:col-span-2">
-            <h3 className="text-champagne font-mono text-xs uppercase tracking-widest font-semibold mb-5">
+            <h3 className="text-champagne-dark font-mono text-xs uppercase tracking-widest font-semibold mb-5">
               Navigation
             </h3>
             <ul className="flex flex-col gap-3">
@@ -112,7 +112,7 @@ export function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-paper-white/50 hover:text-paper-white transition-colors"
+                    className="text-sm text-pebble hover:text-graphite-ink transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -123,7 +123,7 @@ export function Footer() {
 
           {/* Capabilities */}
           <div className="md:col-span-3">
-            <h3 className="text-champagne font-mono text-xs uppercase tracking-widest font-semibold mb-5">
+            <h3 className="text-champagne-dark font-mono text-xs uppercase tracking-widest font-semibold mb-5">
               Capabilities
             </h3>
             <ul className="flex flex-col gap-3">
@@ -131,7 +131,7 @@ export function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-paper-white/50 hover:text-paper-white transition-colors"
+                    className="text-sm text-pebble hover:text-graphite-ink transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -142,15 +142,15 @@ export function Footer() {
 
           {/* Corporate Suite */}
           <div className="md:col-span-3 flex flex-col gap-4">
-            <h3 className="text-champagne font-mono text-xs uppercase tracking-widest font-semibold">
+            <h3 className="text-champagne-dark font-mono text-xs uppercase tracking-widest font-semibold">
               Corporate Suite
             </h3>
-            <div className="flex flex-col gap-1 text-sm text-paper-white/50 leading-relaxed">
-              <p className="font-medium text-paper-white">Avenue Constructions Ltd</p>
+            <div className="flex flex-col gap-1 text-sm text-pebble leading-relaxed">
+              <p className="font-medium text-graphite-ink">Avenue Constructions Ltd</p>
               <p>Resourceful Paltan City</p>
               <p>51, 51/A (7th Floor), Purana Paltan, Dhaka-1000</p>
             </div>
-            <div className="flex flex-col gap-1 text-sm text-paper-white/50 pt-2">
+            <div className="flex flex-col gap-1 text-sm text-pebble pt-2 font-mono">
               <a
                 href="mailto:avenue902@gmail.com"
                 className="hover:text-champagne transition-colors"
@@ -159,7 +159,7 @@ export function Footer() {
               </a>
               <a
                 href="tel:+8801714767246"
-                className="text-paper-white font-medium hover:text-champagne transition-colors pt-1"
+                className="text-graphite-ink font-medium hover:text-champagne transition-colors pt-1"
               >
                 +880 1714 767 246
               </a>
@@ -168,25 +168,27 @@ export function Footer() {
         </div>
 
         {/* Prime Corridors Strip */}
-        <div className="pt-6 flex items-center gap-3 flex-wrap">
-          <span className="text-xs uppercase font-mono tracking-widest text-champagne font-semibold mr-2">
+        <div className="pt-6 border-t border-stone/60 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 flex-wrap">
+          <span className="text-xs uppercase font-mono tracking-widest text-champagne-dark font-semibold shrink-0">
             Prime Corridors:
           </span>
-          {FOOTER_CORRIDORS.map((corridor) => (
-            <span
-              key={corridor}
-              className="text-xs text-paper-white/70 border border-white/10 bg-white/5 px-3.5 py-1.5 rounded-xl font-mono"
-            >
-              {corridor}
-            </span>
-          ))}
+          <div className="flex items-center gap-3 flex-wrap">
+            {FOOTER_CORRIDORS.map((corridor, i) => (
+              <span key={corridor} className="text-xs font-mono text-pebble flex items-center gap-3">
+                <span>{corridor}</span>
+                {i < FOOTER_CORRIDORS.length - 1 && (
+                  <span className="text-stone select-none">&middot;</span>
+                )}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Horizontal divider */}
-        <div className="w-full h-px bg-white/10" />
+        <div className="w-full h-px bg-stone/60" />
 
         {/* Bottom Copyright */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-paper-white/40">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-graphite-ink/80 font-normal">
           <span>
             &copy; {currentYear} Avenue Constructions Ltd. All rights reserved.
           </span>

@@ -7,6 +7,7 @@ import { motion } from "motion/react";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { PROPERTIES } from "@/lib/properties-constant";
+import { MapPin, ArrowRight, ShieldCheck } from "lucide-react";
 
 export function ProjectsView() {
   const [filter, setFilter] = useState<"All" | "Completed" | "Upcoming">("All");
@@ -26,6 +27,7 @@ export function ProjectsView() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-4 border-b border-stone">
             <div className="flex flex-col gap-4 max-w-2xl">
               <span className="text-xs uppercase tracking-[0.25em] font-mono text-champagne font-semibold flex items-center gap-2">
+                <span className="size-1.5 rounded-full bg-champagne animate-pulse" />
                 Dhaka Signature Portfolio
               </span>
               <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.02] text-graphite-ink font-medium">
@@ -40,14 +42,14 @@ export function ProjectsView() {
             </div>
 
             {/* Filter Pills */}
-            <div className="flex items-center border-y border-stone self-start lg:self-auto">
+            <div className="flex items-center gap-2 p-1.5 rounded-full border border-stone bg-linen-cream self-start lg:self-auto">
               {(["All", "Completed", "Upcoming"] as const).map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setFilter(tab)}
-                  className={`px-5 py-3 text-[10px] uppercase tracking-[0.12em] border-r border-stone transition-colors cursor-pointer ${
+                  className={`pill-btn px-5 py-2 text-xs font-mono transition-all cursor-pointer ${
                     filter === tab
-                      ? "bg-obsidian text-paper-white"
+                      ? "bg-obsidian text-paper-white shadow-xs"
                       : "text-pebble hover:text-graphite-ink"
                   }`}
                 >
@@ -75,12 +77,12 @@ export function ProjectsView() {
                     delay: index * 0.08,
                     ease: [0.32, 0.72, 0, 1],
                   }}
-                  className="group flex flex-col border-t border-stone pt-3 justify-between"
+                  className="group flex flex-col bg-paper-white rounded-3xl p-4 sm:p-5 border border-stone shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 justify-between"
                 >
                   {/* Top Image Window */}
                   <Link
                     href={`/projects/${property.slug}`}
-                    className="block relative aspect-16/10 w-full overflow-hidden rounded-xl bg-stone"
+                    className="block relative aspect-16/10 w-full overflow-hidden rounded-2xl bg-stone"
                   >
                     <Image
                       src={property.image}
@@ -92,14 +94,21 @@ export function ProjectsView() {
 
                     {/* Status Badge */}
                     <div className="absolute top-4 left-4 z-20">
-                      <span className="inline-flex px-3 py-2 text-[9px] tracking-[0.16em] uppercase bg-paper-white text-graphite-ink border border-black/10">
+                      <span className="pill-btn inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-mono tracking-wider uppercase bg-paper-white/95 text-graphite-ink font-semibold backdrop-blur-md shadow-xs border border-black/5">
+                        <span
+                          className={`size-1.5 rounded-full ${
+                            property.statusTag === "Completed"
+                              ? "bg-emerald-500"
+                              : "bg-champagne"
+                          }`}
+                        />
                         {property.statusTag}
                       </span>
                     </div>
 
                     {/* Year Tag */}
                     <div className="absolute top-4 right-4 z-20">
-                      <span className="px-3 py-2 text-[9px] tracking-[0.14em] text-paper-white bg-obsidian border border-white/15">
+                      <span className="pill-btn px-3 py-1 text-[11px] font-mono text-paper-white bg-black/60 backdrop-blur-md border border-white/15">
                         {property.architecturalDetails.year}
                       </span>
                     </div>
@@ -115,11 +124,13 @@ export function ProjectsView() {
                           </h2>
                         </Link>
                         <span className="font-mono text-xs font-semibold text-champagne shrink-0 pt-1 flex items-center gap-1">
+                          <ShieldCheck className="size-3.5" />
                           100% RAJUK
                         </span>
                       </div>
 
-                      <div className="text-[10px] uppercase tracking-[0.12em] text-pebble">
+                      <div className="flex items-center gap-1.5 text-xs text-pebble">
+                        <MapPin className="size-3.5 text-champagne shrink-0" />
                         <span className="truncate">
                           {property.region}, {property.location}
                         </span>
@@ -161,7 +172,7 @@ export function ProjectsView() {
                           {property.gallery.slice(0, 4).map((img, imgIdx) => (
                             <div
                               key={imgIdx}
-                              className="relative aspect-4/3 rounded-xl overflow-hidden border border-stone bg-stone"
+                              className="relative aspect-4/3 rounded-lg overflow-hidden border border-stone bg-stone"
                             >
                               <Image
                                 src={img.src}
@@ -187,7 +198,7 @@ export function ProjectsView() {
                         className="group/link inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-graphite-ink font-semibold hover:text-champagne transition-colors"
                       >
                         <span>View Details</span>
-                        <span aria-hidden="true" className="transition-transform duration-500 group-hover/link:translate-x-1">↗</span>
+                        <ArrowRight className="size-3.5 transition-transform duration-300 group-hover/link:translate-x-1" />
                       </Link>
                     </div>
                   </div>
@@ -197,7 +208,8 @@ export function ProjectsView() {
           </div>
 
           {/* Bottom Custom Consultation Banner */}
-          <div className="bg-obsidian text-paper-white p-8 sm:p-12 md:p-14 flex flex-col md:flex-row items-start md:items-end justify-between gap-10 border-y border-white/10 relative overflow-hidden">
+          <div className="rounded-3xl sm:rounded-4xl bg-obsidian text-paper-white p-8 sm:p-12 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8 border border-white/10 shadow-xl relative overflow-hidden">
+            <div className="glow-accent -bottom-30 -left-30 opacity-30" />
             <div className="flex flex-col gap-3 max-w-xl relative z-10">
               <span className="text-xs uppercase tracking-[0.25em] font-mono text-champagne font-semibold">
                 Looking for Bespoke Residences?
@@ -213,10 +225,10 @@ export function ProjectsView() {
             <div className="flex flex-col sm:flex-row gap-3 relative z-10 shrink-0">
               <Link
                 href="/contact"
-                className="pill-btn inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-mono uppercase tracking-wider bg-champagne text-obsidian font-semibold hover:bg-champagne-light transition-colors"
+                className="pill-btn inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-mono uppercase tracking-wider bg-champagne text-obsidian font-semibold hover:bg-champagne-light transition-all shadow-md"
               >
                 <span>Book Site Tour</span>
-                <span aria-hidden="true">↗</span>
+                <ArrowRight className="size-4" />
               </Link>
               <a
                 href="tel:+8801714767246"

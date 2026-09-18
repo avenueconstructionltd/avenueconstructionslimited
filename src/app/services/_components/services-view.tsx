@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { SERVICES } from "@/lib/services-constant";
+import { ArrowRight } from "lucide-react";
 
 const PROCESS_STEPS = [
   {
@@ -63,6 +64,7 @@ export function ServicesView() {
               transition={{ duration: 0.6 }}
               className="text-xs uppercase tracking-[0.25em] font-mono text-champagne font-semibold flex items-center gap-2"
             >
+              <span className="size-1.5 rounded-full bg-champagne animate-pulse" />
               Our Services &amp; Capabilities
             </motion.span>
 
@@ -103,7 +105,7 @@ export function ServicesView() {
                 >
                   {/* Image side */}
                   <div
-                    className={`lg:col-span-6 w-full aspect-16/10 overflow-hidden border-t border-stone pt-3 ${
+                    className={`lg:col-span-6 w-full aspect-16/10 rounded-3xl overflow-hidden double-bezel-outer ${
                       isEven ? "" : "lg:order-2"
                     }`}
                   >
@@ -184,7 +186,7 @@ export function ServicesView() {
                     delay: index * 0.08,
                     ease: [0.32, 0.72, 0, 1],
                   }}
-                  className="border-t border-graphite-ink pt-5 flex flex-col justify-between gap-8"
+                  className="p-6 rounded-3xl border border-stone bg-linen-cream flex flex-col justify-between gap-6 shadow-2xs hover:shadow-md transition-shadow"
                 >
                   <span className="font-mono text-base text-champagne font-semibold">
                     {step.step}
@@ -203,7 +205,8 @@ export function ServicesView() {
           </div>
 
           {/* Bottom Consultation CTA */}
-          <div className="bg-obsidian text-paper-white p-8 sm:p-12 md:p-16 flex flex-col md:flex-row items-start md:items-end justify-between gap-10 border-y border-white/10 relative overflow-hidden">
+          <div className="rounded-3xl sm:rounded-4xl bg-obsidian text-paper-white p-8 sm:p-12 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 border border-white/10 shadow-2xl relative overflow-hidden">
+            <div className="glow-accent -top-30 -right-30 opacity-30" />
             <div className="flex flex-col gap-3 max-w-xl relative z-10">
               <span className="text-xs uppercase tracking-[0.25em] font-mono text-champagne font-semibold">
                 Have a Land or Construction Requirement?
@@ -219,10 +222,10 @@ export function ServicesView() {
             <div className="flex flex-col sm:flex-row gap-3 relative z-10 shrink-0">
               <Link
                 href="/contact"
-                className="pill-btn inline-flex items-center justify-center gap-2 px-7 py-3.5 text-xs font-mono uppercase tracking-wider bg-champagne text-obsidian font-semibold hover:bg-champagne-light transition-colors"
+                className="pill-btn inline-flex items-center justify-center gap-2 px-7 py-3.5 text-xs font-mono uppercase tracking-wider bg-champagne text-obsidian font-semibold hover:bg-champagne-light transition-all shadow-md"
               >
                 <span>Inquire Online</span>
-                <span aria-hidden="true">↗</span>
+                <ArrowRight className="size-4" />
               </Link>
               <a
                 href="tel:+8801714767246"

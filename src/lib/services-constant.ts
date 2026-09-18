@@ -13,7 +13,7 @@ export const SERVICES: Service[] = [
     title: "Architectural Design",
     description:
       "Sculpting minimalist volumes and high-concept structural layouts that respond to sunlight, wind, and landscape conditions.",
-    imageUrl: "/images/services/service_architecture.png",
+    imageUrl: "/images/services/service_architecture.webp",
   },
   {
     id: "development",
@@ -21,7 +21,7 @@ export const SERVICES: Service[] = [
     title: "Luxury Development",
     description:
       "Executing premium builds with master-craftsman precision, utilizing premium materials like structural fair-faced concrete, teak wood paneling, and imported marble.",
-    imageUrl: "/images/services/service_development.png",
+    imageUrl: "/images/services/service_development.webp",
   },
   {
     id: "advisory",
@@ -29,7 +29,7 @@ export const SERVICES: Service[] = [
     title: "Property Advisory",
     description:
       "Providing discrete acquisition intelligence for high-net-worth individuals seeking signature assets and architectural masterpieces.",
-    imageUrl: "/images/services/service_advisory.png",
+    imageUrl: "/images/services/service_advisory.webp",
   },
   {
     id: "investment",
@@ -37,6 +37,6 @@ export const SERVICES: Service[] = [
     title: "Portfolio Management",
     description:
       "Optimizing premium real estate assets through custom tenancy strategies, structural restorations, and asset valuations.",
-    imageUrl: "/images/services/service_investment.png",
+    imageUrl: "/images/services/service_investment.webp",
   },
 ];

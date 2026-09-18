@@ -74,9 +74,9 @@ export function ImageGallery({ images, label }: ImageGalleryProps) {
           <button
             type="button"
             onClick={() => setViewMode("grid")}
-            className={`px-3 py-1.5 rounded-xl font-mono text-[10px] uppercase tracking-wider transition-all duration-300 ${
+            className={`px-3 py-1.5 rounded-lg font-mono text-[10px] uppercase tracking-wider transition-all duration-300 ${
               viewMode === "grid"
-                ? "bg-surface text-text-primary font-bold"
+                ? "bg-surface text-text-primary shadow-xs font-bold"
                 : "text-text-secondary hover:text-text-primary"
             }`}
           >
@@ -85,9 +85,9 @@ export function ImageGallery({ images, label }: ImageGalleryProps) {
           <button
             type="button"
             onClick={() => setViewMode("slideshow")}
-            className={`px-3 py-1.5 rounded-xl font-mono text-[10px] uppercase tracking-wider transition-all duration-300 ${
+            className={`px-3 py-1.5 rounded-lg font-mono text-[10px] uppercase tracking-wider transition-all duration-300 ${
               viewMode === "slideshow"
-                ? "bg-surface text-text-primary font-bold"
+                ? "bg-surface text-text-primary shadow-xs font-bold"
                 : "text-text-secondary hover:text-text-primary"
             }`}
           >
@@ -114,7 +114,7 @@ export function ImageGallery({ images, label }: ImageGalleryProps) {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 onClick={() => openLightbox(index)}
-                className={`group relative ${gridClass} overflow-hidden cursor-pointer border-y border-black/5 bg-surface`}
+                className={`group relative ${gridClass} rounded-2xl overflow-hidden cursor-pointer border border-black/5 shadow-xs bg-surface`}
               >
                 <Image
                   src={image.src}
@@ -129,7 +129,7 @@ export function ImageGallery({ images, label }: ImageGalleryProps) {
 
                 {/* Top Badge */}
                 <div className="absolute top-4 left-4 z-10">
-                  <span className="px-2.5 py-2 bg-obsidian border border-white/20 font-mono text-[9px] uppercase tracking-widest text-white/90">
+                  <span className="px-2.5 py-1 rounded-md bg-black/40 backdrop-blur-md border border-white/20 font-mono text-[9px] uppercase tracking-widest text-white/90">
                     Ref 0{index + 1} · 3D Render
                   </span>
                 </div>
@@ -145,7 +145,7 @@ export function ImageGallery({ images, label }: ImageGalleryProps) {
                     </span>
                   </div>
 
-                  <div className="w-8 h-8 border border-white/30 text-white flex items-center justify-center font-mono text-xs">
+                  <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white flex items-center justify-center font-mono text-xs">
                     ⤢
                   </div>
                 </div>
@@ -200,7 +200,7 @@ export function ImageGallery({ images, label }: ImageGalleryProps) {
                     type="button"
                     onClick={goPrev}
                     aria-label="Previous image"
-                    className="group absolute left-4 top-1/2 -translate-y-1/2 flex items-center justify-center w-11 h-11 bg-black/50 border border-white/20 text-white hover:bg-white hover:text-text-primary transition-colors duration-300 z-20"
+                    className="group absolute left-4 top-1/2 -translate-y-1/2 flex items-center justify-center w-11 h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-text-primary transition-all duration-300 z-20"
                   >
                     <span aria-hidden className="text-lg">
                       &larr;
@@ -210,7 +210,7 @@ export function ImageGallery({ images, label }: ImageGalleryProps) {
                     type="button"
                     onClick={goNext}
                     aria-label="Next image"
-                    className="group absolute right-4 top-1/2 -translate-y-1/2 flex items-center justify-center w-11 h-11 bg-black/50 border border-white/20 text-white hover:bg-white hover:text-text-primary transition-colors duration-300 z-20"
+                    className="group absolute right-4 top-1/2 -translate-y-1/2 flex items-center justify-center w-11 h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-text-primary transition-all duration-300 z-20"
                   >
                     <span aria-hidden className="text-lg">
                       &rarr;
@@ -277,7 +277,7 @@ export function ImageGallery({ images, label }: ImageGalleryProps) {
               <button
                 type="button"
                 onClick={() => setLightboxOpen(false)}
-                className="px-4 py-2 bg-transparent hover:bg-white/10 text-white font-mono text-xs uppercase tracking-wider border border-white/20 transition-colors"
+                className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white font-mono text-xs uppercase tracking-wider border border-white/20 transition-all"
               >
                 [✕ Close ESC]
               </button>
@@ -301,14 +301,14 @@ export function ImageGallery({ images, label }: ImageGalleryProps) {
                   <button
                     type="button"
                     onClick={goPrev}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-white text-white hover:text-black border border-white/20 flex items-center justify-center transition-colors text-xl"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 flex items-center justify-center transition-all text-xl"
                   >
                     &larr;
                   </button>
                   <button
                     type="button"
                     onClick={goNext}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-white text-white hover:text-black border border-white/20 flex items-center justify-center transition-colors text-xl"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 flex items-center justify-center transition-all text-xl"
                   >
                     &rarr;
                   </button>
@@ -333,7 +333,7 @@ export function ImageGallery({ images, label }: ImageGalleryProps) {
                     key={idx}
                     type="button"
                     onClick={() => setActiveIndex(idx)}
-                    className={`h-px transition-all duration-300 ${
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
                       idx === activeIndex
                         ? "w-8 bg-accent"
                         : "w-2 bg-white/30 hover:bg-white/60"

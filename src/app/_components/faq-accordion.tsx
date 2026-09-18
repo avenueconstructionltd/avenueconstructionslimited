@@ -53,28 +53,26 @@ export function FAQAccordion() {
     <section className="relative z-10 w-full py-24 md:py-32 px-6 sm:px-8 md:px-12 bg-linen-cream text-graphite-ink">
       <div className="max-w-4xl mx-auto flex flex-col gap-12 md:gap-16">
         {/* Section Header (Fazora FAQ Style) */}
-        <div className="grid md:grid-cols-2 gap-5 md:gap-14 items-end border-b border-stone pb-8">
-          <div className="flex flex-col gap-3">
+        <div className="flex flex-col items-center text-center gap-3">
           <span className="font-mono text-xs text-pebble uppercase tracking-[0.2em]">
             Client &amp; Partner Inquiries
           </span>
           <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.5rem)] leading-[1.1] tracking-[-0.015em] text-graphite-ink">
             Frequently Asked Questions.
           </h2>
-          </div>
           <p className="text-[15px] sm:text-[16px] text-pebble max-w-xl">
             Clear, transparent answers regarding statutory clearances, joint ventures, construction standards, and handover security.
           </p>
         </div>
 
         {/* Accordion Stack */}
-        <div className="flex flex-col border-t border-stone">
+        <div className="flex flex-col gap-3.5">
           {FAQS.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <div
                 key={faq.question}
-                className="border-b border-stone bg-transparent overflow-hidden"
+                className="rounded-2xl border border-stone bg-paper-white overflow-hidden transition-all duration-300 shadow-2xs"
               >
                 <button
                   onClick={() => toggle(index)}
@@ -85,7 +83,9 @@ export function FAQAccordion() {
                     <span className="font-medium">{faq.question}</span>
                   </div>
                   <span
-                    className={`flex size-8 shrink-0 items-center justify-center text-lg font-light transition-transform duration-500 ${isOpen ? "rotate-45" : ""}`}
+                    className={`flex size-8 shrink-0 items-center justify-center rounded-full border border-stone text-xs transition-transform duration-300 ${
+                      isOpen ? "rotate-45 bg-obsidian text-paper-white" : "bg-linen-cream text-graphite-ink"
+                    }`}
                   >
                     +
                   </span>
@@ -102,7 +102,7 @@ export function FAQAccordion() {
                     >
                       <div className="px-6 sm:px-7 pb-7 pt-1 border-t border-stone/50">
                         <div className="pl-0 sm:pl-10 flex flex-col gap-2">
-                          <span className="font-mono text-[11px] uppercase tracking-wider text-champagne">
+                          <span className="font-mono text-[11px] uppercase tracking-wider text-champagne-dark font-semibold">
                             Category: {faq.category}
                           </span>
                           <p className="text-[15px] leading-[1.65] text-pebble font-normal">

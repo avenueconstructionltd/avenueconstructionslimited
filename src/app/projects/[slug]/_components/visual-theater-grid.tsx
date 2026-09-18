@@ -52,7 +52,7 @@ export function VisualTheaterGrid({
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: (idx % 3) * 0.08 }}
             onClick={() => setSelectedIndex(idx)}
-            className="group relative aspect-4/3 overflow-hidden cursor-pointer bg-surface"
+            className="group relative aspect-4/3 rounded-2xl overflow-hidden cursor-pointer bg-surface shadow-xs hover:shadow-xl transition-all duration-500"
           >
             <div className="relative w-full h-full">
               <Image
@@ -65,7 +65,7 @@ export function VisualTheaterGrid({
 
               {/* Reference Tag Badge */}
               <div className="absolute top-4 left-4 z-10">
-                <span className="px-3 py-2 bg-obsidian border border-white/20 font-mono text-[9px] uppercase tracking-widest text-white/90">
+                <span className="px-3 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/20 font-mono text-[9px] uppercase tracking-widest text-white/90 shadow-xs">
                   Ref {String(idx + 1).padStart(2, "0")}
                 </span>
               </div>
@@ -81,7 +81,7 @@ export function VisualTheaterGrid({
                       Click to view full resolution
                     </span>
                   </div>
-                  <div className="w-8 h-8 border border-white/30 text-white flex items-center justify-center font-mono text-xs shrink-0">
+                  <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white flex items-center justify-center font-mono text-xs shrink-0">
                     ⤢
                   </div>
                 </div>
@@ -120,7 +120,7 @@ export function VisualTheaterGrid({
                 <button
                   type="button"
                   onClick={() => setSelectedIndex(null)}
-                  className="w-10 h-10 border border-white/20 hover:bg-white/10 transition-colors flex items-center justify-center text-white font-mono text-sm"
+                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors flex items-center justify-center text-white font-mono text-sm"
                   aria-label="Close modal"
                 >
                   ✕
@@ -156,7 +156,7 @@ export function VisualTheaterGrid({
                   <button
                     type="button"
                     onClick={handlePrev}
-                    className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/60 border border-white/20 text-white font-mono text-lg flex items-center justify-center hover:bg-accent hover:border-accent transition-colors"
+                    className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/60 border border-white/20 text-white font-mono text-lg flex items-center justify-center hover:bg-accent hover:border-accent transition-all shadow-lg"
                     aria-label="Previous image"
                   >
                     &larr;
@@ -164,7 +164,7 @@ export function VisualTheaterGrid({
                   <button
                     type="button"
                     onClick={handleNext}
-                    className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/60 border border-white/20 text-white font-mono text-lg flex items-center justify-center hover:bg-accent hover:border-accent transition-colors"
+                    className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/60 border border-white/20 text-white font-mono text-lg flex items-center justify-center hover:bg-accent hover:border-accent transition-all shadow-lg"
                     aria-label="Next image"
                   >
                     &rarr;

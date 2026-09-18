@@ -17,34 +17,34 @@ export function PropertiesSlider() {
   return (
     <section
       id="residences"
-      className="relative z-10 w-full py-24 md:py-32 px-6 sm:px-8 md:px-12 bg-obsidian text-paper-white overflow-hidden"
+      className="relative z-10 w-full py-24 md:py-32 px-6 sm:px-8 md:px-12 bg-paper-white text-graphite-ink overflow-hidden"
     >
       <div className="max-w-7xl mx-auto flex flex-col gap-12 md:gap-16 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2">
           <div className="flex flex-col gap-3 max-w-2xl">
-            <span className="font-mono text-xs text-champagne uppercase tracking-[0.2em]">
+            <span className="font-mono text-xs text-champagne-dark uppercase tracking-[0.25em] font-semibold">
               Curated Portfolio
             </span>
-            <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.6rem)] leading-[1.08] tracking-[-0.015em] text-paper-white">
+            <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.6rem)] leading-[1.08] tracking-[-0.015em] text-graphite-ink font-medium">
               Signature Residences &amp; Developments.
             </h2>
-            <p className="text-[15px] sm:text-[16px] text-paper-white/60 leading-relaxed">
+            <p className="text-[15px] sm:text-[16px] text-pebble leading-relaxed">
               Every residence is engineered with fair-faced concrete, private elevator access, and bespoke spatial layouts across Dhaka&apos;s prime enclaves.
             </p>
           </div>
 
           {/* Filter Pills and View All */}
           <div className="flex flex-wrap items-center gap-3 self-start md:self-auto">
-            <div className="flex items-center border-y border-white/20">
+            <div className="flex items-center gap-1.5 p-1 rounded-full border border-stone bg-linen-cream/70">
               {(["All", "Completed", "Upcoming"] as const).map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setFilter(tab)}
-                  className={`px-4 py-2.5 text-[10px] uppercase tracking-[0.14em] border-r border-white/15 transition-colors cursor-pointer ${
+                  className={`px-4 py-1.5 text-xs font-mono rounded-full transition-all cursor-pointer ${
                     filter === tab
-                      ? "bg-champagne text-obsidian"
-                      : "text-paper-white/50 hover:text-paper-white"
+                      ? "bg-obsidian text-paper-white shadow-xs"
+                      : "text-pebble hover:text-graphite-ink"
                   }`}
                 >
                   {tab}
@@ -54,16 +54,18 @@ export function PropertiesSlider() {
 
             <Link
               href="/projects"
-              className="group inline-flex items-center gap-4 border-b border-white/40 pb-2 text-[10px] uppercase tracking-[0.14em] text-paper-white hover:border-champagne hover:text-champagne transition-colors"
+              className="group inline-flex items-center gap-2.5 px-4 py-2 text-xs font-mono rounded-full border border-stone bg-paper-white text-graphite-ink hover:border-champagne hover:bg-linen-cream/50 transition-colors shadow-2xs"
             >
               <span>All 6 Projects</span>
-              <span aria-hidden="true" className="transition-transform duration-500 group-hover:translate-x-1">↗</span>
+              <span className="text-champagne transition-transform duration-300 group-hover:translate-x-0.5">
+                &rarr;
+              </span>
             </Link>
           </div>
         </div>
 
-        {/* Property Grid — dark glass cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-7 gap-y-14">
+        {/* Property Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProperties.map((property, index) => (
             <PropertyCard key={property.slug} property={property} index={index} />
           ))}
@@ -94,42 +96,49 @@ function PropertyCard({
         delay: index * 0.08,
         ease: [0.32, 0.72, 0, 1],
       }}
-      className="group flex flex-col h-full border-t border-white/25 pt-3"
+      className="group flex flex-col h-full rounded-2xl border border-stone bg-paper-white hover:border-champagne/70 shadow-[0_2px_10px_rgba(20,21,24,0.03)] hover:shadow-[0_16px_36px_-8px_rgba(20,21,24,0.08)] hover:-translate-y-1.5 transition-all duration-400 ease-out p-3.5 sm:p-4"
     >
       {/* Image Frame */}
       <Link
         href={`/projects/${property.slug}`}
-        className="block relative aspect-4/3 w-full overflow-hidden bg-obsidian-soft"
+        className="block relative aspect-4/3 w-full overflow-hidden rounded-xl bg-linen-cream"
       >
         <Image
           src={property.image}
           alt={property.name}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 384px"
           className="object-cover transition-transform duration-700 ease-premium-in-out group-hover:scale-105"
         />
 
         {/* Status Badge */}
         <div className="absolute top-3 left-3 z-20">
-          <span className="inline-flex px-3 py-2 text-[9px] tracking-[0.16em] uppercase bg-obsidian text-paper-white border border-white/20">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-mono tracking-wider uppercase bg-paper-white/95 text-graphite-ink font-medium backdrop-blur-md border border-stone/70 rounded-full shadow-xs">
+            <span
+              className={`size-1.5 rounded-full ${
+                property.statusTag === "Completed"
+                  ? "bg-emerald-600"
+                  : "bg-champagne"
+              }`}
+            />
             {property.statusTag}
           </span>
         </div>
 
         {/* Year Tag */}
         <div className="absolute top-3 right-3 z-20">
-          <span className="px-2.5 py-1.5 text-[9px] tracking-[0.14em] text-paper-white bg-obsidian/85 border border-white/15">
+          <span className="px-2.5 py-0.5 text-[10px] font-mono text-pebble bg-paper-white/95 backdrop-blur-md border border-stone/70 rounded-full shadow-xs">
             {property.architecturalDetails.year}
           </span>
         </div>
       </Link>
 
       {/* Card Body */}
-      <div className="pt-5 flex flex-col gap-5 flex-1 justify-between">
+      <div className="p-4 sm:p-5 flex flex-col gap-4 flex-1 justify-between">
         <div className="flex flex-col gap-1.5">
           <div className="flex items-start justify-between gap-2">
             <Link href={`/projects/${property.slug}`}>
-              <h3 className="font-serif text-xl sm:text-2xl text-paper-white font-medium group-hover:text-champagne transition-colors uppercase tracking-tight">
+              <h3 className="font-serif text-xl sm:text-2xl text-graphite-ink font-medium group-hover:text-champagne transition-colors">
                 {property.name}
               </h3>
             </Link>
@@ -138,7 +147,27 @@ function PropertyCard({
             </span>
           </div>
 
-          <div className="text-[10px] uppercase tracking-[0.12em] text-paper-white/50">
+          {/* Location */}
+          <div className="flex items-center gap-1.5 text-xs text-pebble">
+            <svg
+              className="size-3.5 shrink-0 text-champagne"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+            </svg>
             <span className="truncate">
               {property.region}, {property.location}
             </span>
@@ -146,8 +175,60 @@ function PropertyCard({
         </div>
 
         {/* Specs Row */}
-        <div className="flex items-center gap-3 border-t border-white/15 pt-4 text-[10px] uppercase tracking-[0.1em] text-paper-white/65">
-          <span>{beds}</span><span aria-hidden="true">·</span><span>{baths}</span><span aria-hidden="true">·</span><span>{sqft}</span>
+        <div className="flex items-center justify-between border-t border-stone/50 pt-3.5 text-xs font-mono text-pebble">
+          {/* Beds */}
+          <div className="flex items-center gap-1.5">
+            <svg
+              className="size-3.5 text-pebble/60"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.8}
+                d="M3 7v11m0-4h18m0-7v11M7 11V7a2 2 0 012-2h6a2 2 0 012 2v4"
+              />
+            </svg>
+            <span className="uppercase text-[11px]">{beds}</span>
+          </div>
+
+          {/* Baths */}
+          <div className="flex items-center gap-1.5">
+            <svg
+              className="size-3.5 text-pebble/60"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.8}
+                d="M4 12h16a1 1 0 011 1v3a4 4 0 01-4 4H7a4 4 0 01-4-4v-3a1 1 0 011-1zm2-5h3a2 2 0 012 2v3H4V9a2 2 0 012-2z"
+              />
+            </svg>
+            <span className="uppercase text-[11px]">{baths}</span>
+          </div>
+
+          {/* Sqft */}
+          <div className="flex items-center gap-1.5">
+            <svg
+              className="size-3.5 text-pebble/60"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.8}
+                d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+              />
+            </svg>
+            <span className="uppercase text-[11px]">{sqft}</span>
+          </div>
         </div>
       </div>
     </motion.div>

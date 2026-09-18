@@ -56,25 +56,25 @@ export const PROPERTIES: Property[] = [
       "The building's orientation leverages southern wind paths and daylight, filtering them through deep terraces. Inside, every floor is finished with high-quality mirror-polished homogeneous tiles and premium sanitary fittings.",
       "Constructed using top-grade materials such as Crown/Holcim cement, BSRM steel, and a European passenger elevator, this completed project represents museum-grade residential engineering.",
     ],
-    image: "/images/projects/avenue-ahsan-palace/project_image_1.jpeg",
+    image: "/images/projects/avenue-ahsan-palace/project_image_1.webp",
     gallery: [
       {
-        src: "/images/projects/avenue-ahsan-palace/project_image_1.jpeg",
+        src: "/images/projects/avenue-ahsan-palace/project_image_1.webp",
         alt: "Avenue Ahsan Palace Perspective View",
         caption: "Perspective View",
       },
       {
-        src: "/images/projects/avenue-ahsan-palace/project_image_2.jpeg",
+        src: "/images/projects/avenue-ahsan-palace/project_image_2.webp",
         alt: "Front facade architectural detailing",
         caption: "Facade detailing",
       },
       {
-        src: "/images/projects/avenue-ahsan-palace/project_image_3.jpeg",
+        src: "/images/projects/avenue-ahsan-palace/project_image_3.webp",
         alt: "Ground floor parking layout",
         caption: "Car parking & driveway",
       },
       {
-        src: "/images/projects/avenue-ahsan-palace/project_image_4.jpeg",
+        src: "/images/projects/avenue-ahsan-palace/project_image_4.webp",
         alt: "Interior open floor plan",
         caption: "Spacious interior layout",
       },
@@ -82,7 +82,7 @@ export const PROPERTIES: Property[] = [
     floorPlans: [
       {
         title: "Typical Floor Plan (1st to 7th Floor)",
-        image: "/images/projects/avenue-ahsan-palace/project_image_4.jpeg",
+        image: "/images/projects/avenue-ahsan-palace/project_image_4.webp",
         details: [
           "Unit Area: 1532 Sft single unit per floor",
           "Accommodates: 3 Bedrooms & 3 Bathrooms",
@@ -93,7 +93,7 @@ export const PROPERTIES: Property[] = [
       },
       {
         title: "Ground Floor Plan & Driveway",
-        image: "/images/projects/avenue-ahsan-palace/project_image_3.jpeg",
+        image: "/images/projects/avenue-ahsan-palace/project_image_3.webp",
         details: [
           "Car Parking: 7 Spaces with secure driveway",
           "Lobby: Reception Desk & Guest Waiting Area",
@@ -156,25 +156,25 @@ export const PROPERTIES: Property[] = [
       "The project features spacious 1,850 Sft apartments overlooking community parklands. Every detail, from the textured exterior plaster to the polished lobby stonemasonry, has been curated to set a new benchmark for Aftabnagar.",
       "Engineered for high structural resilience, the building incorporates 500W TMT steel and advanced seismic structural joints, ensuring lasting safety and luxury.",
     ],
-    image: "/images/projects/avenue-md-heights/project_image_8.jpeg",
+    image: "/images/projects/avenue-md-heights/project_image_8.webp",
     gallery: [
       {
-        src: "/images/projects/avenue-md-heights/project_image_8.jpeg",
+        src: "/images/projects/avenue-md-heights/project_image_8.webp",
         alt: "Avenue MD. Heights elevation view",
         caption: "Elevation View",
       },
       {
-        src: "/images/projects/avenue-md-heights/project_image_5.jpeg",
+        src: "/images/projects/avenue-md-heights/project_image_5.webp",
         alt: "Alternative elevation view",
         caption: "Alternative View",
       },
       {
-        src: "/images/projects/avenue-md-heights/project_image_6.jpeg",
+        src: "/images/projects/avenue-md-heights/project_image_6.webp",
         alt: "Entrance lobby rendering",
         caption: "Entrance Lobby",
       },
       {
-        src: "/images/projects/avenue-md-heights/project_image_7.jpeg",
+        src: "/images/projects/avenue-md-heights/project_image_7.webp",
         alt: "Rooftop terrace design",
         caption: "Rooftop Terrace",
       },
@@ -182,7 +182,7 @@ export const PROPERTIES: Property[] = [
     floorPlans: [
       {
         title: "Typical Floor Plan",
-        image: "/images/projects/avenue-md-heights/project_image_6.jpeg",
+        image: "/images/projects/avenue-md-heights/project_image_6.webp",
         details: [
           "Unit Area: 1850 Sft",
           "Accommodates: 3 Bedrooms & 4 Bathrooms",
@@ -193,7 +193,7 @@ export const PROPERTIES: Property[] = [
       },
       {
         title: "Ground Floor Plan",
-        image: "/images/projects/avenue-md-heights/project_image_7.jpeg",
+        image: "/images/projects/avenue-md-heights/project_image_7.webp",
         details: [
           "Car Parking: 8 Slots with automated security access",
           "Lobby: Double-height grand entrance lobby",
@@ -255,25 +255,25 @@ export const PROPERTIES: Property[] = [
       "The building features cross-ventilated units that maintain comfortable indoor temperatures even during peak summer. Generous ceiling heights and open-plan kitchen-living layouts make each unit feel exceptionally spacious.",
       "Using our signature material selections, including robust sanitary ware, high-grade security doors, and low-maintenance facades, Avenue Dream stands as an icon of Rampura.",
     ],
-    image: "/images/projects/avenue-dream/upcoming_avenue_dream.png",
+    image: "/images/projects/avenue-dream/upcoming_avenue_dream.webp",
     gallery: [
       {
-        src: "/images/projects/avenue-dream/upcoming_avenue_dream.png",
+        src: "/images/projects/avenue-dream/upcoming_avenue_dream.webp",
         alt: "Avenue Dream Architectural Render",
         caption: "3D Perspective Render",
       },
       {
-        src: "/images/projects/avenue-dream/project_image_9.jpeg",
+        src: "/images/projects/avenue-dream/project_image_9.webp",
         alt: "Rooftop Community Deck",
         caption: "Rooftop Community Lounge",
       },
       {
-        src: "/images/projects/avenue-dream/prop_aria.png",
+        src: "/images/projects/avenue-dream/prop_aria.webp",
         alt: "Lobby and Atrium Detailing",
         caption: "Lobby & Atrium Detailing",
       },
       {
-        src: "/images/projects/avenue-dream/prop_luminary.png",
+        src: "/images/projects/avenue-dream/prop_luminary.webp",
         alt: "Luxury Residence Suite",
         caption: "Interior Family Suite",
       },
@@ -281,7 +281,7 @@ export const PROPERTIES: Property[] = [
     floorPlans: [
       {
         title: "Typical Floor Plan",
-        image: "/images/projects/avenue-dream/upcoming_avenue_dream.png",
+        image: "/images/projects/avenue-dream/upcoming_avenue_dream.webp",
         details: [
           "Unit Area: 1350 Sft",
           "Accommodates: 3 Bedrooms & 3 Bathrooms",
@@ -291,7 +291,7 @@ export const PROPERTIES: Property[] = [
       },
       {
         title: "Ground Floor Plan & Parking",
-        image: "/images/projects/avenue-dream/project_image_9.jpeg",
+        image: "/images/projects/avenue-dream/project_image_9.webp",
         details: [
           "Car Parking: 6 Parking slots",
           "Lobby: Reception Desk & Security Post",
@@ -352,25 +352,25 @@ export const PROPERTIES: Property[] = [
       "The building holds G+8 floors, providing premium units designed for modern families. The entrance lobby is finished with polished marble, offering a hotel-grade welcome.",
       "Engineered using top-grade local reinforcement and high-performance concrete mixes, this completed project ensures premium structural safety alongside its striking visual presence.",
     ],
-    image: "/images/projects/avenue-castle/upcoming_avenue_castle.png",
+    image: "/images/projects/avenue-castle/upcoming_avenue_castle.webp",
     gallery: [
       {
-        src: "/images/projects/avenue-castle/upcoming_avenue_castle.png",
+        src: "/images/projects/avenue-castle/upcoming_avenue_castle.webp",
         alt: "Avenue Castle Architectural Render",
         caption: "3D Perspective Render",
       },
       {
-        src: "/images/projects/avenue-castle/prop_terraces.png",
+        src: "/images/projects/avenue-castle/prop_terraces.webp",
         alt: "Cascading Terrace Design",
         caption: "Cascading Terrace Facade",
       },
       {
-        src: "/images/projects/avenue-castle/prop_obsidian.png",
+        src: "/images/projects/avenue-castle/prop_obsidian.webp",
         alt: "Architectural Detailing",
         caption: "Monolithic Exterior Geometry",
       },
       {
-        src: "/images/projects/avenue-castle/project_image_10.jpeg",
+        src: "/images/projects/avenue-castle/project_image_10.webp",
         alt: "Elevation Detailing",
         caption: "Structural Framing Detail",
       },
@@ -378,7 +378,7 @@ export const PROPERTIES: Property[] = [
     floorPlans: [
       {
         title: "Typical Floor Plan",
-        image: "/images/projects/avenue-castle/upcoming_avenue_castle.png",
+        image: "/images/projects/avenue-castle/upcoming_avenue_castle.webp",
         details: [
           "Unit Area: 1450 Sft",
           "Accommodates: 3 Bedrooms & 3 Bathrooms",
@@ -388,7 +388,7 @@ export const PROPERTIES: Property[] = [
       },
       {
         title: "Ground Floor Parking & Driveway",
-        image: "/images/projects/avenue-castle/prop_terraces.png",
+        image: "/images/projects/avenue-castle/prop_terraces.webp",
         details: [
           "Car Parking: 6 Parking slots",
           "Lobby: Reception Desk & Security Lounge",
@@ -449,25 +449,25 @@ export const PROPERTIES: Property[] = [
       "The building integrates energy-efficient solar glass, sound-proof acoustic double glazing, and automated smart home infrastructure.",
       "Residents enjoy a heated rooftop infinity pool, wellness spa, and round-the-clock concierge services.",
     ],
-    image: "/images/projects/avenue-crest/upcoming_avenue_crest.png",
+    image: "/images/projects/avenue-crest/upcoming_avenue_crest.webp",
     gallery: [
       {
-        src: "/images/projects/avenue-crest/upcoming_avenue_crest.png",
+        src: "/images/projects/avenue-crest/upcoming_avenue_crest.webp",
         alt: "Avenue Crest Exterior Render",
         caption: "Upcoming Facade Render",
       },
       {
-        src: "/images/projects/avenue-crest/prop_luminary.png",
+        src: "/images/projects/avenue-crest/prop_luminary.webp",
         alt: "Luxury Residence Concept",
         caption: "Luxury Residence Concept",
       },
       {
-        src: "/images/projects/avenue-crest/project_image_5.jpeg",
+        src: "/images/projects/avenue-crest/project_image_5.webp",
         alt: "Terrace View Concept",
         caption: "Terrace View Concept",
       },
       {
-        src: "/images/projects/avenue-crest/project_image_10.jpeg",
+        src: "/images/projects/avenue-crest/project_image_10.webp",
         alt: "Grand Living Suite",
         caption: "Grand Living Suite",
       },
@@ -475,7 +475,7 @@ export const PROPERTIES: Property[] = [
     floorPlans: [
       {
         title: "Penthouse & Typical Floor Plan",
-        image: "/images/projects/avenue-crest/upcoming_avenue_crest.png",
+        image: "/images/projects/avenue-crest/upcoming_avenue_crest.webp",
         details: [
           "Unit Area: 2850 Sft",
           "Accommodates: 4 Bedrooms & 5 Bathrooms",
@@ -485,7 +485,7 @@ export const PROPERTIES: Property[] = [
       },
       {
         title: "Ground Floor Grand Lobby & Parking",
-        image: "/images/projects/avenue-crest/project_image_5.jpeg",
+        image: "/images/projects/avenue-crest/project_image_5.webp",
         details: [
           "Car Parking: 10 Slots with automated security gate",
           "Lobby: Marble-clad double-height reception",
@@ -546,25 +546,25 @@ export const PROPERTIES: Property[] = [
       "Each residence features cross-ventilated living suites, private planter balconies, and premium wood-paneled interior finishes.",
       "Designed for eco-conscious luxury, the building incorporates rooftop solar energy generation and rainwater harvesting.",
     ],
-    image: "/images/projects/avenue-serenade/upcoming_avenue_serenade.png",
+    image: "/images/projects/avenue-serenade/upcoming_avenue_serenade.webp",
     gallery: [
       {
-        src: "/images/projects/avenue-serenade/upcoming_avenue_serenade.png",
+        src: "/images/projects/avenue-serenade/upcoming_avenue_serenade.webp",
         alt: "Avenue Serenade Architectural Render",
         caption: "Upcoming Architectural Render",
       },
       {
-        src: "/images/projects/avenue-serenade/prop_obsidian.png",
+        src: "/images/projects/avenue-serenade/prop_obsidian.webp",
         alt: "Modernist Building Detailing",
         caption: "Modernist Building Detailing",
       },
       {
-        src: "/images/projects/avenue-serenade/project_image_6.jpeg",
+        src: "/images/projects/avenue-serenade/project_image_6.webp",
         alt: "Vertical Garden Concept",
         caption: "Vertical Garden Facade",
       },
       {
-        src: "/images/projects/avenue-serenade/project_image_7.jpeg",
+        src: "/images/projects/avenue-serenade/project_image_7.webp",
         alt: "Rooftop Garden Lounge",
         caption: "Rooftop Garden Lounge",
       },
@@ -572,7 +572,7 @@ export const PROPERTIES: Property[] = [
     floorPlans: [
       {
         title: "Typical Floor Plan",
-        image: "/images/projects/avenue-serenade/upcoming_avenue_serenade.png",
+        image: "/images/projects/avenue-serenade/upcoming_avenue_serenade.webp",
         details: [
           "Unit Area: 2100 Sft",
           "Accommodates: 3 Bedrooms & 4 Bathrooms",
@@ -582,7 +582,7 @@ export const PROPERTIES: Property[] = [
       },
       {
         title: "Ground Floor Plan & Landscaped Driveway",
-        image: "/images/projects/avenue-serenade/project_image_7.jpeg",
+        image: "/images/projects/avenue-serenade/project_image_7.webp",
         details: [
           "Car Parking: 8 Slots with garden driveway",
           "Lobby: Open-air reception court",

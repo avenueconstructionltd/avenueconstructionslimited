@@ -38,7 +38,7 @@ export function JointVenture() {
           {/* Left Column: Commercial Advisory */}
           <div className="lg:col-span-5 flex flex-col gap-6">
             <div className="flex flex-col gap-3">
-              <span className="font-mono text-xs uppercase tracking-[0.25em] text-champagne font-semibold">
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-champagne-dark font-semibold">
                 Landowner Joint Venture Advisory
               </span>
               <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.6rem)] leading-[1.08] tracking-[-0.015em] text-graphite-ink font-medium">
@@ -53,10 +53,12 @@ export function JointVenture() {
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <Link
                 href="/landowner"
-                className="group inline-flex items-center gap-4 border-b border-graphite-ink pb-2 text-[10px] uppercase tracking-[0.14em] text-graphite-ink hover:text-champagne hover:border-champagne transition-colors"
+                className="group pill-btn inline-flex items-center gap-3 pl-6 pr-2.5 py-3 text-xs font-mono uppercase tracking-wider bg-obsidian text-paper-white hover:bg-black transition-all shadow-md active:scale-[0.98]"
               >
                 <span>Schedule Land Assessment</span>
-                <span aria-hidden="true" className="transition-transform duration-500 group-hover:translate-x-1">↗</span>
+                <span className="flex size-6 items-center justify-center rounded-full bg-paper-white/20 text-paper-white text-xs transition-transform duration-300 group-hover:translate-x-0.5">
+                  &rarr;
+                </span>
               </Link>
               <Link
                 href="/contact"
@@ -68,7 +70,7 @@ export function JointVenture() {
           </div>
 
           {/* Right Column: Progressive 4-Stage Pathway Card */}
-          <div className="lg:col-span-7 border-t border-stone pt-7 flex flex-col gap-6">
+          <div className="lg:col-span-7 rounded-3xl border border-stone bg-paper-white p-6 sm:p-8 lg:p-10 shadow-sm flex flex-col gap-6">
             <div>
               <h3 className="font-serif text-xl font-medium text-graphite-ink">
                 The Joint Venture Partnership Framework
@@ -87,14 +89,19 @@ export function JointVenture() {
                     delay: index * 0.08,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className="flex flex-col gap-1 pb-4 border-b border-stone/50 last:border-b-0 last:pb-0"
+                  className="flex items-start gap-4 pb-4 border-b border-stone/40 last:border-b-0 last:pb-0"
                 >
-                  <h4 className="font-serif text-lg text-graphite-ink font-medium">
-                    {item.title}
-                  </h4>
-                  <p className="text-[14px] text-pebble leading-relaxed">
-                    {item.description}
-                  </p>
+                  <span className="font-mono text-xs font-semibold text-champagne-dark pt-1 shrink-0">
+                    {item.step}
+                  </span>
+                  <div className="flex flex-col gap-1">
+                    <h4 className="font-serif text-lg text-graphite-ink font-medium">
+                      {item.title}
+                    </h4>
+                    <p className="text-[14px] text-pebble leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
                 </motion.div>
               ))}
             </div>

@@ -17,19 +17,19 @@ const PILLARS = [
     label: "Single-Unit Floor Privacy",
     detail:
       "One exclusive residence per floor with dedicated private lift access, full acoustic isolation, and 360-degree daylight across living zones.",
-    image: "/images/projects/avenue-ahsan-palace/project_image_1.jpeg",
+    image: "/images/projects/avenue-ahsan-palace/project_image_1.webp",
   },
   {
     label: "Certified Structural Longevity",
     detail:
       "Engineered with BSRM 500W rebar, Holcim cement, stone chips casting, and complete IEB-stamped structural load calculations.",
-    image: "/images/projects/avenue-md-heights/project_image_5.jpeg",
+    image: "/images/projects/avenue-md-heights/project_image_5.webp",
   },
   {
     label: "Prime Dhaka Enclaves",
     detail:
       "Freehold plots hand-selected in Bashundhara R/A (Block E, near Evercare), Aftabnagar Hatirjheel Link, Gulshan, and Banani.",
-    image: "/images/projects/avenue-md-heights/project_image_8.jpeg",
+    image: "/images/projects/avenue-md-heights/project_image_8.webp",
   },
 ];
 
@@ -64,6 +64,8 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
 }
 
 export function About() {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
   return (
     <section
       id="about"
@@ -76,7 +78,7 @@ export function About() {
           <div className="lg:col-span-6 flex flex-col gap-5 relative">
             <div className="absolute left-0 top-0 bottom-0 w-px bg-linear-to-b from-champagne via-champagne/30 to-transparent hidden lg:block" />
             <div className="lg:pl-6">
-              <span className="font-mono text-xs uppercase tracking-[0.25em] text-champagne font-semibold">
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-champagne-dark font-semibold">
                 About Avenue Constructions
               </span>
               <motion.h2
@@ -96,17 +98,19 @@ export function About() {
               <div className="pt-5">
                 <Link
                   href="/about"
-                  className="group inline-flex items-center gap-4 border-b border-graphite-ink pb-2 text-[10px] uppercase tracking-[0.14em] text-graphite-ink hover:text-champagne hover:border-champagne transition-colors"
+                  className="group pill-btn inline-flex items-center gap-3 pl-6 pr-2.5 py-3 text-xs uppercase font-mono tracking-wider bg-obsidian text-paper-white hover:bg-black active:scale-[0.98] transition-all shadow-sm"
                 >
                   <span>Our Story &amp; Philosophy</span>
-                  <span aria-hidden="true" className="transition-transform duration-500 group-hover:translate-x-1">↗</span>
+                  <span className="flex size-6 items-center justify-center rounded-full bg-paper-white/15 text-[11px] transition-transform duration-300 group-hover:translate-x-0.5">
+                    &rarr;
+                  </span>
                 </Link>
               </div>
             </div>
           </div>
 
           {/* Right Column: Animated Counter Stats */}
-          <div className="lg:col-span-6 grid grid-cols-2 border-t border-stone">
+          <div className="lg:col-span-6 grid grid-cols-2 gap-6">
             {STATS.map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -118,7 +122,7 @@ export function About() {
                   delay: index * 0.1,
                   ease: [0.32, 0.72, 0, 1],
                 }}
-                className="py-7 pr-5 border-b border-stone flex flex-col gap-3 odd:border-r odd:pr-7 even:pl-7"
+                className="p-6 rounded-2xl border border-stone bg-linen-cream flex flex-col gap-2 shadow-2xs"
               >
                 <span className="font-serif text-[clamp(2.4rem,5vw,3.6rem)] font-medium text-graphite-ink leading-none">
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} />
@@ -140,29 +144,62 @@ export function About() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
-          className="relative w-full aspect-video overflow-hidden border-y border-stone bg-black group"
+          className="relative w-full aspect-video rounded-3xl sm:rounded-[36px] overflow-hidden shadow-2xl border border-stone bg-black group"
         >
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/IIz5zEPHBHk?autoplay=1&mute=1&start=6&controls=0&loop=1&playlist=IIz5zEPHBHk&playsinline=1&rel=0&showinfo=0&iv_load_policy=3&modestbranding=1&disablekb=1"
-            title="Avenue Ahsan Palace at Bashundhara, Dhaka"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-            className="absolute top-[-15%] left-[-15%] w-[130%] h-[130%] object-cover border-0 pointer-events-none"
-          />
-          <div className="absolute inset-0 z-10 bg-linear-to-t from-black/80 via-transparent to-black/20 pointer-events-auto" />
-          <div className="absolute bottom-6 left-6 sm:bottom-10 sm:left-10 z-20 text-paper-white pointer-events-none">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-champagne block mb-1">
-              Architectural Handover Showcase
-            </span>
-            <p className="font-serif text-xl sm:text-2xl md:text-3xl font-medium leading-snug">
-              Avenue Ahsan Palace &middot; Bashundhara R/A
-            </p>
-          </div>
+          {isVideoPlaying ? (
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/IIz5zEPHBHk?autoplay=1&mute=0&controls=1&rel=0&modestbranding=1"
+              title="Avenue Ahsan Palace at Bashundhara, Dhaka"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full border-0"
+            />
+          ) : (
+            <button
+              type="button"
+              onClick={() => setIsVideoPlaying(true)}
+              aria-label="Play Architectural Handover Showcase Video"
+              className="absolute inset-0 w-full h-full text-left cursor-pointer focus:outline-hidden"
+            >
+              <Image
+                src="/images/projects/avenue-ahsan-palace/project_image_1.webp"
+                alt="Avenue Ahsan Palace Handover Showcase"
+                fill
+                sizes="(max-width: 1280px) 100vw, 1280px"
+                className="object-cover transition-transform duration-700 ease-premium-in-out group-hover:scale-105"
+              />
+              <div className="absolute inset-0 z-10 bg-linear-to-t from-black/80 via-black/30 to-black/20" />
+
+              {/* Center Play Button Badge */}
+              <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+                <div className="size-16 sm:size-20 rounded-full bg-paper-white/20 backdrop-blur-md border border-paper-white/40 flex items-center justify-center text-paper-white shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:bg-champagne group-hover:text-obsidian group-hover:border-champagne">
+                  <svg
+                    className="w-6 h-6 sm:w-7 sm:h-7 ml-1"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Bottom Caption */}
+              <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 z-20 text-paper-white pointer-events-none drop-shadow-md">
+                <span className="font-mono text-xs uppercase tracking-[0.25em] text-champagne block mb-1">
+                  Architectural Handover Showcase
+                </span>
+                <p className="font-serif text-xl sm:text-2xl md:text-3xl font-medium leading-snug">
+                  Avenue Ahsan Palace &middot; Bashundhara R/A
+                </p>
+              </div>
+            </button>
+          )}
         </motion.div>
 
         {/* The 3 Core Architectural Pillars */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 items-start pt-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-start pt-4">
           {PILLARS.map((pillar, index) => (
             <motion.div
               key={pillar.label}
@@ -174,19 +211,19 @@ export function About() {
                 delay: index * 0.12,
                 ease: [0.32, 0.72, 0, 1],
               }}
-              className={`${index === 0 ? "md:col-span-5" : index === 1 ? "md:col-span-3 md:mt-20" : "md:col-span-4 md:mt-8"} group border-t border-stone pt-3`}
+              className="double-bezel-outer group"
             >
-              <div className="flex flex-col justify-between bg-transparent">
-                <div className="relative aspect-4/3 w-full overflow-hidden bg-stone">
+              <div className="double-bezel-inner flex flex-col min-h-95 justify-between p-2 bg-linen-cream">
+                <div className="relative aspect-4/3 w-full rounded-2xl overflow-hidden bg-stone">
                   <Image
                     src={pillar.image}
                     alt={pillar.label}
                     fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 384px"
                     className="object-cover transition-transform duration-700 ease-premium-in-out group-hover:scale-105"
                   />
                 </div>
-                <div className="pt-5 flex flex-col gap-3">
+                <div className="p-5 sm:p-6 flex flex-col gap-3">
                   <h3 className="font-serif text-2xl text-graphite-ink font-medium">
                     {pillar.label}
                   </h3>

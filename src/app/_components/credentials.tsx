@@ -39,7 +39,7 @@ export function Credentials() {
       <div className="max-w-7xl mx-auto flex flex-col gap-14 md:gap-18">
         {/* Section Header */}
         <div className="max-w-3xl flex flex-col gap-4">
-          <span className="font-mono text-xs uppercase tracking-[0.25em] text-champagne font-semibold">
+          <span className="font-mono text-xs uppercase tracking-[0.25em] text-champagne-dark font-semibold">
             Institutional Trust &amp; Governance
           </span>
           <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.5rem)] leading-[1.08] tracking-[-0.015em] text-graphite-ink font-medium">
@@ -51,7 +51,7 @@ export function Credentials() {
         </div>
 
         {/* 4 Clean Trust Pillar Blocks */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-9 gap-y-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {TRUST_PILLARS.map((pillar, index) => (
             <motion.div
               key={pillar.title}
@@ -63,11 +63,10 @@ export function Credentials() {
                 delay: index * 0.08,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="border-t border-graphite-ink pt-5 flex flex-col justify-between gap-10"
+              className="p-7 rounded-3xl border border-stone bg-paper-white flex flex-col justify-between gap-6 shadow-2xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             >
               <div className="flex flex-col gap-2.5">
-                <span className="font-serif text-2xl italic text-champagne">0{index + 1}</span>
-                <span className="text-[11px] font-mono text-champagne uppercase tracking-wider font-semibold">
+                <span className="text-[11px] font-mono text-champagne-dark uppercase tracking-wider font-semibold">
                   {pillar.authority}
                 </span>
                 <h3 className="font-serif text-xl font-medium text-graphite-ink leading-snug">

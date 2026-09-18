@@ -42,8 +42,8 @@ export function Services() {
           </div>
 
           {/* Active Service Preview Frame */}
-          <div className="mt-4 w-full max-w-sm hidden lg:block border-t border-stone pt-3">
-            <div className="relative aspect-4/3 w-full overflow-hidden bg-paper-white">
+          <div className="double-bezel-outer mt-4 w-full max-w-sm hidden lg:block">
+            <div className="double-bezel-inner relative aspect-4/3 w-full overflow-hidden bg-paper-white">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={SERVICES[activeTab].id}
@@ -84,7 +84,7 @@ export function Services() {
                   ease: [0.32, 0.72, 0, 1],
                 }}
                 className={`py-7 border-b border-stone cursor-pointer group flex flex-col gap-3 transition-colors ${
-                  isActive ? "text-graphite-ink" : ""
+                  isActive ? "bg-paper-white/60 -mx-4 px-4 sm:-mx-6 sm:px-6 rounded-2xl" : ""
                 }`}
               >
                 {/* Title & Arrow */}
@@ -103,7 +103,7 @@ export function Services() {
 
                 {/* Mobile Preview Frame */}
                 <div
-                  className={`relative aspect-video w-full overflow-hidden mt-2 lg:hidden ${
+                  className={`relative aspect-video w-full rounded-2xl overflow-hidden mt-2 lg:hidden ${
                     isActive ? "block" : "hidden"
                   }`}
                 >
@@ -134,7 +134,7 @@ export function Services() {
                       {SERVICE_DELIVERABLES[index].map((item) => (
                         <span
                           key={item}
-                          className="inline-flex items-center text-[10px] uppercase tracking-[0.1em] text-graphite-ink border-b border-stone pb-1 font-mono"
+                          className="inline-flex items-center text-xs text-graphite-ink border border-stone bg-paper-white px-3 py-1 rounded-md shadow-2xs font-mono"
                         >
                           {item}
                         </span>
