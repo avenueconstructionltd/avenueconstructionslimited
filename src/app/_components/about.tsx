@@ -4,6 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "motion/react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const STATS = [
   { value: 6, suffix: "+", label: "Projects Delivered" },
@@ -198,44 +202,100 @@ export function About() {
           )}
         </motion.div>
 
-        {/* The 3 Core Architectural Pillars */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-start pt-4">
-          {PILLARS.map((pillar, index) => (
-            <motion.div
-              key={pillar.label}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{
-                duration: 0.7,
-                delay: index * 0.12,
-                ease: [0.32, 0.72, 0, 1],
-              }}
-              className="double-bezel-outer group"
-            >
-              <div className="double-bezel-inner flex flex-col min-h-95 justify-between p-2 bg-linen-cream">
-                <div className="relative aspect-4/3 w-full rounded-2xl overflow-hidden bg-stone">
-                  <Image
-                    src={pillar.image}
-                    alt={pillar.label}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 384px"
-                    className="object-cover transition-transform duration-700 ease-premium-in-out group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-5 sm:p-6 flex flex-col gap-3">
-                  <h3 className="font-serif text-2xl text-graphite-ink font-medium">
-                    {pillar.label}
-                  </h3>
-                  <p className="text-[14px] leading-[1.6] text-pebble font-normal">
-                    {pillar.detail}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+         {/* The 3 Core Architectural Pillars — GSAP staggered reveal + parallax */}
+        <PillarGrid pillars={PILLARS} />
       </div>
     </section>
+  );
+}
+
+function PillarGrid({ pillars }: { pillars: typeof PILLARS }) {
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const cards = grid.querySelectorAll<HTMLElement>("[data-pillar-card]");
+    const images = grid.querySelectorAll<HTMLElement>("[data-pillar-image]");
+
+    const ctx = gsap.context(() => {
+      /* Staggered card entrance — fade + slide + subtle rotation for depth */
+      gsap.fromTo(
+        cards,
+        {
+          opacity: 0,
+          y: 60,
+          rotateX: 4,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          rotateX: 0,
+          duration: 1,
+          ease: "power3.out",
+          stagger: 0.15,
+          scrollTrigger: {
+            trigger: grid,
+            start: "top 82%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      /* Subtle image parallax drift — scrub-linked for cinematic feel */
+      images.forEach((image) => {
+        gsap.to(image, {
+          y: -20,
+          ease: "none",
+          scrollTrigger: {
+            trigger: image.closest("[data-pillar-card]"),
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.8,
+          },
+        });
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <div
+      ref={gridRef}
+      className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-start pt-4"
+      style={{ perspective: "1200px" }}
+    >
+      {pillars.map((pillar) => (
+        <div
+          key={pillar.label}
+          data-pillar-card
+          className="double-bezel-outer group"
+        >
+          <div className="double-bezel-inner flex flex-col min-h-95 justify-between p-2 bg-linen-cream">
+            <div className="relative aspect-4/3 w-full rounded-2xl overflow-hidden bg-stone">
+              <div data-pillar-image className="absolute inset-0">
+                <Image
+                  src={pillar.image}
+                  alt={pillar.label}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 384px"
+                  className="object-cover transition-transform duration-700 ease-premium-in-out group-hover:scale-105"
+                />
+              </div>
+            </div>
+            <div className="p-5 sm:p-6 flex flex-col gap-3">
+              <h3 className="font-serif text-2xl text-graphite-ink font-medium">
+                {pillar.label}
+              </h3>
+              <p className="text-[14px] leading-[1.6] text-pebble font-normal">
+                {pillar.detail}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }

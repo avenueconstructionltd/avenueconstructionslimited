@@ -1,18 +1,73 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PROPERTIES } from "@/lib/properties-constant";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export function PropertiesSlider() {
   const [filter, setFilter] = useState<"All" | "Completed" | "Upcoming">("All");
+  const gridRef = useRef<HTMLDivElement>(null);
 
-  const filteredProperties = PROPERTIES.filter((p) => {
+  const filteredProperties = PROPERTIES.filter((property) => {
     if (filter === "All") return true;
-    return p.statusTag === filter;
+    return property.statusTag === filter;
   });
+
+  /* Re-trigger GSAP reveals when filter changes */
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const cards = grid.querySelectorAll<HTMLElement>("[data-property-card]");
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        cards,
+        {
+          opacity: 0,
+          y: 50,
+          scale: 0.97,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.9,
+          ease: "power3.out",
+          stagger: 0.12,
+          scrollTrigger: {
+            trigger: grid,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        },
+      );
+
+      /* Subtle parallax on each card image */
+      cards.forEach((card) => {
+        const imageWrapper = card.querySelector<HTMLElement>("[data-card-image]");
+        if (!imageWrapper) return;
+
+        gsap.to(imageWrapper, {
+          y: -16,
+          ease: "none",
+          scrollTrigger: {
+            trigger: card,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.6,
+          },
+        });
+      });
+    });
+
+    return () => ctx.revert();
+  }, [filter, filteredProperties.length]);
 
   return (
     <section
@@ -65,9 +120,9 @@ export function PropertiesSlider() {
         </div>
 
         {/* Property Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProperties.map((property, index) => (
-            <PropertyCard key={property.slug} property={property} index={index} />
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProperties.map((property) => (
+            <PropertyCard key={property.slug} property={property} />
           ))}
         </div>
       </div>
@@ -77,25 +132,16 @@ export function PropertiesSlider() {
 
 function PropertyCard({
   property,
-  index,
 }: {
   property: (typeof PROPERTIES)[0];
-  index: number;
 }) {
   const beds = property.specs.find((s) => s.label.toLowerCase().includes("bed"))?.value || "4 Beds";
   const baths = property.specs.find((s) => s.label.toLowerCase().includes("bath"))?.value || "4 Baths";
   const sqft = property.specs.find((s) => s.label.toLowerCase().includes("size") || s.label.toLowerCase().includes("area") || s.label.toLowerCase().includes("unit"))?.value || "2,850 SQFT";
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 25 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{
-        duration: 0.6,
-        delay: index * 0.08,
-        ease: [0.32, 0.72, 0, 1],
-      }}
+    <div
+      data-property-card
       className="group flex flex-col h-full rounded-2xl border border-stone bg-paper-white hover:border-champagne/70 shadow-[0_2px_10px_rgba(20,21,24,0.03)] hover:shadow-[0_16px_36px_-8px_rgba(20,21,24,0.08)] hover:-translate-y-1.5 transition-all duration-400 ease-out p-3.5 sm:p-4"
     >
       {/* Image Frame */}
@@ -103,13 +149,15 @@ function PropertyCard({
         href={`/projects/${property.slug}`}
         className="block relative aspect-4/3 w-full overflow-hidden rounded-xl bg-linen-cream"
       >
-        <Image
-          src={property.image}
-          alt={property.name}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 384px"
-          className="object-cover transition-transform duration-700 ease-premium-in-out group-hover:scale-105"
-        />
+        <div data-card-image className="absolute inset-0">
+          <Image
+            src={property.image}
+            alt={property.name}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 384px"
+            className="object-cover transition-transform duration-700 ease-premium-in-out group-hover:scale-105"
+          />
+        </div>
 
         {/* Status Badge */}
         <div className="absolute top-3 left-3 z-20">
@@ -231,6 +279,6 @@ function PropertyCard({
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
