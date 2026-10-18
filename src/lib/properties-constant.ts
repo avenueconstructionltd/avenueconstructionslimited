@@ -56,10 +56,10 @@ export const PROPERTIES: Property[] = [
       "The building's orientation leverages southern wind paths and daylight, filtering them through deep terraces. Inside, every floor is finished with high-quality mirror-polished homogeneous tiles and premium sanitary fittings.",
       "Constructed using top-grade materials such as Crown/Holcim cement, BSRM steel, and a European passenger elevator, this completed project represents museum-grade residential engineering.",
     ],
-    image: "/images/projects/avenue-ahsan-palace/project_image_1.webp",
+    image: "/images/projects/avenue-ahsan-palace/avenue-ahsan-palace-project.webp",
     gallery: [
       {
-        src: "/images/projects/avenue-ahsan-palace/project_image_1.webp",
+        src: "/images/projects/avenue-ahsan-palace/avenue-ahsan-palace-project.webp",
         alt: "Avenue Ahsan Palace Perspective View",
         caption: "Perspective View",
       },
@@ -156,10 +156,10 @@ export const PROPERTIES: Property[] = [
       "The project features spacious 1,850 Sft apartments overlooking community parklands. Every detail, from the textured exterior plaster to the polished lobby stonemasonry, has been curated to set a new benchmark for Aftabnagar.",
       "Engineered for high structural resilience, the building incorporates 500W TMT steel and advanced seismic structural joints, ensuring lasting safety and luxury.",
     ],
-    image: "/images/projects/avenue-md-heights/project_image_8.webp",
+    image: "/images/projects/avenue-md-heights/avenue-md-heights-project.webp",
     gallery: [
       {
-        src: "/images/projects/avenue-md-heights/project_image_8.webp",
+        src: "/images/projects/avenue-md-heights/avenue-md-heights-project.webp",
         alt: "Avenue MD. Heights elevation view",
         caption: "Elevation View",
       },
@@ -255,10 +255,10 @@ export const PROPERTIES: Property[] = [
       "The building features cross-ventilated units that maintain comfortable indoor temperatures even during peak summer. Generous ceiling heights and open-plan kitchen-living layouts make each unit feel exceptionally spacious.",
       "Using our signature material selections, including robust sanitary ware, high-grade security doors, and low-maintenance facades, Avenue Dream stands as an icon of Rampura.",
     ],
-    image: "/images/projects/avenue-dream/upcoming_avenue_dream.webp",
+    image: "/images/projects/avenue-dream/avenue-dream-project.webp",
     gallery: [
       {
-        src: "/images/projects/avenue-dream/upcoming_avenue_dream.webp",
+        src: "/images/projects/avenue-dream/avenue-dream-project.webp",
         alt: "Avenue Dream Architectural Render",
         caption: "3D Perspective Render",
       },
@@ -352,10 +352,10 @@ export const PROPERTIES: Property[] = [
       "The building holds G+8 floors, providing premium units designed for modern families. The entrance lobby is finished with polished marble, offering a hotel-grade welcome.",
       "Engineered using top-grade local reinforcement and high-performance concrete mixes, this completed project ensures premium structural safety alongside its striking visual presence.",
     ],
-    image: "/images/projects/avenue-castle/upcoming_avenue_castle.webp",
+    image: "/images/projects/avenue-castle/avenue-castle-project.webp",
     gallery: [
       {
-        src: "/images/projects/avenue-castle/upcoming_avenue_castle.webp",
+        src: "/images/projects/avenue-castle/avenue-castle-project.webp",
         alt: "Avenue Castle Architectural Render",
         caption: "3D Perspective Render",
       },
@@ -433,200 +433,6 @@ export const PROPERTIES: Property[] = [
       architect: "Avenue Design Associates",
       status: "Completed",
       plotOrientation: "North-east facing facade",
-    },
-  },
-  {
-    slug: "avenue-crest",
-    name: "Avenue Crest",
-    tagline: "Ultra-exclusive private sanctuary in diplomatic Gulshan 2",
-    location: "Gulshan 2, Dhaka",
-    region: "Road 71, Diplomatic Zone",
-    statusTag: "Upcoming",
-    description:
-      "An upcoming boutique residential tower offering single-unit luxury floor plans in Gulshan 2.",
-    narrative: [
-      "Avenue Crest is designed as an ultra-exclusive residential landmark in Gulshan 2. Featuring private elevator foyers, double-height living areas, and expansive glass curtain walls, it sets a new standard for luxury real estate.",
-      "The building integrates energy-efficient solar glass, sound-proof acoustic double glazing, and automated smart home infrastructure.",
-      "Residents enjoy a heated rooftop infinity pool, wellness spa, and round-the-clock concierge services.",
-    ],
-    image: "/images/projects/avenue-crest/upcoming_avenue_crest.webp",
-    gallery: [
-      {
-        src: "/images/projects/avenue-crest/upcoming_avenue_crest.webp",
-        alt: "Avenue Crest Exterior Render",
-        caption: "Upcoming Facade Render",
-      },
-      {
-        src: "/images/projects/avenue-crest/prop_luminary.webp",
-        alt: "Luxury Residence Concept",
-        caption: "Luxury Residence Concept",
-      },
-      {
-        src: "/images/projects/avenue-crest/project_image_5.webp",
-        alt: "Terrace View Concept",
-        caption: "Terrace View Concept",
-      },
-      {
-        src: "/images/projects/avenue-crest/project_image_10.webp",
-        alt: "Grand Living Suite",
-        caption: "Grand Living Suite",
-      },
-    ],
-    floorPlans: [
-      {
-        title: "Penthouse & Typical Floor Plan",
-        image: "/images/projects/avenue-crest/upcoming_avenue_crest.webp",
-        details: [
-          "Unit Area: 2850 Sft",
-          "Accommodates: 4 Bedrooms & 5 Bathrooms",
-          "Includes: Private pool balcony & maid quarters",
-          "Layout: Open-plan grand salon & formal dining",
-        ],
-      },
-      {
-        title: "Ground Floor Grand Lobby & Parking",
-        image: "/images/projects/avenue-crest/project_image_5.webp",
-        details: [
-          "Car Parking: 10 Slots with automated security gate",
-          "Lobby: Marble-clad double-height reception",
-          "Concierge: 24/7 Private Security & Valet Desk",
-        ],
-      },
-    ],
-    specs: [
-      { label: "Bedrooms", value: "4" },
-      { label: "Bathrooms", value: "5" },
-      { label: "Verandas", value: "4" },
-      { label: "Unit Size", value: "2,850 Sft" },
-      { label: "Handover", value: "Dec 2028" },
-      { label: "Status", value: "Upcoming" },
-    ],
-    highlights: [
-      "Ultra-exclusive single-unit floors in Gulshan 2",
-      "Private elevator access directly into apartment lobby",
-      "Heated rooftop infinity pool with city skyline view",
-      "Concierge service & automated valet parking",
-      "Acoustic double-glazed glass for thermal & sound isolation",
-    ],
-    materials: [
-      "Italian Travertine marble facade panels",
-      "German Grohe & Duravit bathroom fittings",
-      "Burmese teak hardwood interior doors",
-      "BSRM 500W high-yield structural steel",
-      "Low-E solar control double glazing",
-    ],
-    amenities: [
-      "Rooftop infinity pool & sauna",
-      "Private subterranean wine lounge",
-      "24/7 biometric & smart card security",
-      "Dual high-speed Mitsubishi elevators",
-      "Full 100% power backup including ACs",
-    ],
-    locationInsight:
-      "Positioned on Road 71 in Gulshan 2, Avenue Crest sits within Dhaka's most secure diplomatic enclave, steps away from international embassies, fine dining establishments, and high-end retail.",
-    architecturalDetails: {
-      year: "2027-2028",
-      type: "Upcoming Luxury Boutique Tower",
-      architect: "Avenue International Studio",
-      status: "Upcoming Landmark",
-      plotOrientation: "South-facing parkview",
-    },
-  },
-  {
-    slug: "avenue-serenade",
-    name: "Avenue Serenade",
-    tagline: "Tropical modernist sanctuary nestled in Banani DOHS",
-    location: "Banani DOHS, Dhaka",
-    region: "Lane 4, Quiet Zone",
-    statusTag: "Upcoming",
-    description:
-      "An upcoming serene G+7 residential sanctuary designed with fair-faced concrete and vertical gardens.",
-    narrative: [
-      "Avenue Serenade harmonizes modern tropical architectural design with the tranquil environment of Banani DOHS. Lush vertical gardens and timber louvers wrap the building to provide natural privacy and shading.",
-      "Each residence features cross-ventilated living suites, private planter balconies, and premium wood-paneled interior finishes.",
-      "Designed for eco-conscious luxury, the building incorporates rooftop solar energy generation and rainwater harvesting.",
-    ],
-    image: "/images/projects/avenue-serenade/upcoming_avenue_serenade.webp",
-    gallery: [
-      {
-        src: "/images/projects/avenue-serenade/upcoming_avenue_serenade.webp",
-        alt: "Avenue Serenade Architectural Render",
-        caption: "Upcoming Architectural Render",
-      },
-      {
-        src: "/images/projects/avenue-serenade/prop_obsidian.webp",
-        alt: "Modernist Building Detailing",
-        caption: "Modernist Building Detailing",
-      },
-      {
-        src: "/images/projects/avenue-serenade/project_image_6.webp",
-        alt: "Vertical Garden Concept",
-        caption: "Vertical Garden Facade",
-      },
-      {
-        src: "/images/projects/avenue-serenade/project_image_7.webp",
-        alt: "Rooftop Garden Lounge",
-        caption: "Rooftop Garden Lounge",
-      },
-    ],
-    floorPlans: [
-      {
-        title: "Typical Floor Plan",
-        image: "/images/projects/avenue-serenade/upcoming_avenue_serenade.webp",
-        details: [
-          "Unit Area: 2100 Sft",
-          "Accommodates: 3 Bedrooms & 4 Bathrooms",
-          "Includes: 3 Garden balconies & family lounge",
-          "Layout: Closed gourmet kitchen & breakfast bar",
-        ],
-      },
-      {
-        title: "Ground Floor Plan & Landscaped Driveway",
-        image: "/images/projects/avenue-serenade/project_image_7.webp",
-        details: [
-          "Car Parking: 8 Slots with garden driveway",
-          "Lobby: Open-air reception court",
-          "Staff Lounge: Driver quarters & security room",
-        ],
-      },
-    ],
-    specs: [
-      { label: "Bedrooms", value: "3" },
-      { label: "Bathrooms", value: "4" },
-      { label: "Verandas", value: "3" },
-      { label: "Unit Size", value: "2,100 Sft" },
-      { label: "Handover", value: "May 2029" },
-      { label: "Status", value: "Upcoming" },
-    ],
-    highlights: [
-      "Nestled in the quietest residential lane of Banani DOHS",
-      "Tropical modernist architecture with fair-faced concrete",
-      "Lush vertical planters with automatic drip irrigation",
-      "Private roof garden deck with outdoor fireplace",
-      "Integrated solar energy system for common lighting",
-    ],
-    materials: [
-      "Fair-faced architectural concrete",
-      "Thermally treated teak wooden louvers",
-      "RAK Karla luxury sanitary fixtures",
-      "BSRM 60-grade high-yield steel",
-      "Holcim/Crown high-strength cements",
-    ],
-    amenities: [
-      "Rooftop landscape lounge",
-      "CCTV surveillance & smart gate locks",
-      "Drivers' lounge and waiting facility",
-      "Full standby generator for continuous power",
-      "Underground water purification system",
-    ],
-    locationInsight:
-      "Located in Banani DOHS, the property benefits from a gated, low-density military housing society with serene tree-lined streets, excellent security, and quick access to Mohakhali and Gulshan.",
-    architecturalDetails: {
-      year: "2027-2029",
-      type: "Upcoming Tropical Modern Villa Tower",
-      architect: "Avenue Design Atelier",
-      status: "Upcoming Landmark",
-      plotOrientation: "East-facing garden view",
     },
   },
 ];

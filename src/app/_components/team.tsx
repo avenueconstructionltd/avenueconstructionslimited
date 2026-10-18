@@ -15,7 +15,7 @@ export function Team() {
         {/* Header Row: Title on Left, Description & CTA on Right */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2">
           <div className="flex flex-col gap-3 max-w-xl">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-champagne-dark font-semibold">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-pebble font-semibold">
               Our Leadership
             </span>
             <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.5rem)] leading-[1.08] tracking-[-0.015em] text-graphite-ink">

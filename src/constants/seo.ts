@@ -37,8 +37,6 @@ export const SITE_KEYWORDS: string[] = [
   "Avenue MD Heights",
   "Avenue Dream",
   "Avenue Castle",
-  "Avenue Crest",
-  "Avenue Serenade",
 ];
 
 export const AUTHOR_NAME = "Avenue Constructions Ltd";
@@ -59,7 +57,8 @@ export const HEADQUARTERS_GEO = {
   longitude: "90.4125",
 };
 
-export const OG_IMAGE_PATH = "/images/projects/avenue-ahsan-palace/project_image_1.webp";
+export const OG_IMAGE_PATH =
+  "/images/projects/avenue-ahsan-palace/avenue-ahsan-palace-project.webp";
 export const OG_IMAGE_WIDTH = 1200;
 export const OG_IMAGE_HEIGHT = 630;
 

@@ -25,7 +25,7 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
     description:
       "A G+7 single-unit masterwork situated steps from Evercare Hospital. Designed to capture southern light currents, offering absolute residential privacy and museum-grade finishes.",
     slug: "avenue-ahsan-palace",
-    image: "/images/projects/avenue-ahsan-palace/project_image_1.webp",
+    image: "/images/projects/avenue-ahsan-palace/avenue-ahsan-palace-project.webp",
     specs: [
       { label: "STRUCTURE", value: "G+7 Single Unit Floors" },
       { label: "ORIENTATION", value: "South Facing Daylight Corridor" },
@@ -41,7 +41,7 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
     description:
       "Single-unit private residences engineered with cantilevered balconies, fair-faced architectural concrete, and panoramic cross-ventilation across Dhaka’s eastern skyline.",
     slug: "avenue-md-heights",
-    image: "/images/projects/avenue-md-heights/project_image_5.webp",
+    image: "/images/projects/avenue-md-heights/avenue-md-heights-project.webp",
     specs: [
       { label: "STRUCTURE", value: "G+9 High Ceiling Suites" },
       { label: "AMENITIES", value: "Private Elevator & Terraces" },
@@ -57,12 +57,28 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
     description:
       "Sculpted with disciplined acoustic glazing and deep shadow overhangs, providing seamless connectivity to Hatirjheel Expressway while maintaining complete acoustic quiet.",
     slug: "avenue-dream",
-    image: "/images/projects/avenue-md-heights/project_image_8.webp",
+    image: "/images/projects/avenue-dream/avenue-dream-project.webp",
     specs: [
       { label: "STRUCTURE", value: "G+7 Luxury Residences" },
       { label: "CONNECTIVITY", value: "Hatirjheel Expressway Corridor" },
       { label: "PARKING", value: "Secured Ground Floor Bays" },
       { label: "DELIVERY", value: "Signature Handover" },
+    ],
+  },
+  {
+    num: "04",
+    category: "UTTAR BADDA · DHAKA",
+    title: "Avenue Castle",
+    subtitle: "Monolithic Geometry on the Skyline",
+    description:
+      "A luxury G+8 residential tower showcasing architectural symmetry and bold structural framing on Shadhinota Shoroni, minutes from Baridhara.",
+    slug: "avenue-castle",
+    image: "/images/projects/avenue-castle/avenue-castle-project.webp",
+    specs: [
+      { label: "STRUCTURE", value: "G+8 Residential Tower" },
+      { label: "CONNECTIVITY", value: "Shadhinota Shoroni Corridor" },
+      { label: "APPROVAL", value: "100% RAJUK Sanctioned" },
+      { label: "DELIVERY", value: "Completed Landmark" },
     ],
   },
 ];
@@ -77,7 +93,7 @@ export function PinnedShowcase() {
         {/* Section Header with Tabs */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2">
           <div className="flex flex-col gap-2">
-            <span className="font-mono text-xs text-champagne-dark uppercase tracking-[0.2em] font-semibold">
+            <span className="font-mono text-xs text-pebble uppercase tracking-[0.2em] font-semibold">
               Signature Spotlight
             </span>
             <h2 className="font-serif text-[clamp(2rem,4vw,3.2rem)] leading-[1.1] tracking-[-0.015em] text-graphite-ink">

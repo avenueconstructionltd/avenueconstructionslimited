@@ -139,7 +139,7 @@ export function Hero() {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 flex flex-col gap-6">
           <div className="max-w-3xl flex flex-col gap-4">
             {/* Editorial Eyebrow */}
-            <span className="font-sans text-[12px] sm:text-[13px] tracking-[0.14em] text-champagne-dark uppercase font-semibold">
+            <span className="font-sans text-[12px] sm:text-[13px] tracking-[0.14em] text-pebble uppercase font-semibold">
               Dhaka Luxury Real Estate &middot; Single-Unit Residences
             </span>
 

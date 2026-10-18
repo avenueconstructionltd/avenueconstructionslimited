@@ -39,7 +39,7 @@ export function Credentials() {
       <div className="max-w-7xl mx-auto flex flex-col gap-14 md:gap-18">
         {/* Section Header */}
         <div className="max-w-3xl flex flex-col gap-4">
-          <span className="font-mono text-xs uppercase tracking-[0.25em] text-champagne-dark font-semibold">
+          <span className="font-mono text-xs uppercase tracking-[0.25em] text-pebble font-semibold">
             Institutional Trust &amp; Governance
           </span>
           <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.5rem)] leading-[1.08] tracking-[-0.015em] text-graphite-ink font-medium">

@@ -66,8 +66,8 @@ export default function LandownerPage() {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 flex flex-col gap-24">
           {/* Hero Header block */}
           <header className="flex flex-col gap-6 max-w-3xl">
-            <span className="text-xs uppercase tracking-[0.25em] font-mono text-champagne font-semibold flex items-center gap-2">
-              <span className="size-1.5 rounded-full bg-champagne animate-pulse" />
+            <span className="text-xs uppercase tracking-[0.25em] font-mono text-pebble font-semibold flex items-center gap-2">
+              <span className="size-1.5 rounded-full bg-pebble animate-pulse" />
               Landowner Joint Venture Advisory
             </span>
             <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.02] text-graphite-ink font-medium">

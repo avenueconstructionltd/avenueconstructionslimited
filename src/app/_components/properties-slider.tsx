@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PROPERTIES } from "@/lib/properties-constant";
@@ -11,59 +12,133 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function PropertiesSlider() {
   const [filter, setFilter] = useState<"All" | "Completed" | "Upcoming">("All");
-  const gridRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  // Mouse click-and-drag to scroll
+  const isDownRef = useRef(false);
+  const startXRef = useRef(0);
+  const scrollLeftRef = useRef(0);
+  const hasDraggedRef = useRef(false);
+  const [isDragging, setIsDragging] = useState(false);
 
   const filteredProperties = PROPERTIES.filter((property) => {
     if (filter === "All") return true;
     return property.statusTag === filter;
   });
 
+  const checkScroll = useCallback(() => {
+    const el = sliderRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 10);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 10);
+  }, []);
+
+  useEffect(() => {
+    checkScroll();
+    const el = sliderRef.current;
+    if (!el) return;
+    el.addEventListener("scroll", checkScroll, { passive: true });
+    window.addEventListener("resize", checkScroll);
+    return () => {
+      el.removeEventListener("scroll", checkScroll);
+      window.removeEventListener("resize", checkScroll);
+    };
+  }, [checkScroll, filteredProperties.length]);
+
+  const scrollPrev = () => {
+    if (!sliderRef.current) return;
+    const card = sliderRef.current.firstElementChild as HTMLElement | null;
+    const step = card ? card.offsetWidth + 32 : 400;
+    sliderRef.current.scrollBy({ left: -step, behavior: "smooth" });
+  };
+
+  const scrollNext = () => {
+    if (!sliderRef.current) return;
+    const card = sliderRef.current.firstElementChild as HTMLElement | null;
+    const step = card ? card.offsetWidth + 32 : 400;
+    sliderRef.current.scrollBy({ left: step, behavior: "smooth" });
+  };
+
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.button !== 0) return;
+    const el = sliderRef.current;
+    if (!el) return;
+    isDownRef.current = true;
+    hasDraggedRef.current = false;
+    startXRef.current = e.pageX;
+    scrollLeftRef.current = el.scrollLeft;
+
+    const onMouseMove = (moveEvent: MouseEvent) => {
+      if (!isDownRef.current || !sliderRef.current) return;
+      const x = moveEvent.pageX;
+      const walk = (x - startXRef.current) * 1.25;
+      if (Math.abs(x - startXRef.current) > 5) {
+        if (!hasDraggedRef.current) {
+          hasDraggedRef.current = true;
+          setIsDragging(true);
+          sliderRef.current.style.scrollSnapType = "none";
+          sliderRef.current.style.scrollBehavior = "auto";
+        }
+        sliderRef.current.scrollLeft = scrollLeftRef.current - walk;
+      }
+    };
+
+    const onMouseUp = () => {
+      isDownRef.current = false;
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
+      if (sliderRef.current) {
+        sliderRef.current.style.scrollSnapType = "";
+        sliderRef.current.style.scrollBehavior = "";
+      }
+      setTimeout(() => {
+        setIsDragging(false);
+        hasDraggedRef.current = false;
+      }, 50);
+    };
+
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", onMouseUp);
+  };
+
+  const handleClickCapture = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (hasDraggedRef.current) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  };
+
   /* Re-trigger GSAP reveals when filter changes */
   useEffect(() => {
-    const grid = gridRef.current;
-    if (!grid) return;
+    const slider = sliderRef.current;
+    if (!slider) return;
 
-    const cards = grid.querySelectorAll<HTMLElement>("[data-property-card]");
+    const cards = slider.querySelectorAll<HTMLElement>("[data-property-card]");
 
     const ctx = gsap.context(() => {
       gsap.fromTo(
         cards,
         {
           opacity: 0,
-          y: 50,
-          scale: 0.97,
+          y: 40,
+          scale: 0.98,
         },
         {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 0.9,
+          duration: 0.8,
           ease: "power3.out",
-          stagger: 0.12,
+          stagger: 0.1,
           scrollTrigger: {
-            trigger: grid,
+            trigger: slider,
             start: "top 85%",
             toggleActions: "play none none none",
           },
         },
       );
-
-      /* Subtle parallax on each card image */
-      cards.forEach((card) => {
-        const imageWrapper = card.querySelector<HTMLElement>("[data-card-image]");
-        if (!imageWrapper) return;
-
-        gsap.to(imageWrapper, {
-          y: -16,
-          ease: "none",
-          scrollTrigger: {
-            trigger: card,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 0.6,
-          },
-        });
-      });
     });
 
     return () => ctx.revert();
@@ -78,7 +153,7 @@ export function PropertiesSlider() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2">
           <div className="flex flex-col gap-3 max-w-2xl">
-            <span className="font-mono text-xs text-champagne-dark uppercase tracking-[0.25em] font-semibold">
+            <span className="font-mono text-xs text-pebble uppercase tracking-[0.25em] font-semibold">
               Curated Portfolio
             </span>
             <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.6rem)] leading-[1.08] tracking-[-0.015em] text-graphite-ink font-medium">
@@ -89,29 +164,35 @@ export function PropertiesSlider() {
             </p>
           </div>
 
-          {/* Filter Pills and View All */}
+          {/* Controls: Filter Pills, View All */}
           <div className="flex flex-wrap items-center gap-3 self-start md:self-auto">
             <div className="flex items-center gap-1.5 p-1 rounded-full border border-stone bg-linen-cream/70">
-              {(["All", "Completed", "Upcoming"] as const).map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setFilter(tab)}
-                  className={`px-4 py-1.5 text-xs font-mono rounded-full transition-all cursor-pointer ${
-                    filter === tab
-                      ? "bg-obsidian text-paper-white shadow-xs"
-                      : "text-pebble hover:text-graphite-ink"
-                  }`}
-                >
-                  {tab}
-                </button>
-              ))}
+              {(["All", "Completed", "Upcoming"] as const)
+                .filter(
+                  (tab) =>
+                    tab === "All" ||
+                    PROPERTIES.some((property) => property.statusTag === tab),
+                )
+                .map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setFilter(tab)}
+                    className={`px-4 py-1.5 text-xs font-mono rounded-full transition-all cursor-pointer ${
+                      filter === tab
+                        ? "bg-obsidian text-paper-white shadow-xs"
+                        : "text-pebble hover:text-graphite-ink"
+                    }`}
+                  >
+                    {tab}
+                  </button>
+                ))}
             </div>
 
             <Link
               href="/projects"
               className="group inline-flex items-center gap-2.5 px-4 py-2 text-xs font-mono rounded-full border border-stone bg-paper-white text-graphite-ink hover:border-champagne hover:bg-linen-cream/50 transition-colors shadow-2xs"
             >
-              <span>All 6 Projects</span>
+              <span>All {PROPERTIES.length} Projects</span>
               <span className="text-champagne transition-transform duration-300 group-hover:translate-x-0.5">
                 &rarr;
               </span>
@@ -119,11 +200,76 @@ export function PropertiesSlider() {
           </div>
         </div>
 
-        {/* Property Grid */}
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProperties.map((property) => (
-            <PropertyCard key={property.slug} property={property} />
-          ))}
+        {/* Carousel Slider with Flanking Left & Right Arrow Buttons */}
+        <div className="flex items-center gap-4 sm:gap-6 lg:gap-8">
+          {/* Left Arrow Button (Flanking with Dedicated Gap) */}
+          <button
+            type="button"
+            onClick={scrollPrev}
+            disabled={!canScrollLeft}
+            aria-label="Previous project"
+            className="hidden sm:flex shrink-0 size-12 lg:size-14 rounded-full border border-stone/90 bg-paper-white text-graphite-ink shadow-[0_4px_20px_rgba(20,21,24,0.06)] hover:bg-obsidian hover:text-paper-white hover:border-obsidian hover:shadow-[0_10px_28px_rgba(20,21,24,0.18)] disabled:opacity-20 disabled:cursor-not-allowed disabled:hover:bg-paper-white disabled:hover:text-graphite-ink disabled:hover:scale-100 disabled:shadow-none transition-all duration-300 items-center justify-center cursor-pointer hover:scale-105 active:scale-95"
+          >
+            <ChevronLeft className="size-5 lg:size-6 stroke-[2.2]" />
+          </button>
+
+          {/* Slider Track Container */}
+          <div
+            ref={sliderRef}
+            onMouseDown={handleMouseDown}
+            onClickCapture={handleClickCapture}
+            className={`flex-1 min-w-0 flex gap-6 lg:gap-8 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-6 pt-2 scrollbar-none [&::-webkit-scrollbar]:hidden select-none ${
+              isDragging ? "cursor-grabbing" : "cursor-grab"
+            }`}
+          >
+            {filteredProperties.map((property) => (
+              <div
+                key={property.slug}
+                data-property-card
+                className="w-[85vw] sm:w-85 md:w-95 lg:w-[calc(33.333%-1.35rem)] shrink-0 snap-start h-auto"
+              >
+                <PropertyCard property={property} />
+              </div>
+            ))}
+          </div>
+
+          {/* Right Arrow Button (Flanking with Dedicated Gap) */}
+          <button
+            type="button"
+            onClick={scrollNext}
+            disabled={!canScrollRight}
+            aria-label="Next project"
+            className="hidden sm:flex shrink-0 size-12 lg:size-14 rounded-full border border-stone/90 bg-paper-white text-graphite-ink shadow-[0_4px_20px_rgba(20,21,24,0.06)] hover:bg-obsidian hover:text-paper-white hover:border-obsidian hover:shadow-[0_10px_28px_rgba(20,21,24,0.18)] disabled:opacity-20 disabled:cursor-not-allowed disabled:hover:bg-paper-white disabled:hover:text-graphite-ink disabled:hover:scale-100 disabled:shadow-none transition-all duration-300 items-center justify-center cursor-pointer hover:scale-105 active:scale-95"
+          >
+            <ChevronRight className="size-5 lg:size-6 stroke-[2.2]" />
+          </button>
+        </div>
+
+        {/* Mobile Navigation Controls */}
+        <div className="flex sm:hidden items-center justify-between pt-2 px-1">
+          <span className="font-mono text-xs text-pebble">
+            Swipe or use arrows ({filteredProperties.length} residences)
+          </span>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={scrollPrev}
+              disabled={!canScrollLeft}
+              aria-label="Previous project"
+              className="size-10 rounded-full border border-stone/80 bg-paper-white text-graphite-ink flex items-center justify-center disabled:opacity-20 shadow-xs cursor-pointer active:scale-95 transition-all"
+            >
+              <ChevronLeft className="size-4" />
+            </button>
+            <button
+              type="button"
+              onClick={scrollNext}
+              disabled={!canScrollRight}
+              aria-label="Next project"
+              className="size-10 rounded-full border border-stone/80 bg-paper-white text-graphite-ink flex items-center justify-center disabled:opacity-20 shadow-xs cursor-pointer active:scale-95 transition-all"
+            >
+              <ChevronRight className="size-4" />
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -140,35 +286,27 @@ function PropertyCard({
   const sqft = property.specs.find((s) => s.label.toLowerCase().includes("size") || s.label.toLowerCase().includes("area") || s.label.toLowerCase().includes("unit"))?.value || "2,850 SQFT";
 
   return (
-    <div
-      data-property-card
-      className="group flex flex-col h-full rounded-2xl border border-stone bg-paper-white hover:border-champagne/70 shadow-[0_2px_10px_rgba(20,21,24,0.03)] hover:shadow-[0_16px_36px_-8px_rgba(20,21,24,0.08)] hover:-translate-y-1.5 transition-all duration-400 ease-out p-3.5 sm:p-4"
-    >
-      {/* Image Frame */}
+    <div className="group flex flex-col h-full rounded-2xl border border-stone bg-paper-white hover:border-champagne/70 shadow-[0_2px_10px_rgba(20,21,24,0.03)] hover:shadow-[0_16px_36px_-8px_rgba(20,21,24,0.08)] hover:-translate-y-1.5 transition-all duration-400 ease-out p-3.5 sm:p-4">
+      {/* Image Frame (4:5 matching the new project image ratio) */}
       <Link
         href={`/projects/${property.slug}`}
-        className="block relative aspect-4/3 w-full overflow-hidden rounded-xl bg-linen-cream"
+        draggable={false}
+        className="block relative aspect-4/5 w-full overflow-hidden rounded-xl bg-linen-cream"
       >
         <div data-card-image className="absolute inset-0">
           <Image
             src={property.image}
             alt={property.name}
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 384px"
-            className="object-cover transition-transform duration-700 ease-premium-in-out group-hover:scale-105"
+            draggable={false}
+            sizes="(max-width: 640px) 85vw, (max-width: 1024px) 380px, 420px"
+            className="object-cover transition-transform duration-700 ease-premium-in-out group-hover:scale-105 pointer-events-none select-none"
           />
         </div>
 
         {/* Status Badge */}
         <div className="absolute top-3 left-3 z-20">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-mono tracking-wider uppercase bg-paper-white/95 text-graphite-ink font-medium backdrop-blur-md border border-stone/70 rounded-full shadow-xs">
-            <span
-              className={`size-1.5 rounded-full ${
-                property.statusTag === "Completed"
-                  ? "bg-emerald-600"
-                  : "bg-champagne"
-              }`}
-            />
+          <span className="inline-flex items-center px-3 py-1 text-[11px] font-mono tracking-wider uppercase bg-paper-white/95 text-graphite-ink font-medium backdrop-blur-md border border-stone/70 rounded-full shadow-xs">
             {property.statusTag}
           </span>
         </div>
@@ -185,7 +323,7 @@ function PropertyCard({
       <div className="p-4 sm:p-5 flex flex-col gap-4 flex-1 justify-between">
         <div className="flex flex-col gap-1.5">
           <div className="flex items-start justify-between gap-2">
-            <Link href={`/projects/${property.slug}`}>
+            <Link href={`/projects/${property.slug}`} draggable={false}>
               <h3 className="font-serif text-xl sm:text-2xl text-graphite-ink font-medium group-hover:text-champagne transition-colors">
                 {property.name}
               </h3>

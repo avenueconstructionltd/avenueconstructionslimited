@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useEffect, useState } from "react";
+import { Volume2, VolumeX } from "lucide-react";
 import { motion, useInView } from "motion/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -68,7 +69,18 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
 }
 
 export function About() {
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoContainerRef = useRef<HTMLDivElement>(null);
+  const isVideoInView = useInView(videoContainerRef, { once: true, margin: "200px" });
+  const [isMuted, setIsMuted] = useState(true);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      const nextMuted = !videoRef.current.muted;
+      videoRef.current.muted = nextMuted;
+      setIsMuted(nextMuted);
+    }
+  };
 
   return (
     <section
@@ -82,7 +94,7 @@ export function About() {
           <div className="lg:col-span-6 flex flex-col gap-5 relative">
             <div className="absolute left-0 top-0 bottom-0 w-px bg-linear-to-b from-champagne via-champagne/30 to-transparent hidden lg:block" />
             <div className="lg:pl-6">
-              <span className="font-mono text-xs uppercase tracking-[0.25em] text-champagne-dark font-semibold">
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-pebble font-semibold">
                 About Avenue Constructions
               </span>
               <motion.h2
@@ -142,62 +154,65 @@ export function About() {
         {/* Divider */}
         <div className="section-divider mx-auto" />
 
-        {/* Architectural Masterwork Video Feature */}
+        {/* Architectural Masterwork Video Feature (Autoplay Showcase - Lazy Loaded) */}
         <motion.div
+          ref={videoContainerRef}
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
-          className="relative w-full aspect-video rounded-3xl sm:rounded-[36px] overflow-hidden shadow-2xl border border-stone bg-black group"
+          className="relative w-full max-w-4xl mx-auto aspect-video rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-stone bg-black group"
         >
-          {isVideoPlaying ? (
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/IIz5zEPHBHk?autoplay=1&mute=0&controls=1&rel=0&modestbranding=1"
-              title="Avenue Ahsan Palace at Bashundhara, Dhaka"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-              className="absolute inset-0 w-full h-full border-0"
+          {isVideoInView ? (
+            <video
+              ref={videoRef}
+              src="/videos/avenue-ahsan-palace-showcase.mp4"
+              poster="/videos/avenue-ahsan-palace-poster.webp"
+              autoPlay
+              loop
+              muted
+              playsInline
+              controls
+              preload="auto"
+              className="w-full h-full object-cover"
             />
           ) : (
-            <button
-              type="button"
-              onClick={() => setIsVideoPlaying(true)}
-              aria-label="Play Architectural Handover Showcase Video"
-              className="absolute inset-0 w-full h-full text-left cursor-pointer focus:outline-hidden"
-            >
+            <div className="relative w-full h-full">
               <Image
-                src="/images/projects/avenue-ahsan-palace/project_image_1.webp"
-                alt="Avenue Ahsan Palace Handover Showcase"
+                src="/videos/avenue-ahsan-palace-poster.webp"
+                alt="Avenue Ahsan Palace Architectural Showcase"
                 fill
-                sizes="(max-width: 1280px) 100vw, 1280px"
-                className="object-cover transition-transform duration-700 ease-premium-in-out group-hover:scale-105"
+                sizes="(max-width: 1024px) 100vw, 896px"
+                className="object-cover"
               />
-              <div className="absolute inset-0 z-10 bg-linear-to-t from-black/80 via-black/30 to-black/20" />
-
-              {/* Center Play Button Badge */}
-              <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
-                <div className="size-16 sm:size-20 rounded-full bg-paper-white/20 backdrop-blur-md border border-paper-white/40 flex items-center justify-center text-paper-white shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:bg-champagne group-hover:text-obsidian group-hover:border-champagne">
-                  <svg
-                    className="w-6 h-6 sm:w-7 sm:h-7 ml-1"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
+              <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-black/60 backdrop-blur-md text-paper-white text-xs font-mono border border-white/10">
+                  <span className="size-2 rounded-full bg-champagne animate-pulse" />
+                  <span>Scroll to Load Showcase</span>
                 </div>
               </div>
+            </div>
+          )}
 
-              {/* Bottom Caption */}
-              <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 z-20 text-paper-white pointer-events-none drop-shadow-md">
-                <span className="font-mono text-xs uppercase tracking-[0.25em] text-champagne block mb-1">
-                  Architectural Handover Showcase
-                </span>
-                <p className="font-serif text-xl sm:text-2xl md:text-3xl font-medium leading-snug">
-                  Avenue Ahsan Palace &middot; Bashundhara R/A
-                </p>
-              </div>
+          {/* Sound Toggle Floating Badge (Only shown once video is loaded) */}
+          {isVideoInView && (
+            <button
+              type="button"
+              onClick={toggleMute}
+              aria-label={isMuted ? "Unmute audio" : "Mute audio"}
+              className="absolute top-4 right-4 z-20 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/65 hover:bg-black/85 text-paper-white backdrop-blur-md border border-white/20 text-xs font-mono transition-all duration-300 cursor-pointer shadow-md select-none"
+            >
+              {isMuted ? (
+                <>
+                  <VolumeX className="size-3.5 text-champagne" />
+                  <span>Unmute Audio</span>
+                </>
+              ) : (
+                <>
+                  <Volume2 className="size-3.5 text-champagne" />
+                  <span>Mute Audio</span>
+                </>
+              )}
             </button>
           )}
         </motion.div>

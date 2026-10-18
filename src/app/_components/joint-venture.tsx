@@ -38,7 +38,7 @@ export function JointVenture() {
           {/* Left Column: Commercial Advisory */}
           <div className="lg:col-span-5 flex flex-col gap-6">
             <div className="flex flex-col gap-3">
-              <span className="font-mono text-xs uppercase tracking-[0.25em] text-champagne-dark font-semibold">
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-pebble font-semibold">
                 Landowner Joint Venture Advisory
               </span>
               <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.6rem)] leading-[1.08] tracking-[-0.015em] text-graphite-ink font-medium">

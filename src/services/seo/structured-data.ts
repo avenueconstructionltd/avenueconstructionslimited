@@ -34,7 +34,7 @@ export function realEstateAgentJsonLd(): JsonLd {
     ],
     url: SITE_URL,
     logo: `${SITE_URL}/images/site_logo.webp`,
-    image: `${SITE_URL}/images/projects/avenue-ahsan-palace/project_image_1.webp`,
+    image: `${SITE_URL}/images/projects/avenue-ahsan-palace/avenue-ahsan-palace-project.webp`,
     description: SITE_DESCRIPTION,
     email: AUTHOR_EMAIL,
     telephone: AUTHOR_PHONES[0],

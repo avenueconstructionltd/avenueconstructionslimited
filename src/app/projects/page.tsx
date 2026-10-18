@@ -8,7 +8,7 @@ export const metadata: Metadata = buildMetadata({
   title: "Portfolio Archive | Luxury Estates & Residences in Dhaka",
   description:
     "Explore signature luxury residential developments by Avenue Constructions Limited in Dhaka, Bangladesh. Browse completed and upcoming boutique towers in Bashundhara, Gulshan, Banani, and Aftabnagar.",
-  ogImage: "/images/projects/avenue-md-heights/project_image_8.webp",
+  ogImage: "/images/projects/avenue-md-heights/avenue-md-heights-project.webp",
 });
 
 export default function ProjectsPage() {

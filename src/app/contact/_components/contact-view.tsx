@@ -64,9 +64,9 @@ export function ContactView() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-xs uppercase tracking-[0.25em] font-mono text-champagne font-semibold flex items-center gap-2"
+              className="text-xs uppercase tracking-[0.25em] font-mono text-pebble font-semibold flex items-center gap-2"
             >
-              <span className="size-1.5 rounded-full bg-champagne animate-pulse" />
+              <span className="size-1.5 rounded-full bg-pebble animate-pulse" />
               Get in Touch with Avenue
             </motion.span>
 

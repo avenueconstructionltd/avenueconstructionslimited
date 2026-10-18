@@ -54,7 +54,7 @@ export function ArchitecturalJournal() {
       <div className="max-w-7xl mx-auto flex flex-col gap-14 md:gap-18">
         {/* Centered Fazora-Style Header */}
         <div className="flex flex-col items-center text-center gap-3 max-w-2xl mx-auto">
-          <span className="font-mono text-xs uppercase tracking-[0.25em] text-champagne-dark font-semibold">
+          <span className="font-mono text-xs uppercase tracking-[0.25em] text-pebble font-semibold">
             Architectural Insights &amp; Journal
           </span>
           <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.6rem)] leading-[1.08] tracking-[-0.015em] text-graphite-ink">

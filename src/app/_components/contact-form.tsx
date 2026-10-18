@@ -184,8 +184,6 @@ export function ContactForm({ embedded = false }: ContactFormProps) {
                 <option value="Avenue MD Heights">Avenue MD. Heights</option>
                 <option value="Avenue Dream">Avenue Dream</option>
                 <option value="Avenue Castle">Avenue Castle</option>
-                <option value="Avenue Crest">Avenue Crest</option>
-                <option value="Avenue Serenade">Avenue Serenade</option>
               </select>
             </div>
 
@@ -258,7 +256,7 @@ export function ContactForm({ embedded = false }: ContactFormProps) {
           transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
           className="lg:col-span-5 flex flex-col gap-6"
         >
-          <span className="text-xs uppercase tracking-[0.25em] text-champagne font-mono font-semibold">
+          <span className="text-xs uppercase tracking-[0.25em] text-pebble font-mono font-semibold">
             Private Consultation
           </span>
           <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.5rem)] leading-heading-lg tracking-[-0.01em] text-graphite-ink font-medium">

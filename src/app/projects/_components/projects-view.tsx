@@ -26,8 +26,8 @@ export function ProjectsView() {
           {/* Header Block with Quick Portfolio Metrics */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-4 border-b border-stone">
             <div className="flex flex-col gap-4 max-w-2xl">
-              <span className="text-xs uppercase tracking-[0.25em] font-mono text-champagne font-semibold flex items-center gap-2">
-                <span className="size-1.5 rounded-full bg-champagne animate-pulse" />
+              <span className="text-xs uppercase tracking-[0.25em] font-mono text-pebble font-semibold flex items-center gap-2">
+                <span className="size-1.5 rounded-full bg-pebble animate-pulse" />
                 Dhaka Signature Portfolio
               </span>
               <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.02] text-graphite-ink font-medium">
@@ -37,25 +37,31 @@ export function ProjectsView() {
                 </span>
               </h1>
               <p className="text-sm md:text-base leading-relaxed text-pebble font-normal">
-                Discover our hand-crafted single-unit luxury residential landmarks across Bashundhara R/A, Gulshan, Banani, and Aftabnagar Hatirjheel Link.
+                Discover our hand-crafted single-unit luxury residential landmarks across Bashundhara R/A, Aftabnagar, Rampura, and Uttar Badda.
               </p>
             </div>
 
             {/* Filter Pills */}
             <div className="flex items-center gap-2 p-1.5 rounded-full border border-stone bg-linen-cream self-start lg:self-auto">
-              {(["All", "Completed", "Upcoming"] as const).map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setFilter(tab)}
-                  className={`pill-btn px-5 py-2 text-xs font-mono transition-all cursor-pointer ${
-                    filter === tab
-                      ? "bg-obsidian text-paper-white shadow-xs"
-                      : "text-pebble hover:text-graphite-ink"
-                  }`}
-                >
-                  {tab === "All" ? "All Projects (6)" : tab}
-                </button>
-              ))}
+              {(["All", "Completed", "Upcoming"] as const)
+                .filter(
+                  (tab) =>
+                    tab === "All" ||
+                    PROPERTIES.some((property) => property.statusTag === tab),
+                )
+                .map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setFilter(tab)}
+                    className={`pill-btn px-5 py-2 text-xs font-mono transition-all cursor-pointer ${
+                      filter === tab
+                        ? "bg-obsidian text-paper-white shadow-xs"
+                        : "text-pebble hover:text-graphite-ink"
+                    }`}
+                  >
+                    {tab === "All" ? `All Projects (${PROPERTIES.length})` : tab}
+                  </button>
+                ))}
             </div>
           </div>
 
