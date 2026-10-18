@@ -350,30 +350,32 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
                 {property.floorPlans.map((plan, idx) => (
                   <div
                     key={idx}
-                    className="double-bezel-outer flex flex-col gap-6"
+                    className="double-bezel-outer flex flex-col h-full"
                   >
-                    <div className="double-bezel-inner bg-surface/50 p-6 md:p-8 flex flex-col gap-6">
-                      <h3 className="font-serif text-xl uppercase tracking-wider text-text-primary border-b border-black/5 pb-4">
-                        {plan.title}
-                      </h3>
+                    <div className="double-bezel-inner bg-surface/50 p-6 md:p-8 flex flex-col justify-between h-full gap-6">
+                      <div className="flex flex-col gap-6">
+                        <h3 className="font-serif text-xl uppercase tracking-wider text-text-primary border-b border-black/5 pb-4">
+                          {plan.title}
+                        </h3>
 
-                      {/* Image container */}
-                      <div className="relative aspect-4/3 w-full overflow-hidden rounded-xl border border-black/5 bg-white shadow-xs">
-                        <Image
-                          src={plan.image}
-                          alt={plan.title}
-                          fill
-                          sizes="(max-width: 1024px) 100vw, 500px"
-                          className="object-contain p-2 opacity-90 hover:opacity-100 transition-opacity duration-300"
-                        />
+                        {/* Image container */}
+                        <div className="relative aspect-16/10 w-full overflow-hidden rounded-xl border border-black/10 bg-white shadow-xs group">
+                          <Image
+                            src={plan.image}
+                            alt={plan.title}
+                            fill
+                            sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 600px"
+                            className="object-contain p-2 opacity-95 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-300"
+                          />
+                        </div>
                       </div>
 
                       {/* Detail points */}
-                      <ul className="flex flex-col gap-2 mt-2">
+                      <ul className="flex flex-col gap-2.5 mt-2 border-t border-black/5 pt-4">
                         {plan.details.map((detail, dIdx) => (
                           <li
                             key={dIdx}

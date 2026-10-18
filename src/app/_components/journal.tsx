@@ -19,7 +19,7 @@ const ARTICLES: JournalArticle[] = [
     category: "Architecture",
     date: "12/9/2026",
     readTime: "4 min read",
-    image: "/images/projects/avenue-ahsan-palace/project_image_1.webp",
+    image: "/images/projects/warm-living-room.webp",
     href: "/about",
   },
   {
@@ -27,7 +27,8 @@ const ARTICLES: JournalArticle[] = [
     category: "Engineering",
     date: "10/18/2026",
     readTime: "5 min read",
-    image: "/images/projects/avenue-md-heights/project_image_5.webp",
+    image:
+      "/images/projects/avenue-md-heights/WhatsApp Image 2026-09-01 at 5.32.12 PM (2).webp",
     href: "/about",
   },
   {
@@ -43,7 +44,8 @@ const ARTICLES: JournalArticle[] = [
     category: "Advisory",
     date: "06/02/2026",
     readTime: "3 min read",
-    image: "/images/projects/avenue-ahsan-palace/project_image_1.webp",
+    image:
+      "/images/projects/avenue-md-heights/WhatsApp Image 2026-09-01 at 5.32.12 PM.webp",
     href: "/landowner",
   },
 ];

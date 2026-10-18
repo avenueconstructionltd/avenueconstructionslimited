@@ -8,7 +8,7 @@ export const metadata: Metadata = buildMetadata({
   title: "About Us | Legacy & Design Philosophy",
   description:
     "Discover Avenue Constructions Limited. Founded in Dhaka, we orchestrate architectural light, structural precision, and bespoke luxury residential developments.",
-  ogImage: "/images/services/service_architecture.webp",
+  ogImage: "/images/extracted/Ahshan Palace-2_page1_Im10.webp",
 });
 
 export default function AboutPage() {

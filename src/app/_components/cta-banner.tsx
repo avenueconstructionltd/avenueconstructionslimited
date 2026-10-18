@@ -16,7 +16,7 @@ export function CTABanner() {
       >
         {/* Background Reflection Architecture Image */}
         <Image
-          src="/images/projects/avenue-md-heights/project_image_5.webp"
+          src="/images/projects/avenue-md-heights/WhatsApp Image 2026-09-01 at 5.32.13 PM (2).webp"
           alt="Avenue Architectural Masterwork"
           fill
           sizes="(max-width: 1200px) 100vw, 1200px"

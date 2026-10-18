@@ -40,7 +40,7 @@ export const SITE_KEYWORDS: string[] = [
 ];
 
 export const AUTHOR_NAME = "Avenue Constructions Ltd";
-export const AUTHOR_EMAIL = "avenue902@gmail.com";
+export const AUTHOR_EMAIL = "avenueconstructionlimited@gmail.com";
 export const AUTHOR_PHONES = ["+880 1714 767 246", "+880 1581 742 235"];
 
 export const HEADQUARTERS_ADDRESS = {

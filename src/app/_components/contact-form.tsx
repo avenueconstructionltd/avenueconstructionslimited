@@ -268,7 +268,7 @@ export function ContactForm({ embedded = false }: ContactFormProps) {
 
           <div className="flex flex-col gap-2 pt-4 text-sm text-pebble border-t border-stone/60 font-mono">
             <div>Hotline: <a href="tel:+8801714767246" className="text-graphite-ink font-medium hover:text-champagne transition-colors">+880 1714 767 246</a></div>
-            <div>Direct: <a href="mailto:avenue902@gmail.com" className="text-graphite-ink font-medium hover:text-champagne transition-colors">avenue902@gmail.com</a></div>
+            <div>Direct: <a href="mailto:avenueconstructionlimited@gmail.com" className="text-graphite-ink font-medium hover:text-champagne transition-colors">avenueconstructionlimited@gmail.com</a></div>
           </div>
         </motion.div>
 

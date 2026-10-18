@@ -4,6 +4,7 @@ export interface Service {
   title: string;
   description: string;
   imageUrl: string;
+  pageImageUrl: string;
 }
 
 export const SERVICES: Service[] = [
@@ -14,6 +15,7 @@ export const SERVICES: Service[] = [
     description:
       "Sculpting minimalist volumes and high-concept structural layouts that respond to sunlight, wind, and landscape conditions.",
     imageUrl: "/images/services/service_architecture.webp",
+    pageImageUrl: "/images/services/service_page_architecture.webp",
   },
   {
     id: "development",
@@ -22,6 +24,7 @@ export const SERVICES: Service[] = [
     description:
       "Executing premium builds with master-craftsman precision, utilizing premium materials like structural fair-faced concrete, teak wood paneling, and imported marble.",
     imageUrl: "/images/services/service_development.webp",
+    pageImageUrl: "/images/services/service_page_development.webp",
   },
   {
     id: "advisory",
@@ -30,6 +33,7 @@ export const SERVICES: Service[] = [
     description:
       "Providing discrete acquisition intelligence for high-net-worth individuals seeking signature assets and architectural masterpieces.",
     imageUrl: "/images/services/service_advisory.webp",
+    pageImageUrl: "/images/services/service_page_advisory.webp",
   },
   {
     id: "investment",
@@ -38,5 +42,7 @@ export const SERVICES: Service[] = [
     description:
       "Optimizing premium real estate assets through custom tenancy strategies, structural restorations, and asset valuations.",
     imageUrl: "/images/services/service_investment.webp",
+    pageImageUrl: "/images/services/service_page_investment.webp",
   },
 ];
+

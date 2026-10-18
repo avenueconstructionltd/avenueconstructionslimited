@@ -65,7 +65,7 @@ export function AboutView() {
             >
               <div className="double-bezel-inner w-full h-full relative">
                 <Image
-                  src="/images/services/service_architecture.webp"
+                  src="/images/extracted/Ahshan Palace-2_page1_Im10.webp"
                   alt="Architectural detailing at ACL Atelier"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -276,7 +276,7 @@ export function AboutView() {
               <div className="w-full double-bezel-outer rounded-[2.5rem] overflow-hidden order-2 lg:order-1">
                 <div className="double-bezel-inner relative aspect-4/3 lg:aspect-square w-full h-full group">
                   <Image
-                    src="/images/projects/avenue-ahsan-palace/project_image_1.webp"
+                    src="/images/projects/avenue-ahsan-palace/avenue-ahsan-palace-project.webp"
                     alt="Why Choose The Atelier"
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"

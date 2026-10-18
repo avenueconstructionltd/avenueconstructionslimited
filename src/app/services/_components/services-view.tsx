@@ -111,9 +111,10 @@ export function ServicesView() {
                   >
                     <div className="double-bezel-inner relative w-full h-full bg-stone">
                       <Image
-                        src={service.imageUrl}
+                        src={service.pageImageUrl}
                         alt={service.title}
                         fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
                         className="object-cover brightness-95"
                       />
                     </div>

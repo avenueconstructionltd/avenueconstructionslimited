@@ -24,8 +24,8 @@ const QUICK_CONTACTS = [
   {
     icon: <Mail className="size-5 text-champagne" />,
     title: "Official Email",
-    details: ["avenue902@gmail.com", "Response within 4 business hours"],
-    action: "mailto:avenue902@gmail.com",
+    details: ["avenueconstructionlimited@gmail.com", "Response within 4 business hours"],
+    action: "mailto:avenueconstructionlimited@gmail.com",
     actionLabel: "Send Email",
   },
 ];
@@ -276,10 +276,10 @@ export function ContactView() {
                   Corporate Email
                 </span>
                 <a
-                  href="mailto:avenue902@gmail.com"
+                  href="mailto:avenueconstructionlimited@gmail.com"
                   className="font-mono text-sm text-paper-white/90 hover:text-champagne transition-colors"
                 >
-                  avenue902@gmail.com
+                  avenueconstructionlimited@gmail.com
                 </a>
               </div>
             </div>

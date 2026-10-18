@@ -22,19 +22,21 @@ const PILLARS = [
     label: "Single-Unit Floor Privacy",
     detail:
       "One exclusive residence per floor with dedicated private lift access, full acoustic isolation, and 360-degree daylight across living zones.",
-    image: "/images/projects/avenue-ahsan-palace/project_image_1.webp",
+    image: "/images/projects/avenue-ahsan-palace/project_image_2.webp",
   },
   {
     label: "Certified Structural Longevity",
     detail:
       "Engineered with BSRM 500W rebar, Holcim cement, stone chips casting, and complete IEB-stamped structural load calculations.",
-    image: "/images/projects/avenue-md-heights/project_image_5.webp",
+    image:
+      "/images/projects/avenue-md-heights/WhatsApp Image 2026-09-01 at 5.32.14 PM.webp",
   },
   {
     label: "Prime Dhaka Enclaves",
     detail:
       "Freehold plots hand-selected in Bashundhara R/A (Block E, near Evercare), Aftabnagar Hatirjheel Link, Gulshan, and Banani.",
-    image: "/images/projects/avenue-md-heights/project_image_8.webp",
+    image:
+      "/images/projects/avenue-md-heights/WhatsApp Image 2026-09-01 at 5.32.13 PM (1).webp",
   },
 ];
 
@@ -286,28 +288,26 @@ function PillarGrid({ pillars }: { pillars: typeof PILLARS }) {
         <div
           key={pillar.label}
           data-pillar-card
-          className="double-bezel-outer group"
+          className="group flex flex-col h-full rounded-2xl border border-stone bg-paper-white hover:border-champagne/70 shadow-[0_2px_10px_rgba(20,21,24,0.03)] hover:shadow-[0_16px_36px_-8px_rgba(20,21,24,0.08)] hover:-translate-y-1.5 transition-all duration-400 ease-out p-3.5 sm:p-4"
         >
-          <div className="double-bezel-inner flex flex-col min-h-95 justify-between p-2 bg-linen-cream">
-            <div className="relative aspect-4/3 w-full rounded-2xl overflow-hidden bg-stone">
-              <div data-pillar-image className="absolute inset-0">
-                <Image
-                  src={pillar.image}
-                  alt={pillar.label}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 384px"
-                  className="object-cover transition-transform duration-700 ease-premium-in-out group-hover:scale-105"
-                />
-              </div>
+          <div className="relative aspect-4/3 w-full rounded-xl overflow-hidden bg-stone">
+            <div data-pillar-image className="absolute inset-0">
+              <Image
+                src={pillar.image}
+                alt={pillar.label}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 384px"
+                className="object-cover transition-transform duration-700 ease-premium-in-out group-hover:scale-105"
+              />
             </div>
-            <div className="p-5 sm:p-6 flex flex-col gap-3">
-              <h3 className="font-serif text-2xl text-graphite-ink font-medium">
-                {pillar.label}
-              </h3>
-              <p className="text-[14px] leading-[1.6] text-pebble font-normal">
-                {pillar.detail}
-              </p>
-            </div>
+          </div>
+          <div className="p-4 sm:p-5 flex flex-col gap-3 flex-1 justify-between">
+            <h3 className="font-serif text-xl sm:text-2xl text-graphite-ink font-medium">
+              {pillar.label}
+            </h3>
+            <p className="text-[14px] leading-[1.6] text-pebble font-normal">
+              {pillar.detail}
+            </p>
           </div>
         </div>
       ))}

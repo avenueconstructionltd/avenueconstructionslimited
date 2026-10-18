@@ -88,14 +88,14 @@ export function ProjectsView() {
                   {/* Top Image Window */}
                   <Link
                     href={`/projects/${property.slug}`}
-                    className="block relative aspect-16/10 w-full overflow-hidden rounded-2xl bg-stone"
+                    className="block relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-stone"
                   >
                     <Image
                       src={property.image}
                       alt={property.name}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover transition-transform duration-700 ease-premium-in-out group-hover:scale-105"
+                      className="object-cover object-center transition-transform duration-700 ease-premium-in-out group-hover:scale-105"
                     />
 
                     {/* Status Badge */}

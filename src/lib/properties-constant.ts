@@ -64,9 +64,9 @@ export const PROPERTIES: Property[] = [
         caption: "Perspective View",
       },
       {
-        src: "/images/projects/avenue-ahsan-palace/project_image_2.webp",
-        alt: "Front facade architectural detailing",
-        caption: "Facade detailing",
+        src: "/images/projects/avenue-ahsan-palace/avenue-ahsan-palace-architect.webp",
+        alt: "Front Facade Architectural Detailing",
+        caption: "Architectural Elevation Detailing",
       },
       {
         src: "/images/projects/avenue-ahsan-palace/project_image_3.webp",
@@ -82,7 +82,7 @@ export const PROPERTIES: Property[] = [
     floorPlans: [
       {
         title: "Typical Floor Plan (1st to 7th Floor)",
-        image: "/images/projects/avenue-ahsan-palace/project_image_4.webp",
+        image: "/images/floor-plans/avenue-ahsan-palace-typical.webp",
         details: [
           "Unit Area: 1532 Sft single unit per floor",
           "Accommodates: 3 Bedrooms & 3 Bathrooms",
@@ -93,7 +93,7 @@ export const PROPERTIES: Property[] = [
       },
       {
         title: "Ground Floor Plan & Driveway",
-        image: "/images/projects/avenue-ahsan-palace/project_image_3.webp",
+        image: "/images/floor-plans/avenue-ahsan-palace-ground.webp",
         details: [
           "Car Parking: 7 Spaces with secure driveway",
           "Lobby: Reception Desk & Guest Waiting Area",
@@ -182,7 +182,7 @@ export const PROPERTIES: Property[] = [
     floorPlans: [
       {
         title: "Typical Floor Plan",
-        image: "/images/projects/avenue-md-heights/project_image_6.webp",
+        image: "/images/floor-plans/avenue-md-heights-typical.webp",
         details: [
           "Unit Area: 1850 Sft",
           "Accommodates: 3 Bedrooms & 4 Bathrooms",
@@ -193,7 +193,7 @@ export const PROPERTIES: Property[] = [
       },
       {
         title: "Ground Floor Plan",
-        image: "/images/projects/avenue-md-heights/project_image_7.webp",
+        image: "/images/floor-plans/avenue-md-heights-ground.webp",
         details: [
           "Car Parking: 8 Slots with automated security access",
           "Lobby: Double-height grand entrance lobby",
@@ -268,12 +268,12 @@ export const PROPERTIES: Property[] = [
         caption: "Rooftop Community Lounge",
       },
       {
-        src: "/images/projects/avenue-dream/prop_aria.webp",
-        alt: "Lobby and Atrium Detailing",
-        caption: "Lobby & Atrium Detailing",
+        src: "/images/projects/avenue-dream/avenue-dream-architect.webp",
+        alt: "Architectural Detailing & Elevation",
+        caption: "Architectural Detailing & Elevation",
       },
       {
-        src: "/images/projects/avenue-dream/prop_luminary.webp",
+        src: "/images/projects/elegant-dining-room.webp",
         alt: "Luxury Residence Suite",
         caption: "Interior Family Suite",
       },
@@ -281,7 +281,7 @@ export const PROPERTIES: Property[] = [
     floorPlans: [
       {
         title: "Typical Floor Plan",
-        image: "/images/projects/avenue-dream/upcoming_avenue_dream.webp",
+        image: "/images/floor-plans/avenue-dream-typical.webp",
         details: [
           "Unit Area: 1350 Sft",
           "Accommodates: 3 Bedrooms & 3 Bathrooms",
@@ -291,7 +291,7 @@ export const PROPERTIES: Property[] = [
       },
       {
         title: "Ground Floor Plan & Parking",
-        image: "/images/projects/avenue-dream/project_image_9.webp",
+        image: "/images/floor-plans/avenue-dream-ground.webp",
         details: [
           "Car Parking: 6 Parking slots",
           "Lobby: Reception Desk & Security Post",
@@ -360,14 +360,14 @@ export const PROPERTIES: Property[] = [
         caption: "3D Perspective Render",
       },
       {
-        src: "/images/projects/avenue-castle/prop_terraces.webp",
-        alt: "Cascading Terrace Design",
-        caption: "Cascading Terrace Facade",
+        src: "/images/projects/modern-covered-parking.webp",
+        alt: "Covered Parking & Driveway",
+        caption: "Covered Parking & Driveway",
       },
       {
-        src: "/images/projects/avenue-castle/prop_obsidian.webp",
-        alt: "Architectural Detailing",
-        caption: "Monolithic Exterior Geometry",
+        src: "/images/projects/avenue-castle/avenue-castle-architect.webp",
+        alt: "Architectural Detailing & Structural Elevation",
+        caption: "Architectural Detailing & Structural Elevation",
       },
       {
         src: "/images/projects/avenue-castle/project_image_10.webp",
@@ -378,7 +378,7 @@ export const PROPERTIES: Property[] = [
     floorPlans: [
       {
         title: "Typical Floor Plan",
-        image: "/images/projects/avenue-castle/upcoming_avenue_castle.webp",
+        image: "/images/floor-plans/avenue-castle-typical.webp",
         details: [
           "Unit Area: 1450 Sft",
           "Accommodates: 3 Bedrooms & 3 Bathrooms",
@@ -388,7 +388,7 @@ export const PROPERTIES: Property[] = [
       },
       {
         title: "Ground Floor Parking & Driveway",
-        image: "/images/projects/avenue-castle/prop_terraces.webp",
+        image: "/images/floor-plans/avenue-castle-ground.webp",
         details: [
           "Car Parking: 6 Parking slots",
           "Lobby: Reception Desk & Security Lounge",

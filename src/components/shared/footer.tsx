@@ -152,10 +152,10 @@ export function Footer() {
             </div>
             <div className="flex flex-col gap-1 text-sm text-pebble pt-2 font-mono">
               <a
-                href="mailto:avenue902@gmail.com"
+                href="mailto:avenueconstructionlimited@gmail.com"
                 className="hover:text-champagne transition-colors"
               >
-                avenue902@gmail.com
+                avenueconstructionlimited@gmail.com
               </a>
               <a
                 href="tel:+8801714767246"
