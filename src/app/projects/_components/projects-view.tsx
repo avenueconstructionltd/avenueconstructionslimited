@@ -10,7 +10,9 @@ import { PROPERTIES } from "@/lib/properties-constant";
 import { MapPin, ArrowRight, ShieldCheck } from "lucide-react";
 
 export function ProjectsView() {
-  const [filter, setFilter] = useState<"All" | "Completed" | "Upcoming">("All");
+  const [filter, setFilter] = useState<
+    "All" | "Completed" | "Under Construction" | "Upcoming"
+  >("All");
 
   const filteredProperties = PROPERTIES.filter((p) => {
     if (filter === "All") return true;
@@ -27,7 +29,6 @@ export function ProjectsView() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-4 border-b border-stone">
             <div className="flex flex-col gap-4 max-w-2xl">
               <span className="text-xs uppercase tracking-[0.25em] font-mono text-pebble font-semibold flex items-center gap-2">
-                <span className="size-1.5 rounded-full bg-pebble animate-pulse" />
                 Dhaka Signature Portfolio
               </span>
               <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.02] text-graphite-ink font-medium">
@@ -43,7 +44,7 @@ export function ProjectsView() {
 
             {/* Filter Pills */}
             <div className="flex items-center gap-2 p-1.5 rounded-full border border-stone bg-linen-cream self-start lg:self-auto">
-              {(["All", "Completed", "Upcoming"] as const)
+              {(["All", "Completed", "Under Construction", "Upcoming"] as const)
                 .filter(
                   (tab) =>
                     tab === "All" ||
@@ -68,9 +69,9 @@ export function ProjectsView() {
           {/* Staggered Portfolio Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 items-stretch">
             {filteredProperties.map((property, index) => {
-              const beds = property.specs.find((s) => s.label.toLowerCase().includes("bed"))?.value || "4 Beds";
-              const baths = property.specs.find((s) => s.label.toLowerCase().includes("bath"))?.value || "4 Baths";
-              const sqft = property.specs.find((s) => s.label.toLowerCase().includes("size") || s.label.toLowerCase().includes("area") || s.label.toLowerCase().includes("unit"))?.value || "2,850 SQFT";
+              const beds = property.specs.find((s) => s.label.toLowerCase().includes("bed"))?.value || "3";
+              const baths = property.specs.find((s) => s.label.toLowerCase().includes("bath"))?.value || "3";
+              const sqft = property.specs.find((s) => s.label.toLowerCase().includes("size") || s.label.toLowerCase().includes("area") || s.label.toLowerCase().includes("unit"))?.value || "1,532 Sft";
 
               return (
                 <motion.div
@@ -100,22 +101,8 @@ export function ProjectsView() {
 
                     {/* Status Badge */}
                     <div className="absolute top-4 left-4 z-20">
-                      <span className="pill-btn inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-mono tracking-wider uppercase bg-paper-white/95 text-graphite-ink font-semibold backdrop-blur-md shadow-xs border border-black/5">
-                        <span
-                          className={`size-1.5 rounded-full ${
-                            property.statusTag === "Completed"
-                              ? "bg-emerald-500"
-                              : "bg-champagne"
-                          }`}
-                        />
+                      <span className="pill-btn inline-block px-3.5 py-1 text-[11px] font-mono tracking-[0.16em] uppercase bg-paper-white/95 text-graphite-ink font-semibold backdrop-blur-md shadow-xs border border-stone/80">
                         {property.statusTag}
-                      </span>
-                    </div>
-
-                    {/* Year Tag */}
-                    <div className="absolute top-4 right-4 z-20">
-                      <span className="pill-btn px-3 py-1 text-[11px] font-mono text-paper-white bg-black/60 backdrop-blur-md border border-white/15">
-                        {property.architecturalDetails.year}
                       </span>
                     </div>
                   </Link>
@@ -135,11 +122,18 @@ export function ProjectsView() {
                         </span>
                       </div>
 
-                      <div className="flex items-center gap-1.5 text-xs text-pebble">
-                        <MapPin className="size-3.5 text-champagne shrink-0" />
-                        <span className="truncate">
-                          {property.region}, {property.location}
-                        </span>
+                      <div className="flex flex-col gap-0.5">
+                        <div className="flex items-center gap-1.5 text-xs text-pebble">
+                          <MapPin className="size-3.5 text-champagne shrink-0" />
+                          <span className="truncate">
+                            {property.region}, {property.location}
+                          </span>
+                        </div>
+                        {property.landmark && (
+                          <span className="text-[11px] font-mono text-champagne font-medium pl-5">
+                            {property.landmark}
+                          </span>
+                        )}
                       </div>
 
                       <p className="font-serif italic text-sm text-pebble pt-1">
@@ -155,15 +149,15 @@ export function ProjectsView() {
                     <div className="grid grid-cols-3 gap-2 border-t border-stone pt-4 text-xs font-mono text-graphite-ink">
                       <div className="bg-linen-cream p-2.5 rounded-xl flex flex-col">
                         <span className="text-[10px] text-pebble uppercase tracking-wider">Bedrooms</span>
-                        <span className="font-medium mt-0.5">{beds}</span>
+                        <span className="font-medium mt-0.5">{beds.includes("Bed") ? beds : `${beds} Beds`}</span>
                       </div>
                       <div className="bg-linen-cream p-2.5 rounded-xl flex flex-col">
                         <span className="text-[10px] text-pebble uppercase tracking-wider">Bathrooms</span>
-                        <span className="font-medium mt-0.5">{baths}</span>
+                        <span className="font-medium mt-0.5">{baths.includes("Bath") ? baths : `${baths} Baths`}</span>
                       </div>
                       <div className="bg-linen-cream p-2.5 rounded-xl flex flex-col">
                         <span className="text-[10px] text-pebble uppercase tracking-wider">Suite Area</span>
-                        <span className="font-medium mt-0.5">{sqft}</span>
+                        <span className="font-medium mt-0.5 truncate">{sqft}</span>
                       </div>
                     </div>
 

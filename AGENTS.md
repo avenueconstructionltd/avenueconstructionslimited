@@ -114,6 +114,47 @@ Rules:
 - Animate only transform and opacity. Never height, width, top, or left.
 - will-change: transform only on actively animating hero elements — remove after animation completes.
 
+**Design Slop Indicators**
+
+## Typography
+
+Instrument Serif + negative kerning
+Italicized or colored single words in headlines
+Default fonts: Inter, Poppins, Space Grotesk, Geist
+Monospace used for labels/body text (when it’s not code)
+Tiny all-caps eyebrow labels above headings (often with a dot)
+
+## Color & Effects
+
+Purple/indigo → blue gradients
+Soft glow / neon edges on dark backgrounds
+Multiple layered color shades + opacities for fake “depth”
+Light gray text on white
+Glassmorphism / frosted glass cards used decoratively
+Colored left stripe on cards
+
+## Layout & Structure
+
+Containers with borders on everything
+Three identical feature cards in a row (with thin-line icons)
+Bento grids used by default
+Same border-radius + soft shadow on everything
+Section numbering (01, 02, 03 style)
+Dividers used purely for decoration
+Centered hero with a small badge/pill above the headline
+Overstuffed screens (too many cards, metrics, tips)
+
+## Decorative / Content Tells
+
+Tags / pills / badges that mean nothing
+Over-detailed diagrams / illustrations
+Code breadcrumbs
+“AI” icons (sparkles, lightning, brain)
+Emoji used as icons
+Fake social proof (round numbers, generic logos, AI headshots)
+Heavy fade-up / staggered entrance animations on every section
+Over-the-top detailed UI
+
 ## Forbidden
 
 - Default export on shared components — use named exports

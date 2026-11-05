@@ -19,66 +19,66 @@ interface ShowcaseItem {
 const SHOWCASE_ITEMS: ShowcaseItem[] = [
   {
     num: "01",
-    category: "BASHUNDHARA R/A · DHAKA",
-    title: "Avenue Ahsan Palace",
-    subtitle: "Eight-Storied Sanctuary of Refined Living",
-    description:
-      "A G+7 single-unit masterwork situated steps from Evercare Hospital. Designed to capture southern light currents, offering absolute residential privacy and museum-grade finishes.",
-    slug: "avenue-ahsan-palace",
-    image: "/images/projects/avenue-ahsan-palace/avenue-ahsan-palace-project.webp",
-    specs: [
-      { label: "STRUCTURE", value: "G+7 Single Unit Floors" },
-      { label: "ORIENTATION", value: "South Facing Daylight Corridor" },
-      { label: "APPROVAL", value: "100% RAJUK Sanctioned" },
-      { label: "DELIVERY", value: "Completed & Delivered" },
-    ],
-  },
-  {
-    num: "02",
-    category: "AFTABNAGAR · HATIRJHEEL",
-    title: "Avenue MD Heights",
-    subtitle: "Monuments Above the Lake",
-    description:
-      "Single-unit private residences engineered with cantilevered balconies, fair-faced architectural concrete, and panoramic cross-ventilation across Dhaka’s eastern skyline.",
-    slug: "avenue-md-heights",
-    image: "/images/projects/avenue-md-heights/avenue-md-heights-project.webp",
-    specs: [
-      { label: "STRUCTURE", value: "G+9 High Ceiling Suites" },
-      { label: "AMENITIES", value: "Private Elevator & Terraces" },
-      { label: "ENGINEERING", value: "IEB Stamped Structural Design" },
-      { label: "DELIVERY", value: "Completed Landmark" },
-    ],
-  },
-  {
-    num: "03",
-    category: "RAMPURA · HATIRJHEEL LINK",
-    title: "Avenue Dream",
-    subtitle: "Urban Architectural Serenity",
-    description:
-      "Sculpted with disciplined acoustic glazing and deep shadow overhangs, providing seamless connectivity to Hatirjheel Expressway while maintaining complete acoustic quiet.",
-    slug: "avenue-dream",
-    image: "/images/projects/avenue-dream/avenue-dream-project.webp",
-    specs: [
-      { label: "STRUCTURE", value: "G+7 Luxury Residences" },
-      { label: "CONNECTIVITY", value: "Hatirjheel Expressway Corridor" },
-      { label: "PARKING", value: "Secured Ground Floor Bays" },
-      { label: "DELIVERY", value: "Signature Handover" },
-    ],
-  },
-  {
-    num: "04",
     category: "UTTAR BADDA · DHAKA",
     title: "Avenue Castle",
     subtitle: "Monolithic Geometry on the Skyline",
     description:
-      "A luxury G+8 residential tower showcasing architectural symmetry and bold structural framing on Shadhinota Shoroni, minutes from Baridhara.",
+      "A luxury 9-storied (G+8) residential tower showcasing architectural symmetry and bold structural framing on Shadhinota Shoroni, minutes from Baridhara.",
     slug: "avenue-castle",
     image: "/images/projects/avenue-castle/avenue-castle-project.webp",
     specs: [
-      { label: "STRUCTURE", value: "G+8 Residential Tower" },
-      { label: "CONNECTIVITY", value: "Shadhinota Shoroni Corridor" },
-      { label: "APPROVAL", value: "100% RAJUK Sanctioned" },
+      { label: "STRUCTURE", value: "9 Storied (G+8)" },
+      { label: "LOCATION", value: "Shadhinota Shoroni, Uttar Badda" },
+      { label: "UNIT SIZE", value: "1,450 Sft · 3 Bed, 3 Bath" },
       { label: "DELIVERY", value: "Completed Landmark" },
+    ],
+  },
+  {
+    num: "02",
+    category: "BASHUNDHARA R/A · DHAKA",
+    title: "Avenue Ahsan Palace",
+    subtitle: "Eight-Storied Sanctuary of Refined Living",
+    description:
+      "An 8-storied (G+7) single-unit masterwork on a 25-ft road in Bashundhara Block-E, steps from Evercare Hospital. Designed to capture southern light currents, offering absolute residential privacy.",
+    slug: "avenue-ahsan-palace",
+    image: "/images/projects/avenue-ahsan-palace/avenue-ahsan-palace-project.webp",
+    specs: [
+      { label: "STRUCTURE", value: "8 Storied (G+7) Single Unit" },
+      { label: "LAND & ROAD", value: "3 Katha · 25 Ft Wide Road" },
+      { label: "APPROVAL", value: "RAJUK Permit D-0006453-10-25" },
+      { label: "DELIVERY", value: "Under Construction" },
+    ],
+  },
+  {
+    num: "03",
+    category: "AFTABNAGAR · HATIRJHEEL",
+    title: "Avenue Mohammad Heights",
+    subtitle: "10-Storied Luxury Landmark Overlooking the Green Reserve",
+    description:
+      "Prestige residential landmark on a 50-foot wide road in Aftabnagar Sector 4 on 7 Katha land. Features 18 luxury residences, basement parking, 2 high-speed lifts, and an AC rooftop community pavilion.",
+    slug: "avenue-md-heights",
+    image: "/images/projects/avenue-md-heights/avenue-md-heights-project.webp",
+    specs: [
+      { label: "STRUCTURE", value: "10 Storied (B+G+9)" },
+      { label: "LAND & ROAD", value: "7 Katha · 50 Ft Wide Road" },
+      { label: "CAPACITY", value: "18 Units (1,801 / 1,785 Sft)" },
+      { label: "DELIVERY", value: "Under Construction" },
+    ],
+  },
+  {
+    num: "04",
+    category: "RAMPURA · HATIRJHEEL LINK",
+    title: "Avenue Dream",
+    subtitle: "Urban Architectural Serenity",
+    description:
+      "Sculpted with disciplined acoustic glazing and deep shadow overhangs on Ulon Road, providing seamless connectivity to Hatirjheel Expressway while maintaining complete acoustic quiet.",
+    slug: "avenue-dream",
+    image: "/images/projects/avenue-dream/avenue-dream-project.webp",
+    specs: [
+      { label: "STRUCTURE", value: "8 Storied (G+7)" },
+      { label: "LOCATION", value: "Ulon Road, Rampura" },
+      { label: "UNIT SIZE", value: "1,350 Sft · 3 Bed, 3 Bath" },
+      { label: "DELIVERY", value: "Under Construction" },
     ],
   },
 ];
@@ -150,7 +150,8 @@ export function PinnedShowcase() {
               <div className="lg:col-span-5 flex flex-col gap-6">
                 <div className="flex flex-col gap-2">
                   <span className="font-mono text-xs text-champagne-dark uppercase tracking-widest font-semibold">
-                    Signature Handover
+                    {currentItem.specs.find((s) => s.label === "DELIVERY")?.value ||
+                      "Development"}
                   </span>
                   <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-graphite-ink font-medium leading-tight">
                     {currentItem.title}

@@ -82,22 +82,13 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               &larr; Back to All Projects
             </Link>
             <span
-              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-mono text-[9px] font-bold uppercase tracking-[0.2em] shadow-xs backdrop-blur-md border ${
+              className={`inline-block px-3.5 py-1 rounded-full font-mono text-[9px] font-bold uppercase tracking-[0.2em] shadow-xs backdrop-blur-md border ${
                 property.statusTag === "Completed"
                   ? "bg-text-primary text-white border-white/20"
-                  : "bg-accent text-text-primary border-black/10"
+                  : "bg-paper-white text-text-primary border-stone"
               }`}
             >
-              <span
-                className={`size-1.5 rounded-full ${
-                  property.statusTag === "Completed"
-                    ? "bg-emerald-400 animate-pulse"
-                    : "bg-text-primary animate-ping"
-                }`}
-              />
-              {property.statusTag === "Completed"
-                ? "Completed"
-                : "Upcoming Landmark"}
+              {property.statusTag}
             </span>
           </div>
 
@@ -222,26 +213,26 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                   <dl className="flex flex-col gap-3 text-xs">
                     <div className="flex justify-between gap-4">
                       <dt className="uppercase tracking-wider text-text-secondary/80">
-                        RAJUK Permit
+                        RAJUK Compliance
                       </dt>
                       <dd className="font-mono text-text-primary text-right font-medium">
-                        D-0006453-10-25
+                        {property.architecturalDetails.rajukPermit || "100% RAJUK Approved"}
                       </dd>
                     </div>
                     <div className="flex justify-between gap-4 border-t border-black/5 pt-3">
                       <dt className="uppercase tracking-wider text-text-secondary/80">
-                        IEB Struct Engineer
+                        Structural Engineering
                       </dt>
                       <dd className="text-text-primary text-right">
-                        Engr. Maruf Ahmed
+                        {property.architecturalDetails.structuralEngineer || "BNBC Seismic Standard"}
                       </dd>
                     </div>
                     <div className="flex justify-between gap-4 border-t border-black/5 pt-3">
                       <dt className="uppercase tracking-wider text-text-secondary/80">
-                        IAB Architect
+                        Lead Architect
                       </dt>
                       <dd className="text-text-primary text-right">
-                        Sharmin Afroz Shumi
+                        {property.architecturalDetails.architect}
                       </dd>
                     </div>
                     <div className="flex justify-between gap-4 border-t border-black/5 pt-3">

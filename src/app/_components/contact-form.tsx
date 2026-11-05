@@ -25,7 +25,7 @@ export function ContactForm({ embedded = false }: ContactFormProps) {
   const [fields, setFields] = useState<FormFields>({
     fullName: "",
     email: "",
-    residence: "Avenue Ahsan Palace",
+    residence: "Avenue Castle",
     message: "",
   });
 
@@ -79,7 +79,7 @@ export function ContactForm({ embedded = false }: ContactFormProps) {
       setFields({
         fullName: "",
         email: "",
-        residence: "Avenue Ahsan Palace",
+        residence: "Avenue Castle",
         message: "",
       });
     } catch {
@@ -180,10 +180,10 @@ export function ContactForm({ embedded = false }: ContactFormProps) {
                 onChange={handleChange}
                 className="w-full px-4 py-3 rounded-xl bg-linen-cream/40 border border-stone text-sm text-graphite-ink focus:outline-none focus:border-champagne focus:bg-paper-white transition-colors cursor-pointer"
               >
-                <option value="Avenue Ahsan Palace">Avenue Ahsan Palace</option>
-                <option value="Avenue MD Heights">Avenue MD. Heights</option>
-                <option value="Avenue Dream">Avenue Dream</option>
                 <option value="Avenue Castle">Avenue Castle</option>
+                <option value="Avenue Ahsan Palace">Avenue Ahsan Palace</option>
+                <option value="Avenue Mohammad Heights">Avenue Mohammad Heights</option>
+                <option value="Avenue Dream">Avenue Dream</option>
               </select>
             </div>
 

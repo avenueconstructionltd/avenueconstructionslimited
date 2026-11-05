@@ -34,7 +34,7 @@ export const SITE_KEYWORDS: string[] = [
   "RAJUK approved projects Dhaka",
   "IEB certified buildings Dhaka",
   "Avenue Ahsan Palace",
-  "Avenue MD Heights",
+  "Avenue Mohammad Heights",
   "Avenue Dream",
   "Avenue Castle",
 ];

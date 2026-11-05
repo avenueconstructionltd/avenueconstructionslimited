@@ -13,6 +13,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     bio: "Managing Director leading Avenue Constructions Limited with strategic vision, corporate governance, and commitment to architectural excellence across all real estate developments.",
   },
   {
+    name: "Engr. Maruf Ahmed",
+    role: "Company Main Consultant",
+    imageUrl: "/images/consultant/engr-maruf-ahmed.jpg",
+    bio: "Registered Structural Engineer (IEB F-09092, RAJUK DMINB/CE-0123) and Principal of Design Aids & Consultants Ltd. Leads the engineering team providing continuous weekly on-site structural supervision across all Avenue projects.",
+  },
+  {
     name: "Shahrier Sajib",
     role: "Project Engineer",
     imageUrl: "/images/team/Shahrier Sajib.webp",

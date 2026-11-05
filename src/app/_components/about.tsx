@@ -189,7 +189,6 @@ export function About() {
               />
               <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
                 <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-black/60 backdrop-blur-md text-paper-white text-xs font-mono border border-white/10">
-                  <span className="size-2 rounded-full bg-champagne animate-pulse" />
                   <span>Scroll to Load Showcase</span>
                 </div>
               </div>

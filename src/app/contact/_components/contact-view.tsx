@@ -10,7 +10,12 @@ const QUICK_CONTACTS = [
   {
     icon: <Phone className="size-5 text-champagne" />,
     title: "Direct Hotlines",
-    details: ["+880 1714 767 246", "+880 1581 742 235"],
+    details: [
+      "+880 1714 767 246",
+      "+880 1581 742 235",
+      "+880 1704 532 168",
+      "+880 1878 808 889",
+    ],
     action: "tel:+8801714767246",
     actionLabel: "Call Concierge",
   },
@@ -66,7 +71,6 @@ export function ContactView() {
               transition={{ duration: 0.6 }}
               className="text-xs uppercase tracking-[0.25em] font-mono text-pebble font-semibold flex items-center gap-2"
             >
-              <span className="size-1.5 rounded-full bg-pebble animate-pulse" />
               Get in Touch with Avenue
             </motion.span>
 
