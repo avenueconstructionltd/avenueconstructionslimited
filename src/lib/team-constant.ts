@@ -21,7 +21,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
   {
     name: "Shahrier Sajib",
     role: "Project Engineer",
-    imageUrl: "/images/team/Shahrier Sajib.webp",
+    imageUrl: "/images/team/shahrier-sajib.webp",
     bio: "Project Engineer responsible for on-site structural execution, engineering design coordination, project management, and quality compliance across developments.",
   },
   {

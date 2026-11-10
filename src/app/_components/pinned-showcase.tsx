@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
+import { FileText } from "lucide-react";
 
 interface ShowcaseItem {
   num: string;
@@ -13,6 +14,7 @@ interface ShowcaseItem {
   description: string;
   slug: string;
   image: string;
+  brochurePdf?: string;
   specs: { label: string; value: string }[];
 }
 
@@ -23,12 +25,12 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
     title: "Avenue Castle",
     subtitle: "Monolithic Geometry on the Skyline",
     description:
-      "A luxury 9-storied (G+8) residential tower showcasing architectural symmetry and bold structural framing on Shadhinota Shoroni, minutes from Baridhara.",
+      "A luxury 10-storied (G+9) residential tower showcasing architectural symmetry and bold structural framing on Shadhinota Shoroni, minutes from Baridhara.",
     slug: "avenue-castle",
     image: "/images/projects/avenue-castle/avenue-castle-project.webp",
     specs: [
-      { label: "STRUCTURE", value: "9 Storied (G+8)" },
-      { label: "LOCATION", value: "Shadhinota Shoroni, Uttar Badda" },
+      { label: "STRUCTURE", value: "10 Storied (G+9)" },
+      { label: "LAND & UNITS", value: "7.5 Katha · 27 Units" },
       { label: "UNIT SIZE", value: "1,450 Sft · 3 Bed, 3 Bath" },
       { label: "DELIVERY", value: "Completed Landmark" },
     ],
@@ -41,10 +43,11 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
     description:
       "An 8-storied (G+7) single-unit masterwork on a 25-ft road in Bashundhara Block-E, steps from Evercare Hospital. Designed to capture southern light currents, offering absolute residential privacy.",
     slug: "avenue-ahsan-palace",
+    brochurePdf: "/brochures/avenue-ahsan-palace-brochure.pdf",
     image: "/images/projects/avenue-ahsan-palace/avenue-ahsan-palace-project.webp",
     specs: [
       { label: "STRUCTURE", value: "8 Storied (G+7) Single Unit" },
-      { label: "LAND & ROAD", value: "3 Katha · 25 Ft Wide Road" },
+      { label: "LAND & ROAD", value: "7 Katha · 25 Ft Wide Road" },
       { label: "APPROVAL", value: "RAJUK Permit D-0006453-10-25" },
       { label: "DELIVERY", value: "Under Construction" },
     ],
@@ -57,6 +60,7 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
     description:
       "Prestige residential landmark on a 50-foot wide road in Aftabnagar Sector 4 on 7 Katha land. Features 18 luxury residences, basement parking, 2 high-speed lifts, and an AC rooftop community pavilion.",
     slug: "avenue-md-heights",
+    brochurePdf: "/brochures/avenue-mohammad-heights-brochure.pdf",
     image: "/images/projects/avenue-md-heights/avenue-md-heights-project.webp",
     specs: [
       { label: "STRUCTURE", value: "10 Storied (B+G+9)" },
@@ -71,13 +75,13 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
     title: "Avenue Dream",
     subtitle: "Urban Architectural Serenity",
     description:
-      "Sculpted with disciplined acoustic glazing and deep shadow overhangs on Ulon Road, providing seamless connectivity to Hatirjheel Expressway while maintaining complete acoustic quiet.",
+      "A 9-storied (G+8) landmark sculpted with disciplined acoustic glazing on Ulon Road, providing seamless connectivity to Hatirjheel Expressway while maintaining complete acoustic quiet.",
     slug: "avenue-dream",
     image: "/images/projects/avenue-dream/avenue-dream-project.webp",
     specs: [
-      { label: "STRUCTURE", value: "8 Storied (G+7)" },
+      { label: "STRUCTURE", value: "9 Storied (G+8)" },
+      { label: "LAND & SIZE", value: "5 Katha · 1,450 Sft" },
       { label: "LOCATION", value: "Ulon Road, Rampura" },
-      { label: "UNIT SIZE", value: "1,350 Sft · 3 Bed, 3 Bath" },
       { label: "DELIVERY", value: "Under Construction" },
     ],
   },
@@ -177,8 +181,8 @@ export function PinnedShowcase() {
                   ))}
                 </div>
 
-                {/* CTA Link */}
-                <div className="pt-2">
+                {/* CTA Links */}
+                <div className="pt-2 flex flex-wrap items-center gap-3">
                   <Link
                     href={`/projects/${currentItem.slug}`}
                     className="group pill-btn inline-flex items-center gap-3 pl-6 pr-2.5 py-3 text-xs font-mono uppercase tracking-wider bg-obsidian text-paper-white hover:bg-black transition-all shadow-sm"
@@ -188,6 +192,18 @@ export function PinnedShowcase() {
                       &rarr;
                     </span>
                   </Link>
+
+                  {currentItem.brochurePdf && (
+                    <a
+                      href={currentItem.brochurePdf}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pill-btn inline-flex items-center gap-2 px-5 py-3 text-xs font-mono uppercase tracking-wider border border-champagne text-graphite-ink hover:bg-champagne/10 transition-colors shadow-xs"
+                    >
+                      <FileText className="size-3.5 text-champagne" />
+                      <span>Brochure PDF</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>

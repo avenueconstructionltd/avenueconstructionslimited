@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ShieldCheck, MapPin, Bed, Bath, Maximize2, Layers, ArrowUpRight } from "lucide-react";
+import { ShieldCheck, MapPin, Bed, Bath, Maximize2, Layers, ArrowUpRight, FileText } from "lucide-react";
 import { PROPERTIES, Property } from "@/lib/properties-constant";
 
 export function PropertiesSlider() {
@@ -112,8 +112,21 @@ function PropertyCard({ property }: { property: Property }) {
       {/* Right: Card Body with generous space for single-line title & rich data */}
       <div className="flex flex-col justify-between flex-1 min-w-0 py-1 sm:py-1.5">
         <div className="flex flex-col gap-2">
-          {/* Top Trust Seal */}
-          <div className="flex items-center justify-end">
+          {/* Top Row: Brochure (left) & Trust Seal (right) */}
+          <div className="flex items-center justify-between gap-2 min-h-6">
+            {property.brochurePdf ? (
+              <a
+                href={property.brochurePdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-[11px] font-semibold text-champagne hover:opacity-75 flex items-center gap-1 transition-opacity"
+              >
+                <FileText className="size-3.5" />
+                <span>Brochure</span>
+              </a>
+            ) : (
+              <span />
+            )}
             <span className="font-mono text-[11px] font-semibold text-champagne flex items-center gap-1">
               <ShieldCheck className="size-3.5" />
               100% RAJUK

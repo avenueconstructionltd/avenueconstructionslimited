@@ -33,6 +33,7 @@ export interface Property {
   materials: string[];
   amenities: string[];
   locationInsight: string;
+  brochurePdf?: string;
   architecturalDetails: {
     year: string;
     type: string;
@@ -53,10 +54,10 @@ export const PROPERTIES: Property[] = [
     region: "Shadhinota Shoroni",
     statusTag: "Completed",
     description:
-      "A luxury 9-storied (G+8) residential tower showcasing architectural symmetry, bold structural framing, and single-unit privacy on Shadhinota Shoroni.",
+      "A luxury 10-storied (G+9) residential tower showcasing architectural symmetry, bold structural framing, and 27 units on Shadhinota Shoroni.",
     narrative: [
       "Avenue Castle stands on Shadhinota Shoroni as a landmark of residential grandeur. Its bold concrete structure features dramatic cantilevered overhangs and recessed windows that shield the interior from direct afternoon solar radiation.",
-      "The building holds G+8 floors, providing premium units designed for modern families. The entrance lobby is finished with polished marble, offering a hotel-grade welcome.",
+      "The building holds G+9 floors with 3 units per floor (27 units total), providing premium residences designed for modern families. The entrance lobby is finished with polished marble, offering a hotel-grade welcome.",
       "Engineered using top-grade local reinforcement and high-performance concrete mixes, this completed project ensures premium structural safety alongside its striking visual presence.",
     ],
     image: "/images/projects/avenue-castle/avenue-castle-project.webp",
@@ -108,7 +109,8 @@ export const PROPERTIES: Property[] = [
       { label: "Bathrooms", value: "3" },
       { label: "Verandas", value: "3" },
       { label: "Unit Size", value: "1,450 Sft" },
-      { label: "Land Area", value: "3 Katha" },
+      { label: "Total Units", value: "27 Units (3/floor)" },
+      { label: "Land Area", value: "7.5 Katha" },
       { label: "Status", value: "Completed" },
     ],
     highlights: [
@@ -136,7 +138,7 @@ export const PROPERTIES: Property[] = [
       "Located on Shadhinota Shoroni, Uttar Badda, the property enjoys prime urban connectivity, sitting just minutes away from the diplomatic zone of Baridhara and the Gulshan-1 commercial hub.",
     architecturalDetails: {
       year: "2024-2026",
-      type: "9 Storied (G+8)",
+      type: "10 Storied (G+9)",
       architect: "Avenue Design Associates",
       status: "Completed",
       plotOrientation: "North-east facing facade",
@@ -211,7 +213,7 @@ export const PROPERTIES: Property[] = [
       { label: "Bathrooms", value: "3" },
       { label: "Verandas", value: "3" },
       { label: "Unit Size", value: "1,532 Sft" },
-      { label: "Land Area", value: "3 Katha" },
+      { label: "Land Area", value: "7 Katha" },
       { label: "Front Road", value: "25 Feet Wide" },
       { label: "Status", value: "Under Construction" },
     ],
@@ -239,6 +241,7 @@ export const PROPERTIES: Property[] = [
     ],
     locationInsight:
       "Situated at Plot 51, Block E, Road 05, Bashundhara R/A, Dhaka-1229, this project resides in Dhaka's most prestigious gated residential zone. It offers walking proximity to Evercare Hospital, top academic institutions, and central commercial avenues.",
+    brochurePdf: "/brochures/avenue-ahsan-palace-brochure.pdf",
     architecturalDetails: {
       year: "2026-2028",
       type: "8 Storied (G+7)",
@@ -345,6 +348,7 @@ export const PROPERTIES: Property[] = [
     ],
     locationInsight:
       "Located at Plot 30, Road 18 (50 ft wide), Block H, Sector 4, Eastern Housing Aftabnagar R/A, Dhaka-1212. Overlooks a 12.50 Bigha green reserve with rapid transit access via Hatirjheel Expressway, Badda Link Road, and Rampura.",
+    brochurePdf: "/brochures/avenue-mohammad-heights-brochure.pdf",
     architecturalDetails: {
       year: "2026-2029",
       type: "10 Storied (B+G+9)",
@@ -363,7 +367,7 @@ export const PROPERTIES: Property[] = [
     region: "Ulon Road",
     statusTag: "Under Construction",
     description:
-      "An 8-storied (G+7) residential landmark on Ulon Road, Rampura, offering refined family living with acoustic glazing, cross-ventilation, and seamless Hatirjheel connectivity.",
+      "A 9-storied (G+8) residential landmark on Ulon Road, Rampura, offering refined family living with acoustic glazing, cross-ventilation, and seamless Hatirjheel connectivity.",
     narrative: [
       "Avenue Dream represents our commitment to developing modern luxury within Dhaka's key transit networks. Situated on Ulon Road in Rampura, this landmark introduces refined urban family living.",
       "The building features cross-ventilated units that maintain comfortable indoor temperatures even during peak summer. Generous ceiling heights and open-plan kitchen-living layouts make each unit feel exceptionally spacious.",
@@ -397,7 +401,7 @@ export const PROPERTIES: Property[] = [
         title: "Typical Floor Plan",
         image: "/images/floor-plans/avenue-dream-typical.webp",
         details: [
-          "Unit Area: 1350 Sft",
+          "Unit Area: 1,450 Sft",
           "Accommodates: 3 Bedrooms & 3 Bathrooms",
           "Includes: 2 Verandas & spacious living hall",
           "Layout: Closed kitchen design & dining room",
@@ -417,8 +421,8 @@ export const PROPERTIES: Property[] = [
       { label: "Bedrooms", value: "3" },
       { label: "Bathrooms", value: "3" },
       { label: "Verandas", value: "2" },
-      { label: "Unit Size", value: "1,350 Sft" },
-      { label: "Land Area", value: "3 Katha" },
+      { label: "Unit Size", value: "1,450 Sft" },
+      { label: "Land Area", value: "5 Katha" },
       { label: "Status", value: "Under Construction" },
     ],
     highlights: [
@@ -446,7 +450,7 @@ export const PROPERTIES: Property[] = [
       "Positioned on Ulon Road, Rampura, the project offers excellent transport routes, connecting directly with Hatirjheel to the west and Badda-Gulshan routes to the north.",
     architecturalDetails: {
       year: "2024-2026",
-      type: "8 Storied (G+7)",
+      type: "9 Storied (G+8)",
       architect: "Avenue Design Atelier",
       status: "Under Construction",
       plotOrientation: "South-east facing layout",

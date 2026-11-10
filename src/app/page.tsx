@@ -2,6 +2,7 @@ import { Navbar } from "@/components/shared/navbar";
 import { Hero } from "./_components/hero";
 import { About } from "./_components/about";
 import { PropertiesSlider } from "./_components/properties-slider";
+import { ManagingDirector } from "./_components/managing-director";
 import { ConsultantPartner } from "./_components/consultant-partner";
 import { WhyChooseUs } from "./_components/why-choose-us";
 import { Locations } from "./_components/locations";
@@ -44,6 +45,7 @@ export default function Home() {
         <Hero />
         <About />
         <PropertiesSlider />
+        <ManagingDirector />
         <ConsultantPartner />
         <WhyChooseUs />
         <Services />
