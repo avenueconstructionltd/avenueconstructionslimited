@@ -23,7 +23,7 @@ export function ProjectsView() {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-canvas pt-32 pb-24 z-10 relative">
+      <main id="main-content" className="min-h-screen bg-canvas pt-32 pb-24 z-10 relative">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 flex flex-col gap-20">
           {/* Header Block with Quick Portfolio Metrics */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-4 border-b border-stone">
@@ -32,9 +32,9 @@ export function ProjectsView() {
                 Dhaka Signature Portfolio
               </span>
               <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.02] text-graphite-ink font-medium">
-                Our Signature <br />
+                Luxury Apartments &amp; <br />
                 <span className="italic font-light text-champagne">
-                  Residences &amp; Towers.
+                  Residences in Dhaka.
                 </span>
               </h1>
               <p className="text-sm md:text-base leading-relaxed text-pebble font-normal">

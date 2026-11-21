@@ -8,9 +8,9 @@ import { ShieldCheck, TrendingUp, Sparkles, Building2 } from "lucide-react";
 
 export const metadata: Metadata = buildMetadata({
   path: "/landowner",
-  title: "Landowner Partnerships & Joint Ventures | Avenue Constructions",
+  title: "Joint Venture Land Development in Dhaka",
   description:
-    "Partner with Avenue Constructions Limited. Enter a high-yield joint venture to transform your freehold plot in Gulshan, Banani, Baridhara, or Bashundhara into a landmark single-unit residential tower.",
+    "Partner with Avenue Constructions Ltd for trusted joint venture land development in Dhaka. Maximum landowner value, 100% legal security, and timely handover.",
 });
 
 const CO_DEV_STAGES = [
@@ -18,7 +18,7 @@ const CO_DEV_STAGES = [
     step: "01",
     title: "Confidential Land Survey & FAR Feasibility",
     description:
-      "We perform digital topographic surveys, sub-soil quality tests, and calculate optimal Floor Area Ratio (FAR) to maximize sellable volume and landowner share.",
+      "We perform digital topographic surveys, sub-soil quality tests, and calculate optimal Floor Area Ratio (FAR) under the DAP (Detailed Area Plan) and RAJUK guidelines to maximize landowner share.",
   },
   {
     step: "02",
@@ -62,7 +62,7 @@ export default function LandownerPage() {
       />
       <Navbar />
 
-      <main className="min-h-screen bg-canvas pt-32 pb-24 z-10 relative text-graphite-ink">
+      <main id="main-content" className="min-h-screen bg-canvas pt-32 pb-24 z-10 relative text-graphite-ink">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 flex flex-col gap-24">
           {/* Hero Header block */}
           <header className="flex flex-col gap-6 max-w-3xl">
@@ -70,9 +70,9 @@ export default function LandownerPage() {
               Landowner Joint Venture Advisory
             </span>
             <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.02] text-graphite-ink font-medium">
-              Transform Your Land <br />
+              Joint Venture Land Development <br />
               <span className="italic font-light text-champagne">
-                Into a Landmark Asset.
+                in Dhaka, Bangladesh.
               </span>
             </h1>
             <p className="text-sm md:text-base leading-relaxed text-pebble font-normal max-w-2xl">

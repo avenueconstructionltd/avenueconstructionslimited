@@ -58,7 +58,7 @@ export function FAQAccordion() {
             Client &amp; Partner Inquiries
           </span>
           <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.5rem)] leading-[1.1] tracking-[-0.015em] text-graphite-ink">
-            Frequently Asked Questions.
+            Dhaka Real Estate &amp; Luxury Apartment FAQs
           </h2>
           <p className="text-[15px] sm:text-[16px] text-pebble max-w-xl">
             Clear, transparent answers regarding statutory clearances, joint ventures, construction standards, and handover security.

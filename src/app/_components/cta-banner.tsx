@@ -33,11 +33,11 @@ export function CTABanner() {
           </span>
 
           <h2 className="font-serif text-[clamp(2.4rem,5vw,4.2rem)] leading-[1.06] tracking-[-0.015em] text-paper-white font-medium">
-            Find Your Signature Residence in Dhaka
+            Find Your Luxury Apartment in Dhaka
           </h2>
 
           <p className="text-[15px] sm:text-[17px] text-paper-white/90 leading-relaxed max-w-xl">
-            Connect with our private advisory team to schedule an exclusive on-site viewing, inspect engineering blueprints, or explore joint venture land partnerships.
+            Looking for luxury apartments for sale in Bashundhara R/A, Gulshan, or Aftabnagar? Connect with Avenue Constructions Ltd to inspect blueprints or explore joint venture land partnerships.
           </p>
 
           <div className="pt-3 flex flex-wrap items-center justify-center gap-3.5">

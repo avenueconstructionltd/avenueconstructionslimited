@@ -8,9 +8,9 @@ import { ServicesView } from "./_components/services-view";
 
 export const metadata: Metadata = buildMetadata({
   path: "/services",
-  title: "Services & Atelier Capabilities",
+  title: "Real Estate Development & Architectural Services",
   description:
-    "Explore real estate services by Avenue Constructions Limited: Architectural Design, Luxury Residential Development, Landowner Joint Ventures, and Real Estate Asset Management.",
+    "Architectural design, luxury residential construction, and joint venture land partnerships in Dhaka by Avenue Constructions Ltd.",
 });
 
 export default function ServicesPage() {

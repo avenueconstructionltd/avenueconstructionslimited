@@ -54,7 +54,7 @@ export function ServicesView() {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-canvas pt-32 pb-24 z-10 relative text-graphite-ink">
+      <main id="main-content" className="min-h-screen bg-canvas pt-32 pb-24 z-10 relative text-graphite-ink">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 flex flex-col gap-28">
           {/* Header Block */}
           <div className="max-w-3xl flex flex-col gap-6">
@@ -73,9 +73,9 @@ export function ServicesView() {
               transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
               className="font-serif text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.02] text-graphite-ink font-medium"
             >
-              Comprehensive <br />
+              Real Estate Development &amp; <br />
               <span className="italic font-light text-champagne">
-                Real Estate Craftsmanship.
+                Architectural Design in Dhaka.
               </span>
             </motion.h1>
 

@@ -39,6 +39,7 @@ export default function Home() {
       <Navbar />
 
       <main
+        id="main-content"
         className="min-h-screen bg-paper-white text-graphite-ink z-10 relative"
         suppressHydrationWarning
       >

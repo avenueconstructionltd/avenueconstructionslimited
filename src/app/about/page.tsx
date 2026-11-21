@@ -5,9 +5,9 @@ import { AboutView } from "./_components/about-view";
 
 export const metadata: Metadata = buildMetadata({
   path: "/about",
-  title: "About Us | Legacy & Design Philosophy",
+  title: "About Our Architectural Atelier in Dhaka",
   description:
-    "Discover Avenue Constructions Limited. Founded in Dhaka, we orchestrate architectural light, structural precision, and bespoke luxury residential developments.",
+    "Learn about Avenue Constructions Ltd, our IEB-certified architectural engineering philosophy, and track record in luxury residential development in Dhaka.",
   ogImage: "/images/extracted/Ahshan Palace-2_page1_Im10.webp",
 });
 

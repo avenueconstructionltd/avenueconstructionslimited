@@ -28,10 +28,12 @@ export async function generateMetadata({
   const property = PROPERTIES.find((p) => p.slug === slug);
   if (!property) return { title: "Project Not Found" };
 
+  const shortDesc = `${property.name} in ${property.location}: ${property.description}`.slice(0, 155).trim();
+
   return buildMetadata({
     path: `/projects/${property.slug}`,
-    title: `${property.name} - ${property.location}`,
-    description: `${property.description} Located at ${property.region}, ${property.location}. Features ${property.specs.map((s) => `${s.label}: ${s.value}`).join(", ")}.`,
+    title: `${property.name} - Luxury Apartments in ${property.region}`,
+    description: shortDesc,
     ogImage: property.image,
   });
 }
@@ -71,7 +73,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
       />
       <Navbar />
 
-      <main className="min-h-screen bg-canvas pt-32 pb-24 z-10 relative">
+      <main id="main-content" className="min-h-screen bg-canvas pt-32 pb-24 z-10 relative">
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col gap-20">
           {/* Back Navigation + status row */}
           <div className="flex items-center justify-between">
@@ -99,6 +101,9 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             </span>
             <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl tracking-tight leading-[1.02] text-text-primary uppercase">
               {property.name}
+              <span className="block text-xl md:text-2xl text-champagne font-editorial normal-case font-light mt-1">
+                Luxury Apartments in {property.location}
+              </span>
             </h1>
             <p className="font-serif italic text-lg md:text-xl text-text-secondary max-w-[40ch]">
               {property.tagline}

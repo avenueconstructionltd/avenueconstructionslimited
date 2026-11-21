@@ -5,9 +5,9 @@ import { ProjectsView } from "./_components/projects-view";
 
 export const metadata: Metadata = buildMetadata({
   path: "/projects",
-  title: "Portfolio Archive | Luxury Estates & Residences in Dhaka",
+  title: "Luxury Residential Projects in Dhaka",
   description:
-    "Explore signature luxury residential developments by Avenue Constructions Limited in Dhaka, Bangladesh. Browse completed and upcoming boutique towers in Bashundhara, Gulshan, Banani, and Aftabnagar.",
+    "Explore ongoing and ready luxury apartment projects by Avenue Constructions Ltd in Bashundhara R/A, Gulshan, and prime residential zones in Dhaka.",
   ogImage: "/images/projects/avenue-md-heights/avenue-md-heights-project.webp",
 });
 

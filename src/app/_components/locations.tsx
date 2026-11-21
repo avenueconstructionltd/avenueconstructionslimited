@@ -59,11 +59,11 @@ export function Locations() {
               Prime Dhaka Corridors
             </span>
             <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.5rem)] leading-[1.08] tracking-[-0.015em] text-graphite-ink font-medium">
-              Distinguished enclaves across Dhaka.
+              Luxury Apartments in Prime Enclaves across Dhaka
             </h2>
           </div>
           <p className="text-[15px] text-pebble leading-relaxed max-w-md">
-            We focus exclusively on Dhaka&apos;s most secure and prominent residential corridors, selecting plots that provide cross-ventilation, panoramic green views, and enduring prestige.
+            From luxury apartments in Bashundhara R/A and boutique residences in Gulshan to waterfront corridors in Aftabnagar, Avenue Constructions builds in Dhaka&apos;s most sought-after addresses.
           </p>
         </div>
 

@@ -60,10 +60,10 @@ export function ArchitecturalJournal() {
             Architectural Insights &amp; Journal
           </span>
           <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.6rem)] leading-[1.08] tracking-[-0.015em] text-graphite-ink">
-            Trends and inspiration in one place.
+            Architectural Journal: Luxury Living in Dhaka
           </h2>
           <p className="text-body text-pebble leading-relaxed">
-            At Avenue, every home embodies spatial precision, structural honesty, and timeless elegance.
+            Insights on single-unit apartment architecture, RAJUK bylaws, structural engineering, and joint venture land development in Dhaka.
           </p>
         </div>
 

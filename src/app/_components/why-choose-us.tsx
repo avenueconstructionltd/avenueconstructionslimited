@@ -57,10 +57,10 @@ export function WhyChooseUs() {
               Why Avenue Constructions
             </span>
             <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.6rem)] leading-[1.08] tracking-[-0.015em] text-graphite-ink font-medium">
-              Built on Trust. Engineered for Generations.
+              Why Choose Avenue: Premier Real Estate Developer in Dhaka
             </h2>
             <p className="text-[15px] sm:text-[16px] text-pebble leading-relaxed pt-1">
-              Dhaka&apos;s real estate landscape requires absolute transparency and engineering excellence. Here is why discerning homeowners and landowners choose us.
+              As a premier real estate developer in Dhaka, our single-unit luxury apartments are 100% RAJUK sanctioned and IEB structural engineer certified for permanent safety and on-time handover.
             </p>
           </div>
 

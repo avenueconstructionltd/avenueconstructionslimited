@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useScroll, useMotionValueEvent } from "motion/react";
 
@@ -12,13 +13,23 @@ export function Hero() {
   const imagesRef = useRef<HTMLImageElement[]>([]);
   const targetFrameRef = useRef<number>(0);
   const currentFrameRef = useRef<number>(0);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
+    return () => window.removeEventListener("resize", checkDesktop);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  // Render a specific frame to canvas
+  // Render a specific frame to canvas (desktop only)
   const renderFrame = useCallback((index: number) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -48,13 +59,17 @@ export function Hero() {
     }
   }, []);
 
-  // Preload all 239 frames progressively
+  // Preload all 239 frames progressively ONLY on desktop screens
   useEffect(() => {
+    if (typeof window === "undefined" || window.innerWidth < 768) {
+      return;
+    }
+
     const images: HTMLImageElement[] = new Array(TOTAL_FRAMES);
     imagesRef.current = images;
 
     // Load first frame immediately for instant first paint
-    const firstImg = new Image();
+    const firstImg = new window.Image();
     firstImg.src = "/videos/frames/frame_000.webp";
     firstImg.onload = () => {
       images[0] = firstImg;
@@ -69,7 +84,7 @@ export function Hero() {
 
       for (let i = startIndex; i < end; i++) {
         if (i === 0) continue;
-        const img = new Image();
+        const img = new window.Image();
         const frameNum = String(i).padStart(3, "0");
         img.src = `/videos/frames/frame_${frameNum}.webp`;
         img.onload = () => {
@@ -87,16 +102,21 @@ export function Hero() {
     return () => {
       cancelled = true;
     };
-  }, [renderFrame]);
+  }, [renderFrame, isDesktop]);
 
-  // Update target frame from scroll progress
+  // Update target frame from scroll progress (desktop only)
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (!isDesktop) return;
     const clamped = Math.min(Math.max(latest, 0), 1);
     targetFrameRef.current = Math.round(clamped * (TOTAL_FRAMES - 1));
   });
 
-  // Smooth GPU animation loop (120fps responsive scrub)
+  // Smooth GPU animation loop (120fps responsive scrub, desktop only)
   useEffect(() => {
+    if (typeof window === "undefined" || !isDesktop) {
+      return;
+    }
+
     let animId: number;
 
     const loop = () => {
@@ -115,18 +135,30 @@ export function Hero() {
 
     animId = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(animId);
-  }, [renderFrame]);
+  }, [renderFrame, isDesktop]);
 
   return (
     <section
       ref={containerRef}
-      className="relative z-10 w-full h-[320vh] sm:h-[350vh]"
-      aria-label="Avenue Constructions Premier Single-Unit Architecture in Dhaka"
+      className="relative z-10 w-full min-h-[90vh] md:h-[350vh]"
+      aria-label="Avenue Constructions Premier Single-Unit Luxury Residences in Dhaka"
     >
-      {/* Sticky Fullscreen Hero Viewport */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-end overflow-hidden pb-12 sm:pb-16 md:pb-20">
-        {/* Hardware-Accelerated 1080p Canvas Image Sequence Layer */}
-        <div className="absolute inset-0 z-0 bg-[#d8cfc5] overflow-hidden pointer-events-none">
+      {/* Viewport: Relative on mobile, Sticky on desktop */}
+      <div className="relative min-h-[90vh] md:sticky md:top-0 md:h-screen w-full flex flex-col justify-end overflow-hidden pb-12 sm:pb-16 md:pb-20 pt-28 sm:pt-32 md:pt-0">
+        {/* Mobile: Single High-Resolution Final Full Frame (Zero sequence requests, ~45KB) */}
+        <div className="absolute inset-0 z-0 md:hidden bg-[#d8cfc5] overflow-hidden pointer-events-none">
+          <Image
+            src="/videos/frames/frame_238.webp"
+            alt="Avenue Constructions Premier Single-Unit Luxury Residences in Dhaka"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center select-none brightness-100 contrast-[1.01]"
+          />
+        </div>
+
+        {/* Desktop: Hardware-Accelerated 1080p Canvas Image Sequence Layer */}
+        <div className="absolute inset-0 z-0 hidden md:block bg-[#d8cfc5] overflow-hidden pointer-events-none">
           <canvas
             ref={canvasRef}
             width={1920}
@@ -135,7 +167,7 @@ export function Hero() {
           />
         </div>
 
-        {/* Hero Editorial Composition — Always 100% Visible On Scroll */}
+        {/* Hero Editorial Composition */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 flex flex-col gap-6">
           <div className="max-w-3xl flex flex-col gap-4">
             {/* Editorial Eyebrow */}
@@ -144,16 +176,16 @@ export function Hero() {
             </span>
 
             {/* Editorial Serif Display Headline */}
-            <h1 className="font-editorial text-[clamp(3.2rem,6.8vw,5.6rem)] leading-[0.96] tracking-tight text-graphite-ink font-normal">
+            <h1 className="font-editorial text-[clamp(2.8rem,6.5vw,5.6rem)] leading-[0.96] tracking-tight text-graphite-ink font-normal">
               Setting Standards in{" "}
               <span className="italic font-normal text-obsidian">
-                Luxury Living.
+                Luxury Living in Dhaka.
               </span>
             </h1>
 
             {/* Editorial Description */}
             <p className="max-w-2xl text-[15px] sm:text-[16px] md:text-[17px] leading-[1.65] text-graphite-ink/85 font-normal pt-1">
-              Avenue Constructions engineers single-unit residential sanctuaries across Bashundhara R/A, Gulshan, and Aftabnagar &mdash; delivering uncompromised architectural privacy and 100% RAJUK-sanctioned structural permanence.
+              Avenue Constructions Ltd engineers single-unit luxury residential apartments across Bashundhara R/A, Gulshan, and Aftabnagar &mdash; delivering uncompromised architectural privacy, IEB certification, and 100% RAJUK-sanctioned structural permanence.
             </p>
 
             {/* Refined Luxury CTAs */}

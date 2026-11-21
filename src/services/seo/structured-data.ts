@@ -6,6 +6,7 @@ import {
   AUTHOR_PHONES,
   HEADQUARTERS_ADDRESS,
   HEADQUARTERS_GEO,
+  SOCIAL_URLS,
 } from "@/constants/seo";
 import type { JsonLd } from "@/types/seo";
 import type { Property } from "@/lib/properties-constant";
@@ -67,13 +68,36 @@ export function realEstateAgentJsonLd(): JsonLd {
       },
     ],
     sameAs: [
-      "https://facebook.com",
-      "https://linkedin.com",
-      "https://instagram.com",
+      SOCIAL_URLS.facebook,
+      SOCIAL_URLS.linkedin,
+      SOCIAL_URLS.instagram,
+      SOCIAL_URLS.twitter,
     ],
     priceRange: "$$$$",
     currenciesAccepted: "BDT",
     paymentAccepted: "Bank Transfer, Cheque",
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Luxury Residential Real Estate in Dhaka",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Single-Unit Luxury Apartments in Dhaka",
+            description: "Exclusive single-unit residential apartments in Bashundhara R/A, Gulshan, and Aftabnagar.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Joint Venture Land Development Partnerships",
+            description: "Ethical, high-yield joint venture land development for freehold plots in Dhaka.",
+          },
+        },
+      ],
+    },
     areaServed: [
       "Bangladesh",
       "Dhaka",

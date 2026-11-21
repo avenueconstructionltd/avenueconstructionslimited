@@ -61,7 +61,7 @@ export function ContactView() {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-canvas pt-32 pb-24 z-10 relative">
+      <main id="main-content" className="min-h-screen bg-canvas pt-32 pb-24 z-10 relative">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 flex flex-col gap-24">
           {/* Header Block */}
           <div className="max-w-3xl flex flex-col gap-6">
@@ -80,9 +80,9 @@ export function ContactView() {
               transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
               className="font-serif text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.02] text-graphite-ink font-medium"
             >
-              Let&apos;s Discuss Your <br />
+              Contact Our Real Estate <br />
               <span className="italic font-light text-champagne">
-                Next Landmark Home.
+                Advisory Team in Dhaka.
               </span>
             </motion.h1>
 

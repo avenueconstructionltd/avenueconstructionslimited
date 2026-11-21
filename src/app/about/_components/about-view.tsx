@@ -15,7 +15,7 @@ export function AboutView() {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-canvas pt-32 pb-24 z-10 relative text-text-primary">
+      <main id="main-content" className="min-h-screen bg-canvas pt-32 pb-24 z-10 relative text-text-primary">
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col gap-32">
           {/* Asymmetric Editorial Hero Split */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -26,21 +26,21 @@ export function AboutView() {
                 transition={{ duration: 0.6 }}
                 className="text-[10px] uppercase tracking-[0.25em] font-mono text-accent"
               >
-                The Atelier Story
+                The Atelier Story &middot; Premier Real Estate Developer in Dhaka
               </motion.span>
 
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
-                className="font-serif text-4xl md:text-6xl lg:text-7xl tracking-tight leading-[0.95] uppercase"
+                className="font-serif text-4xl md:text-6xl lg:text-7xl tracking-tight leading-[0.98] uppercase"
               >
-                Architecture is a <br />
+                Luxury Architecture &amp; <br />
                 <span className="italic font-light text-accent">
-                  physical extension
+                  Single-Unit Residences
                 </span>{" "}
                 <br />
-                of the soul.
+                in Dhaka.
               </motion.h1>
 
               <motion.p
@@ -49,10 +49,9 @@ export function AboutView() {
                 transition={{ duration: 0.8, delay: 0.15 }}
                 className="text-xs md:text-sm leading-relaxed text-text-secondary max-w-[50ch] font-light"
               >
-                Founded in Dhaka in 2018, Avenue Constructions Limited was born
-                from a desire to escape the generic patterns of commercial real
-                estate. We do not construct buildings; we orchestrate light,
-                aggregate raw materials, and draft silence.
+                Headquartered in Purana Paltan, Dhaka, Avenue Constructions Limited was born
+                from a desire to elevate luxury residential living. We engineer bespoke single-unit
+                apartments and joint venture landmarks across Bashundhara R/A, Gulshan, and prime Dhaka enclaves.
               </motion.p>
             </div>
 

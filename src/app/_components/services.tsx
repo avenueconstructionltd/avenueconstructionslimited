@@ -34,10 +34,10 @@ export function Services() {
               Capabilities &amp; Craftsmanship
             </span>
             <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.5rem)] leading-heading-lg tracking-[-0.01em] text-graphite-ink">
-              Bespoke solutions for collectors.
+              Real Estate Development &amp; Architectural Services in Dhaka
             </h2>
-            <p className="text-body leading-[1.6] text-pebble font-normal max-w-[36ch] pt-1">
-              From architectural massing and solar orientation to structural execution and asset stewardship.
+            <p className="text-body leading-[1.6] text-pebble font-normal max-w-[42ch] pt-1">
+              Comprehensive real estate services in Dhaka: bespoke architectural design, luxury apartment development, and landowner joint venture advisory.
             </p>
           </div>
 

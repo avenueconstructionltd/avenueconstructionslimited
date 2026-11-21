@@ -20,7 +20,7 @@ export function PropertiesSlider() {
             Dhaka Signature Developments
           </span>
           <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.6rem)] leading-[1.08] tracking-[-0.015em] text-graphite-ink font-medium">
-            Our Signature Residences
+            Luxury Apartments &amp; Signature Residences in Dhaka
           </h2>
           <p className="text-[14px] sm:text-[15px] text-pebble leading-relaxed max-w-2xl">
             Bespoke single-unit luxury residential landmarks engineered with fair-faced concrete, private elevator access, and museum-grade finishes across Dhaka&apos;s prime enclaves.

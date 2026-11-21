@@ -10,27 +10,29 @@ export const SITE_HANDLE = "@avenueconstructionltd";
 export const SITE_LOCALE = "en_US";
 
 export const SITE_TITLE_DEFAULT =
-  "Avenue Constructions Ltd | Luxury Real Estate Developer in Dhaka, Bangladesh";
+  "Luxury Apartments in Dhaka | Avenue Constructions Ltd";
 export const SITE_TITLE_TEMPLATE = "%s | Avenue Constructions Ltd";
 
 export const SITE_DESCRIPTION =
-  "Avenue Constructions Ltd is a premier real estate developer in Dhaka, Bangladesh. Specializing in luxury residential apartments, G+7/G+8 boutique towers, and joint venture land development in Gulshan, Banani, Baridhara, Bashundhara R/A, and Aftabnagar, Dhaka.";
+  "Discover luxury single-unit apartments & boutique residences in Dhaka. Avenue Constructions Ltd develops premium homes & joint ventures in Bashundhara & Gulshan.";
 
 export const SITE_KEYWORDS: string[] = [
   "Avenue Constructions Ltd",
   "Avenue Constructions Ltd Dhaka",
-  "Avenue Constructions Ltd Bangladesh",
   "Avenue Constructions Limited",
-  "Avenue Constructions",
-  "Avenue Construction",
   "Luxury apartments in Dhaka",
-  "Single unit apartments Dhaka",
+  "Apartments for sale in Dhaka",
+  "Flats for sale in Bashundhara RA",
   "Bashundhara RA luxury apartments",
-  "Gulshan apartments for sale",
+  "Single unit apartments Dhaka",
+  "Gulshan luxury apartments",
   "Banani luxury residences",
-  "Aftabnagar apartments",
+  "Aftabnagar apartments Dhaka",
+  "Real estate company in Dhaka",
   "Real estate developer Dhaka",
-  "Landowner joint venture Dhaka",
+  "Joint venture land development Dhaka",
+  "Landowner partnership Dhaka",
+  "Ready flats in Dhaka",
   "RAJUK approved projects Dhaka",
   "IEB certified buildings Dhaka",
   "Avenue Ahsan Palace",
@@ -38,6 +40,14 @@ export const SITE_KEYWORDS: string[] = [
   "Avenue Dream",
   "Avenue Castle",
 ];
+
+export const SOCIAL_URLS = {
+  facebook: "https://facebook.com/avenueconstructionsltd",
+  linkedin: "https://linkedin.com/company/avenueconstructionsltd",
+  instagram: "https://instagram.com/avenueconstructionsltd",
+  twitter: "https://x.com/avenueconstructionltd",
+  whatsapp: "https://wa.me/8801714767246",
+};
 
 export const AUTHOR_NAME = "Avenue Constructions Ltd";
 export const AUTHOR_EMAIL = "avenueconstructionlimited@gmail.com";

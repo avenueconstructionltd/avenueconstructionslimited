@@ -42,7 +42,7 @@ export function JointVenture() {
                 Landowner Joint Venture Advisory
               </span>
               <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.6rem)] leading-[1.08] tracking-[-0.015em] text-graphite-ink font-medium">
-                Maximize the generational yield of your prime freehold plot.
+                Joint Venture Land Development in Prime Dhaka Enclaves
               </h2>
             </div>
 

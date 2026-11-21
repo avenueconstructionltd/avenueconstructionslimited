@@ -260,10 +260,10 @@ export function ContactForm({ embedded = false }: ContactFormProps) {
             Private Consultation
           </span>
           <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.5rem)] leading-heading-lg tracking-[-0.01em] text-graphite-ink font-medium">
-            Begin your journey.
+            Schedule a Private Apartment Viewing in Dhaka
           </h2>
           <p className="text-body leading-[1.6] text-pebble font-normal max-w-[34ch]">
-            Contact our private client advisory team to schedule an exclusive architectural consultation or site viewing in Dhaka.
+            Contact Avenue Constructions Ltd to schedule an exclusive architectural consultation, site viewing, or discuss joint venture land development in Dhaka.
           </p>
 
           <div className="flex flex-col gap-2 pt-4 text-sm text-pebble border-t border-stone/60 font-mono">

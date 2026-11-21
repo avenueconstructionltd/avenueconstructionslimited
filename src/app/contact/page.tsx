@@ -5,9 +5,9 @@ import { ContactView } from "./_components/contact-view";
 
 export const metadata: Metadata = buildMetadata({
   path: "/contact",
-  title: "Contact Us & Private Consultations",
+  title: "Contact & Private Consultation in Dhaka",
   description:
-    "Schedule a private viewing or corporate consultation at Avenue Constructions Limited headquarters in Purana Paltan, Dhaka. Direct hotline: +880 1714 767 246.",
+    "Schedule a private viewing or developer consultation with Avenue Constructions Ltd in Purana Paltan, Dhaka. Call +880 1714 767 246.",
 });
 
 export default function ContactPage() {
